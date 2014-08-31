@@ -1,0 +1,14 @@
+/* 
+    Document   : am_events.css
+    Created on : 21.4.2013, 21:02:31
+    Author     : Atte Moisio
+    Description:
+        Miscellaneous styles for the plugin
+*/
+
+/* padding for event meta data fields */
+#am_metabox td {
+    padding: 10px 5px 5px 5px;
+}
+
+

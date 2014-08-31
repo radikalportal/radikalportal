@@ -1,0 +1,22 @@
+.flare-flyout .flare-flyout-inner {
+    border: 1px solid #eaeaea;
+}
+.flare-left .flare-flyout .flare-arrow {
+    width: 12px;
+    left: -10px;
+    background: url('../images/flyout-arrow-left.ie.png');
+}
+.flare-right .flare-flyout .flare-arrow {
+    width: 12px;
+    right: -10px;
+    background: url('../images/flyout-arrow-right.ie.png');
+}
+.flare-horizontal .flare-flyout .flare-arrow {
+    height: 12px;
+    bottom: -10px;
+    background: url('../images/flyout-arrow-horizontal.ie.png') center top no-repeat;
+}
+.flare-vertical {
+    border: 1px solid #ddd;
+}
+.flare-horizontal .flare-button.button-type-stumbleupon .flare-button-icon { background-position: -123px 2px; }

@@ -1,0 +1,2 @@
+05-09-2013 14:11:48 - ERROR - 53867824 - Subscription of an address with status C
+05-09-2013 21:59:59 - ERROR - 53867616 - Subscription of an address with status C

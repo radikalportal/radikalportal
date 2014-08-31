@@ -1,0 +1,66 @@
+/*
+Wordpress Popular Posts plugin stylesheet
+Developed by Hector Cabrera
+
+Use the following classes to style your popular posts list as you like.
+*/
+
+.wpp-list { /* UL element */
+	
+}
+
+	.wpp-list li { /* LI - post container */
+		overflow:auto;
+		display:block;
+		float:none;
+		clear:both;
+		margin: 5px 0 8px 0;
+	}
+
+		/* title styles */
+		.wpp-post-title {
+		color: #000000;
+		font-weight: bold;
+		font-size: 12px;
+		}
+		
+		/* thumbnail styles */
+		.wpp-thumbnail {
+			display:inline;
+			float:left;
+			margin:0 5px 0 0;
+			border:none;
+			width: 75px;
+			heigth: 75px;
+		}
+		
+		/* excerpt styles */
+		.wpp-excerpt {
+		color: #000000;
+		font-size: 12px;
+		}
+		
+		/* Stats tag styles */
+		.post-stats {
+			font-size:9px;
+			font-weight:bold;
+		}
+			
+			.wpp-comments {
+			}
+			
+			.wpp-views {
+			}
+			
+			.wpp-author {
+				font-style:italic;
+			}
+			
+			.wpp-date {
+				display:block;
+				clear:right;
+			}
+		
+		/* WP-PostRatings styles */
+		.wpp-rating {
+		}

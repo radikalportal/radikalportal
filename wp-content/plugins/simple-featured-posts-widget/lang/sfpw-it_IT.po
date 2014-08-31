@@ -1,0 +1,67 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: sfpw\n"
+"POT-Creation-Date: 2012-12-09 13:09+0100\n"
+"PO-Revision-Date: 2012-12-09 14:02+0100\n"
+"Last-Translator: Fabio Di Stasio <info@nebulosaweb.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: simple-featured-posts-widget/\n"
+
+#: simple-featured-posts-widget/sfpw.php:117
+msgid "Title:"
+msgstr "Titolo:"
+
+#: simple-featured-posts-widget/sfpw.php:121
+msgid "Number of posts to show:"
+msgstr "Numero di post da visualizzare"
+
+#: simple-featured-posts-widget/sfpw.php:125
+msgid "Order:"
+msgstr "Ordine:"
+
+#: simple-featured-posts-widget/sfpw.php:127
+#: simple-featured-posts-widget/sfpw.php:128
+msgid "Random"
+msgstr "Casuale"
+
+#: simple-featured-posts-widget/sfpw.php:127
+#: simple-featured-posts-widget/sfpw.php:128
+msgid "Recent Posts"
+msgstr "Post Recenti"
+
+#: simple-featured-posts-widget/sfpw.php:132
+msgid "Category ID (optional):"
+msgstr "ID Categoria (opzionale):"
+
+#: simple-featured-posts-widget/sfpw.php:138
+msgid "Show date"
+msgstr "Mostra data"
+
+#: simple-featured-posts-widget/sfpw.php:142
+msgid "Show thumbnail"
+msgstr "Mostra immagine"
+
+#: simple-featured-posts-widget/sfpw.php:145
+msgid "Thumbnail witdh:"
+msgstr "Larghezza immagine"
+
+#: simple-featured-posts-widget/sfpw.php:149
+msgid "Thumbnail height:"
+msgstr "Altezza immagine"
+
+#: simple-featured-posts-widget/sfpw.php:151
+msgid "Automatically set if blank"
+msgstr "Impostato automaticamente se mancante"
+
+#: simple-featured-posts-widget/sfpw.php:154
+msgid "TimThumb script URL"
+msgstr "URL dello script TimThumb"
+
+#: simple-featured-posts-widget/sfpw.php:156
+msgid "Example '/scripts/timthumb.php'"
+msgstr "Esempio '/scripts/timthumb.php'"

@@ -1,0 +1,754 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: am-events\n"
+"POT-Creation-Date: 2014-01-10 11:10+0200\n"
+"PO-Revision-Date: 2014-02-28 13:46+0100\n"
+"Last-Translator: Midori <midori@loutan.net>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
+"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: fr_FR\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../am-events.php:129
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Vous n'avez pas les permissions nécessaires pour accéder à cette page"
+
+#: ../am-events.php:134
+msgid "AM Events settings"
+msgstr "Préférences d'AM Events"
+
+#: ../am-events.php:143
+msgid "Slug for event posts"
+msgstr "Base des évènements"
+
+#: ../am-events.php:148
+msgid "Timepicker minute step"
+msgstr "Écart en minutes pour Timepicker"
+
+#: ../am-events.php:218
+msgctxt "date picker"
+msgid "Clear"
+msgstr "Effacer"
+
+#: ../am-events.php:219
+msgctxt "date picker"
+msgid "Erase the current date"
+msgstr "Supprimer la date actuelle"
+
+#: ../am-events.php:220
+msgctxt "date picker"
+msgid "Close"
+msgstr "Fermer"
+
+#: ../am-events.php:221
+msgctxt "date picker"
+msgid "Close without change"
+msgstr "Fermer sans changer"
+
+#: ../am-events.php:222
+msgctxt "date picker"
+msgid "<Prev"
+msgstr "<Préc."
+
+#: ../am-events.php:223
+msgctxt "date picker"
+msgid "<<"
+msgstr "<<"
+
+#: ../am-events.php:224
+msgctxt "date picker"
+msgid "Show the previous month"
+msgstr "Montrer le mois précédent"
+
+#: ../am-events.php:225
+msgctxt "date picker"
+msgid "Show the previous year"
+msgstr "Montrer l'année précédente\t"
+
+#: ../am-events.php:226
+msgctxt "date picker"
+msgid "Next>"
+msgstr "Suiv.>"
+
+#: ../am-events.php:227
+msgctxt "date picker"
+msgid ">>"
+msgstr ">>"
+
+#: ../am-events.php:228
+msgctxt "date picker"
+msgid "Show the next month"
+msgstr "Montrer le mois suivant"
+
+#: ../am-events.php:229
+msgctxt "date picker"
+msgid "Show the next year"
+msgstr "Montrer l'année suivante"
+
+#: ../am-events.php:230
+msgctxt "date picker"
+msgid "Today"
+msgstr "Aujourd'hui"
+
+#: ../am-events.php:231
+msgctxt "date picker"
+msgid "Show the current month"
+msgstr "Montrer le mois en cours"
+
+#: ../am-events.php:232
+msgid "January"
+msgstr "Janvier"
+
+#: ../am-events.php:232
+msgid "February"
+msgstr "Février"
+
+#: ../am-events.php:232
+msgid "March"
+msgstr "Mars"
+
+#: ../am-events.php:232
+msgid "April"
+msgstr "Avril"
+
+#: ../am-events.php:232 ../am-events.php:233
+msgid "May"
+msgstr "Mai"
+
+#: ../am-events.php:232
+msgid "June"
+msgstr "Juin"
+
+#: ../am-events.php:232
+msgid "July"
+msgstr "Juillet"
+
+#: ../am-events.php:232
+msgid "August"
+msgstr "Août"
+
+#: ../am-events.php:232
+msgid "September"
+msgstr "Septembre"
+
+#: ../am-events.php:232
+msgid "October"
+msgstr "Octobre"
+
+#: ../am-events.php:232
+msgid "November"
+msgstr "Novembre"
+
+#: ../am-events.php:232
+msgid "December"
+msgstr "Décembre"
+
+#: ../am-events.php:233
+msgid "Jan"
+msgstr "Jan"
+
+#: ../am-events.php:233
+msgid "Feb"
+msgstr "Fév"
+
+#: ../am-events.php:233
+msgid "Mar"
+msgstr "Mar"
+
+#: ../am-events.php:233
+msgid "Apr"
+msgstr "Avr"
+
+#: ../am-events.php:233
+msgid "Jun"
+msgstr "Jun"
+
+#: ../am-events.php:233
+msgid "Jul"
+msgstr "Jul"
+
+#: ../am-events.php:233
+msgid "Aug"
+msgstr "Aou"
+
+#: ../am-events.php:233
+msgid "Sep"
+msgstr "Sep"
+
+#: ../am-events.php:233
+msgid "Oct"
+msgstr "Oct"
+
+#: ../am-events.php:233
+msgid "Nov"
+msgstr "Nov"
+
+#: ../am-events.php:233
+msgid "Dec"
+msgstr "Déc"
+
+#: ../am-events.php:234
+msgctxt "date picker"
+msgid "Show a different month"
+msgstr "Montrer un autre mois"
+
+#: ../am-events.php:235
+msgctxt "date picker"
+msgid "Show a different year"
+msgstr "Montrer une autre année"
+
+#: ../am-events.php:236
+msgctxt "date picker"
+msgid "Wk"
+msgstr "Sem"
+
+#: ../am-events.php:237
+msgctxt "date picker"
+msgid "Week of the year"
+msgstr "Semaine de l'année"
+
+#: ../am-events.php:238
+msgid "Monday"
+msgstr "Lundi"
+
+#: ../am-events.php:238
+msgid "Tuesday"
+msgstr "Mardi"
+
+#: ../am-events.php:238
+msgid "Wednesday"
+msgstr "Mercredi"
+
+#: ../am-events.php:238
+msgid "Thursday"
+msgstr "Jeudi"
+
+#: ../am-events.php:238
+msgid "Friday"
+msgstr "Vendredi"
+
+#: ../am-events.php:238
+msgid "Saturday"
+msgstr "Samedi"
+
+#: ../am-events.php:238
+msgid "Sunday"
+msgstr "Dimanche"
+
+#: ../am-events.php:239 ../widget-upcoming-events.php:473
+msgid "Mon"
+msgstr "Lun"
+
+#: ../am-events.php:239 ../widget-upcoming-events.php:474
+msgid "Tue"
+msgstr "Mar"
+
+#: ../am-events.php:239 ../widget-upcoming-events.php:475
+msgid "Wed"
+msgstr "Mer"
+
+#: ../am-events.php:239 ../widget-upcoming-events.php:476
+msgid "Thu"
+msgstr "Jeu"
+
+#: ../am-events.php:239 ../widget-upcoming-events.php:477
+msgid "Fri"
+msgstr "Ven"
+
+#: ../am-events.php:239 ../widget-upcoming-events.php:478
+msgid "Sat"
+msgstr "Sam"
+
+#: ../am-events.php:239 ../widget-upcoming-events.php:479
+msgid "Sun"
+msgstr "Dim"
+
+#: ../am-events.php:240
+msgid "Mo"
+msgstr "Lu"
+
+#: ../am-events.php:240
+msgid "Tu"
+msgstr "Ma"
+
+#: ../am-events.php:240
+msgid "We"
+msgstr "Me"
+
+#: ../am-events.php:240
+msgid "Th"
+msgstr "Je"
+
+#: ../am-events.php:240
+msgid "Fr"
+msgstr "Ve"
+
+#: ../am-events.php:240
+msgid "Sa"
+msgstr "Sa"
+
+#: ../am-events.php:240
+msgid "Su"
+msgstr "Di"
+
+#: ../am-events.php:241
+msgctxt "date picker"
+msgid "Set DD as first week day"
+msgstr "Choisir DD comme premier jour de la semaine"
+
+#: ../am-events.php:242
+msgctxt "date picker"
+msgid "Select D, M d"
+msgstr "Choisir D, d M"
+
+#: ../am-events.php:243
+msgctxt "date picker, see format options on parseDate"
+msgid "mm/dd/yy"
+msgstr "dd.mm.yy"
+
+#: ../am-events.php:245
+msgctxt "date picker"
+msgid "Select a date"
+msgstr "Choisir une date"
+
+#: ../am-events.php:250
+msgctxt "time picker"
+msgid "Now"
+msgstr "Maintenant"
+
+#: ../am-events.php:251
+msgctxt "time picker"
+msgid "Done"
+msgstr "Fait"
+
+#: ../am-events.php:252
+msgctxt "time picker"
+msgid "AM"
+msgstr "AM"
+
+#: ../am-events.php:253
+msgctxt "time picker"
+msgid "A"
+msgstr "A"
+
+#: ../am-events.php:254
+msgctxt "time picker"
+msgid "PM"
+msgstr "PM"
+
+#: ../am-events.php:255
+msgctxt "time picker"
+msgid "P"
+msgstr "P"
+
+#: ../am-events.php:256
+msgctxt "time picker"
+msgid "HH:mm"
+msgstr "HH:mm"
+
+#: ../am-events.php:258
+msgctxt "time picker"
+msgid "Choose Time"
+msgstr "Choisir l'heure"
+
+#: ../am-events.php:259
+msgctxt "time picker"
+msgid "Time"
+msgstr "Temps"
+
+#: ../am-events.php:260
+msgctxt "time picker"
+msgid "Hour"
+msgstr "Heure"
+
+#: ../am-events.php:261
+msgctxt "time picker"
+msgid "Minute"
+msgstr "Minute"
+
+#: ../am-events.php:262
+msgctxt "time picker"
+msgid "Second"
+msgstr "Seconde"
+
+#: ../am-events.php:263
+msgctxt "time picker"
+msgid "Millisecond"
+msgstr "Milliseconde"
+
+#: ../am-events.php:264
+msgctxt "time picker"
+msgid "Time Zone"
+msgstr "Fuseau horaire"
+
+#: ../am-events.php:313
+msgid "Event Details"
+msgstr "Détails de l'évènement"
+
+#: ../am-events.php:336 ../am-events.php:338
+msgctxt "administration"
+msgid "m/d/Y H:i"
+msgstr "d.m.Y H:i"
+
+#: ../am-events.php:346
+msgid "Start Date:"
+msgstr "Date de début:"
+
+#: ../am-events.php:355
+msgid "End Date:"
+msgstr "Date de fin:"
+
+#: ../am-events.php:363
+msgid "Additional options:"
+msgstr "Options supplémentaires:"
+
+#: ../am-events.php:365
+msgid "Recurrent event:"
+msgstr "Évènement récurent:"
+
+#: ../am-events.php:370
+msgid "weekly"
+msgstr "chaque semaine"
+
+#: ../am-events.php:371
+msgid "every two weeks"
+msgstr "Toutes les deux semaines"
+
+#: ../am-events.php:376
+msgid "times"
+msgstr "Heures"
+
+#: ../am-events.php:378
+msgid "Recurrent events are created when the event is saved or updated."
+msgstr ""
+"Les évènements récurrents sont créés lorsque l'évènement est sauvegardé ou "
+"mis à jour."
+
+#: ../am-events.php:609
+msgid "Start Date"
+msgstr "Date de début"
+
+#: ../am-events.php:610
+msgid "End Date"
+msgstr "Date de fin"
+
+#: ../am-events.php:686 ../am-events.php:688
+msgid "Events"
+msgstr "Évènements"
+
+#: ../am-events.php:687 ../am-events.php:691 ../am-events.php:701
+msgid "Event"
+msgstr "Évènement"
+
+#: ../am-events.php:689
+msgid "All Events"
+msgstr "Tous les évènements"
+
+#: ../am-events.php:690
+msgid "Add New Event"
+msgstr "Ajouter un évènement"
+
+#: ../am-events.php:692
+msgid "Edit Event"
+msgstr "Éditer un évènement"
+
+#: ../am-events.php:693
+msgid "New Event"
+msgstr "Nouvel évènement"
+
+#: ../am-events.php:694
+msgid "View Events"
+msgstr "Voir les évènements"
+
+#: ../am-events.php:695
+msgid "Search Events"
+msgstr "Chercher dans les évènements"
+
+#: ../am-events.php:696 ../am-events.php:697
+msgid "No Events Found"
+msgstr "Aucun évènement trouvé"
+
+#: ../am-events.php:710
+msgid "Type for events"
+msgstr "Type pour les évènements"
+
+#: ../am-events.php:727 ../am-events.php:741
+msgid "Venues"
+msgstr "Lieux"
+
+#: ../am-events.php:728
+msgid "Venue"
+msgstr "Lieu"
+
+#: ../am-events.php:729
+msgid "Search Venues"
+msgstr "Cherchez dans les lieux"
+
+#: ../am-events.php:730
+msgid "Popular Venues"
+msgstr "Lieux populaires"
+
+#: ../am-events.php:731
+msgid "All Venues"
+msgstr "Tous les lieux"
+
+#: ../am-events.php:732
+msgid "Parent Venue"
+msgstr "Lieu parent"
+
+#: ../am-events.php:733
+msgid "Parent Venue:"
+msgstr "Lieu parent:"
+
+#: ../am-events.php:734
+msgid "Edit Venue"
+msgstr "Éditer lieu"
+
+#: ../am-events.php:735
+msgid "Update Venue"
+msgstr "Mettre à jour lieu"
+
+#: ../am-events.php:736
+msgid "Add New Venue"
+msgstr "Ajouter un lieu"
+
+#: ../am-events.php:737
+msgid "New Venue"
+msgstr "Nouveau lieu"
+
+#: ../am-events.php:738
+msgid "Separate venues with commas"
+msgstr "Séparez les lieux avec des virgules"
+
+#: ../am-events.php:739
+msgid "Add or remove venues"
+msgstr "Ajoutez ou supprimez des lieux"
+
+#: ../am-events.php:740
+msgid "Choose from the most used venues"
+msgstr "Choisissez parmi les lieux les plus utilisés"
+
+#: ../am-events.php:765 ../am-events.php:779
+msgid "Event Categories"
+msgstr "Catégories des évènements"
+
+#: ../am-events.php:766
+msgid "Event Category"
+msgstr "Catégorie d'évènement"
+
+#: ../am-events.php:767
+msgid "Search Event Categories"
+msgstr "Cherchez dans les catégories d'évènements"
+
+#: ../am-events.php:768
+msgid "Popular Event Categories"
+msgstr "Catégories d'évènements populaires"
+
+#: ../am-events.php:769
+msgid "All Event Categories"
+msgstr "Toutes les catégories d'évènements"
+
+#: ../am-events.php:770
+msgid "Parent Event Category"
+msgstr "Catégorie d'évènements parente"
+
+#: ../am-events.php:771
+msgid "Parent Event Category:"
+msgstr "Catégorie d'évènements parente:"
+
+#: ../am-events.php:772
+msgid "Edit Event Category"
+msgstr "Éditer une catégorie d'évènements"
+
+#: ../am-events.php:773
+msgid "Update Event Category"
+msgstr "Mettre à jour une catégorie d'évènements"
+
+#: ../am-events.php:774
+msgid "Add New Event Category"
+msgstr "Ajouter une catégorie d'évènements"
+
+#: ../am-events.php:775
+msgid "New Event Category"
+msgstr "Nouvelle catégorie d'évènements"
+
+#: ../am-events.php:776
+msgid "Separate event categories with commas"
+msgstr "Séparez les catégories d'évènements avec des virgules"
+
+#: ../am-events.php:777
+msgid "Add or remove event categories"
+msgstr "Ajouter ou supprimer des catégories d'évènements"
+
+#: ../am-events.php:778
+msgid "Choose from the most used event categories"
+msgstr "Choisir parmis les catégorie d'évènements les plus utilisées"
+
+#: ../am-events.php:805
+#, php-format
+msgid "Event updated. <a href=\"%s\">View event</a>"
+msgstr "Évènement mis à jour. <a href=\"%s\">Voir évènement</a>"
+
+#: ../am-events.php:806
+msgid "Custom field updated."
+msgstr "Champ personnalisé mis à jour"
+
+#: ../am-events.php:807
+msgid "Custom field deleted."
+msgstr "Champ personnalisé supprimé"
+
+#: ../am-events.php:808
+msgid "Event updated."
+msgstr "Évènement mis à jour"
+
+#: ../am-events.php:810
+#, php-format
+msgid "Event restored to revision from %s"
+msgstr "Évènement restauré à la révision de %s"
+
+#: ../am-events.php:811
+#, php-format
+msgid "Event published. <a href=\"%s\">View event</a>"
+msgstr "Évènement publié. <a href=\"%s\">Voir évènement </a>"
+
+#: ../am-events.php:812
+msgid "Event saved."
+msgstr "Évènement sauvegardé."
+
+#: ../am-events.php:813
+#, php-format
+msgid "Event submitted. <a target=\"_blank\" href=\"%s\">Preview event</a>"
+msgstr ""
+"Évènement soumis. <a target=\"_blank\" href=\"%s\">Aperçu de l'évènement</a>"
+
+#: ../am-events.php:814
+#, php-format
+msgid ""
+"Event scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s"
+"\">Preview event</a>"
+msgstr ""
+"Évènement prévu pour: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s"
+"\"> Aperçu de l'évènement</a>"
+
+#: ../am-events.php:816
+msgctxt "Publish box, see http://php.net/date"
+msgid "d.m.Y G:i"
+msgstr "d.m.Y G:i"
+
+#: ../am-events.php:817
+#, php-format
+msgid "Event draft updated. <a target=\"_blank\" href=\"%s\">Preview event</a>"
+msgstr ""
+"Brouillon d'évènement mis à jour. <a target=\"_blank\" href=\"%s\"> Aperçu "
+"de l'évènement</a>"
+
+#: ../template-tags.php:189
+msgctxt "Venue"
+msgid "Unspecified"
+msgstr "Non spécifié"
+
+#: ../template-tags.php:202 ../template-tags.php:205 ../template-tags.php:212
+#: ../template-tags.php:225 ../template-tags.php:228 ../template-tags.php:235
+#, php-format
+msgctxt "Venue"
+msgid "View all events in %s"
+msgstr "Voir tous les évènements à %s"
+
+#: ../template-tags.php:303
+msgid "Uncategorized"
+msgstr "Sans catégorie"
+
+#: ../template-tags.php:316 ../template-tags.php:319 ../template-tags.php:326
+#: ../template-tags.php:339 ../template-tags.php:342 ../template-tags.php:349
+#, php-format
+msgctxt "Category"
+msgid "View all events in %s"
+msgstr "Voir tous les évènements dans %s"
+
+#: ../widget-upcoming-events.php:29
+msgid "Display upcoming events"
+msgstr "Afficher les évènements imminents"
+
+#: ../widget-upcoming-events.php:153 ../widget-upcoming-events.php:154
+msgctxt "upcoming events widget"
+msgid "m/d/Y"
+msgstr "d/m/Y"
+
+#: ../widget-upcoming-events.php:156 ../widget-upcoming-events.php:157
+msgctxt "upcoming events widget"
+msgid "H:i"
+msgstr "H:i"
+
+#: ../widget-upcoming-events.php:343
+msgid "Upcoming Events"
+msgstr "Évènements à venir"
+
+#: ../widget-upcoming-events.php:350
+msgid "See More Events ->"
+msgstr "Voir plus d'évènements ->"
+
+#: ../widget-upcoming-events.php:375
+msgid "Title:"
+msgstr "Titre:"
+
+#: ../widget-upcoming-events.php:381
+msgid "Select Event category:"
+msgstr "Choisir la catégorie d'évènement:"
+
+#: ../widget-upcoming-events.php:383 ../widget-upcoming-events.php:395
+msgid "All"
+msgstr "Tout"
+
+#: ../widget-upcoming-events.php:393
+msgid "Select Venue:"
+msgstr "Choisir le lieu:"
+
+#: ../widget-upcoming-events.php:404
+msgid "Number of events:"
+msgstr "Nombre d'évènements:"
+
+#: ../widget-upcoming-events.php:409
+msgid "Keep passed events visible for:"
+msgstr "Garder les évènements passés visible pour:"
+
+#: ../widget-upcoming-events.php:411
+msgid "Don't keep visible"
+msgstr "Ne pas garder visible"
+
+#: ../widget-upcoming-events.php:412
+msgid "1 Hour"
+msgstr "1 heure"
+
+#: ../widget-upcoming-events.php:413
+msgid "24 Hours"
+msgstr "24 heures"
+
+#: ../widget-upcoming-events.php:414
+msgid "1 Week"
+msgstr "1 semaine"
+
+#: ../widget-upcoming-events.php:419
+msgid "Display before events:"
+msgstr "Afficher avant les évènements"
+
+#: ../widget-upcoming-events.php:424
+msgid "Template for single event:"
+msgstr "Template pour évènement unique:"
+
+#: ../widget-upcoming-events.php:429
+msgid "Display when no events are found:"
+msgstr "Afficher quand aucun évènement n'est trouvé:"
+
+#: ../widget-upcoming-events.php:434
+msgid "Display after events:"
+msgstr "Afficher après les évènements:"

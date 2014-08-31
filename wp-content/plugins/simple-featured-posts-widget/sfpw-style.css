@@ -1,0 +1,14 @@
+#sfpw{
+	text-align: center;
+	margin-top:10px;
+}
+
+#sfpw li {
+	margin:0 10px 20px;
+	list-style:none;
+}
+
+#sfpw img {
+    max-width: 90%;
+	margin:0;
+}

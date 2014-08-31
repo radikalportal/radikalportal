@@ -1,0 +1,920 @@
+# @ am-events
+msgid ""
+msgstr ""
+"Project-Id-Version: AM Events\n"
+"POT-Creation-Date: 2014-01-10 11:10+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Atte Moisio <atte.moisio@attemoisio.fi>\n"
+"Language-Team: \n"
+"Language: nb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.3\n"
+
+#: ../am-events.php:129
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+"Du har ikke tilstrekkelige tillatelser til å få tilgang til denne siden."
+
+# @ am-events
+#: ../am-events.php:134
+#, fuzzy
+msgid "AM Events settings"
+msgstr "AM Events innstillinger"
+
+# @ am-events
+#: ../am-events.php:143
+#, fuzzy
+msgid "Slug for event posts"
+msgstr "Slug for arrangementsposten"
+
+#: ../am-events.php:148
+msgid "Timepicker minute step"
+msgstr "Timepicker minute step"
+
+# @ am-events
+#: ../am-events.php:218
+msgctxt "date picker"
+msgid "Clear"
+msgstr "Tøm"
+
+# @ am-events
+#: ../am-events.php:219
+msgctxt "date picker"
+msgid "Erase the current date"
+msgstr "Slett gjeldende dato"
+
+# @ am-events
+#: ../am-events.php:220
+msgctxt "date picker"
+msgid "Close"
+msgstr "Lukk"
+
+# @ am-events
+#: ../am-events.php:221
+msgctxt "date picker"
+msgid "Close without change"
+msgstr "Lukk uten å endre"
+
+# @ am-events
+#: ../am-events.php:222
+msgctxt "date picker"
+msgid "<Prev"
+msgstr "<Forrige"
+
+# @ am-events
+#: ../am-events.php:223
+msgctxt "date picker"
+msgid "<<"
+msgstr "<<"
+
+# @ am-events
+#: ../am-events.php:224
+msgctxt "date picker"
+msgid "Show the previous month"
+msgstr "Vis forrige måned"
+
+# @ am-events
+#: ../am-events.php:225
+msgctxt "date picker"
+msgid "Show the previous year"
+msgstr "Vis forrige år"
+
+# @ am-events
+#: ../am-events.php:226
+msgctxt "date picker"
+msgid "Next>"
+msgstr "Neste>"
+
+# @ am-events
+#: ../am-events.php:227
+msgctxt "date picker"
+msgid ">>"
+msgstr ">>"
+
+# @ am-events
+#: ../am-events.php:228
+msgctxt "date picker"
+msgid "Show the next month"
+msgstr "Vis neste måned"
+
+# @ am-events
+#: ../am-events.php:229
+msgctxt "date picker"
+msgid "Show the next year"
+msgstr "Vis neste år"
+
+# @ am-events
+#: ../am-events.php:230
+msgctxt "date picker"
+msgid "Today"
+msgstr "I dag"
+
+# @ am-events
+#: ../am-events.php:231
+msgctxt "date picker"
+msgid "Show the current month"
+msgstr "Vis gjeldende måned"
+
+# @ am-events
+#: ../am-events.php:232
+msgid "January"
+msgstr "Januar"
+
+# @ am-events
+#: ../am-events.php:232
+msgid "February"
+msgstr "Februar"
+
+# @ am-events
+#: ../am-events.php:232
+msgid "March"
+msgstr "Mars"
+
+# @ am-events
+#: ../am-events.php:232
+msgid "April"
+msgstr "April"
+
+# @ am-events
+#: ../am-events.php:232 ../am-events.php:233
+msgid "May"
+msgstr "Mai"
+
+# @ am-events
+#: ../am-events.php:232
+msgid "June"
+msgstr "Juni"
+
+# @ am-events
+#: ../am-events.php:232
+msgid "July"
+msgstr "Juli"
+
+# @ am-events
+#: ../am-events.php:232
+msgid "August"
+msgstr "August"
+
+# @ am-events
+#: ../am-events.php:232
+msgid "September"
+msgstr "September"
+
+# @ am-events
+#: ../am-events.php:232
+msgid "October"
+msgstr "Oktober"
+
+# @ am-events
+#: ../am-events.php:232
+msgid "November"
+msgstr "November"
+
+# @ am-events
+#: ../am-events.php:232
+msgid "December"
+msgstr "Desember"
+
+# @ am-events
+#: ../am-events.php:233
+msgid "Jan"
+msgstr "Jan"
+
+# @ am-events
+#: ../am-events.php:233
+msgid "Feb"
+msgstr "Feb"
+
+# @ am-events
+#: ../am-events.php:233
+msgid "Mar"
+msgstr "Mar"
+
+# @ am-events
+#: ../am-events.php:233
+msgid "Apr"
+msgstr "Apr"
+
+# @ am-events
+#: ../am-events.php:233
+msgid "Jun"
+msgstr "Jun"
+
+# @ am-events
+#: ../am-events.php:233
+msgid "Jul"
+msgstr "Jul"
+
+# @ am-events
+#: ../am-events.php:233
+msgid "Aug"
+msgstr "Aug"
+
+# @ am-events
+#: ../am-events.php:233
+msgid "Sep"
+msgstr "Sep"
+
+# @ am-events
+#: ../am-events.php:233
+msgid "Oct"
+msgstr "Okt"
+
+# @ am-events
+#: ../am-events.php:233
+msgid "Nov"
+msgstr "Nov"
+
+# @ am-events
+#: ../am-events.php:233
+msgid "Dec"
+msgstr "Des"
+
+# @ am-events
+#: ../am-events.php:234
+msgctxt "date picker"
+msgid "Show a different month"
+msgstr "Vis en annen måned"
+
+# @ am-events
+#: ../am-events.php:235
+msgctxt "date picker"
+msgid "Show a different year"
+msgstr "Vis et annet år"
+
+# @ am-events
+#: ../am-events.php:236
+msgctxt "date picker"
+msgid "Wk"
+msgstr "U"
+
+# @ am-events
+#: ../am-events.php:237
+msgctxt "date picker"
+msgid "Week of the year"
+msgstr "Uke av året"
+
+# @ am-events
+#: ../am-events.php:238
+msgid "Monday"
+msgstr "Mandag"
+
+# @ am-events
+#: ../am-events.php:238
+msgid "Tuesday"
+msgstr "Tirsdag"
+
+# @ am-events
+#: ../am-events.php:238
+msgid "Wednesday"
+msgstr "Onsdag"
+
+# @ am-events
+#: ../am-events.php:238
+msgid "Thursday"
+msgstr "Torsdag"
+
+# @ am-events
+#: ../am-events.php:238
+msgid "Friday"
+msgstr "Fredag"
+
+# @ am-events
+#: ../am-events.php:238
+msgid "Saturday"
+msgstr "Lørdag"
+
+# @ am-events
+#: ../am-events.php:238
+msgid "Sunday"
+msgstr "Søndag"
+
+# @ am-events
+#: ../am-events.php:239 ../widget-upcoming-events.php:473
+msgid "Mon"
+msgstr "Man"
+
+# @ am-events
+#: ../am-events.php:239 ../widget-upcoming-events.php:474
+msgid "Tue"
+msgstr "Tir"
+
+# @ am-events
+#: ../am-events.php:239 ../widget-upcoming-events.php:475
+msgid "Wed"
+msgstr "Ons"
+
+# @ am-events
+#: ../am-events.php:239 ../widget-upcoming-events.php:476
+msgid "Thu"
+msgstr "Tir"
+
+# @ am-events
+#: ../am-events.php:239 ../widget-upcoming-events.php:477
+msgid "Fri"
+msgstr "Fre"
+
+# @ am-events
+#: ../am-events.php:239 ../widget-upcoming-events.php:478
+msgid "Sat"
+msgstr "Lør"
+
+# @ am-events
+#: ../am-events.php:239 ../widget-upcoming-events.php:479
+msgid "Sun"
+msgstr "Søn"
+
+# @ am-events
+#: ../am-events.php:240
+msgid "Mo"
+msgstr "Ma"
+
+# @ am-events
+#: ../am-events.php:240
+msgid "Tu"
+msgstr "Ti"
+
+# @ am-events
+#: ../am-events.php:240
+msgid "We"
+msgstr "On"
+
+# @ am-events
+#: ../am-events.php:240
+msgid "Th"
+msgstr "To"
+
+# @ am-events
+#: ../am-events.php:240
+msgid "Fr"
+msgstr "Fr"
+
+# @ am-events
+#: ../am-events.php:240
+msgid "Sa"
+msgstr "Lø"
+
+# @ am-events
+#: ../am-events.php:240
+msgid "Su"
+msgstr "Sø"
+
+# @ am-events
+#: ../am-events.php:241
+msgctxt "date picker"
+msgid "Set DD as first week day"
+msgstr "Sett DD som første ukedag"
+
+# @ am-events
+#: ../am-events.php:242
+msgctxt "date picker"
+msgid "Select D, M d"
+msgstr "Velg D, M d"
+
+# @ am-events
+#: ../am-events.php:243
+msgctxt "date picker, see format options on parseDate"
+msgid "mm/dd/yy"
+msgstr "dd/mm/yy"
+
+# @ am-events
+#: ../am-events.php:245
+msgctxt "date picker"
+msgid "Select a date"
+msgstr "Velg en dato"
+
+# @ am-events
+#: ../am-events.php:250
+msgctxt "time picker"
+msgid "Now"
+msgstr "Nå"
+
+# @ am-events
+#: ../am-events.php:251
+msgctxt "time picker"
+msgid "Done"
+msgstr "Ferdig"
+
+# @ am-events
+#: ../am-events.php:252
+msgctxt "time picker"
+msgid "AM"
+msgstr "AM"
+
+# @ am-events
+#: ../am-events.php:253
+msgctxt "time picker"
+msgid "A"
+msgstr "A"
+
+# @ am-events
+#: ../am-events.php:254
+msgctxt "time picker"
+msgid "PM"
+msgstr "PM"
+
+# @ am-events
+#: ../am-events.php:255
+msgctxt "time picker"
+msgid "P"
+msgstr "p"
+
+# @ am-events
+#: ../am-events.php:256
+msgctxt "time picker"
+msgid "HH:mm"
+msgstr "HH:mm"
+
+# @ am-events
+#: ../am-events.php:258
+msgctxt "time picker"
+msgid "Choose Time"
+msgstr "Sett tid"
+
+# @ am-events
+#: ../am-events.php:259
+msgctxt "time picker"
+msgid "Time"
+msgstr "Tid"
+
+# @ am-events
+#: ../am-events.php:260
+msgctxt "time picker"
+msgid "Hour"
+msgstr "Time"
+
+# @ am-events
+#: ../am-events.php:261
+msgctxt "time picker"
+msgid "Minute"
+msgstr "Minutt"
+
+# @ am-events
+#: ../am-events.php:262
+msgctxt "time picker"
+msgid "Second"
+msgstr "Sekund"
+
+# @ am-events
+#: ../am-events.php:263
+msgctxt "time picker"
+msgid "Millisecond"
+msgstr "Millisekund"
+
+# @ am-events
+#: ../am-events.php:264
+msgctxt "time picker"
+msgid "Time Zone"
+msgstr "Tidssone"
+
+# @ am-events
+#: ../am-events.php:313
+msgid "Event Details"
+msgstr "Arrangementsdetaljer"
+
+# @ am-events
+#: ../am-events.php:336 ../am-events.php:338
+msgctxt "administration"
+msgid "m/d/Y H:i"
+msgstr "d/m/Y H:i"
+
+# @ am-events
+#: ../am-events.php:346
+msgid "Start Date:"
+msgstr "Startdato:"
+
+# @ am-events
+#: ../am-events.php:355
+msgid "End Date:"
+msgstr "Sluttdato:"
+
+# @ am-events
+#: ../am-events.php:363
+msgid "Additional options:"
+msgstr "Tilleggsvalg:"
+
+# @ am-events
+#: ../am-events.php:365
+msgid "Recurrent event:"
+msgstr "Gjentagende hendelse:"
+
+# @ am-events
+#: ../am-events.php:370
+msgid "weekly"
+msgstr "ukentlig"
+
+# @ am-events
+#: ../am-events.php:371
+msgid "every two weeks"
+msgstr "annenhver uke"
+
+# @ am-events
+#: ../am-events.php:376
+msgid "times"
+msgstr "tider"
+
+# @ am-events
+#: ../am-events.php:378
+msgid "Recurrent events are created when the event is saved or updated."
+msgstr ""
+"Gjentakende hendelser blir opprettet når arrangementet lagres eller "
+"oppdateres."
+
+# @ am-events
+#: ../am-events.php:609
+msgid "Start Date"
+msgstr "Startdato"
+
+# @ am-events
+#: ../am-events.php:610
+msgid "End Date"
+msgstr "Sluttdato"
+
+# @ am-events
+#: ../am-events.php:686 ../am-events.php:688
+msgid "Events"
+msgstr "Arrangementer"
+
+# @ am-events
+#: ../am-events.php:687 ../am-events.php:691 ../am-events.php:701
+msgid "Event"
+msgstr "Arrangement"
+
+# @ am-events
+#: ../am-events.php:689
+msgid "All Events"
+msgstr "Alle arrangementer"
+
+# @ am-events
+#: ../am-events.php:690
+msgid "Add New Event"
+msgstr "Legg til nytt arrangement"
+
+# @ am-events
+#: ../am-events.php:692
+msgid "Edit Event"
+msgstr "Rediger arrangement"
+
+# @ am-events
+#: ../am-events.php:693
+msgid "New Event"
+msgstr "Nytt arrangement"
+
+# @ am-events
+#: ../am-events.php:694
+msgid "View Events"
+msgstr "Se arrangementer"
+
+# @ am-events
+#: ../am-events.php:695
+msgid "Search Events"
+msgstr "Søk i arrangementer"
+
+# @ am-events
+#: ../am-events.php:696 ../am-events.php:697
+msgid "No Events Found"
+msgstr "Fant ingen arrangementer "
+
+# @ am-events
+#: ../am-events.php:710
+msgid "Type for events"
+msgstr "Type arrangement"
+
+# @ am-events
+#: ../am-events.php:727 ../am-events.php:741
+msgid "Venues"
+msgstr "Steder"
+
+# @ am-events
+#: ../am-events.php:728
+msgid "Venue"
+msgstr "Sted"
+
+# @ am-events
+#: ../am-events.php:729
+msgid "Search Venues"
+msgstr "Søk i steder"
+
+# @ am-events
+#: ../am-events.php:730
+msgid "Popular Venues"
+msgstr "Mest brukte steder"
+
+# @ am-events
+#: ../am-events.php:731
+msgid "All Venues"
+msgstr "Alle steder"
+
+# @ am-events
+#: ../am-events.php:732
+msgid "Parent Venue"
+msgstr "Hovedsted"
+
+# @ am-events
+#: ../am-events.php:733
+msgid "Parent Venue:"
+msgstr "Hovedsted:"
+
+# @ am-events
+#: ../am-events.php:734
+msgid "Edit Venue"
+msgstr "Rediger sted"
+
+# @ am-events
+#: ../am-events.php:735
+msgid "Update Venue"
+msgstr "Oppdater sted"
+
+# @ am-events
+#: ../am-events.php:736
+msgid "Add New Venue"
+msgstr "Legg til nytt sted"
+
+# @ am-events
+#: ../am-events.php:737
+msgid "New Venue"
+msgstr "Nytt sted"
+
+# @ am-events
+#: ../am-events.php:738
+msgid "Separate venues with commas"
+msgstr "Skill steder med komma"
+
+# @ am-events
+#: ../am-events.php:739
+msgid "Add or remove venues"
+msgstr "Legg til eller fjern steder"
+
+# @ am-events
+#: ../am-events.php:740
+msgid "Choose from the most used venues"
+msgstr "Velg fra de mest brukte stedene"
+
+# @ am-events
+#: ../am-events.php:765 ../am-events.php:779
+msgid "Event Categories"
+msgstr "Arrangementskategorier"
+
+# @ am-events
+#: ../am-events.php:766
+msgid "Event Category"
+msgstr "Arrangementskategori"
+
+# @ am-events
+#: ../am-events.php:767
+msgid "Search Event Categories"
+msgstr "Søk i arrangementskategorier"
+
+# @ am-events
+#: ../am-events.php:768
+msgid "Popular Event Categories"
+msgstr "Mest brukte arrangementskategorier"
+
+# @ am-events
+#: ../am-events.php:769
+msgid "All Event Categories"
+msgstr "Alle arrangementskategorier"
+
+# @ am-events
+#: ../am-events.php:770
+msgid "Parent Event Category"
+msgstr "Hovedarrangementskategori"
+
+# @ am-events
+#: ../am-events.php:771
+msgid "Parent Event Category:"
+msgstr "Hovedarrangementskategori:"
+
+# @ am-events
+#: ../am-events.php:772
+msgid "Edit Event Category"
+msgstr "Rediger arrangementskategori"
+
+# @ am-events
+#: ../am-events.php:773
+msgid "Update Event Category"
+msgstr "Oppdater arrangementskategori"
+
+# @ am-events
+#: ../am-events.php:774
+msgid "Add New Event Category"
+msgstr "Legg til ny arrangementskategori"
+
+# @ am-events
+#: ../am-events.php:775
+msgid "New Event Category"
+msgstr "Ny arrangementskategori"
+
+# @ am-events
+#: ../am-events.php:776
+msgid "Separate event categories with commas"
+msgstr "Skill arrangementskategorier med komma"
+
+# @ am-events
+#: ../am-events.php:777
+msgid "Add or remove event categories"
+msgstr "Legg til eller fjern arrangementskategorier"
+
+# @ am-events
+#: ../am-events.php:778
+msgid "Choose from the most used event categories"
+msgstr "Velg fra de mest brukte arrangementskategoriene"
+
+# @ am-events
+#: ../am-events.php:805
+#, php-format
+msgid "Event updated. <a href=\"%s\">View event</a>"
+msgstr "Arrangement oppdatert <a href\"%s\">Vis arrangement</a>"
+
+# @ am-events
+#: ../am-events.php:806
+msgid "Custom field updated."
+msgstr "Tilpasset felt oppdatert."
+
+# @ am-events
+#: ../am-events.php:807
+msgid "Custom field deleted."
+msgstr "Tilpasset felt slettet."
+
+# @ am-events
+#: ../am-events.php:808
+msgid "Event updated."
+msgstr "Arrangement oppdatert."
+
+# @ am-events
+#: ../am-events.php:810
+#, php-format
+msgid "Event restored to revision from %s"
+msgstr "Arrangement gjenopprettet fra revisjon %s"
+
+# @ am-events
+#: ../am-events.php:811
+#, php-format
+msgid "Event published. <a href=\"%s\">View event</a>"
+msgstr "Arrangement publisert. <a href=\"%s\">Vis arrangement</a>"
+
+# @ am-events
+#: ../am-events.php:812
+msgid "Event saved."
+msgstr "Arrangement lagret."
+
+# @ am-events
+#: ../am-events.php:813
+#, php-format
+msgid "Event submitted. <a target=\"_blank\" href=\"%s\">Preview event</a>"
+msgstr ""
+"Arrangement sendt inn. <a target=\"_blank\" href=\"%s\">Forhåndsvis "
+"arrangement</a>"
+
+# @ am-events
+#: ../am-events.php:814
+#, php-format
+msgid ""
+"Event scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s"
+"\">Preview event</a>"
+msgstr ""
+"Arrangement planlagt til:  <strong>%1$s</strong>. <a target=\"_blank\" href="
+"\"%2$s\">Forhåndsvis arrangement</a> "
+
+# @ am-events
+#: ../am-events.php:816
+msgctxt "Publish box, see http://php.net/date"
+msgid "d.m.Y G:i"
+msgstr "d.m.Y G:i"
+
+# @ am-events
+#: ../am-events.php:817
+#, php-format
+msgid "Event draft updated. <a target=\"_blank\" href=\"%s\">Preview event</a>"
+msgstr ""
+"Arrangementsskisse oppdatert. <a target=\"_blank\" href=\"%s\">Forhåndsvis "
+"arrangement</a>"
+
+# @ am-events
+#: ../template-tags.php:189
+msgctxt "Venue"
+msgid "Unspecified"
+msgstr "Uspesifisert"
+
+# @ am-events
+#: ../template-tags.php:202 ../template-tags.php:205 ../template-tags.php:212
+#: ../template-tags.php:225 ../template-tags.php:228 ../template-tags.php:235
+#, php-format
+msgctxt "Venue"
+msgid "View all events in %s"
+msgstr "Vis alle arrangementer i %s"
+
+# @ default
+#: ../template-tags.php:303
+msgid "Uncategorized"
+msgstr "Ukategorisert"
+
+# @ am-events
+#: ../template-tags.php:316 ../template-tags.php:319 ../template-tags.php:326
+#: ../template-tags.php:339 ../template-tags.php:342 ../template-tags.php:349
+#, fuzzy, php-format
+msgctxt "Category"
+msgid "View all events in %s"
+msgstr "Vis alle arrangementer i %s"
+
+# @ am-events
+#: ../widget-upcoming-events.php:29
+msgid "Display upcoming events"
+msgstr "Vis kommende arrangementer"
+
+# @ am-events
+#: ../widget-upcoming-events.php:153 ../widget-upcoming-events.php:154
+msgctxt "upcoming events widget"
+msgid "m/d/Y"
+msgstr "d/m/Y"
+
+# @ am-events
+#: ../widget-upcoming-events.php:156 ../widget-upcoming-events.php:157
+msgctxt "upcoming events widget"
+msgid "H:i"
+msgstr "H:i"
+
+# @ am-events
+#: ../widget-upcoming-events.php:343
+msgid "Upcoming Events"
+msgstr "Kommende arrangementer"
+
+# @ am-events
+#: ../widget-upcoming-events.php:350
+msgid "See More Events ->"
+msgstr "Vis flere arrangementer"
+
+# @ am-events
+#: ../widget-upcoming-events.php:375
+msgid "Title:"
+msgstr "Tittel:"
+
+# @ am-events
+#: ../widget-upcoming-events.php:381
+msgid "Select Event category:"
+msgstr "Velg arrangementskategori"
+
+# @ am-events
+#: ../widget-upcoming-events.php:383 ../widget-upcoming-events.php:395
+msgid "All"
+msgstr "Alle"
+
+# @ am-events
+#: ../widget-upcoming-events.php:393
+msgid "Select Venue:"
+msgstr "Velg sted:"
+
+# @ am-events
+#: ../widget-upcoming-events.php:404
+msgid "Number of events:"
+msgstr "Antall arrangementer:"
+
+#: ../widget-upcoming-events.php:409
+#, fuzzy
+msgid "Keep passed events visible for:"
+msgstr "Hold passert arrangementer synlig for:"
+
+#: ../widget-upcoming-events.php:411
+#, fuzzy
+msgid "Don't keep visible"
+msgstr "Ikke holde synlig"
+
+# @ am-events
+#: ../widget-upcoming-events.php:412
+#, fuzzy
+msgid "1 Hour"
+msgstr "1 Time"
+
+# @ am-events
+#: ../widget-upcoming-events.php:413
+#, fuzzy
+msgid "24 Hours"
+msgstr "24 Timer"
+
+#: ../widget-upcoming-events.php:414
+#, fuzzy
+msgid "1 Week"
+msgstr "1 Uke"
+
+# @ am-events
+#: ../widget-upcoming-events.php:419
+msgid "Display before events:"
+msgstr "Vis før arrangement:"
+
+# @ am-events
+#: ../widget-upcoming-events.php:424
+msgid "Template for single event:"
+msgstr "Mal for enkeltarrangment:"
+
+# @ am-events
+#: ../widget-upcoming-events.php:429
+#, fuzzy
+msgid "Display when no events are found:"
+msgstr "Vis når ingen hendelser er funnet:"
+
+# @ am-events
+#: ../widget-upcoming-events.php:434
+msgid "Display after events:"
+msgstr "Vis etter arrangement:"

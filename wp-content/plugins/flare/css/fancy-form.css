@@ -1,0 +1,191 @@
+.fancy-text {
+    margin: 0;
+}
+.fancy-checkbox {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    height: 16px;
+    width: 16px;
+    background: #fff;
+    border: 2px solid #e8e8e8;
+    border-radius: 3px;
+}
+label:hover .fancy-checkbox,
+.fancy-checkbox:hover { border-color: #aaa; }
+.fancy-checkbox .on,
+.fancy-checkbox .off {
+    position: absolute;
+    display: inline-block;
+    text-indent: -999em;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    height: 16px;
+    width: 16px;
+}
+.fancy-checkbox input[type="checkbox"] {
+    position: absolute;
+    left: -999em;
+}
+.fancy-checkbox .on { background: url('../images/icon-fancy-checkbox.png'); }
+.fancy-checkbox.off .on { display: none; }
+.fancy-checkbox.on .off { display: block; }
+.fancy-checkbox.on .on { display: block; }
+.fancy-checkbox.on .off { display: none; }
+
+.fancy-radios {
+    position: relative;
+    display: inline-block;
+}
+.fancy-radios label {
+    position: relative;
+    display: inline-block;
+    float: left;
+    min-width: 50px;
+    height: 32px;
+    font: bold 13px/32px sans-serif;
+    background: #eaecef;
+    color: #5a5d67;
+    text-align: center;
+    padding: 0 14px;
+    margin-left: 5px;
+    border: 1px solid #b2b7be;
+    text-shadow: 0 1px 1px #fff;
+    overflow: hidden;
+    border-radius: 4px;
+    -webkit-transition: background 0.5s, color 0.5s;
+    -moz-transition: background 0.5s, color 0.5s;
+    transition: background 0.5s, color 0.5s;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,1);
+    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,1);
+    -o-box-shadow: inset 0 1px 0 rgba(255,255,255,1);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,1);
+}
+.fancy-radios label:first-child {
+    margin-left: 0;
+}
+.fancy-radios input[type="radio"] {
+    position: absolute;
+    left: -999em;
+}
+.fancy-radios em {
+    position: relative;
+    display: block;
+    left: 0;
+    right: 0;
+    width: auto;
+    color: #666;
+    font-size: 11px;
+    font-weight: normal;
+}
+.fancy-radios label.on {
+    color: #fff;
+    text-shadow: 0 1px 1px #5f598a;
+    background: #6db2df;
+    border-color: #325f9c;
+    border-top-color: #3c3444;
+    -webkit-box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.6);
+    -moz-box-shadow:  inset 0 1px 3px 0 rgba(0,0,0,0.6);
+    -o-box-shadow:  inset 0 1px 3px 0 rgba(0,0,0,0.6);
+    box-shadow:  inset 0 1px 3px 0 rgba(0,0,0,0.6);
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzY3NmNhZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM5Njg1Y2IiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: rgb(103,108,175); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgb(103,108,175) 0%, rgb(150,133,203) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(103,108,175)), color-stop(100%,rgb(150,133,203))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgb(103,108,175) 0%,rgb(150,133,203) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgb(103,108,175) 0%,rgb(150,133,203) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgb(103,108,175) 0%,rgb(150,133,203) 100%); /* IE10+ */
+    background: linear-gradient(top,  rgb(103,108,175) 0%,rgb(150,133,203) 100%); /* W3C */
+}
+.fancy-radios label.on em { color: #fff; }
+
+.fancy-select {
+    position: relative;
+    display: inline-block;
+    height: 40px;
+    color: #696969;
+    background: #f9f9f9;
+    border: 1px solid #dfdfdf;
+    border-radius: 4px;
+    padding: 0;
+    cursor: pointer;
+    font: 600 14px/40px 'Open Sans', sans-serif;
+}
+.fancy-select.fancy-select-open { border-radius: 4px 4px 0 0; }
+.fancy-select.fancy-select-open.invert { border-radius: 0 0 4px 4px; }
+.fancy-select select {
+    position: absolute;
+    left: -999em;
+}
+.fancy-select .selected {
+    display: block;
+    overflow: hidden;
+    -moz-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    padding-left: 13px;
+    padding-right: 40px;
+    min-height: 40px;
+    white-space: nowrap;
+    background: url('../images/icon-fancy-select.png') right center no-repeat;
+    border-radius: 0 4px 4px 0;
+}
+#fancyform-options-dropdown {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: -1px;
+    z-index: 9999;
+    padding-top: 31px;
+    cursor: pointer;
+}
+#fancyform-options-dropdown.invert {
+    padding-top: 0;
+    padding-bottom: 41px;
+    margin-top: 0;
+    border-radius: 5px 5px 0 0;
+}
+#fancyform-options-dropdown .options {
+    position: relative;
+    display: block;
+    overflow: auto;
+    background: #f9f9f9;
+    border: 1px solid #dfdfdf;
+    border-top: none;
+    border-radius: 0 0 5px 5px; 
+}
+#fancyform-options-dropdown.invert .options {
+    top: auto;
+    bottom: -1px;
+    border-radius: 5px 5px 0 0;
+    border-bottom: none;
+}
+#fancyform-options-dropdown .options .option {
+    position: relative;
+    display: block;
+    min-height: 31px;
+    font: 600 14px/31px 'Open Sans', sans-serif;
+    color: #696969;
+    padding: 5px 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+}
+#fancyform-options-dropdown.invert .options .option.last {
+    border-bottom: none;
+}
+#fancyform-options-dropdown.invert .options .option:first-child {
+    border-top: 1px solid #c6c6c6;
+}
+#fancyform-options-dropdown .options .option.selected { background-color: #dfe2ea; }
+#fancyform-options-dropdown .options .option:hover {
+    background-color: #3a80de; /* Old browsers */
+    color: #fff;
+}
+.fancy-select:hover,
+.fancy-select.fancy-select-open,
+#fancyform-options-dropdown:hover .options,
+#fancyform-options-dropdown:hover .options .option { border-color: #bbb; }

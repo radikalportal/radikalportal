@@ -1,0 +1,161 @@
+0000.000 () Opened log file at time: Mon, 24 Jun 2013 15:33:13 +0000
+0000.296 () UpdraftPlus: 1.6.17 WP: 3.5.1 PHP: 5.3.21-1~dotdeb.0 (Linux uw11 2.6.32-5-amd64 #1 SMP Sun May 6 04:00:17 UTC 2012 x86_64) Server: Apache max_execution_time: 900 memory_limit: 128M ZipArchive::addFile : Y
+0000.490 () Free space on disk containing Updraft's temporary directory: 94699.4 Mb
+0000.847 () Tasks: Backup files: 1 (schedule: unset) Backup DB: 1 (schedule: unset)
+0001.044 () Processed schedules. Tasks now: Backup files: 1 Backup DB: 1
+0001.408 (0) Backup run: resumption=0, nonce=a1ef341650f4, begun at=1372087993 (2s ago), job type=backup
+0001.471 (0) Scheduling a resumption (1) after 300 seconds (1372088295) in case this run gets aborted
+0001.574 (0) Creation of backups of directories: beginning
+0001.668 (0) Beginning creation of dump of plugins
+0002.342 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-plugins.zip.tmp: 100 files added (on-disk size: 1006.2 Kb)
+0002.795 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-plugins.zip.tmp: 200 files added (on-disk size: 1528.9 Kb)
+0003.277 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-plugins.zip.tmp: 300 files added (on-disk size: 2666.6 Kb)
+0003.858 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-plugins.zip.tmp: 400 files added (on-disk size: 5107.3 Kb)
+0004.631 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-plugins.zip.tmp: 500 files added (on-disk size: 5574.2 Kb)
+0004.891 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-plugins.zip.tmp: 600 files added (on-disk size: 5771.6 Kb)
+0005.565 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-plugins.zip.tmp: 700 files added (on-disk size: 6279.5 Kb)
+0006.114 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-plugins.zip.tmp: 800 files added (on-disk size: 6701.3 Kb)
+0006.856 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-plugins.zip.tmp: 900 files added (on-disk size: 7976.5 Kb)
+0007.698 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-plugins.zip.tmp: 1000 files added (on-disk size: 8410.4 Kb)
+0008.375 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-plugins.zip.tmp: 1100 files added (on-disk size: 9517.6 Kb)
+0009.082 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-plugins.zip.tmp: 1200 files added (on-disk size: 9762.1 Kb)
+0009.331 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-plugins.zip.tmp: 1300 files added (on-disk size: 9925.5 Kb)
+0009.907 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-plugins.zip.tmp: 1400 files added (on-disk size: 10059.1 Kb)
+0011.079 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-plugins.zip.tmp: 1500 files added (on-disk size: 11298.5 Kb)
+0012.089 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-plugins.zip.tmp: 1600 files added (on-disk size: 11546.5 Kb)
+0013.332 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-plugins.zip.tmp: 1700 files added (on-disk size: 12315.4 Kb)
+0013.948 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-plugins.zip.tmp: 1800 files added (on-disk size: 12713.3 Kb)
+0014.610 (0) Created plugins zip - file size is 12892.2 Kb in 12.9 s (1001.2 Kb/s)
+0014.695 (0) Beginning creation of dump of themes
+0015.263 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-themes.zip.tmp: 100 files added (on-disk size: 911 Kb)
+0015.943 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-themes.zip.tmp: 200 files added (on-disk size: 1077 Kb)
+0016.538 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-themes.zip.tmp: 300 files added (on-disk size: 2061.9 Kb)
+0017.152 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-themes.zip.tmp: 400 files added (on-disk size: 2633.9 Kb)
+0017.933 (0) Created themes zip - file size is 2994.3 Kb in 3.2 s (938.3 Kb/s)
+0018.075 (0) Beginning creation of dump of uploads
+0018.204 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-uploads.zip.tmp: 100 files added (on-disk size: 0 Kb)
+0018.267 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-uploads.zip.tmp: 200 files added (on-disk size: 0 Kb)
+0019.399 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-uploads.zip.tmp: 300 files added (on-disk size: 1397.5 Kb)
+0020.894 (0) Adding batch to zip file: over 25 Mb added on this batch (27.5 Mb, 140 files batched, 1 added so far); re-opening (prior size: 23799.7 Kb)
+0022.707 (0) A useful amount of data was added after this amount of zip processing: 2.3 s (normalised: 2.1 s, rate: 12083.6 Kb/s)
+0022.900 (0) Performance is good - will increase the amount of data we attempt to batch (time=2.3330070972443, normalised_time=2.1185744155969, max_time=-1, data points known=0, old_max_bytes=26214400, new_max_bytes=74241621)
+0023.378 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-uploads.zip.tmp: 400 files added (on-disk size: 51828.6 Kb)
+0024.592 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-uploads.zip.tmp: 500 files added (on-disk size: 63756.5 Kb)
+0024.645 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-uploads.zip.tmp: 600 files added (on-disk size: 63756.5 Kb)
+0024.692 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-uploads.zip.tmp: 700 files added (on-disk size: 63756.5 Kb)
+0024.749 (0) Adding batch to zip file: over 70.8 Mb added on this batch (70.9 Mb, 357 files batched, 1 added so far); re-opening (prior size: 63756.5 Kb)
+0030.026 (0) A useful amount of data was added after this amount of zip processing: 5.7 s (normalised: 5.6 s, rate: 12837.1 Kb/s)
+0030.091 (0) Performance is good - will increase the amount of data we attempt to batch (time=5.652214050293, normalised_time=5.6478242256562, max_time=-1, data points known=0, old_max_bytes=74241621, new_max_bytes=78871032)
+0030.177 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-uploads.zip.tmp: 800 files added (on-disk size: 135196.2 Kb)
+0033.042 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-uploads.zip.tmp: 900 files added (on-disk size: 143511.4 Kb)
+0036.886 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-uploads.zip.tmp: 1000 files added (on-disk size: 171411.5 Kb)
+0039.573 (0) Zip: backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-uploads.zip.tmp: 1100 files added (on-disk size: 194725.7 Kb)
+0055.024 (0) Created uploads zip - file size is 232314.8 Kb in 36.9 s (6301.1 Kb/s)
+0055.112 (0) Beginning backup of other directories found in the content directory
+0055.231 (0) Looking for candidates to back up in: /home/27/w202203/www/wp-content
+0055.319 (0) finding files: themes: skipping: this is the themes directory
+0055.401 (0) finding files: languages: adding to list
+0055.491 (0) finding files: cache: skipping: excluded by options
+0055.560 (0) finding files: plugins: skipping: this is the plugins directory
+0055.639 (0) finding files: uploads: skipping: this is the uploads directory
+0055.720 (0) finding files: extensions: adding to list
+0055.793 (0) finding files: logs: adding to list
+0055.869 (0) finding files: index.php: skipping: excluded by options
+0055.940 (0) finding files: backup-db: adding to list
+0056.000 (0) finding files: updraft: skipping: this is the updraft directory
+0056.071 (0) finding files: blogs.dir: adding to list
+0056.154 (0) finding files: upgrade: skipping: excluded by options
+0056.505 (0) Created others zip - file size is 391 Kb in 0.3 s (1348.6 Kb/s)
+0056.652 (0) Saving backup status to database (elements: 8)
+0056.818 (0) Beginning creation of database dump
+0057.104 (0) Table wp_options: Total expected rows (approximate): 510
+0059.061 (0) Table wp_options: Total rows added: 510 in 2.12 seconds
+0059.142 (0) Table wp_options: finishing file (backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_options.table.gz)
+0059.540 (0) Table wp_users: Total expected rows (approximate): 128
+0060.207 (0) Table wp_users: Total rows added: 128 in 0.99 seconds
+0060.416 (0) Table wp_users: finishing file (backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_users.table.gz)
+0061.250 (0) Table wp_usermeta: Total expected rows (approximate): 2946
+0063.269 (0) Table wp_usermeta: Total rows added: 2946 in 2.66 seconds
+0064.264 (0) Table wp_usermeta: finishing file (backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_usermeta.table.gz)
+0064.809 (0) Table wp_commentmeta: Total expected rows (approximate): 5
+0065.202 (0) Table wp_commentmeta: Total rows added: 5 in 0.82 seconds
+0065.329 (0) Table wp_commentmeta: finishing file (backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_commentmeta.table.gz)
+0065.818 (0) Table wp_comments: Total expected rows (approximate): 29
+0066.319 (0) Table wp_comments: Total rows added: 29 in 0.85 seconds
+0066.517 (0) Table wp_comments: finishing file (backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_comments.table.gz)
+0067.133 (0) Table wp_links: Total expected rows (approximate): 7
+0067.833 (0) Table wp_links: Total rows added: 7 in 1.16 seconds
+0067.964 (0) Table wp_links: finishing file (backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_links.table.gz)
+0068.504 (0) Table wp_newsletter: Total expected rows (approximate): 5
+0068.834 (0) Table wp_newsletter: Total rows added: 5 in 0.75 seconds
+0068.967 (0) Table wp_newsletter: finishing file (backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_newsletter.table.gz)
+0069.790 (0) Table wp_newsletter_emails: Total expected rows (approximate): 1
+0070.221 (0) Table wp_newsletter_emails: Total rows added: 1 in 1.13 seconds
+0070.271 (0) Table wp_newsletter_emails: finishing file (backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_newsletter_emails.table.gz)
+0070.601 (0) Table wp_newsletter_stats: Total expected rows (approximate): 2
+0070.847 (0) Table wp_newsletter_stats: Total rows added: 2 in 0.51 seconds
+0070.923 (0) Table wp_newsletter_stats: finishing file (backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_newsletter_stats.table.gz)
+0071.132 (0) Table wp_postmeta: Total expected rows (approximate): 5276
+0075.383 (0) Table wp_postmeta: Total rows added: 5276 in 4.39 seconds
+0075.487 (0) Table wp_postmeta: finishing file (backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_postmeta.table.gz)
+0075.881 (0) Table wp_posts: Total expected rows (approximate): 3573
+0124.312 (0) Table wp_posts: Total rows added: 3573 in 48.73 seconds
+0124.603 (0) Table wp_posts: finishing file (backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_posts.table.gz)
+0125.572 (0) Table wp_relevanssi: Total expected rows (approximate): 76369
+0164.516 (0) Table wp_relevanssi: Total rows added: 76369 in 39.64 seconds
+0164.558 (0) Table wp_relevanssi: finishing file (backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_relevanssi.table.gz)
+0164.897 (0) Table wp_relevanssi_cache: Total expected rows (approximate): 0
+0165.053 (0) Table wp_relevanssi_cache: Total rows added: 0 in 0.44 seconds
+0165.130 (0) Table wp_relevanssi_cache: finishing file (backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_relevanssi_cache.table.gz)
+0165.421 (0) Table wp_relevanssi_excerpt_cache: Total expected rows (approximate): 0
+0165.966 (0) Table wp_relevanssi_excerpt_cache: Total rows added: 0 in 0.78 seconds
+0166.083 (0) Table wp_relevanssi_excerpt_cache: finishing file (backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_relevanssi_excerpt_cache.table.gz)
+0166.320 (0) Table wp_relevanssi_log: Total expected rows (approximate): 12
+0166.497 (0) Table wp_relevanssi_log: Total rows added: 12 in 0.34 seconds
+0166.542 (0) Table wp_relevanssi_log: finishing file (backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_relevanssi_log.table.gz)
+0166.756 (0) Table wp_relevanssi_stopwords: Total expected rows (approximate): 0
+0166.888 (0) Table wp_relevanssi_stopwords: Total rows added: 0 in 0.30 seconds
+0166.953 (0) Table wp_relevanssi_stopwords: finishing file (backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_relevanssi_stopwords.table.gz)
+0167.162 (0) Table wp_term_relationships: Total expected rows (approximate): 745
+0167.383 (0) Table wp_term_relationships: Total rows added: 745 in 0.39 seconds
+0167.430 (0) Table wp_term_relationships: finishing file (backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_term_relationships.table.gz)
+0167.658 (0) Table wp_term_taxonomy: Total expected rows (approximate): 103
+0167.885 (0) Table wp_term_taxonomy: Total rows added: 103 in 0.39 seconds
+0167.976 (0) Table wp_term_taxonomy: finishing file (backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_term_taxonomy.table.gz)
+0168.335 (0) Table wp_terms: Total expected rows (approximate): 103
+0168.536 (0) Table wp_terms: Total rows added: 103 in 0.46 seconds
+0168.610 (0) Table wp_terms: finishing file (backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_terms.table.gz)
+0168.884 (0) Table wp_wp_rp_tags: Total expected rows (approximate): 3212
+0169.732 (0) Table wp_wp_rp_tags: Total rows added: 3212 in 1.04 seconds
+0170.365 (0) Table wp_wp_rp_tags: finishing file (backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_wp_rp_tags.table.gz)
+0170.429 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_options.table.gz: adding to final database dump
+0170.552 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_users.table.gz: adding to final database dump
+0170.656 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_usermeta.table.gz: adding to final database dump
+0170.772 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_commentmeta.table.gz: adding to final database dump
+0170.864 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_comments.table.gz: adding to final database dump
+0170.951 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_links.table.gz: adding to final database dump
+0171.028 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_newsletter.table.gz: adding to final database dump
+0171.123 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_newsletter_emails.table.gz: adding to final database dump
+0171.241 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_newsletter_stats.table.gz: adding to final database dump
+0171.358 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_postmeta.table.gz: adding to final database dump
+0171.506 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_posts.table.gz: adding to final database dump
+0172.345 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_relevanssi.table.gz: adding to final database dump
+0172.781 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_relevanssi_cache.table.gz: adding to final database dump
+0172.912 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_relevanssi_excerpt_cache.table.gz: adding to final database dump
+0173.045 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_relevanssi_log.table.gz: adding to final database dump
+0173.214 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_relevanssi_stopwords.table.gz: adding to final database dump
+0173.386 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_term_relationships.table.gz: adding to final database dump
+0173.505 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_term_taxonomy.table.gz: adding to final database dump
+0173.597 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_terms.table.gz: adding to final database dump
+0173.683 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db-table-wp_wp_rp_tags.table.gz: adding to final database dump
+0173.768 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db.gz: finished writing out complete database file (3808 Kb)
+0173.882 (0) Total database tables backed up: 20
+0174.207 (0) Saving backup history
+0174.769 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-plugins.zip: plugins: This file has not yet been successfully uploaded: will queue
+0174.866 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-themes.zip: themes: This file has not yet been successfully uploaded: will queue
+0174.965 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+0175.054 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-others.zip: others: This file has not yet been successfully uploaded: will queue
+0175.141 (0) backup_2013-06-24-1733_Radikal_Portal_a1ef341650f4-db.gz: db: This file has not yet been successfully uploaded: will queue
+0175.216 (0) Requesting backup of the files that were not successfully uploaded (5)
+0176.024 (0) Cloud backup selection: 
+0176.171 (0) No remote despatch: user chose no remote backup service

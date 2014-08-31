@@ -1,0 +1,2 @@
+27-02-2014 13:38:31 - FATAL - 64,6 MB - Duplicate entry 'sara_sande@hotmail.com' for key 'email'
+03-03-2014 17:21:26 - FATAL - 64,6 MB - Duplicate entry 'inger.lise.hansen.selnes@gmail.com' for key 'email'
