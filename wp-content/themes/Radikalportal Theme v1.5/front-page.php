@@ -77,6 +77,7 @@ $my_custom_field = $custom_fields['forfatterid'];
 				}
 
 				if( $category->cat_name == 'Klar tale'
+				||  $category->cat_name == 'Aktuelt'
 				||  $category->cat_name == 'Skrivekonkurranse') {
 					$klartale_eller_skrivekonkurranse = true;
 				}

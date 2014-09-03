@@ -65,6 +65,7 @@ foreach (get_the_category() as $category) {
         }
 
         if ($category->cat_name == 'Klar tale'
+         || $category->cat_name == 'Aktuelt'
          || $category->cat_name == 'Skrivekonkurranse') {
             $klartale_eller_skrivekonkurranse = true;
         }

@@ -17,7 +17,7 @@
     ?>" />
     <link rel="profile" href="http://gmpg.org/xfn/11" />
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-    <link rel="stylesheet" href="<?php ob_start(); bloginfo('template_directory'); $c = ob_get_contents(); ob_end_clean(); echo str_replace(" ", "%20", $c); ?>/less/bootswatch.css?1">
+    <link rel="stylesheet" href="<?php ob_start(); bloginfo('template_directory'); $c = ob_get_contents(); ob_end_clean(); echo str_replace(" ", "%20", $c); ?>/less/bootswatch.css?2">
     <link rel="image_src" href="http://radikalportal.no/wp-content/uploads/userphoto/51.jpg" />
     <style type="text/css">
  
