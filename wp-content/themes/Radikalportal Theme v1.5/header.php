@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<?php
-  define ( "RP_NOW" , microtime(true) );
-  function rp_timer() { return microtime(true) - RP_NOW; }
-?>
-<!-- <?php echo RP_NOW - (float)$_SERVER['REQUEST_TIME']; ?> -->
 <html <?php language_attributes(); ?> style="margin-top: 0 !important;">
   <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">

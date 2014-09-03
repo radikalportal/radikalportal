@@ -31,4 +31,3 @@ jQuery(document).ready(function($) {
 
 </body>
 </html>
-<!-- <?php echo rp_timer(); ?> -->
