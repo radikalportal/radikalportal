@@ -36,20 +36,18 @@ if ( is_sticky() && has_post_thumbnail() ) {
 ?></a>
 
 <?php
-
-$custom_fields = get_post_custom();
-$my_custom_field = $custom_fields['forfatterid'];
-
+$forfatterids = get_post_custom_values('forfatterid'); 
 ?>
+
     <div class="post row" style="margin-top: 10px;">
       <div class="span3 hidden-phone">
 	<div style="height: 5px;">
         </div>
-       <?php if ($my_custom_field) { ?>
+<?php if (isset($forfatterids)) { ?>
 	<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent lenke til <?php the_title_attribute(); ?>">
 	  <img alt="" src="http://radikalportal.no/wp-content/uploads/userphoto/51.jpg" class="img-rounded hidden-phone">
         </a>
-       <?php } else { ?>
+<?php } else { ?>
         <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent lenke til <?php the_title_attribute(); ?>">
          <?php
            userphoto_the_author_photo(
@@ -60,7 +58,7 @@ $my_custom_field = $custom_fields['forfatterid'];
            );
          ?>
         </a>
-       <?php } ?>
+<?php } ?>
       </div>
       <div class="span10">
         <div id="post-<?php the_ID(); ?>" <?php post_class(); ?> style="margin-bottom:2px;">
@@ -87,11 +85,15 @@ $my_custom_field = $custom_fields['forfatterid'];
         </div>	
         <div class="author-frontpage" style="font-weight: normal; text-transform: uppercase;">
          <?php the_author(); ?>
-         <?php foreach ( $my_custom_field as $key => $value ) {
-			$userdata = get_userdata($value);
-			echo ' og ' . $userdata->display_name;
-	  	}
-         ?> 
+<?php
+if (isset($forfatterids)) {
+  $cnt = count($forfatterids);
+  foreach ($forfatterids as $key => $value) {
+    $userdata = get_userdata($value);
+    echo ($cnt-- > 1 ? ', ' : ' og ') . $userdata->display_name;
+  }
+}
+?>
         </div>
         <div class="clearfloat"></div>
 	<h3>
