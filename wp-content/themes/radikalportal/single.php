@@ -85,6 +85,7 @@ if (isset($forfatterids)) {
               </div>
             </div>
 <?php } ?>
+<?php } ?>
             <br>
             <div class="publisert" style="float: clear;">
               Publisert <?php the_date(); ?> klokken <?php the_time() ?>
