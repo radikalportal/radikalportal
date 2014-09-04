@@ -68,7 +68,7 @@ div.kortnytt
 
 <div style="margin: 0 0 5px 0; background-color: #fff; border: 2px solid #ccc; border-radius: 2px; padding: 5px 10px;">
   <a href="/stott-radikal-portal/">
-    <img src="/wp-content/themes/Radikalportal%20Theme%20v1.5/img/fundrasing.jpg" width="100%"/>
+    <img src="/wp-content/themes/radikalportal/img/fundrasing.jpg" width="100%"/>
     <h3>Støtt Radikal Portal</h3>
   </a>
 </div>
@@ -76,7 +76,7 @@ div.kortnytt
 <div style="margin: 0 0 5px 0; background-color: #fff; border: 2px solid #ccc; border-radius: 2px; padding: 5px 10px;">
   <a href="/kategori/skrivekonkurranse/">
     <div style="text-align: center;">
-      <img src="/wp-content/themes/Radikalportal%20Theme%20v1.5/img/feminist.jpg" width="45%"/>
+      <img src="/wp-content/themes/radikalportal/img/feminist.jpg" width="45%"/>
     </div>
     <b>Skrivekonkurransen:</b>
     <h3>Kvinne i Norge i dag</h3>
