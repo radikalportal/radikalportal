@@ -171,15 +171,10 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <!--/.   <a class="brand" href="/"><?php bloginfo('name'); ?></a>-->
         <?php wp_nav_menu( array('menu' => 'Toppmeny',
                    'container_class' => 'nav-collapse collapse',
                    'menu_class' => 'nav' ));
         ?>
-
-        <!--/. <div class="span17">
-        <?php wp_nav_menu( array('menu' => 'Headermeny'));?>
-        </div>-->
       </div>
     </div>
 
