@@ -51,13 +51,12 @@ Template Name Posts: Single video romfolk ser oss
 
 
 <?php
-
-$custom_fields = get_post_custom();
-$my_custom_field = $custom_fields['faktaboks'];
-foreach ( $my_custom_field as $key => $value ) {
-	echo '<div class="well">' . $value . '</div>';
+$faktabokser = get_post_custom_values('faktaboks');
+if (isset($faktabokser)) {
+	foreach ($faktabokser as $key => $value) {
+		echo '<div class="well">' . $value . '</div>';
+	}
 }
-
 ?>
 
 <?php if (!strcmp(get_post_meta($post->ID, 'ingendiskusjon', true), "1") == 0) { ?>

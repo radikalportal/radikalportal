@@ -75,14 +75,12 @@ if ($category->cat_name != 'Romkronikk' )
 			
 			</div>
 			</div>
-			
-			<?php
 
-$custom_fields = get_post_custom();
-$my_custom_field = $custom_fields['forfatterid'];
-foreach ( $my_custom_field as $key => $value ) {
-	$userdata = get_userdata($value);
-	//var_dump($userdata);
+<?php
+$forfatterids = get_post_custom_values('forfatterid');
+if (isset($forfatterids)) {
+	foreach ($forfatterids as $key => $value) {
+		$userdata = get_userdata($value);
 ?>
 			<div class="row">
 			<div class="span2" style="margin-top: 20px;">
@@ -97,6 +95,7 @@ foreach ( $my_custom_field as $key => $value ) {
 			
 			</div>
 			</div>
+			<?php } ?>
 			<?php } ?>
 				
 				<br>
@@ -150,13 +149,12 @@ foreach ( $my_custom_field as $key => $value ) {
 			<?php the_content(); ?>
 
 <?php
-
-$custom_fields = get_post_custom();
-$my_custom_field = $custom_fields['faktaboks'];
-foreach ( $my_custom_field as $key => $value ) {
-	echo '<div class="well">' . $value . '</div>';
+$faktabokser = get_post_custom_values('faktaboks');
+if (isset($faktabokser)) {
+	foreach ($faktabokser as $key => $value) {
+		echo '<div class="well">' . $value . '</div>';
+	}
 }
-
 ?>
 
 <?php if (!strcmp(get_post_meta($post->ID, 'ingendiskusjon', true), "1") == 0) { ?>
