@@ -114,7 +114,7 @@ if (isset($forfatterids)) {
       </div>
     </div> <!--/.post -->
 <?php endwhile; else: ?>
-    <p>Fant ingenting her. Sorry :(</p>
+    <p>Fant ingenting her.</p>
 <?php endif; ?>
     <br>
 <!--/.<div class="navigation-prev-next"><p> <?php posts_nav_link(' — ', __('&laquo; Nyere innlegg'), __('Eldre innlegg &raquo;')); ?>	</p></div>-->

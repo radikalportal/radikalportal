@@ -73,7 +73,7 @@ the_content();
 				</div>
 			
 		<?php endwhile; else: ?>
-		<p>Fant ingenting her. Sorry :(</p>
+		<p>Fant ingenting her.</p>
 		<?php endif; ?>
 
 		</div><!--/.well-->
@@ -121,7 +121,7 @@ the_content();
 	
 	
 	<?php endwhile; else: ?>
-	<p>Fant ingenting her. Sorry :(</p>
+	<p>Fant ingenting her.</p>
 	<?php endif; ?>
 	<br>
 	<br>

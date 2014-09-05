@@ -64,7 +64,7 @@
 </div>
 
 <?php endwhile; else: ?>
-	<p>Fant ingenting her. Sorry :(</p>
+	<p>Fant ingenting her.</p>
 <?php endif; ?>
 
 </div>
