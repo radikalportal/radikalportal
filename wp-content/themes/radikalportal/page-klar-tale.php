@@ -27,19 +27,6 @@
 
 
 	<div class="span14" style="float: right;">
-	
-
-		<!--/.kategorimerkelapp<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-		<?php
-		foreach (get_the_category() as $category){
-
-		echo ' ' . $category->cat_name . ' ';
-
-		}
-		?>
-
-		</div>	-->
-
 
 		<h4><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
 		<?php the_title(); ?></a></h4>

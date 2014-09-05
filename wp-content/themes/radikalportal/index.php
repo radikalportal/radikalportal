@@ -92,7 +92,6 @@ if (isset($forfatterids)) {
         <div class="entry">
         <?php global $more; $more = 0; ?>
           <div class="ingress">
-	    <!--<p><?php /*the_excerpt();*/ ?></p>-->
             <?php the_excerpt(); ?>
           </div>
         </div>

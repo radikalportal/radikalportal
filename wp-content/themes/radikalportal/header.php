@@ -95,8 +95,6 @@
 }
 
     </style>
-    <!--<script>var less = {}; less.env = 'development';</script>-->
-    <!--<script src="https://raw.github.com/cloudhead/less.js/master/dist/less-1.3.1.js" type="text/javascript"></script>-->
     <script src="<?php bloginfo('template_directory'); ?>/js/less-1.3.1.js"></script>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
