@@ -30,6 +30,7 @@
 <?php
   foreach((get_the_category()) as $category) {
 	if ($category->cat_name != 'Skjult fra forsiden' )
+	if ($category->cat_name != 'Ingen kategori' )
 	if ($category->cat_name != 'Aktuelt' ) 
 	if ($category->cat_name != 'Romtekst' ) 
 	if ($category->cat_name != 'Romvideo' ) 

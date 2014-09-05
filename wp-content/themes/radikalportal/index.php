@@ -57,6 +57,7 @@ $klartale_eller_skrivekonkurranse = false;
 
 foreach (get_the_category() as $category) {
     if ($category->cat_name != 'Skjult fra forsiden'
+     && $category->cat_name != 'Ingen kategori'
      && $category->cat_name != 'Romtekst'
      && $category->cat_name != 'Romvideo'
      && $category->cat_name != 'Romkronikk') {
