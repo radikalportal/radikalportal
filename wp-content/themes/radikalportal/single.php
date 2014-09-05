@@ -36,12 +36,12 @@
 ?>
           </div>	
         </div>
+      </div>
+      <div class="row">
 
 <div class="span18">
   <?php get_template_part('author', 'inline'); ?>
   <?php get_template_part('sharebar'); ?>
-  <br>
-  <b>Publisert: <?php the_date("d.m.y"); ?></b>
 </div>
 
 <div class="span15">
@@ -58,11 +58,15 @@ if (isset($faktabokser)) {
 }
 ?>
 
+    <br>
+    <b>Publisert: <?php the_date("d.m.y"); ?></b>
+
   </div> <!-- /.entry -->
 </div> <!-- /.span15 -->
 
 <div class="span18">
-  <?php get_template_part('sharebar'); ?>
+  <hr>
+  <div class="hidden-phone"><?php wp_related_posts(); ?></div>
   <h3 class="page-header">Tips oss</h3>
   Har du et tips om en sak du mener vi burde skrive om, eller en lenke vi burde dele på siden så send oss et <a href="http://radikalportal.no/tips-oss/">tips</a>.
 </div>

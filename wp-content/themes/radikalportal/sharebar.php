@@ -1,4 +1,17 @@
-<div style="background-color:#f9f9f9;border-style:solid;border-color:#eeeeee;border-width:2px 0px 0px 0px;padding:4px 0px 0px 4px;">
+<style>
+
+.sharebar {
+	background-color: #f9f9f9;
+	border-style: solid;
+	border-color: #eee;
+	border-width: 2px;
+	border-radius: 2px;
+	padding: 4px 0 0 4px;
+}
+
+</style>
+
+<div class="sharebar hidden-phone" style="">
   <div style="float:left;padding:0px 0px;">
     <a class="btn btn-small" href="javascript:print();"><i class="icon-print"></i>Skriv ut</a>
   </div>
