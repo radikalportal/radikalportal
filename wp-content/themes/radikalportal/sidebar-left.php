@@ -127,11 +127,9 @@ echo $terms_slug_str;
           </strong>
         </h4>
         <p>
-          <!--<small>-->
           <span style="color:gray;">
            <?php the_time('d/m/Y') ?>
           </span>
-          <!--</small>-->
           &nbsp;&ndash;&nbsp;
          <?php
           ob_start();
