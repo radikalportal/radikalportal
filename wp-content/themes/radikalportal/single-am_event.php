@@ -99,13 +99,9 @@ if (isset($forfatterids)) {
 
 
 <?php } ?>
-<div><a class="btn btn-small" href="javascript:print();"><i class="icon-print"></i> Skriv ut</a>
-<?php dd_fblike_generate('Like Button Count') ?>
-<?php dd_fbshare_generate('Compact') ?>
-<?php dd_google1_generate('Compact (24px)') ?>
-<?php dd_twitter_generate('Compact','radikalportal') ?></div>
-	</div>
-<br>
+
+<?php get_template_part('sharebar'); ?>
+
 	<div class="span15">
 		<div class="entry">
 <br>
