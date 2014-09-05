@@ -31,14 +31,6 @@ div.kortnytt
 	font-weight: bold;
 }
 
-/*
-.antirasisme:before { content:"a n t i r a s i s m e"; }
-.arbeidsliv:before { content:"a r b e i d s l i v"; }
-.feminisme-og-kjonn:before { content:"f e m i n i s m e"; }
-.antikrig:before { content:"a n t i k r i g"; }
-.miljo-og-klima:before { content:"k l i m a"; }
-*/
-
 </style>
 <div>
   <div>
@@ -91,12 +83,5 @@ div.kortnytt
 <?php else: ?>
 <?php endif; ?>
     </div>
-<!--
-    <br class="clearfloat">
-    <br>
-    <style type="text/css"> li {list-style: none;} </style>
-    <div>
-    </div>
--->
   </div>
 </div>

@@ -3,7 +3,6 @@
 	 * Added ouput buffers to replace " " with "%20" in malformed urls.
 	 */
 ?>
-<div>...</div>
 </div> <!-- /container -->
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>

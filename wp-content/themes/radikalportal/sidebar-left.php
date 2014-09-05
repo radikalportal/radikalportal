@@ -56,19 +56,11 @@ div.kortnytt
 	font-family: sans-serif;
 }
 
-/*
-.antirasisme:before { content:"a n t i r a s i s m e"; }
-.arbeidsliv:before { content:"a r b e i d s l i v"; }
-.feminisme-og-kjonn:before { content:"f e m i n i s m e"; }
-.antikrig:before { content:"a n t i k r i g"; }
-.miljo-og-klima:before { content:"k l i m a"; }
-*/
-
 </style>
 
 <div style="margin: 0 0 5px 0; background-color: #fff; border: 2px solid #ccc; border-radius: 2px; padding: 5px 10px;">
   <a href="/stott-radikal-portal/">
-    <img src="/wp-content/themes/radikalportal/img/fundrasing.jpg" width="100%"/>
+    <img src="/wp-content/themes/radikalportal/img/fundrasing.jpg" alt="Støtt Radikal Portal">
     <h3>Støtt Radikal Portal</h3>
   </a>
 </div>
@@ -76,7 +68,7 @@ div.kortnytt
 <div style="margin: 0 0 5px 0; background-color: #fff; border: 2px solid #ccc; border-radius: 2px; padding: 5px 10px;">
   <a href="/kategori/skrivekonkurranse/">
     <div style="text-align: center;">
-      <img src="/wp-content/themes/radikalportal/img/feminist.jpg" width="45%"/>
+      <img style="width: 45%;" src="/wp-content/themes/radikalportal/img/feminist.jpg" alt="Skrivekonkurransen">
     </div>
     <b>Skrivekonkurransen:</b>
     <h3>Kvinne i Norge i dag</h3>
@@ -149,11 +141,6 @@ echo $terms_slug_str;
           echo ew_strip_tag( "p", $c);
          ?>
         </p>
-<!--
-      <small><?php the_time('d/m/Y') ?></small>
-      <br>
-      <a style="font-weight: bold;" href="<?php the_permalink() ?>#disqus_thread"></a>
--->
       </div>
     </div>
 <?php endwhile; ?> 

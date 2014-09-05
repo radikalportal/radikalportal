@@ -1,10 +1,4 @@
 <?php get_header(); ?>
-<?php
-  $erling = false;
-  if( $_SERVER["REMOTE_ADDR"] == "81.191.109.160") {
-	$erling = true;
-  }
-?>
 
 <div class="row">
   <div class="span5 visible-desktop"><?php get_sidebar(left); ?>

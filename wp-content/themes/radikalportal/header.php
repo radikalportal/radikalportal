@@ -37,7 +37,6 @@
   a { color: #000; }
 }
 
-/* Added by EW on Tue Feb 25 07:11:45 CET 2014 --- 8< */
 .infobox {
   border: 1px solid #ccc;
   background-color: #f8f8f8;
@@ -85,7 +84,6 @@
 }
 .infobox br { display: none }
 
-/* Wed Feb 26 22:32:11 CET 2014, EW */
 .navbar .nav > li > a {
 	font-size:16px;
 }
@@ -95,8 +93,6 @@
 	font-size: 8pt;
 	line-height: 13pt;
 }
-
-/* >8 --- Added by EW on Tue Feb 25 07:11:45 CET 2014 */
 
     </style>
     <!--<script>var less = {}; less.env = 'development';</script>-->

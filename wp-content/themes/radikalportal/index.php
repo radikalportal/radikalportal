@@ -52,7 +52,6 @@ $forfatterids = get_post_custom_values('forfatterid');
       <div class="span10">
         <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 <?php
-/* Dum hack for å fikse kategorivisning. (Tore Norderud 15. mai 2014.) */
 $klartale_eller_skrivekonkurranse = false;
 
 foreach (get_the_category() as $category) {
