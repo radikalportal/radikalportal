@@ -19,11 +19,15 @@ function AtD_http_post( $request, $host, $path, $port = 80 ) {
 		'timeout'              => apply_filters( 'atd_http_post_timeout', 15 ),
 	);
 
+	// Handle non-standard ports being passed in.
+	if ( ( 80 !== $port ) && is_numeric( $port ) && ( intval( $port ) > 0 ) ) {
+		$host .= ':' . intval( $port );
+	}
 	// Strip any / off the begining so we can add it back and protect against SSRF
-	$path = ltrim( $path, '/' );
-	$AtD_url = "http://{$host}/{$path}";
+	$path     = ltrim( $path, '/' );
+	$AtD_url  = "http://{$host}/{$path}";
 	$response = wp_remote_post( $AtD_url, $http_args );
-	$code = (int) wp_remote_retrieve_response_code( $response );
+	$code     = (int) wp_remote_retrieve_response_code( $response );
 
 	if ( is_wp_error( $response ) ) {
 		do_action( 'atd_http_post_error', 'http-error' );
@@ -51,16 +55,21 @@ function AtD_redirect_call() {
 	$service = apply_filters( 'atd_service_domain', 'service.afterthedeadline.com' );
 
 	$user = wp_get_current_user();
-	$user_lang = get_user_lang_code( $user->ID );
+	
+	if ( defined( 'IS_WPCOM' ) && IS_WPCOM ) {
+		$atd_lang = get_user_lang_code( $user->ID );
+	} else {
+		$atd_lang = WPLANG;
+	}
 
-	if ( ! empty( $user_lang ) ) {
-		if ( strpos($user_lang, 'pt') !== false )
+	if ( ! empty( $atd_lang ) ) {
+		if ( strpos($atd_lang, 'pt') !== false )
 			$service = 'pt.service.afterthedeadline.com';
-		else if ( strpos($user_lang, 'de') !== false )
+		else if ( strpos($atd_lang, 'de') !== false )
 			$service = 'de.service.afterthedeadline.com';
-		else if ( strpos($user_lang, 'es') !== false )
+		else if ( strpos($atd_lang, 'es') !== false )
 			$service = 'es.service.afterthedeadline.com';
-		else if ( strpos($user_lang, 'fr') !== false )
+		else if ( strpos($atd_lang, 'fr') !== false )
 			$service = 'fr.service.afterthedeadline.com';
 	}
 
