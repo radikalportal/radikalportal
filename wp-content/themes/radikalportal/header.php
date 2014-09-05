@@ -17,7 +17,7 @@
     ?>" />
     <link rel="profile" href="http://gmpg.org/xfn/11" />
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-    <link rel="stylesheet" href="<?php ob_start(); bloginfo('template_directory'); $c = ob_get_contents(); ob_end_clean(); echo str_replace(" ", "%20", $c); ?>/less/bootswatch.css?2">
+    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/less/bootswatch.css?2">
     <link rel="image_src" href="http://radikalportal.no/wp-content/uploads/userphoto/51.jpg" />
     <style type="text/css">
  
@@ -97,7 +97,7 @@
     </style>
     <!--<script>var less = {}; less.env = 'development';</script>-->
     <!--<script src="https://raw.github.com/cloudhead/less.js/master/dist/less-1.3.1.js" type="text/javascript"></script>-->
-    <script src="<?php ob_start(); bloginfo('template_directory'); $c = ob_get_contents(); ob_end_clean(); echo str_replace(" ", "%20", $c); ?>/js/less-1.3.1.js" type="text/javascript"></script>
+    <script src="<?php bloginfo('template_directory'); ?>/js/less-1.3.1.js"></script>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>

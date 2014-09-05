@@ -120,7 +120,9 @@ if (isset($forfatterids)) {
 <!--/.<div class="navigation-prev-next"><p> <?php posts_nav_link(' — ', __('&laquo; Nyere innlegg'), __('Eldre innlegg &raquo;')); ?>	</p></div>-->
   </div>
   <div class="span6 visible-desktop">
-    <?php ob_start(); get_sidebar(); $c = ob_get_contents(); ob_end_clean(); echo '<ul>'.$c.'</ul>'; ?>
+    <ul>
+      <?php get_sidebar(); ?>
+    </ul>
   </div>
 </div> <!--/.row -->
 <div class="row">
