@@ -36,58 +36,12 @@
 ?>
           </div>	
         </div>
+
+<div class="span18">
+  <?php get_template_part('author', 'inline'); ?>
+</div>
+
       <div class="span15">
-
-<?php if (!strcmp(get_post_meta($post->ID, 'ingenforfatter', true), "1") == 0) { ?>
-
-        <div style="height: 2px; background-color: #EEE; margin: 10px 0;">
-        </div>
-        <div class="row">
-          <div class="span12">
-            <div class="row">
-              <div class="span2">
-                <a href="<?php echo get_author_posts_url(get_the_author_meta( 'ID' )); ?>">
-				<?php userphoto_the_author_photo(
-	                '',
-	                '',
-	                array('class' => 'img-rounded hidden-phone'),
-	                get_template_directory_uri() . '/img/anon.gif'
-	            ); ?>
-                </a>
-              </div>
-              <div class="span9">
-                <h4><?php the_author_posts_link() ?></h4>
-                <?php the_author_description(); ?>
-              </div>
-            </div>
-<?php
-$forfatterids = get_post_custom_values('forfatterid');
-if (isset($forfatterids)) {
-	foreach ($forfatterids as $key => $value) {
-		$userdata = get_userdata($value);
-?>
-            <div class="row">
-              <div class="span2" style="margin-top: 20px;">
-                <a href="/?author=<?= $value; ?>">
-                  <?php userphoto($value, '', '', array('class' => 'img-rounded hidden-phone')); ?>
-                </a>
-              </div>
-              <div class="span9" style="margin-top: 20px;">
-	        <h4>
-	  	  <a href="/?author=<?= $value; ?>"><?= $userdata->display_name; ?></a>
-                </h4>
-                <?= $userdata->user_description; ?>
-              </div>
-            </div>
-<?php } ?>
-<?php } ?>
-            <br>
-            <div class="publisert" style="float: clear;">
-              Publisert <?php the_date(); ?> klokken <?php the_time() ?>
-            </div>
-          </div>
-        </div> <!--/.row -->
-<?php } ?>
         <div style="background-color:#f9f9f9;border-style:solid;border-color:#eeeeee;border-width:2px 0px 0px 0px;padding:4px 0px 0px 4px;">
 	  <div style="float:left;padding:0px 0px;">
             <a class="btn btn-small" href="javascript:print();"><i class="icon-print"></i>Skriv ut</a>
