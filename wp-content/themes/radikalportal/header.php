@@ -171,12 +171,3 @@
     </div>
 
     <div class="container">
-      <div class="visible-desktop" style="padding-top: 0px;">
-      </div>
-      <div class="row">
-        <div class="span24" style="padding: 15px 0 15px 0;">
-          <a href="<?php echo home_url(); ?>">
-      	    <img alt="Radikal Portal" src="http://radikalportal.no/wp-content/uploads/2013/11/rp_color_corr.png">
-          </a>
-        </div>
-      </div>
