@@ -138,42 +138,35 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner visible-desktop">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+    <!-- Static navbar -->
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </a>
-          <div class="row">
-            <div class="span2">
-              <a class="brand" href="/" style="color:#a60000;">HJEM</a> 
-            </div>
-            <div class="span20">
-              <?php wp_nav_menu( array('menu' => 'Toppmeny',
-                         'container_class' => 'nav-collapse collapse',
-                         'menu_class' => 'nav' ));
-              ?>
-            </div>
-            <div class="span2">
-              <form action="/" class="navbar-search">
-                <input name="s" type="text" class="search-query" placeholder="Søk" style="width: 100%;" />
-              </form>    
-            </div>
-          </div>
+          </button>
+          <a class="navbar-brand" href="/">Radikal Portal</a>
         </div>
-      </div>
-      <div class="navbar-inner hidden-desktop">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <?php wp_nav_menu( array('menu' => 'Toppmeny',
-                   'container_class' => 'nav-collapse collapse',
-                   'menu_class' => 'nav' ));
-        ?>
+        <div class="navbar-collapse collapse">
+
+<?php
+  wp_nav_menu(array('menu' => 'Toppmeny',
+                    'container_class' => '',
+                    'menu_class' => 'nav navbar-nav'));
+?>
+
+          <form action="/" class="navbar-form navbar-right hidden-sm hidden-md" role="search">
+            <div class="form-group">
+              <input name="s" type="text" class="form-control" placeholder="Søk">
+            </div>
+            <button type="submit" class="btn btn-default hidden-xs">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </form>
+        </div><!--/.nav-collapse -->
       </div>
     </div>
 
