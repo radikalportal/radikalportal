@@ -20,37 +20,6 @@
 
 <style>
 
-div.kortnyttcontainer
-{
-        margin-bottom: 1em;
-        position: relative;
-}
-
-div.kortnytt
-{
-	margin-left: 15px;
-}
-
- div.antirasisme
-,div.arbeidsliv
-,div.feminisme-og-kjonn
-,div.antikrig
-,div.miljo-og-klima
-{
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	width: 10px;
-	height: 100%;
-	padding: 2px 0px;
-	color: white;
-	font-size: 7pt;
-	font-family: courier;
-	text-align: center;
-	text-transform: uppercase;
-	font-weight: bold;
-}
-
 .tagcloud
 {
 	font-family: sans-serif;
@@ -75,80 +44,6 @@ div.kortnytt
   </a>
 </div>
 
-<h3>Kortnytt</h3>
-  <div>
-   <?php
-  $args = array(
-	'post_type' => 'kortnytt',
-	'posts_per_page' => 5
-	
-  );
-  $query = new WP_Query( $args );
-
-  if ( $query->have_posts() ) : 
-    while ( $query->have_posts() ) : $query->the_post();
-   ?>
-<?php
-  global $more;
-  $more = 0;
-?>
-    <div class="kortnyttcontainer">
-      <div class="<?php 
-  $terms = get_the_terms($post->ID, 'kortnytt_category' );
-  if ($terms && ! is_wp_error($terms)) :
-	$term_slugs_arr = array();
-	foreach ($terms as $term) {
-	    $term_slugs_arr[] = $term->slug;
-	}
-	$terms_slug_str = join( " ", $term_slugs_arr);
-  endif;
-  echo $terms_slug_str;
-?>">
-      </div>
-      <div class="kortnytt">
-        <div class="uppercase">
-<?php 
-$terms = get_the_terms($post->ID, 'kortnytt_category' );
-if ($terms && ! is_wp_error($terms)) :
-	$term_slugs_arr = array();
-	foreach ($terms as $term) {
-	    $term_slugs_arr[] = $term->name;
-	}
-	$terms_slug_str = join( " ", $term_slugs_arr);
-endif;
-echo $terms_slug_str;
-?>
-        </div>
-	<h4>
-	  <strong>
-            <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
-	     <?php the_title(); ?>
-	    </a>
-          </strong>
-        </h4>
-        <p>
-          <span style="color:gray;">
-           <?php the_time('d/m/Y') ?>
-          </span>
-          &nbsp;&ndash;&nbsp;
-         <?php
-          ob_start();
-          the_excerpt();
-          $c = ob_get_contents();
-          ob_end_clean();
-          echo ew_strip_tag( "p", $c);
-         ?>
-        </p>
-      </div>
-    </div>
-<?php endwhile; ?> 
-<?php wp_reset_postdata(); ?>
-<?php else: ?>
-<?php endif; ?>
-</div>
-<br class="clearfloat">
-<br>
-<br>
 <style type="text/css">
 li {list-style: none;}
 </style>
