@@ -65,14 +65,6 @@ foreach ($redaksjon as $r) {
 }
 
 ?>
-<!--
-<h2>Kortnyttredaksjoner:</h2>
-<p>Antirasisme: Macel Ingles, Åsne Hagen, Odd Arild Viste, Christian Stokke, Ahmed Fouikri</p>
-<p>Miljø og klima: Björn Fröhlich, Hallgeir Opdal, Linda Skjold Oksnes</p>
-<p>Antikrig: Oscar Dybedahl, Johannes Wilm, Gunnar Øyro, Aslak Storaker</p>
-<p>Feminisme og kjønn: Jenny Dahl Bakken, Camilla Kitty Karlsen</p>
-<p>Arbeidsliv: Wibeke Bergheim, Petter Torp, Anders Hamre Sveen, Nina Skranefjell, Lars Berge</p>
--->
 <hr>
 
 
