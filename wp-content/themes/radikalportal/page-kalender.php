@@ -6,11 +6,7 @@
 
 
 <div class="page-header">
-  <h1>
-  	<?php the_title(); ?>
-  	
-  </h1>
-<p>Tips oss om arrangementer ved å fylle ut skjemaet <a href="http://radikalportal.no/tips-arrangementer/">HER</a>.</p>
+    <h1><?php the_title(); ?></h1>
 </div> 
 
 <?php 
