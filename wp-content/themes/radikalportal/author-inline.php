@@ -1,46 +1,16 @@
-<style>
-
-.author-inline {
-	border-bottom: 2px solid #eee;
-	border-top: 2px solid #eee;
-	margin: 10px 0;
-	padding: 7px 0;
-}
-
-.author-inline-vertical-space {
-	margin-top: 10px;
-}
-
-.author-name {
-	font-family: "News Cycle", "Arial Narrow Bold", sans-serif;
-	font-size: 1.4em;
-	font-weight: bold;
-	margin: 0 0 0.2em;
-}
-
-.author-name, .author-name a {
-	color: black;
-}
-
-.author-more {
-	font-weight: bold;
-}
-
-</style>
-
 <div class="author-inline">
 	<div class="row">
-		<div class="span2">
+	<div class="col-md-12">
+		<div class="author-photo pull-left">
 
 <?php
 userphoto_the_author_photo('', '',
-	array('class' => 'img-rounded hidden-phone'),
+	array(),
 	get_template_directory_uri() . '/img/anon.gif'
 );
 ?>
 
 		</div>
-		<div class="span15">
 
 			<?php if (get_the_author_posts() > 1) : ?>
 			<div class="author-name"><?php the_author_posts_link(); ?></div>
@@ -51,7 +21,7 @@ userphoto_the_author_photo('', '',
 			<div class="author-bio">
 			<?php the_author_description(); ?>
 			</div>
-		</div>
+	</div>
 	</div> <!-- /.row -->
 
 <?php
@@ -62,20 +32,20 @@ if (isset($forfatterids)) :
 ?>
 
 	<div class="row author-inline-vertical-space">
-		<div class="span2">
+	<div class="col-md-12">
 
-<?php userphoto($value, '', '', array('class' => 'img-rounded hidden-phone')); ?>
-
+		<div class="author-photo pull-left">
+<?php userphoto($value, '', '', array()); ?>
 		</div>
-		<div class="span15">
-			<div class="author-name">
-				<?= $userdata->display_name; ?>
-			</div>
 
-			<div class="author-bio">
-			<?= $userdata->user_description; ?>
-			</div>
+		<div class="author-name">
+			<?= $userdata->display_name; ?>
 		</div>
+
+		<div class="author-bio">
+		<?= $userdata->user_description; ?>
+		</div>
+	</div>
 	</div> <!-- /.row -->
 
 <?php endforeach; endif; ?>

@@ -1,5 +1,6 @@
-<?php get_header(rom); ?>
+<?php get_header(); ?>
 
+<img src="<?= get_template_directory_uri(); ?>/img/romfolket.png" alt="Romfolket ser oss">
 
 <?php 
 global $more;    // Declare global $more (before the loop).
@@ -8,19 +9,16 @@ the_content();
 ?>
 
 <div class="row">
-<div class="span8 sitater"><blockquote><p>Jeg er stolt av å være en sigøyner fra Romania.</p><br></blockquote><div align="right"><p>- Dinu</p></div></div><!--/.SITAT1-->
 
-<div class="span8 sitater"><blockquote><p>De har så fine klær! Jentene er så pene!</p><br></blockquote><div align="right"><p>- Claudia</p></div></div><!--/.SITAT2-->
-
-<div class="span8 sitater"><blockquote><p>Jeg trenger ikke noe stort i livet, bare to rom til min kone og mine to barn.</p></blockquote><div align="right"><p>- Dinu</p></div></div><!--/.SITAT3-->
-
-
+<div class="col-md-4 sitater"><blockquote><p>Jeg er stolt av å være en sigøyner fra Romania.</p><br></blockquote><div align="right"><p>- Dinu</p></div></div><!--/.SITAT1-->
+<div class="col-md-4 sitater"><blockquote><p>De har så fine klær! Jentene er så pene!</p><br></blockquote><div align="right"><p>- Claudia</p></div></div><!--/.SITAT2-->
+<div class="col-md-4 sitater"><blockquote><p>Jeg trenger ikke noe stort i livet, bare to rom til min kone og mine to barn.</p></blockquote><div align="right"><p>- Dinu</p></div></div><!--/.SITAT3-->
 
 </div>
 
 <hr class="hrclass">
 <div class="row">
-	<div class="span14">
+	<div class="col-md-7">
 	
 	<?php query_posts('cat=487'); ?>
 
@@ -43,9 +41,9 @@ the_content();
 	
 	
 	
-	</div><!--/.span14-->
+	</div><!--/.col-md-7-->
 	
-	<div class="span10">
+	<div class="col-md-5">
 	
 	
 	
@@ -92,7 +90,7 @@ the_content();
 		
 		
 			<hr>
-			<div class="span4" style="float: left; margin: 0px 6px 3px 0px; padding: 0px 3px 3px 0px;">
+			<div class="col-md-12" style="float: left; margin: 0px 6px 3px 0px; padding: 0px 3px 3px 0px;">
 			<?php the_post_thumbnail('medium');?>
 			</div>	
 
@@ -127,7 +125,7 @@ the_content();
 	<br>
 
 
-	</div><!--/.span10-->
+	</div><!--/.col-md-5-->
 
 
 <div class="row">

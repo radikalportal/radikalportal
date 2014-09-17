@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <div class="row">
-<div class="span19">
+<div class="col-md-offset-1 col-md-10 main-content">
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -40,14 +40,14 @@ foreach ($redaksjon as $r) {
 	$userdata = get_userdata($r);
 
 	echo '<div class="row">';
-	echo '<div class="span2" style="padding-top: 8px; margin-bottom: 20px;">';
+	echo '<div class="pull-left" style="padding-top: 8px; margin-bottom: 20px;">';
 
 	if (userphoto_exists($r)) {
 		userphoto(
 			$r,
 			'',
 			'',
-			array('class' => 'img-rounded'),
+			array(),
 			get_template_directory_uri() . '/img/anon.gif'
 		);
 	} else {
@@ -55,7 +55,7 @@ foreach ($redaksjon as $r) {
 	}
 
 	echo '</div>';
-	echo '<div class="span16">';
+	echo '<div class="col-md-8">';
 
 	echo "<h3>" . $userdata->display_name . "</h3>";
 	echo "<p>" . $userdata->user_description . "</p>";
@@ -65,27 +65,21 @@ foreach ($redaksjon as $r) {
 }
 
 ?>
+
 <hr>
 
-
-<div>
-	<h2>Finn oss på</h2>
-</div>
-
 <div class="row">
-	<div class="span9">
+	<h2>Finn oss på</h2>
+	<div class="col-md-6">
 		<h3>Facebook</h3>
 		<iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fradikalportal&amp;width=292&amp;height=62&amp;show_faces=false&amp;colorscheme=light&amp;stream=false&amp;border_color=%23ffffff&amp;header=false&amp;appId=446811972038512" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:62px;" allowTransparency="true"></iframe>
 	</div>
-	<div class="span9">
+	<div class="col-md-6">
 		<h3>Twitter</h3>
 		<a href="https://twitter.com/radikalportal" class="twitter-follow-button" data-show-count="false" data-lang="no" data-size="large">Følg @radikalportal</a>
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 	</div>
 </div>
-
-<br>
-<br>
 
 <?php break; ?>
 <?php endwhile; else: ?>

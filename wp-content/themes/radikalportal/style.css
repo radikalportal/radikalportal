@@ -9,18 +9,225 @@ Based on the Bootswatch theme (http://bootswatch.com/journal/) by Thomas Park (h
 
 */
 
+body {
+  background-color: #f8f8f8;
+}
+
+.navbar-default .navbar-brand {
+  color: #e22620;
+}
+.navbar-default {
+  border-color: #ddd;
+}
+
+.sidebar ul {
+  padding-left: 0;
+}
+.sidebar li {
+  list-style: none;
+}
+
+.author-photo img {
+  height: 80px;
+  width: auto;
+  max-width: 100px;
+  margin-right: 10px;
+}
+
+.author-inline {
+  border-bottom: 2px solid #eee;
+  border-top: 2px solid #eee;
+  margin: 5px 0;
+  padding: 7px 0;
+}
+
+.author-inline-vertical-space {
+  margin-top: 10px;
+}
+
+.author-name {
+  font-family: "News Cycle", "Arial Narrow Bold", sans-serif;
+  font-size: 1.4em;
+  font-weight: bold;
+  margin: 0 0 0.2em;
+}
+
+.author-name, .author-name a {
+  color: black;
+}
+
+.author-more {
+  font-weight: bold;
+}
+
+.ingress {
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: 100 !important;
+}
+.ingress > p > strong,
+.ingress > p > b {
+  font-weight: 100;
+}
+
+.sharebar {
+  border: none;
+  padding: 4px 0 0 4px;
+  margin: 5px 0 0;
+  height: 35px;
+}
+
 .uppercase {
   text-transform: uppercase;
 }
 
-.front-page-img img {width: 100%; }
+.post h3 {
+  margin-top: 3px;
+}
+.post h3 a {
+  color: #000000;
+}
+
+.sidebar ul {
+  padding-left: 0;
+}
+
+.author-photo-frontpage img {
+  height: auto;
+  width: 80px;
+  max-height: 100%;
+  margin-top: 5px;
+  margin-right: 15px;
+}
+
+.front-page-img > img {
+  margin-bottom: 20px;
+}
+
+.front-page-img > img,
+.single > .thumb > img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  border: 0;
+}
+
+.main-content {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  padding: 30px;
+}
+
 .post p { color: #000; }
-.single p { }
 .sidebar { font-size: 12px; }
   .nav-tabs > .active > a, .nav-tabs > .active > a:hover {
     background-color: #fcfcfc;
     color: #000000;
   }
+
+
+
+
+.tagcloud a {
+  color: #888888;
+}
+
+.wpp-list {
+  padding-left: 0;
+}
+
+.pagination .dots {
+  color: #999999;
+}
+
+.pagination > li > a.current,
+.pagination > li > span.current,
+.pagination > li > a:hover.current,
+.pagination > li > span:hover.current,
+.pagination > li > a:focus.current,
+.pagination > li > span:focus.current {
+  z-index: 2;
+  color: #999999;
+  background-color: #f5f5f5;
+  border-color: #dddddd;
+  cursor: default;
+}
+
+.post p { color: #000; }
+.sidebar { font-size: 12px; }
+  .nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+    background-color: #fcfcfc;
+    color: #000000;
+  }
+
+.navbar .nav > li > a {
+  font-size:16px;
+}
+
+.sidebar li
+{
+  font-size: 8pt;
+  line-height: 13pt;
+}
+
+.post .rest {
+  padding-bottom: 30px;
+}
+.entry-title {
+  font-size: 30px;
+  margin-top: 3px;
+}
+.entry-title a {
+  color: #222222;
+}
+
+.pubdate {
+  display: inline;
+  font-weight: 100;
+  font-family: sans-serif;
+}
+.entry-content p {
+  display: inline;
+}
+
+
+@media screen and (max-width: 992px) {
+  .author-photo-frontpage img {
+    width: 75px;
+    margin-right: 10px;
+  }
+  .main-content {
+    border: none;
+    padding: 10px;
+    margin-top: -10px;
+  }
+  .single .main-content {
+    padding: 10px;
+    margin-top: -10px;
+  }
+}
+@media screen and (max-width: 768px) {
+  body {
+    background-color: #ffffff;
+  }
+  .main-content {
+    border: none;
+    padding: 10px;
+  }
+  .single .main-content {
+    padding: 10px;
+    margin-top: -20px;
+  }
+  .author-photo-frontpage img {
+    width: 55px;
+    margin-right: 10px;
+  }
+  .entry-title {
+    font-size: 1.6em;
+  }
+}
+
 
 @media print {
   .navbar, .disqus, .print-hidden {
@@ -28,6 +235,7 @@ Based on the Bootswatch theme (http://bootswatch.com/journal/) by Thomas Park (h
   }
   a { color: #000; }
 }
+
 
 .infobox {
   border: 1px solid #ccc;
@@ -76,12 +284,55 @@ Based on the Bootswatch theme (http://bootswatch.com/journal/) by Thomas Park (h
 }
 .infobox br { display: none }
 
-.navbar .nav > li > a {
-	font-size:16px;
+
+.entry-category {
+  text-transform: uppercase;
+  display: inline-block;
+  color: #444;
+  font-family: sans-serif;
+  font-size: 0.8em;
+  padding: 1px 2px;
+  font-weight: bold;
+  border-radius: 3px;
+}
+.entry-author {
+  display: inline-block;
 }
 
-.sidebar li
-{
-	font-size: 8pt;
-	line-height: 13pt;
+.post .thumb {
+  margin-bottom: 10px;
 }
+
+.post h1 {
+  margin-top: 0;
+}
+
+
+
+
+
+
+
+
+
+
+.calendar .title a,
+.calendar a {
+  color: #444;
+}
+.calendar ul {
+  padding-left: 0;
+}
+.calendar p {
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+

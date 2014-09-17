@@ -18,7 +18,7 @@
     <link rel="profile" href="http://gmpg.org/xfn/11" />
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/journal/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/style.css">
+    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/style.css?1">
     <link rel="image_src" href="http://radikalportal.no/wp-content/uploads/userphoto/51.jpg" />
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -52,7 +52,7 @@
     <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
   </head>
-  <body>
+  <body <?php body_class(); ?>>
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -83,7 +83,7 @@
                     'menu_class' => 'nav navbar-nav'));
 ?>
 
-          <form action="/" class="navbar-form navbar-right hidden-sm hidden-md" role="search">
+          <form action="/" class="navbar-form navbar-right hidden-sm" role="search">
             <div class="form-group">
               <input name="s" type="text" class="form-control" placeholder="Søk">
             </div>

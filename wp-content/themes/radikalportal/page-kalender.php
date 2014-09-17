@@ -1,9 +1,10 @@
 <?php get_header(); ?>                              
 
 <div class="row">
-<div class="span5 visible-desktop"><?php get_sidebar(left); ?></div>
-<div class="span13">
-
+<div class="col-md-3 hidden-xs hidden-sm">
+    <?php get_sidebar(left); ?>
+</div>
+<div class="col-md-9 main-content">
 
 <div class="page-header">
     <h1><?php the_title(); ?></h1>
@@ -82,10 +83,6 @@
             
         <?php endwhile; // end of the loop. ?>
 
-</div>
-
-<div class="span6 visible-desktop">
-	<?php get_sidebar(); ?>
 </div>
 
 </div>

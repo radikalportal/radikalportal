@@ -1,8 +1,8 @@
 <?php get_header(); ?>
 
 <div class="row">
-<div class="span5 visible-desktop"><?php get_sidebar(left); ?></div>
-<div class="span18 shadow">
+<div class="col-md-3 hidden-xs hidden-md"><?php get_sidebar(left); ?></div>
+<div class="col-md-9 main-content">
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 <div class="post single">
@@ -13,7 +13,7 @@
  
 
 <div class="row">
-	<div class="span18">
+	<div class="col-md-12">
 		<h1><?php the_title(); ?></h1>
 	
 
@@ -38,7 +38,7 @@ if ($category->cat_name != 'Romkronikk' )
 		
 		</div>	
 </div>
-	<div class="span15">
+	<div class="col-md-12">
 
 <?php if (!strcmp(get_post_meta($post->ID, 'ingenforfatter', true), "1") == 0) { ?>
 

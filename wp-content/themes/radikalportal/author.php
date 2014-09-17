@@ -9,13 +9,13 @@ $curauth = (isset($_GET['author_name']))
 ?>
 
 <div class="row">
-<div class="span5 visible-desktop">
+<div class="col-md-3 hidden-xs hidden-sm">
 	<?php get_sidebar(left); ?>
 </div>
-<div class="span13">
+<div class="col-md-9 main-content">
 
 <div class="row">
-	<div class="span3">
+	<div class="col-md-2">
 
 <?php
 if (userphoto_exists($author)) {
@@ -23,7 +23,7 @@ if (userphoto_exists($author)) {
 		$author,
 		'',
 		'',
-		array('class' => 'img-rounded'),
+		array(),
 		get_template_directory_uri() . '/img/anon.gif'
 	);
 } else {
@@ -32,7 +32,7 @@ if (userphoto_exists($author)) {
 ?>
 
 	</div>
-	<div class="span10">
+	<div class="col-md-10">
 
 <h3><?php echo $curauth->display_name; ?></h3>
 <p><?php echo $curauth->description; ?></p>
@@ -46,7 +46,7 @@ if (userphoto_exists($author)) {
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 <div class="post row">
-	<div class="span13">
+	<div class="col-md-12">
 		<h4><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h4>
 		<div class="entry">
 			<?php the_excerpt(); ?>

@@ -1,86 +1,52 @@
+<?php
+$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+query_posts('cat=412&paged=' . $paged);
+?>
+
 <?php get_header(); ?>
 
 <div class="row">
-<div class="span5 visible-desktop"><?php get_sidebar(left); ?></div>
-<div class="span19">
 
-<div class="page-header">
-  <h1>
-  	<?php the_title(); ?>
-  	
-  </h1>
-</div>
+  <div class="col-md-3 hidden-xs hidden-sm">
+    <?php get_sidebar(left); ?>
+  </div>
 
-<?php query_posts('cat=412'); ?>
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-
-
-
-
-<div class="row page-ukasliste-content">
-	
-	<div class="span5" style="float: left;">
-<a href="<?php the_permalink() ?>"><?php the_post_thumbnail('medium'); ?></a>
-
+  <div id="main-content" class="main-content col-md-9">
+	<div class="page-header">
+		<h1>Ukas liste</h1>
 	</div>
 
+    <div id="primary" class="content-area">
+      <div id="content" class="site-content" role="main">
 
-	<div class="span14" style="float: right;">
-	
+    <?php
+      if ( have_posts() ) :
+        // Start the Loop.
+        while ( have_posts() ) : the_post();
 
-		<!--/.kategorimerkelapp<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-		<?php
-		foreach (get_the_category() as $category){
+          /*
+           * Include the post format-specific template for the content. If you want to
+           * use this in a child theme, then include a file called called content-___.php
+           * (where ___ is the post format) and that will be used instead.
+           */
+          get_template_part( 'content', get_post_format() );
 
-		echo ' ' . $category->cat_name . ' ';
+        endwhile;
 
-		}
-		?>
+        echo '<div class="text-center hidden-xs">';
+        radikalportal_paging_nav();
+        echo '</div>';
 
-		</div>	-->
+      else :
+        // If no content, include the "No posts found" template.
+        get_template_part( 'content', 'none' );
 
+      endif;
+    ?>
 
-		<h4><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
-		<?php the_title(); ?></a></h4>
-
-
-
-		<div class="entry">
-			<?php the_excerpt(); ?>
-			<small><?php the_author_posts_link() ?> <?php the_time('d/m/Y') ?> </small>
-			<br>
-			<a style="font-weight: bold;" href="<?php the_permalink() ?>#disqus_thread">
-			<span></span>
-			</a>
-			<br>
-			<br>
-			
-			
-		</div>
-	
-	
-	</div>
-	
+      </div><!-- #content -->
+    </div><!-- #primary -->
+  </div><!-- #main-content -->
 </div>
-
-<?php endwhile; else: ?>
-	<p>Fant ingenting her.</p>
-<?php endif; ?>
-
-</div>
-</div>
-
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'radikalportal'; // required: replace example with your forum shortname
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
 
 <?php get_footer(); ?>
