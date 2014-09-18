@@ -3,7 +3,7 @@
 Theme Name: Radikal Portal
 Theme URI: http://radikalportal.no/
 Author: Radikal Portal
-Version: 1.9.0
+Version: 1.9.1
 
 Based on the Bootswatch theme (http://bootswatch.com/journal/) by Thomas Park (http://thomaspark.me/).
 
@@ -101,7 +101,7 @@ body {
 }
 
 .front-page-img > img {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .front-page-img > img,
@@ -118,15 +118,6 @@ body {
   border: 1px solid #dddddd;
   padding: 30px;
 }
-
-.post p { color: #000; }
-.sidebar { font-size: 12px; }
-  .nav-tabs > .active > a, .nav-tabs > .active > a:hover {
-    background-color: #fcfcfc;
-    color: #000000;
-  }
-
-
 
 
 .tagcloud a {
@@ -155,11 +146,18 @@ body {
 }
 
 .post p { color: #000; }
-.sidebar { font-size: 12px; }
-  .nav-tabs > .active > a, .nav-tabs > .active > a:hover {
-    background-color: #fcfcfc;
-    color: #000000;
-  }
+
+.sidebar {
+  font-size: 12px;
+}
+.sidebar a {
+  color: #444;
+}
+
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+  background-color: #fcfcfc;
+  color: #000000;
+}
 
 .navbar .nav > li > a {
   font-size:16px;
@@ -172,10 +170,10 @@ body {
 }
 
 .post .rest {
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 }
 .entry-title {
-  font-size: 30px;
+  font-size: 28px;
   margin-top: 3px;
 }
 .entry-title a {
@@ -198,7 +196,6 @@ body {
     margin-right: 10px;
   }
   .main-content {
-    border: none;
     padding: 10px;
     margin-top: -10px;
   }
@@ -214,6 +211,7 @@ body {
   .main-content {
     border: none;
     padding: 10px;
+    margin-top: -20px;
   }
   .single .main-content {
     padding: 10px;
@@ -224,7 +222,7 @@ body {
     margin-right: 10px;
   }
   .entry-title {
-    font-size: 1.6em;
+    font-size: 1.5em;
   }
 }
 
@@ -308,14 +306,6 @@ body {
 }
 
 
-
-
-
-
-
-
-
-
 .calendar .title a,
 .calendar a {
   color: #444;
@@ -326,13 +316,3 @@ body {
 .calendar p {
   display: block;
 }
-
-
-
-
-
-
-
-
-
-

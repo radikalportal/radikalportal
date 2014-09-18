@@ -18,7 +18,7 @@
     <link rel="profile" href="http://gmpg.org/xfn/11" />
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/journal/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/style.css?1">
+    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/style.css?2">
     <link rel="image_src" href="http://radikalportal.no/wp-content/uploads/userphoto/51.jpg" />
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
