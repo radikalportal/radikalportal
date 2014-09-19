@@ -87,7 +87,7 @@
 
           <form action="/" class="navbar-form navbar-right hidden-sm" role="search">
             <div class="form-group">
-              <input name="s" type="text" class="form-control" placeholder="Søk">
+              <input name="s" type="text" class="form-control" placeholder="Søk" value="<?= get_search_query(); ?>">
             </div>
             <button type="submit" class="btn btn-default hidden-xs">
               <span class="glyphicon glyphicon-search"></span>
