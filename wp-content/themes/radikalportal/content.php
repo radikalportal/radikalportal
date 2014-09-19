@@ -92,5 +92,9 @@ if (isset($forfatterids)) {
 	</div><!-- .entry-summary -->
 	<?php endif; ?>
 
+    <div class="entry-comment-count">
+      <a href="<?php the_permalink() ?>#disqus_thread"></a>
+    </div>
+
 	</div>
 </div>

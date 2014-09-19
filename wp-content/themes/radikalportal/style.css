@@ -295,6 +295,11 @@ body {
 }
 .entry-author {
   display: inline-block;
+.entry-comment-count {
+  display: inline-block;
+}
+.entry-comment-count a {
+  color: #777;
 }
 
 .post .thumb {
