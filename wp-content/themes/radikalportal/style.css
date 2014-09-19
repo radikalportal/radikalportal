@@ -283,10 +283,6 @@ body {
 .entry-comment-count {
   display: inline-block;
 }
-.entry-comment-count i {
-  font-size: 13px;
-}
-.entry-comment-count i,
 .entry-comment-count a {
   color: #777;
 }
