@@ -117,18 +117,14 @@ if (isset($faktabokser)) {
     </p>
     <p>Vi fjerner innlegg som er diskriminerende, hetsende og usaklige, spam og identiske kommentarer.</p>
   </div>
-  <div id="disqus_thread"></div>
-    <script type="text/javascript">
-    var disqus_shortname = 'radikalportal';
 
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-</div>
+<?php
+  // If comments are open or we have at least one comment, load up the comment template.
+  if ( comments_open() || get_comments_number() ) {
+    comments_template();
+  }
+?>
+
 <?php endif; ?>
 
     </div> <!--/.row -->
