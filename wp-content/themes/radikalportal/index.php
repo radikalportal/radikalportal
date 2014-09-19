@@ -31,9 +31,12 @@ query_posts($query_string . 'cat=-1,-387,-388,-415,-427,-428,-525&paged=' . $pag
         
         endwhile;
 
-        echo '<div class="text-center hidden-xs">';
-        radikalportal_paging_nav();
-        echo '</div>';
+        ?>
+<ul class="pager">
+  <li class="previous"><?php previous_posts_link('&larr; Forrige'); ?></li>
+  <li class="next"><?php next_posts_link('Neste &rarr;'); ?></li>
+</ul>
+        <?php
 
       else :
         // If no content, include the "No posts found" template.
