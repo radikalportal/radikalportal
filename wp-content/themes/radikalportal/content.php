@@ -58,6 +58,10 @@ $forfatterids = get_post_custom_values('forfatterid');
 </div>
 		| <span class="pubdate"><?php echo get_the_date("d.m.Y"); ?></span>
 
+    <div class="entry-comment-count">
+      <a href="<?php the_permalink() ?>#disqus_thread">
+    </div>
+
 		<?php
 			if ( is_single() ) :
 				the_title( '<h1 class="entry-title">', '</h1>' );
@@ -91,10 +95,6 @@ if (isset($forfatterids)) {
 		?>
 	</div><!-- .entry-summary -->
 	<?php endif; ?>
-
-    <div class="entry-comment-count">
-      <a href="<?php the_permalink() ?>#disqus_thread"></a>
-    </div>
 
 	</div>
 </div>
