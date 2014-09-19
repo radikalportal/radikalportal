@@ -171,6 +171,7 @@ body {
 
 .post .rest {
   padding-bottom: 20px;
+  min-height: 120px;
 }
 .entry-title {
   font-size: 28px;
@@ -295,6 +296,7 @@ body {
 }
 .entry-author {
   display: inline-block;
+}
 .entry-comment-count {
   display: inline-block;
 }
