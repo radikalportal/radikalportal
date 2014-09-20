@@ -46,6 +46,14 @@
     </div>
         | <span class="pubdate"><?php echo get_the_date("d.m.Y"); ?></span>
 
+|
+<div class="entry-comment-count">
+  <span class="glyphicon glyphicon-comment"></span>
+  <a href="<?php the_permalink() ?>#disqus_thread">
+    <?= get_comments_number(); ?>
+  </a>
+</div>
+
     <h1><?php the_title(); ?></h1>
   </div>
 </div>
