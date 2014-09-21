@@ -49,7 +49,7 @@
 |
 <div class="entry-comment-count">
   <span class="glyphicon glyphicon-comment"></span>
-  <a href="<?php the_permalink() ?>#disqus_thread">
+  <a href="<?php the_permalink() ?>#disqus_thread" data-disqus-identifier="<?php echo dsq_identifier_for_post($post); ?>">
     <?= get_comments_number(); ?>
   </a>
 </div>
