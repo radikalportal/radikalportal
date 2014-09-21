@@ -33,12 +33,7 @@ query_posts('cat=400&paged=' . $paged);
 
         endwhile;
 
-        ?>
-<ul class="pager">
-  <li class="previous"><?php previous_posts_link('&larr; Forrige'); ?></li>
-  <li class="next"><?php next_posts_link('Neste &rarr;'); ?></li>
-</ul>
-        <?php
+        get_template_part( 'pagination' );
 
       else :
         // If no content, include the "No posts found" template.
