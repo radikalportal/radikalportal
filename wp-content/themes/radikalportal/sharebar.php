@@ -1,4 +1,4 @@
-<div class="sharebar">
+<div class="sharebar hidden-print">
   <div style="float:left;padding:3px 0 0 0;">
     <div class="fb-like" data-href="<?= get_permalink(); ?>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
   </div>

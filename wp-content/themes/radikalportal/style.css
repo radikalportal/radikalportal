@@ -314,3 +314,20 @@ body {
 .calendar p {
   display: block;
 }
+
+@media print {
+  .main-content {
+    border: none;
+  }
+  blockquote {
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+  }
+  .entry-comment-count a:after,
+  .author-photo-frontpage a:after,
+  .entry-title a:after,
+   a.front-page-img:after {
+    content: none;
+  }
+}
