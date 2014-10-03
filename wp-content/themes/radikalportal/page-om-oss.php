@@ -19,7 +19,6 @@
 
 // Redaksjonens user ids.
 $redaksjon = array(
-	235,  // Erling Westenvik
 	121,  // Ingvar Kolbjørnsen
 	 10,  // Irene Kosberg Skagestad
 	 20,  // Jenny Dahl Bakken
