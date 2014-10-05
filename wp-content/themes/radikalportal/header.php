@@ -4,10 +4,6 @@
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width">
     <title><?php wp_title(' ', true, 'right'); ?></title>
-    <!--[if lt IE 9]>
-	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/js/respond.min.js" type="text/javascript"></script>
-    <![endif]-->
     <meta http-equiv="X-UA-Compatible" content="IE=9" />
     <meta name="description" content="<?php if ( is_single() ) {
         single_post_title('', true); 
