@@ -13,6 +13,14 @@ Template Name: Skrive-/Fotokonkurranse
 
 <img src="/wp-content/themes/radikalportal/img/skrive-fotokonkurranse-innhold.jpg" alt="Skrive-/Fotokonkurranse" style="width: 100%;">
 
+<br>
+<br>
+<div class="row">
+    <div class="col-md-8 col-md-offset-4">
+		<?php get_template_part('sharebar'); ?>
+    </div>
+</div>
+
 <?php endwhile; else: ?>
 	<p>Fant ingenting her.</p>
 <?php endif; ?>
