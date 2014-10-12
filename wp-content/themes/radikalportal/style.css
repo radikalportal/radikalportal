@@ -152,9 +152,8 @@ body {
   line-height: 13pt;
 }
 
-.post .rest {
-  padding-bottom: 20px;
-  min-height: 120px;
+.post {
+  margin-bottom: 20px;
 }
 .entry-title {
   font-size: 28px;
@@ -207,6 +206,9 @@ body {
   }
   .entry-title {
     font-size: 1.5em;
+  }
+  .post h1 {
+    font-size: 1.8em;
   }
 }
 
@@ -279,6 +281,8 @@ body {
 }
 .entry-author {
   display: inline-block;
+  top: -5px;
+  position: relative;
 }
 
 .entry-comment-count {
@@ -326,6 +330,7 @@ body {
   }
   .entry-comment-count a:after,
   .author-photo-frontpage a:after,
+  .author-name a:after,
   .entry-title a:after,
    a.front-page-img:after {
     content: none;

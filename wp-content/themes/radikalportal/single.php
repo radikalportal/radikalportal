@@ -94,28 +94,20 @@ if (isset($faktabokser)) {
 }
 ?>
 
-    <hr>
   </div> <!-- /.entry -->
 </div> <!-- /.span15 -->
 
 <div class="col-md-12">
   <?php get_template_part('sharebar'); ?>
+  <br>
 </div>
 
-<div class="col-md-12 hidden-xs">
-    <br>
-  <div class="hidden-phone"><?php wp_related_posts(); ?></div>
-</div>
-
-<div class="col-md-12">
-  <h3 class="page-header">Tips oss</h3>
-  Har du et tips om en sak du mener vi burde skrive om, eller en lenke vi burde dele på siden så send oss et <a href="http://radikalportal.no/tips-oss/">tips</a>.
-</div>
+<br>
 
 <?php if (!strcmp(get_post_meta($post->ID, 'ingendiskusjon', true), "1") == 0) : ?>
 <div class="col-md-12">
   <h3 class="page-header">Diskusjon</h3>
-  <div class="well debattregler">
+  <div class="well">
     <p>
       <strong>DEBATTREGLER:</strong>
       <br>
@@ -134,6 +126,18 @@ if (isset($faktabokser)) {
 ?>
 
 <?php endif; ?>
+
+<div class="col-md-12">
+  <br>
+  <h3 class="page-header">Tips oss</h3>
+  Har du et tips om en sak du mener vi burde skrive om, eller en lenke vi burde dele på siden så send oss et <a href="http://radikalportal.no/tips-oss/">tips</a>.
+</div>
+
+<div class="col-md-12 hidden-xs">
+  <br>
+  <br>
+  <div><?php wp_related_posts(); ?></div>
+</div>
 
     </div> <!--/.row -->
   </div> <!--/.post -->

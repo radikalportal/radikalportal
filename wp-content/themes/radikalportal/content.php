@@ -1,13 +1,13 @@
 
 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-<?php if ( is_home() ) { ?>
-<a class="front-page-img" href="<?php the_permalink() ?>"><?php
-if ( is_sticky() && has_post_thumbnail() ) {
-       the_post_thumbnail('large');
-}
-?></a>
-<?php } ?>
+<?php if ( is_home() ) : ?>
+<?php if ( is_sticky() && has_post_thumbnail() ) : ?>
+<a class="front-page-img" href="<?php the_permalink() ?>">
+<?php the_post_thumbnail('large'); ?>
+</a>
+<?php endif; ?>
+<?php endif; ?>
 
 <?php
 $forfatterids = get_post_custom_values('forfatterid');
@@ -32,7 +32,7 @@ $forfatterids = get_post_custom_values('forfatterid');
 <?php } ?>
 </div>
 
-<div class="media-body rest">
+<div class="media-body">
 
 <div class="entry-category">
          <?php
@@ -74,9 +74,21 @@ $forfatterids = get_post_custom_values('forfatterid');
 			endif;
 		?>
 
-        <div class="entry-author">
-        Av
-  <?php the_author(); ?>
+  <?php if ( is_search() ) : ?>
+  <div class="entry-summary">
+    <?php the_excerpt(); ?>
+  </div><!-- .entry-summary -->
+  <?php else : ?>
+  <div class="entry-summary">
+    <?php
+      the_excerpt();
+    ?>
+  </div><!-- .entry-summary -->
+  <?php endif; ?>
+
+<?php if (strcmp(get_the_author(), "Nyhet") != 0) : ?>
+  <div class="entry-author">
+Av <?php the_author(); ?>
 <?php
 if (isset($forfatterids)) {
   $cnt = count($forfatterids);
@@ -86,19 +98,8 @@ if (isset($forfatterids)) {
   }
 }
 ?>
-        </div>
-
-	<?php if ( is_search() ) : ?>
-	<div class="entry-summary">
-		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
-	<?php else : ?>
-	<div class="entry-summary">
-		<?php
-			the_excerpt();
-		?>
-	</div><!-- .entry-summary -->
-	<?php endif; ?>
+  </div>
+<?php endif; ?>
 
 	</div>
 </div>
