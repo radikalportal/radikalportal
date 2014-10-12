@@ -10,7 +10,7 @@
     } else {
         bloginfo('description');
     }
-    ?>" />
+    ?>" />
     <link rel="profile" href="http://gmpg.org/xfn/11" />
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/journal/bootstrap.min.css">
