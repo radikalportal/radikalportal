@@ -2,16 +2,15 @@
 Contributors: zemanta
 Tags: related,posts,post,related posts,plugin,seo
 License: GPLv2
-Requires at least: 3.3
-Tested up to: 3.9
-Stable tag: 3.4.2
+Requires at least: 3.6
+Tested up to: 4.0
+Stable tag: 3.5.1
 
-WordPress Related Posts generates a list of related posts with thumbnails and gives you click-through statistics.
+WordPress Related Posts - the plugin for related posts with thumbnails. Caching included.
 
 == Description ==
 
-Quickly increase your readers' engagement with your posts by adding Related Posts in the footer of your content. Automatically added Related Posts can increase your internal traffic up to 10%. Just install and activate. To attract attention and improve SEO, link out to Related Posts across the web from your compose screen. Search for posts and hand-pick them with ease. Recommendations are provided by Zemanta's world-class semantic service, including advanced analytics.
-The plugin also delivers statistics about Pageviews and Clicks*. It supports different styles, thumbnails and is fully customizable.
+Quickly increase your readers' engagement with your posts by adding Related Posts in the footer of your content. Automatically added Related Posts can increase your internal traffic up to 10%. Just install and activate. To attract attention and improve SEO, link out to Related Posts across the web from your compose screen. Search for posts and hand-pick them with ease. Recommendations are provided by Zemanta's world-class semantic service. Plugin supports different styles, thumbnails, is fully customizable and includes caching for improved performance. 
 
 After installation, go to Settings -> Related Posts in your plugins list and Turn on Advanced Features!
 
@@ -22,8 +21,6 @@ After installation, go to Settings -> Related Posts in your plugins list and Tur
 **Share the Link Love**
 
 [vimeo http://vimeo.com/91619827]
-
-  *  Note: Real time traffic analytics are provided via third party service.
 
 
 == Frequently Asked Questions ==
@@ -57,6 +54,10 @@ Yes, Zemanta is offered in different themes which you can also customize with si
 
 No, Zemanta does not use redirects and is juice friendly. :)
 
+= What about Terms of Service and Privacy Policy? =
+	
+Before using the plugin please read the full version of [Zemanta Terms of Service](http://www.zemanta.com/legal/terms-of-service/) and [Zemanta Privacy Policy](http://www.zemanta.com/legal/privacy/).
+
 == Installation ==
 
 = Via admin: =
@@ -71,14 +72,16 @@ No, Zemanta does not use redirects and is juice friendly. :)
 1. Download the plugin .zip file
 2. Log in to yourdomain.com/wp-admin
 3. Click Plugins -> Add New -> Upload
-4. After installation activate the plugin and click Turn on to get advanced features
+4. After installation activate the plugin and check advanced features
 5. If you use any caching plugin please clear the cache
 6. You're finished!
 
 == Screenshots ==
 1. WordPress Related Posts Default Theme.
-2. WordPress Related Posts reporting real time statistics for mobile and desktop devices.
-3. WordPress Related Posts responsive theme on a Galaxy Nexus and iPhone 4s.
+2. WordPress Related Posts responsive theme on a Galaxy Nexus and iPhone 4s.
+
+== Terms of service ==	
+The plugin source code is released under GPLv2. Usage of plugin is governed by [Zemanta Terms of Service](http://www.zemanta.com/legal/terms-of-service/) and [Zemanta Privacy Policy](http://www.zemanta.com/legal/privacy/).
 
 == Upgrade Notice ==
 
@@ -89,6 +92,17 @@ New thumbnailer might break backwards compatibility for blogs with custom thumbn
 Fix for security vulnerability. Upgrade immediately.
 
 == Changelog ==
+
+= 3.5.1 =
+* The subscription API forwards blog URLs
+* Responsive themes bugfix
+
+= 3.5 =
+* Removed statistics
+
+= 3.4.3 =
+* Updated HTTPS urls
+* Changed registration process
 
 = 3.4.2 =
 * Responsive themes bug fix

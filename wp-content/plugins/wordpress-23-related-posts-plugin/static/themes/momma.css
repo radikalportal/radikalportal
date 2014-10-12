@@ -117,8 +117,6 @@ ul.related_post li small {
 @media screen and (max-width: 480px) {
 	ul.related_post li {
 		display: inline-block !important;
-		width: auto !important;
-		min-height: auto !important;
 		clear: both !important;
         border:none !important;
 	}

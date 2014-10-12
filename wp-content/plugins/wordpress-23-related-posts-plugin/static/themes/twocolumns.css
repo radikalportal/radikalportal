@@ -66,13 +66,13 @@ div.wp_rp_footer a.wp_rp_edit {
 }
 @media screen and (max-width: 480px) {
 	ul.related_post {
-		-moz-column-count: 2 !important;
+		-moz-column-count: auto !important;
 		-moz-column-gap: normal !important;
 		-moz-column-rule: none !important;
-		-webkit-column-count: 2 !important;
+		-webkit-column-count:auto !important; 
 		-webkit-column-gap: normal !important;
 		-webkit-column-rule: none !important;
-		column-count: 2 !important;
+		column-count: auto !important;
 		column-gap: normal !important;
 		column-rule: none !important;
 	}

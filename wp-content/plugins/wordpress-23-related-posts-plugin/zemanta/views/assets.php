@@ -27,4 +27,4 @@ endfor;
 //]]>
 </script>
 
-<script type="text/javascript" id="zemanta-loader" src="https://s3.amazonaws.com/static.zemanta.com/plugins/wordpress-wprp/loader.js"></script>
+<script type="text/javascript" id="zemanta-loader" src="https://static.zemanta.com/plugins/wordpress-wprp/loader.js"></script>

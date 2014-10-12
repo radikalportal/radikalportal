@@ -19,26 +19,9 @@
 			</span>
 		</h2>
 	</div>
-	<!-- NOTIFICATIONS -->
-	<?php wp_rp_print_notifications(); ?>
-	
-	<?php if($meta['show_turn_on_button']): ?>
-	<!-- TURN ON STATISTICS PROMO -->
-	<div id="wp_rp_turn_on_statistics">
-		<div class="turn_on_wrap">
-			<h4>Turn on Related Posts and start using awesome features.</h4>
-			<div class="button_wrap">
-				<a data-type="singlebutton" href="#" class="zemanta-button turn-on">Turn on Related Posts</a>
-			</div>
-			<p>By turning on Related Posts you agree to <a href="http://www.zemanta.com/rp-tos" target="_blank">terms of service.</a></p>
-			<p>You'll get Advanced Settings, Themes, Thumbnails and Analytics Dashboard. These features are provided by <a target="_blank" href="http://www.zemanta.com">Zemanta</a> as a service.</p>
-		</div>
-		<img class="screendesc" src="<?php echo plugins_url("static/img/turnonscreen.jpg", $settings_file); ?>" />
-	</div>
-	<?php endif; ?>
-
-	<h2><?php _e('Subscribe to plugin updates and newsletter', 'wp_related_posts'); ?></h2>
-	<div class="container">
+	<?php if ($form_display == 'block'): ?>
+	<h2><?php _e('Subscribe to news and activity reports', 'wp_related_posts'); ?></h2>
+	<div class="container subscription-container">
 		<table class="form-table subscription-block">
 			<tr valign="top">
 				<th scope="row">
@@ -50,38 +33,19 @@
 					<a id="wp_rp_unsubscribe_button" href="#" class="button-primary"><?php _e('Unsubscribe', 'wp_related_posts'); ?></a>
 				</td>
 			</tr>
+			<tr valign="top">
+				<th scope="row"></th>
+				<td>
+					<?php _e("Subscribe and we'll start monitoring our network for your <a href=\"$blog_url\" target=\"_blank\">blog</a>. <br />We'll <strong>let you know</strong> when somebody links to you.", 'wp_related_posts'); ?>
+				</td>
+			</tr>
 		</table>
 	</div>
+	<?php endif;  ?>
 	
 	<!-- MAIN FORM -->
 	<form method="post" enctype="multipart/form-data" action="<?php echo $form_url; ?>" id="wp_rp_settings_form" style="display: <?php echo $form_display; ?>;">
-		<?php wp_nonce_field('wp_rp_settings', '_wp_rp_nonce') ?>
-		
-		<?php if ($options['ctr_dashboard_enabled']): ?>
-		<div id="wp_rp_earnings_holder" style="display:none;">
-			<h2><?php _e('Earnings', 'wp_related_posts'); ?></h2>
-			<div class="container">
-				<p>By displaying promoted posts on your site you've already earned:</p>
-				<div id="wp_rp_earnings_wrap">
-					<span class="num"></span>
-					<a href="#" class="claim disabled">claim
-						<span class="payout-explain">You can claim the money when it reaches <span class="payout"></span>.</span>
-					</a>
-				</div>
-			</div>
-		</div>
-		<div id="wp_rp_statistics_holder">
-			<div id="wp_rp_statistics_collapsible" block="statistics" class="settings_block collapsible  collapsed">
-				<a href="#" class="collapse-handle">Collapse</a>
-				<h2><?php _e('Statistics', 'wp_related_posts'); ?></h2>
-				<div class="container" <?php echo !$meta['show_statistics'] ? 'style="display: none;" ' : ''; ?>>
-					<div id="wp_rp_statistics_wrap">
-						<div class="message unavailable"><?php _e("Statistics currently unavailable",'wp_related_posts'); ?></div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<?php endif; ?>
+		<?php wp_nonce_field('wp_rp_settings', '_wp_rp_nonce') ?>		
 		<div id="wp_rp_basic_settings_collapsible" block="basic_settings" class="settings_block collapsible">
 			<a href="#" class="collapse-handle">Collapse</a>
 			<h2><?php _e("Basic settings",'wp_related_posts');?></h2>
@@ -241,17 +205,6 @@
 								<?php _e("Display Related Posts in Feed",'wp_related_posts');?>
 							</label>
 							<br />
-							<label>
-								<input name="wp_rp_ctr_dashboard_enabled" type="checkbox" id="wp_rp_ctr_dashboard_enabled" value="yes" <?php checked($options['ctr_dashboard_enabled']); ?> />
-								<?php _e("Turn statistics on",'wp_related_posts');?>*
-							</label>
-							<br />
-							<div style="display:<?php echo $meta['show_traffic_exchange'] ? 'block' : 'none' ?>;">
-								<label>
-									<input name="wp_rp_traffic_exchange_enabled" type="checkbox" id="wp_rp_traffic_exchange_enabled" value="yes"<?php checked($options['traffic_exchange_enabled']); ?>>
-									<?php _e("Enable traffic exchange with blogger networks",'wp_related_posts');?>
-								</label>
-							</div>
 							<div style="display:<?php echo $meta['remote_recommendations'] ? 'block' : 'none' ?>;">
 								<label>
 									<input name="wp_rp_promoted_content_enabled" type="checkbox" id="wp_rp_promoted_content_enabled" value="yes" <?php checked($options['promoted_content_enabled']); ?> />
@@ -280,8 +233,8 @@
 				
 				<p>But you <a href="http://zem.si/1eolNqf" target="_blank">can do more</a>. You can attract attention from other bloggers and improve your credibility by inserting recommendations that show up below your editor, while you write. This way everybody wins.</p>
 
-				<p>Also - you can now use our related articles widget while composing your posts in the <strong>Text mode</strong> of your editor. This way your workflow won't be interrupted by switching back and forth between <em>Visual</em> and <em>Text</em> mode.</p> 
-				
+				<p>Also - you can now use our related articles widget while composing your posts in the <strong>Text mode</strong> of your editor. This way your workflow won't be interrupted by switching back and forth between <em>Visual</em> and <em>Text</em> mode.</p>
+				<iframe src="//player.vimeo.com/video/98542850" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 				<h3>FAQ</h3>
 				<p><strong>Are manually added related posts available only for bloggers who write in English?</strong> <br />Yes.</p>
 				<p><strong>Will my posts be recommended to others?</strong> <br />Depends, check our <a href="http://zem.si/PLAzS1" target="_blank">guidelines</a> if you fit in.
