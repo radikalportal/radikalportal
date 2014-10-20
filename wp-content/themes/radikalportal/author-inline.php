@@ -12,11 +12,7 @@ userphoto_the_author_photo('', '',
 
 		</div>
 
-			<?php if (get_the_author_posts() > 1) : ?>
 			<div class="author-name"><?php the_author_posts_link(); ?></div>
-			<?php else : ?>
-			<div class="author-name"><?php the_author(); ?></div>
-			<?php endif; ?>
 
 			<div class="author-bio">
 			<?php the_author_description(); ?>
