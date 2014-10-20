@@ -19,6 +19,7 @@
 
 // Redaksjonens user ids.
 $redaksjon = array(
+	349,  // Christian Boger
 	121,  // Ingvar Kolbjørnsen
 	 10,  // Irene Kosberg Skagestad
 	 20,  // Jenny Dahl Bakken
@@ -27,7 +28,6 @@ $redaksjon = array(
  	 30,  // Julie Holm
 	 21,  // Linda Skjold Oksnes
 	195,  // Macel Ingles
-	226,  // Magnus Eriksson
 	225,  // Marek Jasinski
 	 22,  // Olav Elgvin
 	 13,  // Oscar Dybedahl
