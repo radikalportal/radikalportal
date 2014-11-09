@@ -26,9 +26,9 @@ $redaksjon = array(
 	 76,  // Joakim Møllersen
 	  6,  // John Y. Jones
  	 30,  // Julie Holm
+	263,  // Kjersti Opstad
 	 21,  // Linda Skjold Oksnes
 	195,  // Macel Ingles
-	225,  // Marek Jasinski
 	 22,  // Olav Elgvin
 	 13,  // Oscar Dybedahl
 	 16,  // Vegard Velle
