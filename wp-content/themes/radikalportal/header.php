@@ -78,7 +78,7 @@
 <div class="menu-toppmeny-container">
 <ul id="menu-toppmeny" class="nav navbar-nav">
 
-<li class="menu-item menu-item-type-post_type menu-item-object-page visible-xs"><a href="http://radikalportal.no/skrive-fotokonkurranse/">Skrive-/fotokonkurranse</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page visible-xs"><a href="/kategori/skrivekonkurranse/">Skrive-/fotokonkurranse</a></li>
 
 <?php
   wp_nav_menu(array('menu' => 'Toppmeny',
