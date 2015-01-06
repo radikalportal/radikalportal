@@ -1,5 +1,5 @@
 <?php
-define('WP_RP_VERSION', '3.5.1');
+define('WP_RP_VERSION', '3.5.3');
 
 define('WP_RP_PLUGIN_FILE', plugin_basename(__FILE__));
 
@@ -75,7 +75,11 @@ global $wp_rp_output;
 $wp_rp_output = array();
 function wp_rp_add_related_posts_hook($content) {
 	global $wp_rp_output, $post;
-
+	
+	if( !is_object($post) ) {
+		return $content;
+	}
+	
 	$options = wp_rp_get_options();
 
 	if ($content != "" && $post->post_type === 'post' && (($options["on_single_post"] && is_single()) || (is_feed() && $options["on_rss"]))) {
@@ -118,6 +122,8 @@ function wp_rp_get_platform_options() {
 function wp_rp_ajax_load_articles_callback() {
 	global $post;
 
+	$platform_options = wp_rp_get_platform_options();
+    
 	$getdata = stripslashes_deep($_GET);
 	if (!isset($getdata['post_id'])) {
 		die('error');
@@ -161,11 +167,23 @@ function wp_rp_ajax_load_articles_callback() {
 	$response_list = array();
 
 	foreach (array_slice($related_posts, $from) as $related_post) {
+		$excerpt_max_length = $platform_options["excerpt_max_length"];
+		
+		$excerpt = $related_post->post_excerpt;
+		if (!$excerpt) {
+			$excerpt = strip_shortcodes(strip_tags($related_post->post_content));
+		}
+		if ($excerpt) {
+			if (strlen($excerpt) > $excerpt_max_length) {
+				$excerpt = wp_rp_text_shorten($excerpt, $excerpt_max_length);
+			}
+		}
+
 		array_push($response_list, array(
 				'id' => $related_post->ID,
 				'url' => get_permalink($related_post->ID),
 				'title' => $related_post->post_title,
-				'excerpt' => $related_post->post_excerpt,
+				'excerpt' => $excerpt,
 				'date' => $related_post->post_date,
 				'comments' => $related_post->comment_count,
 				'img' => wp_rp_get_post_thumbnail_img($related_post, $image_size)

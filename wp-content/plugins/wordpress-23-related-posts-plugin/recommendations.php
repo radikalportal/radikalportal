@@ -184,7 +184,7 @@ function wp_rp_fetch_related_posts_v2($limit = 10, $exclude_ids = array()) {
 			$exclude_categories_labels = array();
 		}
 
-		$total_number_of_posts = $wpdb->get_col("SELECT count(distinct(post_id)) FROM " . $wpdb->prefix . "wp_rp_tags;", 0);
+		$total_number_of_posts = $wpdb->get_col("SELECT count(post_id) from (SELECT post_id FROM " . $wpdb->prefix . "wp_rp_tags group by post_id) t;", 0);
 		if (empty($total_number_of_posts)) {
 			return array();
 		}
