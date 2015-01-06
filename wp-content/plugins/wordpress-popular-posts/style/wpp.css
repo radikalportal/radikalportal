@@ -10,13 +10,18 @@ Use the following classes to style your popular posts list as you like.
 }
 
 	.wpp-list li { /* LI - post container */
-		/*display:inline-block;*/ /* <-- uncommenting this line is recommended when using post thumbnails */
+		overflow:auto;
+		display:block;
 		float:none;
-		clear:left;
+		clear:both;
+		margin: 5px 0 8px 0;
 	}
 
 		/* title styles */
 		.wpp-post-title {
+		color: #000000;
+		font-weight: bold;
+		font-size: 12px;
 		}
 		
 		/* thumbnail styles */
@@ -25,15 +30,18 @@ Use the following classes to style your popular posts list as you like.
 			float:left;
 			margin:0 5px 0 0;
 			border:none;
+			width: 75px;
+			heigth: 75px;
 		}
 		
 		/* excerpt styles */
 		.wpp-excerpt {
+		color: #000000;
+		font-size: 12px;
 		}
 		
 		/* Stats tag styles */
 		.post-stats {
-			display:block;
 			font-size:9px;
 			font-weight:bold;
 		}
@@ -45,9 +53,12 @@ Use the following classes to style your popular posts list as you like.
 			}
 			
 			.wpp-author {
+				font-style:italic;
 			}
 			
 			.wpp-date {
+				display:block;
+				clear:right;
 			}
 		
 		/* WP-PostRatings styles */
