@@ -21,8 +21,8 @@ class featured_video_plus_frontend {
 	 * @param featured_video_plus_instance required, dies without
 	 */
 	function __construct( $featured_video_plus_instance ) {
-        if ( !isset($featured_video_plus_instance) )
-            wp_die( 'featured_video_plus general instance required!', 'Error!' );
+		if ( !isset($featured_video_plus_instance) )
+			wp_die( 'featured_video_plus general instance required!', 'Error!' );
 
 		$this->featured_video_plus = $featured_video_plus_instance;
 	}
@@ -85,7 +85,8 @@ class featured_video_plus_frontend {
 
 		$options = get_option( 'fvp-settings' );
 
-		if (($options['usage']=='manual') || !has_post_video($post_id))
+		if ( ( isset($options['issingle']) && $options['issingle'] && ! is_single()) ||
+		     ( $options['usage']=='manual' || !has_post_video($post_id) ) )
 			return $html;
 
 		elseif ($options['usage']=='replace')
