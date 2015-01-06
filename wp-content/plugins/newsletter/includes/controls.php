@@ -73,12 +73,12 @@ class NewsletterControls {
             return true;
         die('Invalid call');
     }
-    
+
     function get_value($name) {
         if (!isset($this->data[$name])) return null;
         return $this->data[$name];
     }
-    
+
     function get_value_array($name) {
         if (!isset($this->data[$name]) || !is_array($this->data[$name])) return array();
         return $this->data[$name];
@@ -89,14 +89,14 @@ class NewsletterControls {
      */
     function show() {
         if (!empty($this->errors)) {
-            echo '<div class="newsletter-error">';
+            echo '<div class="error"><p>';
             echo $this->errors;
-            echo '</div>';
+            echo '</p></div>';
         }
         if (!empty($this->messages)) {
-            echo '<div class="newsletter-message">';
+            echo '<div class="updated"><p>';
             echo $this->messages;
-            echo '</div>';
+            echo '</p></div>';
         }
     }
 
@@ -153,7 +153,7 @@ class NewsletterControls {
      */
     function checkboxes_group($name, $values_labels) {
         $value_array = $this->get_value_array($name);
-        
+
         echo "<div class='newsletter-checkboxes-group'>";
         foreach ($values_labels as $value => $label) {
             echo "<div class='newsletter-checkboxes-item'>";
@@ -180,15 +180,21 @@ class NewsletterControls {
         $this->checkboxes_group($name, $list);
     }
 
+    /** Used to create a select which is part of a group of controls identified by $name that will
+     * produce an array of values as $_REQUEST['name'].
+     * @param string $name
+     * @param array $options Associative array
+     */
     function select_group($name, $options) {
         $value_array = $this->get_value_array($name);
-        
+
         echo '<select name="options[' . $name . '][]">';
 
         foreach ($options as $key => $label) {
             echo '<option value="' . $key . '"';
-            if (array_search($value, $value_array) !== false)
+            if (array_search($key, $value_array) !== false) {
                 echo ' selected';
+            }
             echo '>' . htmlspecialchars($label) . '</option>';
         }
 
@@ -258,7 +264,7 @@ class NewsletterControls {
 
     function value_date($name, $show_remaining) {
         $time = $this->get_value($name);
-        
+
         echo gmdate(get_option('date_format') . ' ' . get_option('time_format'), $time + get_option('gmt_offset') * 3600);
         $delta = $time - time();
         if ($show_remaining && $delta > 0) {
@@ -338,6 +344,9 @@ class NewsletterControls {
 
     function wp_editor($name, $settings = array()) {
         wp_editor($this->data[$name], $name, array_merge(array('textarea_name' => 'options[' . $name . ']', 'wpautop' => false), $settings));
+        if (!is_plugin_active('mce_table_buttons/mce_table_buttons.php')) {
+            echo '<p class="description">You can install <a href="https://wordpress.org/plugins/mce-table-buttons/" target="_blank">MCE Table Button</a> for a table management toolbar add on.</p>';
+        }
     }
 
     function textarea($name, $width = '100%', $height = '50') {
@@ -450,12 +459,12 @@ class NewsletterControls {
         echo '</div>';
         echo '<div class="hints">';
         echo 'User\'s preferences can be activated from the "Subscription Form" panel. They can be used to simulate lists or create private groups. The number is the "preference number". ';
-        echo '<a href="http://www.satollo.net/plugins/newsletter/newsletter-preferences" target="_blank">Read more about preferences</a>.';
+        echo '<a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">Read more about preferences</a>.';
         echo '</div>';
         }
 
     /**
-     * Creates a set of checkboxes all names $name[] and the preference number as value 
+     * Creates a set of checkboxes all names $name[] and the preference number as value
      * so the selected checkboxes are retrieved as an array of values ($REQUEST[$name]
      * will be an array if at east one preference is checked).
      */
@@ -471,12 +480,12 @@ class NewsletterControls {
             echo '</div>';
         }
         echo '<div style="clear: both"></div>';
-        echo '<a href="http://www.satollo.net/plugins/newsletter/newsletter-preferences" target="_blank">Click here know more about preferences.</a> They can be configured on Subscription/Form field panel.';
+        echo '<a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">Click here know more about preferences.</a> They can be configured on Subscription/Form field panel.';
         echo '</div>';
     }
 
     /** Creates as many selects as the active preferences with the three values
-     * 'any', 'yes', 'no' corresponding to the values 0, 1, 2. 
+     * 'any', 'yes', 'no' corresponding to the values 0, 1, 2.
      */
     function preferences_selects($name = 'preferences', $skip_empty = false) {
         $options_profile = get_option('newsletter_profile');
@@ -494,7 +503,7 @@ class NewsletterControls {
             echo '</div>';
         }
         echo '<div style="clear: both"></div>';
-        echo '<a href="http://www.satollo.net/plugins/newsletter/newsletter-preferences" target="_blank">Click here know more about preferences.</a> They can be configured on Subscription/Form field panel.';
+        echo '<a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">Click here know more about preferences.</a> They can be configured on Subscription/Form field panel.';
         echo '</div>';
     }
 
@@ -664,7 +673,7 @@ class NewsletterControls {
     function get_test_subscribers() {
         return NewsletterUsers::instance()->get_test_users();
     }
-    
+
     function css_font_size($name) {
         $value = $this->get_value($name);
 
@@ -677,7 +686,7 @@ class NewsletterControls {
         }
         echo '</select>&nbsp;px';
     }
-    
+
     function css_border($name) {
         $value = $this->get_value($name . '_width');
 
@@ -689,11 +698,11 @@ class NewsletterControls {
             echo '>' . $i . '</option>';
         }
         echo '</select>&nbsp;px&nbsp;&nbsp;';
-        
+
         $this->select($name . '_type', array('solid'=>'Solid', 'dashed'=>'Dashed'));
-        
+
         $this->color($name . '_color');
-        
+
         $value = $this->get_value($name . '_radius');
 
         echo '&nbsp;&nbsp;radius&nbsp;<select id="options-' . $name . '-radius" name="options[' . $name . '_radius]">';

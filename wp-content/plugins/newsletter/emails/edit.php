@@ -37,6 +37,7 @@ if ($controls->is_action('test') || $controls->is_action('save') || $controls->i
     $email['message_text'] = $controls->data['message_text'];
     $email['subject'] = $controls->data['subject'];
     $email['track'] = $controls->data['track'];
+    $email['private'] = $controls->data['private'];
 
     // Builds the extended options
     $email['options'] = array();
@@ -44,6 +45,7 @@ if ($controls->is_action('test') || $controls->is_action('save') || $controls->i
     $email['options']['preferences'] = $controls->data['preferences'];
     $email['options']['sex'] = $controls->data['sex'];
     $email['options']['status'] = $controls->data['status'];
+    $email['options']['status_operator'] = $controls->data['status_operator'];
     $email['options']['wp_users'] = $controls->data['wp_users'];
 
     $email['options'] = serialize($email['options']);
@@ -57,9 +59,9 @@ if ($controls->is_action('test') || $controls->is_action('save') || $controls->i
     // Before send, we build the query to extract subscriber, so the delivery engine does not
     // have to worry about the email parameters
     if ($controls->data['status'] == 'S') {
-        $query = "select * from " . $wpdb->prefix . "newsletter where status='S'";
+        $query = "select * from " . NEWSLETTER_USERS_TABLE . " where status='S'";
     } else {
-        $query = "select * from " . $wpdb->prefix . "newsletter where status='C'";
+        $query = "select * from " . NEWSLETTER_USERS_TABLE . " where status='C'";
     }
 
     if ($controls->data['wp_users'] == '1') {
@@ -70,10 +72,11 @@ if ($controls->is_action('test') || $controls->is_action('save') || $controls->i
     if (is_array($preferences)) {
 
         // Not set one of the preferences specified
+        $operator = $controls->data['preferences_status_operator'] == 0?' or ':' and ';
         if ($controls->data['preferences_status'] == 1) {
             $query .= " and (";
             foreach ($preferences as $x) {
-                $query .= "list_" . $x . "=0 or ";
+                $query .= "list_" . $x . "=0" . $operator;
             }
             $query = substr($query, 0, -4);
             $query .= ")";
@@ -81,7 +84,7 @@ if ($controls->is_action('test') || $controls->is_action('save') || $controls->i
         else {
             $query .= " and (";
             foreach ($preferences as $x) {
-                $query .= "list_" . $x . "=1 or ";
+                $query .= "list_" . $x . "=1" . $operator;
             }
             $query = substr($query, 0, -4);
             $query .= ")";
@@ -111,7 +114,7 @@ if ($controls->is_action('test') || $controls->is_action('save') || $controls->i
     if ($controls->is_action('editor')) {
         $email['editor'] = $email['editor'] == 0?1:0;
     }
-    
+
     // Cleans up of tag
     $email['message'] = NewsletterModule::clean_url_tags($email['message']);
 
@@ -127,23 +130,23 @@ if ($controls->is_action('test') || $controls->is_action('save') || $controls->i
 
 if ($controls->is_action('send')) {
 
-    $wpdb->update($wpdb->prefix . 'newsletter_emails', array('status' => 'sending'), array('id' => $email_id));
+    $wpdb->update(NEWSLETTER_EMAILS_TABLE, array('status' => 'sending'), array('id' => $email_id));
     $email['status'] = 'sending';
     $controls->messages .= "Email added to the queue.";
 }
 
 if ($controls->is_action('pause')) {
-    $wpdb->update($wpdb->prefix . 'newsletter_emails', array('status' => 'paused'), array('id' => $email_id));
+    $wpdb->update(NEWSLETTER_EMAILS_TABLE, array('status' => 'paused'), array('id' => $email_id));
     $email['status'] = 'paused';
 }
 
 if ($controls->is_action('continue')) {
-    $wpdb->update($wpdb->prefix . 'newsletter_emails', array('status' => 'sending'), array('id' => $email_id));
+    $wpdb->update(NEWSLETTER_EMAILS_TABLE, array('status' => 'sending'), array('id' => $email_id));
     $email['status'] = 'sending';
 }
 
 if ($controls->is_action('abort')) {
-    $wpdb->query("update " . $wpdb->prefix . "newsletter_emails set last_id=0, total=0, sent=0, status='new' where id=" . $email_id);
+    $wpdb->query("update " . NEWSLETTER_EMAILS_TABLE . " set last_id=0, total=0, sent=0, status='new' where id=" . $email_id);
     $email['status'] = 'new';
     $email['total'] = 0;
     $email['sent'] = 0;
@@ -154,10 +157,10 @@ if ($controls->is_action('abort')) {
 if ($controls->is_action('test')) {
     $users = NewsletterUsers::instance()->get_test_users();
     if (count($users) == 0) {
-        $controls->errors = 'There are no test subscribers. Read more about test subscribers <a href="http://www.satollo.net/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
+        $controls->errors = 'There are no test subscribers. Read more about test subscribers <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
     } else {
         Newsletter::instance()->send(Newsletter::instance()->get_email($email_id), $users);
-        $controls->messages .= 'Test emails sent to ' . count($users) . ' test subscribers. Read more about test subscribers <a href="http://www.satollo.net/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
+        $controls->messages .= 'Test emails sent to ' . count($users) . ' test subscribers. Read more about test subscribers <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
     }
     $controls->messages .= '<br>If diagnostic emails are delivered but test emails are not, try to change the encoding to "base 64" on main configuration panel';
 }
@@ -179,9 +182,11 @@ if ($email['editor'] == 0) {
 <script type="text/javascript" src="<?php echo plugins_url('newsletter'); ?>/tiny_mce/tiny_mce.js"></script>
 <script type="text/javascript">
     tinyMCE.init({
+        height: 700,
         mode : "specific_textareas",
         editor_selector : "visual",
         theme : "advanced",
+        entity_encoding : "raw",
         plugins: "table,fullscreen,legacyoutput",
         theme_advanced_disable : "styleselect",
         theme_advanced_buttons1_add: "forecolor,blockquote,code,fontsizeselect,fontselect",
@@ -192,7 +197,7 @@ if ($email['editor'] == 0) {
         theme_advanced_resizing : true,
         theme_advanced_toolbar_location : "top",
         document_base_url : "<?php echo get_option('home'); ?>/",
-        content_css: "<?php echo plugins_url('newsletter') . '/emails/css.php?id=' . $email_id . '&' . time(); ?>"
+        content_css: ["<?php echo plugins_url('newsletter')?>/emails/editor.css", "<?php echo plugins_url('newsletter') . '/emails/css.php?id=' . $email_id . '&' . time(); ?>"]
     });
 
     jQuery(document).ready(function() {
@@ -212,14 +217,14 @@ if ($email['editor'] == 0) {
 
 <div class="wrap">
 
-    <?php //$help_url = 'http://www.satollo.net/plugins/newsletter/newsletters-module'; ?>
+    <?php //$help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/newsletters-module'; ?>
     <?php //include NEWSLETTER_DIR . '/header-new.php'; ?>
 
     <div id="newsletter-title">
     <h2>Edit Newsletter</h2>
      </div>
     <div class="newsletter-separator"></div>
-    
+
     <?php
     if ($controls->data['status'] == 'S') {
         echo '<div class="newsletter-message">Warning! This email is configured to be sent to NOT CONFIRMED subscribers.</div>';
@@ -253,25 +258,15 @@ if ($email['editor'] == 0) {
 
 
             <div id="tabs-a">
-                <table class="form-table">
-                    <tr valign="top">
-                        <th>Subject</th>
-                        <td>
-                            <?php $controls->text('subject', 70); ?>
-                        </td>
-                    </tr>
 
-                    <tr valign="top">
-                        <th>Message</th>
-                        <td>
+                            <?php $controls->text('subject', 70, 'Subject'); ?>
+
                             <input id="upload_image_button" type="button" value="Choose or upload an image" />
-                            <?php $email['editor'] == 0 ? $controls->editor('message', 30) : $controls->textarea_fixed('message', '100%', '400'); ?>
+                            <?php $email['editor'] == 0 ? $controls->editor('message', 30) : $controls->textarea_fixed('message', '100%', '700'); ?>
                             <div class="hints">
-                                <a href="http://www.satollo.net/plugins/newsletter/newsletter-tags" target="">See the list of all tags</a> that can be used on the email text.
+                                <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-tags" target="">See the list of all tags</a> that can be used on the email text.
                             </div>
-                        </td>
-                    </tr>
-                </table>
+                        
             </div>
 
 
@@ -295,7 +290,7 @@ if ($email['editor'] == 0) {
 
             <div id="tabs-c">
                 <table class="form-table">
-                    
+
                     <tr valign="top">
                         <th><?php _e('Gender', 'newsletter'); ?></th>
                         <td>
@@ -308,19 +303,21 @@ if ($email['editor'] == 0) {
                     <tr valign="top">
                         <th><?php _e('Subscriber preferences', 'newsletter'); ?></th>
                         <td>
-                            Subscribers with at least one preference
-                            <?php $controls->select('preferences_status', array(0=>'ACTIVE', 1=>'NOT ACTIVE')); ?>
+                            Subscribers with
+                            <?php $controls->select('preferences_status_operator', array(0=>'at least one preference', 1=>'all preferences')); ?>
+
+                            <?php $controls->select('preferences_status', array(0=>'active', 1=>'not active')); ?>
                             between the selected ones below:
 
                             <?php $controls->preferences_group('preferences', true); ?>
                             <div class="hints">
                                 You can address the newsletter to subscribers who selected at least one of the options or to who
                                 has not selected at least one of the options.
-                                <a href="http://www.satollo.net/plugins/newsletter/newsletter-preferences" target="_blank">Read more about the "NOT ACTIVE" usage</a>.
+                                <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">Read more about the "NOT ACTIVE" usage</a>.
                             </div>
                         </td>
                     </tr>
-                    
+
                     <tr valign="top">
                         <th>Subscriber status</th>
                         <td>
@@ -365,6 +362,15 @@ if ($email['editor'] == 0) {
             <div id="tabs-d">
                 <table class="form-table">
                     <tr valign="top">
+                        <th>Private?</th>
+                        <td>
+                            <?php $controls->yesno('private'); ?>
+                            <div class="hints">
+                                Potentially used for public showing of a newsletter. Actually has not effects.
+                            </div>
+                        </td>
+                    </tr>
+                    <tr valign="top">
                         <th>Track clicks and message opening?</th>
                         <td>
                             <?php $controls->yesno('track'); ?>
@@ -378,7 +384,7 @@ if ($email['editor'] == 0) {
                         <th>Send on</th>
                         <td>
                             <?php $controls->datetime('send_on'); ?> (<?php echo date_i18n(get_option('date_format') . ' ' . get_option('time_format')); ?> )
-                        
+
                         <div class="hints">
                                 Change this date to schedule this newsletter.
                             </div>

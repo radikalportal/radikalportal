@@ -1,5 +1,8 @@
 <?php
 
+header('Content-Type: text/html;charset=UTF-8');
+header('X-Robots-Tag: noindex,nofollow,noarchive');
+header('Cache-Control: no-cache,no-store,private');
 include '../../../../wp-load.php';
 
 $user = Newsletter::instance()->get_user_from_request(true);
@@ -10,14 +13,16 @@ $url = $_REQUEST['nu'];
 
 switch ($field) {
     case 'sex':
-        if (!in_array($value, array('f', 'm', 'n'))) die('Invalid sex value');
+        if (!in_array($value, array('f', 'm', 'n')))
+            die('Invalid sex value');
         NewsletterUsers::instance()->set_user_field($user->id, 'sex', $value);
         break;
     // Should be managed by Feed by Mail
     case 'feed':
         if (isset($value) && ($value === '0' || $value === '1')) {
             NewsletterUsers::instance()->set_user_field($user->id, 'feed', $value);
-        } else die('Invalid feed value');
+        } else
+            die('Invalid feed value');
         break;
 }
 

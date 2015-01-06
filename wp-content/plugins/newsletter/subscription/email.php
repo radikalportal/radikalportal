@@ -1,20 +1,13 @@
 <?php
 /*
- * To customize this file, do not edit it. Instead use the sample alternative email-alternative.php
- * and copy it on
+ * NEVER EDIT THIS FILE OR COPY IT SOMEWHERE ELSE!
  *
- * wp-content/extensions/newsletter/subscription/email.php
+ * See the email-alternative.php to customized the confirmation and welcome
+ * emails layout.
  *
- * creating the folders as needed. Then customize that file.
- *
- * Remember to keep at least the line of code
- *
- * <?php echo $message; ?>
- *
- * which prints the current email body created by Newsletter based on te current subscription
- * process step.
  */
 
+// Check for an alternative email builder.
 if (is_file(WP_CONTENT_DIR . '/extensions/newsletter/subscription/email.php')) {
   include WP_CONTENT_DIR . '/extensions/newsletter/subscription/email.php';
   return;

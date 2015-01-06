@@ -46,5 +46,11 @@ $social_icon_url = plugins_url('emails/themes/default/images', 'newsletter/plugi
                 <a href="<?php echo $theme_options['theme_youtube'] ?>"><img src="<?php echo $social_icon_url ?>/youtube.png"><br>Youtube</a>
             </td>
         <?php } ?>
+            
+        <?php if (!empty($theme_options['theme_soundcloud'])) { ?>
+            <td style="text-align: center; vertical-align: top" align="center" valign="top">
+                <a href="<?php echo $theme_options['theme_soundcloud'] ?>"><img src="<?php echo $social_icon_url ?>/soundcloud.png"><br>SoundCloud</a>
+            </td>
+        <?php } ?>
     </tr>
 </table>

@@ -3,6 +3,9 @@
  * This is a generic viewer for sent emails. It is not binded to one shot emails, it can display even the emails from
  * updates or feed by mail module.
  */
+header('Content-Type: text/html;charset=UTF-8');
+header('X-Robots-Tag: noindex,nofollow,noarchive');
+header('Cache-Control: no-cache,no-store,private');
 include '../../../../wp-load.php';
 
 // TODO: Change to Newsletter::instance()->get:email(), not urgent
@@ -15,9 +18,6 @@ if (is_file(WP_CONTENT_DIR . '/extensions/newsletter/view.php')) {
   include WP_CONTENT_DIR . '/extensions/newsletter/view.php';
   die();
 }
-
-// Force the UTF-8 charset
-header('Content-Type: text/html;charset=UTF-8');
 
 echo $newsletter->replace($email->message, $user, $email->id);
 ?>

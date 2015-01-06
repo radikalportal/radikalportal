@@ -46,7 +46,7 @@ if ($controls->is_action('search')) {
   if (empty($controls->data['search_order'])) $order = 'email';
   if ($controls->data['search_order'] == 'id') $order = 'id desc';
 
-  $query = "select * from " . $wpdb->prefix . "newsletter where 1=1";
+  $query = "select * from " . NEWSLETTER_USERS_TABLE . " where 1=1";
 
   if (!empty($controls->data['search_status'])) {
     $query .= " and status='" . $wpdb->escape($controls->data['search_status']) . "'";
@@ -91,7 +91,7 @@ else {
 
 <div class="wrap">
 
-    <?php $help_url = 'http://www.satollo.net/plugins/newsletter/subscribers-module'; ?>
+    <?php $help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module'; ?>
     <?php include NEWSLETTER_DIR . '/header-new.php'; ?>
 
     <?php include NEWSLETTER_DIR . '/users/menu.inc.php'; ?>
@@ -258,7 +258,7 @@ else {
 <?php if ($options['search_clicks'] == 1) { ?>
     <td><small>
     <?php
-    $clicks = $wpdb->get_results($wpdb->prepare("select * from " . $wpdb->prefix . "newsletter_stats where user_id=%d order by newsletter", $s->id));
+    $clicks = $wpdb->get_results($wpdb->prepare("select * from " . NEWSLETTER_STATS_TABLE . " where user_id=%d order by newsletter", $s->id));
     foreach ($clicks as &$click) {
     ?>
     <?php echo $click->newsletter; ?>: <?php echo $click->url; ?><br />

@@ -19,7 +19,7 @@ class NewsletterEmails extends NewsletterModule {
 
     function __construct() {
         $this->themes = new NewsletterThemes('emails');
-        parent::__construct('emails', '1.1.0');
+        parent::__construct('emails', '1.1.1');
     }
 
     function upgrade() {
@@ -31,6 +31,7 @@ class NewsletterEmails extends NewsletterModule {
         $this->upgrade_query("alter table " . NEWSLETTER_EMAILS_TABLE . " add column token varchar(10) not null default ''");
         $this->upgrade_query("alter table " . NEWSLETTER_EMAILS_TABLE . " drop column visibility");
         $this->upgrade_query("update " . NEWSLETTER_EMAILS_TABLE . " set type='message' where type=''");
+        $this->upgrade_query("alter table " . NEWSLETTER_EMAILS_TABLE . " add column private tinyint(1) not null default 0");
 
         // Force a token to email without one already set.
         $token = self::get_token();

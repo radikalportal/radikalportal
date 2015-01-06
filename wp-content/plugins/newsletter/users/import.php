@@ -31,13 +31,16 @@ if ($controls->is_action('import')) {
     foreach ($lines as &$line) {
         // Parse the CSV line
         $line = trim($line);
-        if ($line == '')
+        if ($line == '') {
             continue;
-        if ($line[0] == '#' || $line[0] == ';')
+        }
+        if ($line[0] == '#' || $line[0] == ';') {
             continue;
+        }
         $separator = $controls->data['separator'];
-        if ($separator == 'tab')
+        if ($separator == 'tab') {
             $separator = "\t";
+        }
         $data = explode($separator, $line);
 
         // Builds a subscriber data structure
@@ -52,11 +55,19 @@ if ($controls->is_action('import')) {
         if ($subscriber == null) {
             $subscriber = array();
             $subscriber['email'] = $email;
-            $subscriber['name'] = $newsletter->normalize_name($data[1]);
-            $subscriber['surname'] = $newsletter->normalize_name($data[2]);
+            if (isset($data[1])) {
+                $subscriber['name'] = $newsletter->normalize_name($data[1]);
+            }
+            if (isset($data[2])) {
+                $subscriber['surname'] = $newsletter->normalize_name($data[2]);
+            }
+            if (isset($data[3])) {
+                $subscriber['sex'] = $newsletter->normalize_sex($data[3]);
+            }
             $subscriber['status'] = 'C';
-            foreach ($controls->data['preferences'] as $i)
+            foreach ($controls->data['preferences'] as $i) {
                 $subscriber['list_' . $i] = 1;
+            }
             NewsletterUsers::instance()->save_user($subscriber);
             $results .= '[ADDED] ' . $line . "\n";
             $added_count++;
@@ -100,7 +111,7 @@ if ($controls->is_action('import')) {
 ?>
 
 <div class="wrap">
-    <?php $help_url = 'http://www.satollo.net/plugins/newsletter/subscribers-module'; ?>
+    <?php $help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module'; ?>
     <?php include NEWSLETTER_DIR . '/header-new.php'; ?>
 
     <div id="newsletter-title">
@@ -195,11 +206,12 @@ if ($controls->is_action('import')) {
 
     <p>
         Import list format is:<br /><br />
-        <b>email 1</b><i>[separator]</i><b>first name 1</b><i>[separator]</i><b>last name 1</b><i>[new line]</i><br />
-        <b>email 2</b><i>[separator]</i><b>first name 2</b><i>[separator]</i><b>last name 2</b><i>[new line]</i><br />
+        <b>email 1</b><i>[separator]</i><b>first name 1</b><i>[separator]</i><b>last name 1</b><i>[separator]</i><b>gender 1</b><i>[new line]</i><br />
+        <b>email 2</b><i>[separator]</i><b>first name 2</b><i>[separator]</i><b>last name 2</b><i>[separator]</i><b>gender 2</b><i>[new line]</i><br />
         <br />
         where [separator] must be selected from the available ones. Empty lines and lines starting with "#" will be skipped. There is
-        no separator essaping mechanism, so be sure that field values do not contain the selected separator.
+        no separator escaping mechanism, so be sure that field values do not contain the selected separator. The only required field is the email
+        all other fields are options. Gender must be "m" or "f".
     </p>
 
 </div>

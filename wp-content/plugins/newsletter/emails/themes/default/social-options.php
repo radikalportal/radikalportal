@@ -32,4 +32,8 @@
         <th>YouTube</th>
         <td><?php $controls->text_url('theme_youtube', 30); ?></td>
     </tr>
+    <tr>
+        <th>Soundcloud</th>
+        <td><?php $controls->text_url('theme_soundcloud', 30); ?></td>
+    </tr>
 </table>

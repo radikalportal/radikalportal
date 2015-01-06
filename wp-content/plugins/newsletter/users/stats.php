@@ -1,5 +1,5 @@
 <?php
-$all_count = $wpdb->get_var("select count(*) from " . $wpdb->prefix . "newsletter");
+$all_count = $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE);
 $options_profile = get_option('newsletter_profile');
 
 $module = NewsletterUsers::instance();
@@ -8,7 +8,7 @@ $module = NewsletterUsers::instance();
 
 <div class="wrap">
 
-    <?php $help_url = 'http://www.satollo.net/plugins/newsletter/subscribers-module'; ?>
+    <?php $help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module'; ?>
     <?php include NEWSLETTER_DIR . '/header-new.php'; ?>
 
     <div id="newsletter-title">
@@ -39,37 +39,37 @@ $module = NewsletterUsers::instance();
                 <tr valign="top">
                     <td>Any</td>
                     <td>
-                        <?php echo $wpdb->get_var("select count(*) from " . $wpdb->prefix . "newsletter"); ?>
+                        <?php echo $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE); ?>
                     </td>
                 </tr>
                 <tr>
                     <td>Confirmed</td>
                     <td>
-                        <?php echo $wpdb->get_var("select count(*) from " . $wpdb->prefix . "newsletter where status='C'"); ?>
+                        <?php echo $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE . " where status='C'"); ?>
                     </td>
                 </tr>
                 <tr>
                     <td>Not confirmed</td>
                     <td>
-                        <?php echo $wpdb->get_var("select count(*) from " . $wpdb->prefix . "newsletter where status='S'"); ?>
+                        <?php echo $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE . " where status='S'"); ?>
                     </td>
                 </tr>
                 <tr>
                     <td>Subscribed to feed by mail</td>
                     <td>
-                        <?php echo $wpdb->get_var("select count(*) from " . $wpdb->prefix . "newsletter where status='C' and feed=1"); ?>
+                        <?php echo $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE . " where status='C' and feed=1"); ?>
                     </td>
                 </tr>
                 <tr>
                     <td>Unsubscribed</td>
                     <td>
-                        <?php echo $wpdb->get_var("select count(*) from " . $wpdb->prefix . "newsletter where status='U'"); ?>
+                        <?php echo $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE . " where status='U'"); ?>
                     </td>
                 </tr>
                 <tr>
                     <td>Bounced</td>
                     <td>
-                        <?php echo $wpdb->get_var("select count(*) from " . $wpdb->prefix . "newsletter where status='B'"); ?>
+                        <?php echo $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE . " where status='B'"); ?>
                     </td>
                 </tr>
             </table>
@@ -82,7 +82,7 @@ $module = NewsletterUsers::instance();
             <div class="tab-preamble">
                 <p>
                     User count by preference.
-                    <a href="http://www.satollo.net/plugins/newsletter/newsletter-preferences" target="_blank">Read more about preferences</a> and/or
+                    <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">Read more about preferences</a> and/or
                     configure them from te "Subscription Form" panel.
                 <p>
             </div>
@@ -98,7 +98,7 @@ $module = NewsletterUsers::instance();
                     <tr>
                         <td><?php echo '(' . $i . ') ' . $options_profile['list_' . $i]; ?></td>
                         <td>
-                            <?php echo $wpdb->get_var("select count(*) from " . $wpdb->prefix . "newsletter where list_" . $i . "=1 and status='C'"); ?>
+                            <?php echo $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE . " where list_" . $i . "=1 and status='C'"); ?>
                         </td>
                     </tr>
                 <?php } ?>
@@ -110,7 +110,7 @@ $module = NewsletterUsers::instance();
         <div id="tabs-countries">
             <div class="tab-preamble">
                 <?php if (!class_exists('NewsletterReports')) { ?>
-                    <p><strong>The <a href="http://www.satollo.net/plugins/newsletter/reports-module" target="_blank">Reports Extension</a> is required
+                    <p><strong>The <a href="http://www.thenewsletterplugin.com/plugins/newsletter/reports-module" target="_blank">Reports Extension</a> is required
                             to compute the data for this chart.</strong></p>
                 <?php } ?>
                 <p>
@@ -119,7 +119,7 @@ $module = NewsletterUsers::instance();
             </div>
             <?php
             if (class_exists('NewsletterReports')) {
-                $countries = $wpdb->get_results("select country, count(*) as total from " . $wpdb->prefix . "newsletter where status='C' and country<>'' group by country order by total");
+                $countries = $wpdb->get_results("select country, count(*) as total from " . NEWSLETTER_USERS_TABLE . " where status='C' and country<>'' group by country order by total");
             }
             ?>
 
@@ -140,7 +140,7 @@ $module = NewsletterUsers::instance();
                 </p>
             </div>
             <?php
-            $list = $wpdb->get_results("select referrer, count(*) as total from " . $wpdb->prefix . "newsletter where status='C' group by referrer order by total desc");
+            $list = $wpdb->get_results("select referrer, count(*) as total from " . NEWSLETTER_USERS_TABLE . " where status='C' group by referrer order by total desc");
             ?>
             <table class="widefat" style="width: 300px">
                 <thead><tr><th>Referrer</th><th>Total</th></thead>
@@ -162,7 +162,7 @@ $module = NewsletterUsers::instance();
             </div>
 
             <?php
-            $list = $wpdb->get_results("select http_referer, count(*) as total from " . $wpdb->prefix . "newsletter where status='C' group by http_referer order by count(*) desc limit 100");
+            $list = $wpdb->get_results("select http_referer, count(*) as total from " . NEWSLETTER_USERS_TABLE . " where status='C' group by http_referer order by count(*) desc limit 100");
             ?>
             <table class="widefat" style="width: 300px">
                 <thead><tr><th>URL</th><th>Total</th></thead>
@@ -177,8 +177,8 @@ $module = NewsletterUsers::instance();
         <div id="tabs-gender">
 
             <?php
-            $male_count = $wpdb->get_var("select count(*) from " . $wpdb->prefix . "newsletter where sex='m'");
-            $female_count = $wpdb->get_var("select count(*) from " . $wpdb->prefix . "newsletter where sex='f'");
+            $male_count = $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE . " where sex='m'");
+            $female_count = $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE . " where sex='f'");
             $other_count = ($all_count - $male_count - $female_count)
             ?>
             <table class="widefat" style="width: 300px">
@@ -197,7 +197,7 @@ $module = NewsletterUsers::instance();
 
             <h4>Subscriptions by month (max 24 months)</h4>
             <?php
-            $months = $wpdb->get_results("select count(*) as c, concat(year(created), '-', date_format(created, '%m')) as d from " . $wpdb->prefix . "newsletter where status='C' group by concat(year(created), '-', date_format(created, '%m')) order by d desc limit 24");
+            $months = $wpdb->get_results("select count(*) as c, concat(year(created), '-', date_format(created, '%m')) as d from " . NEWSLETTER_USERS_TABLE . " where status='C' group by concat(year(created), '-', date_format(created, '%m')) order by d desc limit 24");
             ?>
             <div id="months-chart"></div>
 
@@ -218,7 +218,7 @@ $module = NewsletterUsers::instance();
 
             <h4>Subscriptions by day (max 90 days)</h4>
             <?php
-            $list = $wpdb->get_results("select count(*) as c, date(created) as d from " . $wpdb->prefix . "newsletter where status='C' group by date(created) order by d desc limit 90");
+            $list = $wpdb->get_results("select count(*) as c, date(created) as d from " . NEWSLETTER_USERS_TABLE . " where status='C' group by date(created) order by d desc limit 90");
             ?>
             <table class="widefat" style="width: 300px">
                 <thead>

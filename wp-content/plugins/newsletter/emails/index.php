@@ -48,7 +48,7 @@ $emails = Newsletter::instance()->get_emails('message');
 
 <div class="wrap">
 
-    <?php $help_url = 'http://www.satollo.net/plugins/newsletter/newsletters-module'; ?>
+    <?php $help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/newsletters-module'; ?>
     <?php include NEWSLETTER_DIR . '/header-new.php'; ?>
 
 <div id="newsletter-title">

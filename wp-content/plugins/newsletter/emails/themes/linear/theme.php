@@ -5,12 +5,19 @@ $filters = array();
 if (!empty($theme_options['theme_categories'])) {
     $filters['category__in'] = $theme_options['theme_categories'];
 }
-if (empty($theme_options['theme_max_posts']))
+
+if (empty($theme_options['theme_max_posts'])) {
     $filters['showposts'] = 10;
-else
+} else {
     $filters['showposts'] = (int) $theme_options['theme_max_posts'];
+}
+
+if (!empty($theme_options['theme_post_types'])) {
+    $filters['post_type'] = $theme_options['theme_post_types'];
+}
 
 $posts = get_posts($filters);
+
 ?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html>
     <head>
@@ -45,7 +52,7 @@ $posts = get_posts($filters);
                     <table border="0" cellpadding="0" cellspacing="0" width="600" bgcolor="#FFFFFF">
                         <tr>
                             <td align="center" valign="middle" height="150" style="color: #202020;font-family: Arial;font-size: 34px;font-weight: bold;line-height: 100%;padding: 5px 0 -2px 0;border-width: 1px 0px;border-style: solid;border-color: #dddddd;">
-<?php echo get_option('blogname'); ?>
+                                <?php echo get_option('blogname'); ?>
                             </td>
                         </tr>
                     </table>
@@ -74,7 +81,7 @@ $posts = get_posts($filters);
                                         <?php } ?>
                                             </td>
                                         </tr>
-<?php } ?>
+                                    <?php } ?>
                                 </table>
                             </td>
 
@@ -83,18 +90,17 @@ $posts = get_posts($filters);
                                     <tr>
                                         <td valign="top">
 
-                                                <?php foreach ($posts as $post) {
-                                                    setup_postdata($post);
-                                                    ?>
+                                            <?php foreach ($posts as $post) {
+                                                setup_postdata($post);
+                                            ?>
                                                 <h2 style="color: #202020;font-family: Arial;font-size: 20px;font-weight: bold;margin-top: 0;margin-bottom: 10px;border-bottom: 1px solid #efefef;">
                                                     <?php the_title(); ?>
                                                 </h2>
                                                 <center><img src="<?php echo newsletter_get_post_image($post->ID, 'medium'); ?>"></center>
                                                 <div style="color: #505050;font-family: Arial;font-size: 14px;line-height: 150%;">
-    <?php the_excerpt(); ?>
+                                                    <?php the_excerpt(); ?>
                                                 </div>
-<?php } ?>
-
+                                            <?php } ?>
                                         </td>
                                     </tr>
                                 </table>

@@ -45,7 +45,7 @@ class NewsletterStatistics extends NewsletterModule {
         $this->upgrade_query("alter table {$wpdb->prefix}newsletter_stats add column anchor varchar(200) not null default ''");
         $this->upgrade_query("alter table {$wpdb->prefix}newsletter_stats add column ip varchar(20) not null default ''");
         $this->upgrade_query("alter table {$wpdb->prefix}newsletter_stats add column country varchar(4) not null default ''");
-        
+
         $this->upgrade_query("ALTER TABLE `{$wpdb->prefix}newsletter_stats` ADD INDEX `email_id` (`email_id`)");
         $this->upgrade_query("ALTER TABLE `{$wpdb->prefix}newsletter_stats` ADD INDEX `user_id` (`user_id`)");
 
@@ -54,8 +54,8 @@ class NewsletterStatistics extends NewsletterModule {
 //        $this->upgrade_query("alter table {$wpdb->prefix}newsletter_links add column email_id int not null default 0");
 //        $this->upgrade_query("alter table {$wpdb->prefix}newsletter_links add column token varchar(10) not null default ''");
 //        $this->upgrade_query("alter table {$wpdb->prefix}newsletter_links add column text varchar(255) not null default ''");
-    
-        
+
+
         //$this->upgrade_query("create table if not exists {$wpdb->prefix}newsletter_stats (id int auto_increment, primary key (id)) $charset_collate");
 
     }
@@ -77,19 +77,28 @@ class NewsletterStatistics extends NewsletterModule {
 
     function relink_callback($matches) {
         $href = str_replace('&amp;', '&', $matches[2]);
+
         // Do not replace the tracking or subscription/unsubscription links.
-        if (strpos($href, '/newsletter/') !== false)
+        if (strpos($href, '/newsletter/') !== false) {
             return $matches[0];
-        if (substr($href, 0, 1) == '#')
+        }
+        // Do not relink anchors
+        if (substr($href, 0, 1) == '#') {
             return $matches[0];
-        if (substr($href, 0, 7) == 'mailto:')
+        }
+        // Do not relink mailto:
+        if (substr($href, 0, 7) == 'mailto:') {
             return $matches[0];
+        }
 
-
+        // This is the link text which is added to the tracking data
         $anchor = '';
         if ($this->options['anchor'] == 1) {
             $anchor = trim(str_replace(';', ' ', $matches[4]));
+            // Keep images but not other tags
             $anchor = strip_tags($anchor, '<img>');
+
+            // Truncate if needed to avoid to much long URLs
             if (stripos($anchor, '<img') === false && strlen($anchor) > 100) {
                 $anchor = substr($anchor, 0, 100);
             }

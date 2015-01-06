@@ -42,7 +42,7 @@ if ($controls->is_action('resend_welcome')) {
 }
 
 if ($controls->is_action('remove')) {
-    $wpdb->query($wpdb->prepare("delete from " . $wpdb->prefix . "newsletter where id=%d", $controls->button_data));
+    $wpdb->query($wpdb->prepare("delete from " . NEWSLETTER_USERS_TABLE . " where id=%d", $controls->button_data));
     unset($controls->data['subscriber_id']);
 }
 
@@ -73,7 +73,7 @@ if (!empty($controls->data['search_status'])) {
 // Total items, total pages
 $items_per_page = 20;
 $where = $wpdb->prepare($where, $query_args);
-$count = Newsletter::instance()->store->get_count($wpdb->prefix . 'newsletter', $where);
+$count = Newsletter::instance()->store->get_count(NEWSLETTER_USERS_TABLE, $where);
 $last_page = floor($count / $items_per_page) - ($count % $items_per_page == 0 ? 1 : 0);
 if ($last_page < 0) $last_page = 0;
 
@@ -97,7 +97,7 @@ if ($controls->is_action('search')) {
 if ($controls->data['search_page'] < 0) $controls->data['search_page'] = 0;
 if ($controls->data['search_page'] > $last_page) $controls->data['search_page'] = $last_page;
 
-$query = "select * from " . $wpdb->prefix . "newsletter " . $where . " order by id desc";
+$query = "select * from " . NEWSLETTER_USERS_TABLE . ' ' . $where . " order by id desc";
 $query .= " limit " . ($controls->data['search_page']*$items_per_page) . "," . $items_per_page;
 $list = $wpdb->get_results($query);
 
@@ -107,7 +107,7 @@ $controls->data['search_page']++;
 
 <div class="wrap">
 
-    <?php $help_url = 'http://www.satollo.net/plugins/newsletter/subscribers-module'; ?>
+    <?php $help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module'; ?>
     <?php include NEWSLETTER_DIR . '/header-new.php'; ?>
 
    

@@ -4,16 +4,16 @@ global $post; // Current post managed by WordPress
 
 /*
  * Some variabled are prepared by Newsletter Plus and are available inside the theme,
- * for example the theme options used to build the email body as configured by blog 
+ * for example the theme options used to build the email body as configured by blog
  * owner.
- * 
+ *
  * $theme_options - is an associative array with theme options: every option starts
  * with "theme_" as required. See the theme-options.php file for details.
  * Inside that array there are the autmated email options as well, if needed.
  * A special value can be present in theme_options and is the "last_run" which indicates
  * when th automated email has been composed last time. Is should be used to find if
  * there are now posts or not.
- * 
+ *
  * $is_test - if true it means we are composing an email for test purpose.
  */
 
@@ -23,14 +23,19 @@ $filters = array();
 
 // Maximum number of post to retrieve
 $filters['showposts'] = (int) $theme_options['theme_max_posts'];
-if ($filters['showposts'] == 0)
+if ($filters['showposts'] == 0) {
     $filters['showposts'] = 10;
+}
 
 
 // Include only posts from specified categories. Do not filter per category is no
 // one category has been selected.
 if (is_array($theme_options['theme_categories'])) {
     $filters['cat'] = implode(',', $theme_options['theme_categories']);
+}
+
+if (!empty($theme_options['theme_post_types'])) {
+    $filters['post_type'] = $theme_options['theme_post_types'];
 }
 
 // Retrieve the posts asking them to WordPress
@@ -132,15 +137,15 @@ $font_size = $theme_options['theme_font_size'];
                     </table>
                 </td>
             </tr>
-            
-            <?php if (!isset($theme_options['theme_social_disable'])) { ?> 
+
+            <?php if (!isset($theme_options['theme_social_disable'])) { ?>
             <tr>
                 <td style="font:normal 11px helvetica,sans-serif;">
                      <?php include WP_PLUGIN_DIR . '/newsletter/emails/themes/default/social.php'; ?>
                 </td>
             </tr>
             <?php } ?>
-         </table>  
+         </table>
 
     </body>
 </html>

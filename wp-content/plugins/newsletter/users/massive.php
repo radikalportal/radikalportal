@@ -73,7 +73,7 @@ if ($controls->is_action('list_manage')) {
 }
 
 if ($controls->is_action('resend_all')) {
-    $list = $wpdb->get_results("select * from " . $wpdb->prefix . "newsletter where status='S'");
+    $list = $wpdb->get_results("select * from " . NEWSLETTER_USERS_TABLE . " where status='S'");
     $opts = get_option('newsletter');
 
     if ($list) {
@@ -193,7 +193,7 @@ if ($controls->is_action('bounces')) {
 ?>
 
 <div class="wrap">
-    <?php $help_url = 'http://www.satollo.net/plugins/newsletter/subscribers-module'; ?>
+    <?php $help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module'; ?>
     <?php include NEWSLETTER_DIR . '/header-new.php'; ?>
   
 
@@ -255,7 +255,7 @@ if ($controls->is_action('bounces')) {
             <td nowrap>
               <?php $controls->button_confirm('remove_unconfirmed', 'Delete all not confirmed', 'Are you sure you want to delete ALL not confirmed subscribers?'); ?>
               <?php $controls->button_confirm('confirm_all', 'Confirm all', 'Are you sure you want to mark ALL subscribers as confirmed?'); ?>
-                <?php $controls->hint('To send a comfirmation email to all, you can create a special newsletter.', 'http://www.satollo.net/plugins/newsletter/subscribers-module#resend-confirm'); ?>
+                <?php $controls->hint('To send a comfirmation email to all, you can create a special newsletter.', 'http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#resend-confirm'); ?>
               <?php //$controls->button_confirm('resend_all', 'Resend confirmation message to all', 'Are you sure?'); ?>
             </td>
           </tr>
@@ -277,7 +277,7 @@ if ($controls->is_action('bounces')) {
                 Link WordPress users with status
                 <?php $controls->select('align_wp_users_status', array('C'=>'Confirmed', 'S'=>'Not confirmed')); ?>
                 <?php $controls->button_confirm('align_wp_users', 'Go', 'Proceed?'); ?>
-                <?php $controls->hint('Please, carefully read the documentation before taking this action!', 'http://www.satollo.net/plugins/newsletter/subscribers-module#import-wp-users'); ?>
+                <?php $controls->hint('Please, carefully read the documentation before taking this action!', 'http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#import-wp-users'); ?>
             </td>
           </tr>
 
@@ -291,14 +291,14 @@ if ($controls->is_action('bounces')) {
             </td>
           </tr>
         </table>
-        <p>Bounce are not detected by Newsletter plugin, you should use the <a href="http://www.satollo.net/plugins/bounce" target="_blank">Bounce plugin</a>.</p>
+        <p>Bounce are not detected by Newsletter plugin.</p>
 
         <h3>Sex</h3>
         <?php
             // TODO: do them with a single query
-            $all_count = $wpdb->get_var("select count(*) from " . $wpdb->prefix . "newsletter where status='C'");
-            $male_count = $wpdb->get_var("select count(*) from " . $wpdb->prefix . "newsletter where sex='m' and status='C'");
-            $female_count = $wpdb->get_var("select count(*) from " . $wpdb->prefix . "newsletter where sex='f' and status='C'");
+            $all_count = $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE . " where status='C'");
+            $male_count = $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE . " where sex='m' and status='C'");
+            $female_count = $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE . " where sex='f' and status='C'");
             $other_count = ($all_count-$male_count-$female_count)
         ?>
         <table class="widefat" style="width: 300px">

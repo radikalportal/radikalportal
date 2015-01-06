@@ -35,7 +35,7 @@ if (!$controls->is_action()) {
 $options_profile = get_option('newsletter_profile');
 ?>
 <div class="wrap">
-    <?php $help_url = 'http://www.satollo.net/plugins/newsletter/subscribers-module'; ?>
+    <?php $help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module'; ?>
     <?php include NEWSLETTER_DIR . '/header-new.php'; ?>
     
     <div id="newsletter-title">
@@ -114,7 +114,7 @@ $options_profile = get_option('newsletter_profile');
               <?php $controls->yesno('feed'); ?>
                 <div class="hints">
                     "Yes" when this subscriber has the feed by mail service active. The 
-                    <a href="http://www.satollo.net/plugins/newsletter/feed-by-mail-module" target="_blank">feed by mail is an extension of this plugin</a>.
+                    <a href="http://www.thenewsletterplugin.com/plugins/newsletter/feed-by-mail-module" target="_blank">feed by mail is an extension of this plugin</a>.
                 </div>
             </td>
           </tr>

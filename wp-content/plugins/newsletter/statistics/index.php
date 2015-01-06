@@ -11,7 +11,7 @@ if ($controls->is_action('save')) {
 ?>
 
 <div class="wrap">
-    <?php $help_url = 'http://www.satollo.net/plugins/newsletter/statistics-module'; ?>
+    <?php $help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/statistics-module'; ?>
 
     <?php include NEWSLETTER_DIR . '/header-new.php'; ?>
 
@@ -29,7 +29,7 @@ if ($controls->is_action('save')) {
         </p>
         <p>
             A more advanced report for each email can be generated installing the Reports Extension
-            from <a href="http://www.satollo.net/downloads" target="_blank">this page</a>.
+            from <a href="http://www.thenewsletterplugin.com/downloads" target="_blank">this page</a>.
         </p>
     </div>
     <div class="newsletter-separator"></div>

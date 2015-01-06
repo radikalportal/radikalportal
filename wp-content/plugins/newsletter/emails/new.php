@@ -6,6 +6,43 @@ $module = NewsletterEmails::instance();
 if ($controls->is_action('theme')) {
     $controls->merge($module->themes->get_options($controls->data['theme']));
     $module->save_options($controls->data);
+
+    // If this theme has no intermediate options...
+    if (!file_exists($module->get_current_theme_file_path('theme-options.php'))) {
+ $email = array();
+        $email['status'] = 'new';
+        $email['subject'] = 'Here the email subject';
+        $email['track'] = 1;
+
+        $theme_options = $module->get_current_theme_options();
+        $theme_url = $module->get_current_theme_url();
+        $theme_subject = '';
+
+        ob_start();
+        include $module->get_current_theme_file_path('theme.php');
+        $email['message'] = ob_get_clean();
+
+        if (!empty($theme_subject)) {
+            $email['subject'] = $theme_subject;
+        }
+
+        ob_start();
+        include $module->get_current_theme_file_path('theme-text.php');
+        $email['message_text'] = ob_get_clean();
+
+        $email['type'] = 'message';
+        $email['send_on'] = time();
+        $email = Newsletter::instance()->save_email($email);
+            ?>
+    <script>
+        location.href="<?php echo $module->get_admin_page_url('edit'); ?>&id=<?php echo $email->id; ?>";
+    </script>
+    <div class="wrap">
+    <p>If you are not automatically redirected to the composer, <a href="<?php echo $module->get_admin_page_url('edit'); ?>&id=<?php echo $email->id; ?>">click here</a>.</p>
+    </div>
+    <?php
+        return;
+    }
 }
 
 if ($controls->is_action('save')) {
@@ -16,7 +53,6 @@ if ($controls->is_action('save')) {
 if ($controls->is_action('create')) {
     $module->save_options($controls->data);
 
-    if ($controls->is_action('create')) {
         $email = array();
         $email['status'] = 'new';
         $email['subject'] = 'Here the email subject';
@@ -50,7 +86,6 @@ if ($controls->is_action('create')) {
     </div>
     <?php
         return;
-    }
 }
 
 if ($controls->data == null) {
@@ -90,7 +125,7 @@ function newsletter_emails_get_theme_options($theme) {
 
 <div class="wrap">
 
-    <?php //$help_url = 'http://www.satollo.net/plugins/newsletter/newsletters-module'; ?>
+    <?php //$help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/newsletters-module'; ?>
     <?php //include NEWSLETTER_DIR . '/header-new.php'; ?>
 
     <div id="newsletter-title">
@@ -98,7 +133,7 @@ function newsletter_emails_get_theme_options($theme) {
     <p><a href="<?php echo NewsletterEmails::instance()->get_admin_page_url('theme'); ?>">Back to the themes</a></p>
 </div>
     <div class="newsletter-separator"></div>
-    
+
     <?php $controls->show(); ?>
 
     <form method="post" action="<?php echo $module->get_admin_page_url('new'); ?>">
@@ -117,7 +152,7 @@ function newsletter_emails_get_theme_options($theme) {
             <tr>
                 <td style="width: 600px; vertical-align: top">
                     <?php @include $module->get_current_theme_file_path('theme-options.php'); ?>
-                    
+
                     This theme options are saved for next time you'll use it!
                 </td>
                 <td style="vertical-align: top">

@@ -3,7 +3,7 @@ $module = NewsletterStatistics::instance();
 $email = $module->get_email($_GET['id']);
 ?>
 <div class="wrap">
-    <?php $help_url = 'http://www.satollo.net/plugins/newsletter/statistics-module'; ?>
+    <?php $help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/statistics-module'; ?>
     <?php include NEWSLETTER_DIR . '/header-new.php'; ?>
 
     <div id="newsletter-title">
@@ -11,7 +11,8 @@ $email = $module->get_email($_GET['id']);
 
         <p>
             Complete statistics for this email are available with
-            <a href="http://www.satollo.net/plugins/newsletter/reports-module" target="_blank">Reports for Newsletter</a>.
+            <a href="http://www.thenewsletterplugin.com/plugins/newsletter/reports-module" target="_blank">Reports for Newsletter</a>.
+            Even for already sent email, the Reports for Newsletter will display collected data.
         </p>
     </div>
     <div class="newsletter-separator"></div>
@@ -35,5 +36,5 @@ $email = $module->get_email($_GET['id']);
             </tr>
         </tbody>
     </table>
-        
+
 </div>

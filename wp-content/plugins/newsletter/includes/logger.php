@@ -1,5 +1,9 @@
 <?php
 
+if (!defined('NEWSLETTER_LOG_DIR')) {
+    define('NEWSLETTER_LOG_DIR', WP_CONTENT_DIR . '/logs/newsletter/');
+}
+
 class NewsletterLogger {
 
     const NONE = 0;
@@ -23,11 +27,11 @@ class NewsletterLogger {
             update_option('newsletter_logger_secret', $secret);
         }
 
-        if (!wp_mkdir_p(WP_CONTENT_DIR . '/logs/newsletter/')) {
+        if (!wp_mkdir_p(NEWSLETTER_LOG_DIR)) {
             $this->level = self::NONE;
         }
 
-        $this->file = WP_CONTENT_DIR . '/logs/newsletter/' . $module . '-' . $secret . '.txt';
+        $this->file = NEWSLETTER_LOG_DIR . '/' . $module . '-' . $secret . '.txt';
     }
 
     function log($text, $level = self::ERROR) {

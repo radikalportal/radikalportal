@@ -107,7 +107,7 @@ class NewsletterModule {
 //    function hook_version_check() {
 //        $this->logger->info('Checking for new version');
 //        if (empty($this->module_id)) return;
-//        $version = @file_get_contents('http://www.satollo.net/wp-content/plugins/file-commerce-pro/version.php?f=' . $this->module_id);
+//        $version = @file_get_contents('http://www.thenewsletterplugin.com/wp-content/plugins/file-commerce-pro/version.php?f=' . $this->module_id);
 //        if ($version) {
 //            update_option($this->prefix . '_available_version', $version);
 //            $this->available_version = $version;
@@ -115,7 +115,7 @@ class NewsletterModule {
 //    }
 
     /**
-     * Return, eventually, the version of this moduke available on satollo.net.
+     * Return, eventually, the version of this module available on thenewsletterplugin.com
      * @return string
      */
     static function get_available_version($module_id, $force = false) {
@@ -123,7 +123,7 @@ class NewsletterModule {
             return '';
         $version = get_transient('newsletter_module_' . $module_id . '_version');
         if ($force || !$version) {
-            $version = @file_get_contents('http://www.satollo.net/wp-content/plugins/file-commerce-pro/version.php?f=' . $module_id);
+            $version = @file_get_contents('http://www.thenewsletterplugin.com/wp-content/plugins/file-commerce-pro/version.php?f=' . $module_id);
             set_transient('newsletter_module_' . $module_id . '_version', $version, 2 * 86400);
         }
         return $version;
@@ -404,7 +404,7 @@ class NewsletterModule {
         if ($last_run < 0) {
             return array_chunk($posts, ceil(count($posts)/2));
         }
-        
+
         $result = array(array(), array());
         foreach ($posts as &$post) {
             if (self::is_post_old($post, $time))
@@ -457,7 +457,9 @@ class NewsletterModule {
     static function clean_url_tags($text) {
         $text = str_replace('%7B', '{', $text);
         $text = str_replace('%7D', '}', $text);
-        $text = preg_replace("/[\"']http[^\"']+(\\{[^\\}]+\\})[\"']/i", "\"\\1\"", $text);
+
+        // Only tags which are {*_url}
+        $text = preg_replace("/[\"']http[^\"']+(\\{[^\\}]+_url\\})[\"']/i", "\"\\1\"", $text);
         return $text;
     }
 
@@ -505,7 +507,7 @@ class NewsletterModule {
     }
 
     function admin_menu() {
-        
+
     }
 
     function add_menu_page($page, $title) {

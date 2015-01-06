@@ -2,18 +2,18 @@
 
 /*
   Plugin Name: Newsletter
-  Plugin URI: http://www.satollo.net/plugins/newsletter
-  Description: Newsletter is a cool plugin to create your own subscriber list, to send newsletters, to build your business. <strong>Before update give a look to <a href="http://www.satollo.net/plugins/newsletter#update">this page</a> to know what's changed.</strong>
-  Version: 3.5.5
+  Plugin URI: http://www.thenewsletterplugin.com/plugins/newsletter
+  Description: Newsletter is a cool plugin to create your own subscriber list, to send newsletters, to build your business. <strong>Before update give a look to <a href="http://www.thenewsletterplugin.com/plugins/newsletter#update">this page</a> to know what's changed.</strong>
+  Version: 3.6.6
   Author: Stefano Lissa
-  Author URI: http://www.satollo.net
+  Author URI: http://www.thenewsletterplugin.com
   Disclaimer: Use at your own risk. No warranty expressed or implied is provided.
 
-  Copyright 2009-2014 Stefano Lissa (email: stefano@satollo.net, web: http://www.satollo.net)
+  Copyright 2009-2014 The Newsletter Team (email: info@thenewsletterplugin.com, web: http://www.thenewsletterplugin.com)
  */
 
-// Useed as dummy parameter on css and js links
-define('NEWSLETTER_VERSION', '3.5.4');
+// Used as dummy parameter on css and js links
+define('NEWSLETTER_VERSION', '3.6.6');
 
 global $wpdb, $newsletter;
 
@@ -64,6 +64,9 @@ if (!defined('NEWSLETTER_CRON_INTERVAL'))
 if (!defined('NEWSLETTER_HEADER'))
     define('NEWSLETTER_HEADER', true);
 
+if (!defined('NEWSLETTER_DEBUG'))
+    define('NEWSLETTER_DEBUG', false);
+
 // Force the whole system log level to this value
 //define('NEWSLETTER_LOG_LEVEL', 4);
 
@@ -98,6 +101,8 @@ class Newsletter extends NewsletterModule {
     var $lock_found = false;
     static $instance;
 
+    const MAX_CRON_SAMPLES = 300;
+
     /**
      * @return Newsletter
      */
@@ -125,14 +130,23 @@ class Newsletter extends NewsletterModule {
 
         add_action('init', array($this, 'hook_init'));
         add_action('newsletter', array($this, 'hook_newsletter'), 1);
-        add_action('newsletter_check_versions', array($this, 'hook_check_versions'), 99);
-
 
         // This specific event is created by "Feed by mail" panel on configuration
         add_action('shutdown', array($this, 'hook_shutdown'));
 
-        if (defined('DOING_CRON') && DOING_CRON)
+        if (defined('DOING_CRON') && DOING_CRON) {
+            $calls = get_option('newsletter_diagnostic_cron_calls', array());
+            if (empty($calls)) {
+                add_option('newsletter_diagnostic_cron_calls', $calls, null, 'no');
+            }
+            $calls[] = time();
+            if (count($calls) > self::MAX_CRON_SAMPLES) {
+                array_shift($calls);
+            }
+            update_option('newsletter_diagnostic_cron_calls', $calls);
             return;
+        }
+
 
         // TODO: Meditation on how to use those ones...
         register_activation_hook(__FILE__, array($this, 'hook_activate'));
@@ -231,7 +245,6 @@ class Newsletter extends NewsletterModule {
 
         wp_clear_scheduled_hook('newsletter_update');
         wp_clear_scheduled_hook('newsletter_check_versions');
-        wp_schedule_event(time() + 30, 'newsletter_weekly', 'newsletter_check_versions');
 
         wp_mkdir_p(WP_CONTENT_DIR . '/extensions/newsletter');
         wp_mkdir_p(WP_CONTENT_DIR . '/cache/newsletter');
@@ -248,7 +261,8 @@ class Newsletter extends NewsletterModule {
 
     function admin_menu() {
         // This adds the main menu page
-        add_menu_page('Newsletter', 'Newsletter', ($this->options['editor'] == 1) ? 'manage_categories' : 'manage_options', 'newsletter_main_index');
+        add_menu_page('Newsletter', 'Newsletter', ($this->options['editor'] == 1) ? 'manage_categories' : 'manage_options', 'newsletter_main_index',
+                '', plugins_url('newsletter') . '/images/menu-icon.png');
 
         $this->add_menu_page('index', 'Welcome');
         $this->add_menu_page('main', 'Configuration');
@@ -265,13 +279,13 @@ class Newsletter extends NewsletterModule {
         if ($x === false) {
             $warnings .= 'The delivery engine is off (it should never be off). Deactivate and reactivate the plugin. Thank you.<br>';
         } else if (time() - $x > 900) {
-            $warnings .= 'The cron system seems not running correctly. See <a href="http://www.satollo.net/how-to-make-the-wordpress-cron-work" target="_blank">this page</a> for more information.<br>';
+            $warnings .= 'The cron system seems not running correctly. See <a href="http://www.thenewsletterplugin.com/how-to-make-the-wordpress-cron-work" target="_blank">this page</a> for more information.<br>';
         }
 
         if (!empty($warnings)) {
-            echo '<div id="#newsletter-warnings">';
+            echo '<div class="error"><p>';
             echo $warnings;
-            echo '</div>';
+            echo '</p></div>';
         }
     }
 
@@ -304,7 +318,7 @@ class Newsletter extends NewsletterModule {
             $user = $this->check_user();
             if ($user == null)
                 die('No user');
-            $wpdb->query("update " . $wpdb->prefix . "newsletter set followup=2 where id=" . $user->id);
+            $wpdb->query("update " . NEWSLETTER_USERS_TABLE . " set followup=2 where id=" . $user->id);
             $options_followup = get_option('newsletter_followup');
             $this->message = $options_followup['unsubscribed_text'];
             return;
@@ -321,7 +335,7 @@ class Newsletter extends NewsletterModule {
     }
 
     function hook_admin_init() {
-        
+
     }
 
     function hook_admin_head() {
@@ -350,27 +364,6 @@ class Newsletter extends NewsletterModule {
 
     function relink($text, $email_id, $user_id) {
         return NewsletterStatistics::instance()->relink($text, $email_id, $user_id);
-    }
-
-    function hook_check_versions() {
-        //$this->logger->info('Checking for new versions');
-        $url = 'http://www.satollo.net/wp-content/plugins/file-commerce-pro/version.php?f=';
-        $modules = array(
-            'reports' => 34,
-            'feed' => 35,
-            'followup' => 37,
-            'facebook' => 41,
-            'sendgrid' => 40,
-            'popup' => 43,
-            'mandrill' => 44,
-            'mailjet' => 38);
-
-        foreach ($modules as $name => $id) {
-            $version = @file_get_contents($url . $id);
-            if ($version) {
-                update_option('newsletter_' . $name . '_available_version', $version);
-            }
-        }
     }
 
     /**
@@ -446,6 +439,8 @@ class Newsletter extends NewsletterModule {
 
             $headers = array('List-Unsubscribe' => '<' . NEWSLETTER_UNSUBSCRIBE_URL . '?nk=' . $user->id . '-' . $user->token . '>');
             $headers['Precedence'] = 'bulk';
+            $headers['X-Newsletter-Email-Id'] = $email->id;
+
 
             if (!$test) {
                 $wpdb->query("update " . NEWSLETTER_EMAILS_TABLE . " set sent=sent+1, last_id=" . $user->id . " where id=" . $email->id . " limit 1");
@@ -758,7 +753,7 @@ class Newsletter extends NewsletterModule {
         }
 
         if (is_numeric($id) && !empty($token)) {
-            return $wpdb->get_row($wpdb->prepare("select * from " . $wpdb->prefix . "newsletter where id=%d and token=%s limit 1", $id, $token));
+            return $wpdb->get_row($wpdb->prepare("select * from " . NEWSLETTER_USERS_TABLE . " where id=%d and token=%s limit 1", $id, $token));
         }
 
         return null;
@@ -885,8 +880,9 @@ class Newsletter extends NewsletterModule {
             $text = str_replace('{key}', $user->id . '-' . $user->token, $text);
             $text = str_replace('%7Bkey%7D', $user->id . '-' . $user->token, $text);
 
-            if (strpos($text, '{profile_form}') !== false)
+            if (strpos($text, '{profile_form}') !== false) {
                 $text = str_replace('{profile_form}', NewsletterSubscription::instance()->get_profile_form($user), $text);
+            }
 
             for ($i = 1; $i < NEWSLETTER_PROFILE_MAX; $i++) {
                 $p = 'profile_' . $i;
@@ -1234,5 +1230,5 @@ function newsletter_activate() {
 register_activation_hook(__FILE__, 'newsletter_deactivate');
 
 function newsletter_deactivate() {
-    
+
 }

@@ -1,15 +1,14 @@
 === Newsletter ===
 Tags: newsletter,email,subscription,mass mail,list build,email marketing,direct mailing
 Requires at least: 3.3.0
-Tested up to: 3.9
+Tested up to: 4.1
 Stable tag: trunk
-Donate link: http://www.satollo.net/donations
 
 Add a real newsletter to your blog. In seconds. For free. With unlimited emails and subscribers.
 
 == Description ==
 
-This plug-in adds a real newsletter system to your WordPress blog. Perfect for list building, 
+This plug-in adds a real newsletter system to your WordPress blog. Perfect for list building,
 you can create cool emails with visual editor, send and
 track them.
 
@@ -32,9 +31,9 @@ Key features:
 * diagnostic panel for **easy system tests**
 * **extensible** with specific modules (Facebook, Reports, Feed by Mail, Follow Up)
 
-Visit the [Newsletter official page](http://www.satollo.net/plugins/newsletter) to know more.
+Visit the [Newsletter official page](http://www.thenewsletterplugin.com/) to know more.
 
-Thank you, Stefano Lissa (Satollo).
+Thank you, The Newsletter Team
 
 == Installation ==
 
@@ -44,18 +43,85 @@ Thank you, Stefano Lissa (Satollo).
 
 == Frequently Asked Questions ==
 
-See the [Newsletter FAQ](http://www.satollo.net/plugins/newsletter/newsletter-faq) or the
-[Newsletter Forum](http://www.satollo.net/forums) to ask for help.
+See the [Newsletter FAQ](http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-faq) or the
+[Newsletter Forum](http://www.thenewsletterplugin.com/forums) to ask for help.
 
-For documentation start from [Newsletter official page](http://www.satollo.net/plugins/newsletter).
+For documentation start from [Newsletter documentation](http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-documentation).
 
-Thank you, Stefano Lissa (Satollo).
+Thank you, The Newsletter Team
 
 == Screen shots ==
 
 No screen shots are available at this time.
 
 == Changelog ==
+
+= 3.6.6 =
+
+* Added a cron monitor
+* Added a xmas theme
+* Fixed the opt-in mode for wordpress registsred users
+* Fixed the noticies
+* Fixed somes styles
+* Added the direct newsletter edit for themes without options
+* Header changed
+* Fixed all links to refer the new site www.thenewsletterplugin.com
+* Fixed the newsletter editor default style
+
+= 3.6.5 =
+
+* Added parameter "plugin url" on diagnostic panel
+* Added custom post types to the linear theme
+* Added custom post types to the vimeo-like theme
+* Fixed the feed by mail placeholder panel
+* Fixed the antibot option with preferences
+
+= 3.6.4 =
+
+* Support for greek (and others) characters without the entity encoding
+* Fixed a debug notice in the widget code
+* Added gender on import
+* Added support for the constant NEWSLETTER_LOG_DIR in wp-config.php to define the loggin folder
+* Fixed the domain removal on subscription steps messages
+
+= 3.6.3 =
+
+* Fixed the feed by mail test function
+
+= 3.6.2 =
+
+* Added the separator selection on CSV export
+* Added the UTF-8 BOM to the export
+* Fixed some debug noticies
+
+= 3.6.1 =
+
+* Fixed the widget when field names contain double quotes
+
+= 3.6.0 =
+
+* Removed the extension list from welcome panel
+* Added the and operator in the newsletter recipients selector
+* Fixed the select_group(...) in NewsletterControls class
+
+= 3.5.9 =
+
+* Added a possible antibot to the subscription flow
+
+= 3.5.8 =
+
+* Added soundcloud for social icon on default theme
+* Fixed the welcome screen (should)
+
+= 3.5.7 =
+
+* Added the private flag on newsletters
+* Fixed old extension version checking/reporting
+
+= 3.5.6 =
+
+* Added custom header for newsletter tagging with mandrill
+* Added internally used html 5 subscription form
 
 = 3.5.5 =
 
@@ -92,7 +158,7 @@ No screen shots are available at this time.
 = 3.4.9 =
 
 * Fixed some warnings in debug mode
-* Fixed the disabling setting of the social icons (on default newsletter themes) 
+* Fixed the disabling setting of the social icons (on default newsletter themes)
 * Added filters on widget for WPML
 * Added filter for single line feeds refused by some mail servers
 
