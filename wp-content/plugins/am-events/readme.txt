@@ -2,8 +2,8 @@
 Contributors: Moisture
 Tags: event list, events, upcoming events, event list, custom post type, custom taxonomy, plugin, widget
 Requires at least: 3.3.1
-Tested up to: 3.9.1
-Stable tag: 1.7.1
+Tested up to: 4.1
+Stable tag: 1.9.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,7 +23,7 @@ For integrating AM Events to an existing theme, I suggest creating a [child them
 
 See Other Notes for detailed information and a small tutorial about the custom post type and the widget.
 
-If you think something critical is missing, feel free to send me a request. I'm using this on some of my client's sites so I'll certainly be improving/fixing it for upcoming WordPress versions.
+If you think something critical is missing, feel free to send me a request. I'm using this on some of my clients' sites so I'll certainly be improving/fixing it for upcoming WordPress versions.
 
 The plugin is available in the following languages (pot-file included for additional translations): 
 
@@ -52,6 +52,20 @@ See 'Other Notes' for a simple tutorial.
 3. Example page with events and the widget.
 
 == Changelog ==
+
+= 1.9.2 =
+* Translation fixes
+* Added thumbnail shortcode to widget
+
+= 1.9.1 =
+* Fixed bug when removing event categories from recurring events.
+
+= 1.9.0 =
+* Improved handling of recurring events
+* Added start and end dates to quick edit
+
+= 1.8.0 =
+* Added conditional tags for the widget 
 
 = 1.7.1 =
 * Added French language
@@ -101,28 +115,41 @@ See 'Other Notes' for a simple tutorial.
 
 == Upgrade Notice ==
 
-= 1.7.0 =
+= 1.9.2 =
+* Adds thumbnail shortcode for widget
+* Fixes some translations
 
+= 1.9.1 =
+* Fixes a bug when removing event categories from recurring events
+
+= 1.9.0 =
+* Improves handling of recurring events
+* Adds start and end date to quick edit
+* Many small improvements
+
+= 1.8.0 =
+* Adds conditional tags for the widget
+
+= 1.7.1 =
+* Adds French language
+
+= 1.7.0 =
 * Adds option to change slug for event posts
 * Adds [excerpt] shortcode for the widget
 * Adds customizable "No upcoming events" message to widget
 * Adds option to change offset for events shown in the widget
 
 = 1.6.0 =
-
 * Adds option to change time picker minute step
 * Fixes featured image and excerpts not copying when creating recurrent events
 
 = 1.5.1 =
-
 * Fixes a few minor bugs
 
 = 1.5.0 =
-
 * Adds support for thumbnails and excerpts
 
 = 1.4.0 =
-
 * Adds new improved widget shortcode system
 
 = 1.3.1 =
@@ -157,6 +184,15 @@ Here are the shortcodes available in the upcoming events widget template.
  * [content]
  * [excerpt]
  * [permalink]
+ 
+Conditional shortcodes:
+
+ * [if cond="startdate-is-enddate"]
+ * [if cond="startdate-not-enddate"]
+ * [if cond="startday-is-endday"]
+ * [if cond="startday-not-endday"]
+ 
+ 
 
 
 The title can be linked to the event post with the 'link' attribute, e.g. [event-title link=true]
@@ -172,6 +208,13 @@ You can use any shortcode as many times as needed in a single template. To separ
     [start-date format='d.m.Y'] 
     <span>divider</span>
     [start-date format='H:i']
+	
+Example usage of conditional shortcode:
+
+	[start-date format='D d.m.Y H:s'] 
+    [if cond='startdate-not-enddate']
+     - [end-date format='D d.m.Y H:s'] 
+    [/if]
 
 = Template tags =
 

@@ -1,11 +1,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: am-events\n"
-"POT-Creation-Date: 2014-05-30 16:35+0200\n"
-"PO-Revision-Date: 2014-11-09 12:18+0200\n"
+"POT-Creation-Date: 2014-05-30 16:29+0200\n"
+"PO-Revision-Date: 2014-05-30 16:29+0200\n"
 "Last-Translator: Atte Moisio <atte.moisio@attemoisio.fi>\n"
 "Language-Team: \n"
-"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,1028 +20,958 @@ msgstr ""
 
 #: ../am-events.php:132
 msgid "You do not have sufficient permissions to access this page."
-msgstr "Sinulla ei ole riittävästi oikeuksia sivun tarkasteluun."
+msgstr ""
 
 #: ../am-events.php:137
 msgid "AM Events settings"
-msgstr "AM Events asetukset"
+msgstr ""
 
 #: ../am-events.php:151
 msgid "Slug for event posts"
-msgstr "Tapahtuma-artikkeleiden polkutunnus"
+msgstr ""
 
 #: ../am-events.php:160
 msgid "Timepicker minute step"
-msgstr "Ajanvalitsimen minuuttiaskel"
+msgstr ""
 
 #: ../am-events.php:249
 msgctxt "date picker"
 msgid "Clear"
-msgstr "Tyhjennä"
+msgstr ""
 
 #: ../am-events.php:250
 msgctxt "date picker"
 msgid "Erase the current date"
-msgstr "Tyhjennä nykyinen päiväys"
+msgstr ""
 
 #: ../am-events.php:251
 msgctxt "date picker"
 msgid "Close"
-msgstr "Sulje"
+msgstr ""
 
 #: ../am-events.php:252
 msgctxt "date picker"
 msgid "Close without change"
-msgstr "Sulje muuttamatta"
+msgstr ""
 
 #: ../am-events.php:253
 msgctxt "date picker"
 msgid "<Prev"
-msgstr "<Edellinen"
+msgstr ""
 
 #: ../am-events.php:254
 msgctxt "date picker"
 msgid "<<"
-msgstr "<<"
+msgstr ""
 
 #: ../am-events.php:255
 msgctxt "date picker"
 msgid "Show the previous month"
-msgstr "Näytä edellinen kuukausi"
+msgstr ""
 
 #: ../am-events.php:256
 msgctxt "date picker"
 msgid "Show the previous year"
-msgstr "Näytä edellinen vuosi"
+msgstr ""
 
 #: ../am-events.php:257
 msgctxt "date picker"
 msgid "Next>"
-msgstr "Seuraava>"
+msgstr ""
 
 #: ../am-events.php:258
 msgctxt "date picker"
 msgid ">>"
-msgstr ">>"
+msgstr ""
 
 #: ../am-events.php:259
 msgctxt "date picker"
 msgid "Show the next month"
-msgstr "Näytä seuraava kuukausi"
+msgstr ""
 
 #: ../am-events.php:260
 msgctxt "date picker"
 msgid "Show the next year"
-msgstr "Näytä seuraava vuosi"
+msgstr ""
 
 #: ../am-events.php:261
 msgctxt "date picker"
 msgid "Today"
-msgstr "Tänään"
+msgstr ""
 
 #: ../am-events.php:262
 msgctxt "date picker"
 msgid "Show the current month"
-msgstr "Näytä nykyinen kuukausi"
+msgstr ""
 
 #: ../am-events.php:263
 msgid "January"
-msgstr "Tammikuu"
+msgstr ""
 
 #: ../am-events.php:263
 msgid "February"
-msgstr "Helmikuu"
+msgstr ""
 
 #: ../am-events.php:263
 msgid "March"
-msgstr "Maaliskuu"
+msgstr ""
 
 #: ../am-events.php:263
 msgid "April"
-msgstr "Huhtikuu"
+msgstr ""
 
 #: ../am-events.php:263 ../am-events.php:264
 msgid "May"
-msgstr "Toukokuu"
+msgstr ""
 
 #: ../am-events.php:263
 msgid "June"
-msgstr "Kesäkuu"
+msgstr ""
 
 #: ../am-events.php:263
 msgid "July"
-msgstr "Heinäkuu"
+msgstr ""
 
 #: ../am-events.php:263
 msgid "August"
-msgstr "Elokuu"
+msgstr ""
 
 #: ../am-events.php:263
 msgid "September"
-msgstr "Syyskuu"
+msgstr ""
 
 #: ../am-events.php:263
 msgid "October"
-msgstr "Lokakuu"
+msgstr ""
 
 #: ../am-events.php:263
 msgid "November"
-msgstr "Marraskuu"
+msgstr ""
 
 #: ../am-events.php:263
 msgid "December"
-msgstr "Joulukuu"
+msgstr ""
 
 #: ../am-events.php:264
 msgid "Jan"
-msgstr "Tam"
+msgstr ""
 
 #: ../am-events.php:264
 msgid "Feb"
-msgstr "Helmi"
+msgstr ""
 
 #: ../am-events.php:264
 msgid "Mar"
-msgstr "Maalis"
+msgstr ""
 
 #: ../am-events.php:264
 msgid "Apr"
-msgstr "Huhti"
+msgstr ""
 
 #: ../am-events.php:264
 msgid "Jun"
-msgstr "Kesä"
+msgstr ""
 
 #: ../am-events.php:264
 msgid "Jul"
-msgstr "Heinä"
+msgstr ""
 
 #: ../am-events.php:264
 msgid "Aug"
-msgstr "Elo"
+msgstr ""
 
 #: ../am-events.php:264
 msgid "Sep"
-msgstr "Syys"
+msgstr ""
 
 #: ../am-events.php:264
 msgid "Oct"
-msgstr "Loka"
+msgstr ""
 
 #: ../am-events.php:264
 msgid "Nov"
-msgstr "Marras"
+msgstr ""
 
 #: ../am-events.php:264
 msgid "Dec"
-msgstr "Joulu"
+msgstr ""
 
 #: ../am-events.php:265
 msgctxt "date picker"
 msgid "Show a different month"
-msgstr "Näytä eri kuukausi"
+msgstr ""
 
 #: ../am-events.php:266
 msgctxt "date picker"
 msgid "Show a different year"
-msgstr "Näytä eri vuosi"
+msgstr ""
 
 #: ../am-events.php:267
 msgctxt "date picker"
 msgid "Wk"
-msgstr "Vk"
+msgstr ""
 
 #: ../am-events.php:268
 msgctxt "date picker"
 msgid "Week of the year"
-msgstr "Viikon numero"
+msgstr ""
 
 #: ../am-events.php:269
 msgid "Monday"
-msgstr "Maanantai"
+msgstr ""
 
 #: ../am-events.php:269
 msgid "Tuesday"
-msgstr "Tiistai"
+msgstr ""
 
 #: ../am-events.php:269
 msgid "Wednesday"
-msgstr "Keskiviikko"
+msgstr ""
 
 #: ../am-events.php:269
 msgid "Thursday"
-msgstr "Torstai"
+msgstr ""
 
 #: ../am-events.php:269
 msgid "Friday"
-msgstr "Perjantai"
+msgstr ""
 
 #: ../am-events.php:269
 msgid "Saturday"
-msgstr "Lauantai"
+msgstr ""
 
 #: ../am-events.php:269
 msgid "Sunday"
-msgstr "Sunnuntai"
+msgstr ""
 
 #: ../am-events.php:270 ../widget-upcoming-events.php:503
 msgid "Mon"
-msgstr "Ma"
+msgstr ""
 
 #: ../am-events.php:270 ../widget-upcoming-events.php:504
 msgid "Tue"
-msgstr "Ti"
+msgstr ""
 
 #: ../am-events.php:270 ../widget-upcoming-events.php:505
 msgid "Wed"
-msgstr "Ke"
+msgstr ""
 
 #: ../am-events.php:270 ../widget-upcoming-events.php:506
 msgid "Thu"
-msgstr "To"
+msgstr ""
 
 #: ../am-events.php:270 ../widget-upcoming-events.php:507
 msgid "Fri"
-msgstr "Pe"
+msgstr ""
 
 #: ../am-events.php:270 ../widget-upcoming-events.php:508
 msgid "Sat"
-msgstr "La"
+msgstr ""
 
 #: ../am-events.php:270 ../widget-upcoming-events.php:509
 msgid "Sun"
-msgstr "Su"
+msgstr ""
 
 #: ../am-events.php:271
 msgid "Mo"
-msgstr "Ma"
+msgstr ""
 
 #: ../am-events.php:271
 msgid "Tu"
-msgstr "Ti"
+msgstr ""
 
 #: ../am-events.php:271
 msgid "We"
-msgstr "Ke"
+msgstr ""
 
 #: ../am-events.php:271
 msgid "Th"
-msgstr "To"
+msgstr ""
 
 #: ../am-events.php:271
 msgid "Fr"
-msgstr "Pe"
+msgstr ""
 
 #: ../am-events.php:271
 msgid "Sa"
-msgstr "La"
+msgstr ""
 
 #: ../am-events.php:271
 msgid "Su"
-msgstr "Su"
+msgstr ""
 
 #: ../am-events.php:272
 msgctxt "date picker"
 msgid "Set DD as first week day"
-msgstr "Aseta viikko alkamaan päivästä DD"
+msgstr ""
 
 #: ../am-events.php:273
 msgctxt "date picker"
 msgid "Select D, M d"
-msgstr "Valitse D, M, d"
+msgstr ""
 
 #: ../am-events.php:274
 msgctxt "date picker, see http://docs.jquery.com/UI/Datepicker/parseDate"
 msgid "mm/dd/yy"
-msgstr "dd.mm.yy"
+msgstr ""
 
 #: ../am-events.php:276
 msgctxt "date picker"
 msgid "Select a date"
-msgstr "Valitse päiväys"
+msgstr ""
 
 #: ../am-events.php:281
 msgctxt "time picker"
 msgid "Now"
-msgstr "Nyt"
+msgstr ""
 
 #: ../am-events.php:282
 msgctxt "time picker"
 msgid "Done"
-msgstr "Valmis"
+msgstr ""
 
 #: ../am-events.php:283
 msgctxt "time picker"
 msgid "AM"
-msgstr "AM"
+msgstr ""
 
 #: ../am-events.php:284
 msgctxt "time picker"
 msgid "A"
-msgstr "A"
+msgstr ""
 
 #: ../am-events.php:285
 msgctxt "time picker"
 msgid "PM"
-msgstr "PM"
+msgstr ""
 
 #: ../am-events.php:286
 msgctxt "time picker"
 msgid "P"
-msgstr "P"
+msgstr ""
 
 #: ../am-events.php:287
 msgctxt "time picker"
 msgid "HH:mm"
-msgstr "HH:mm"
+msgstr ""
 
 #: ../am-events.php:289
 msgctxt "time picker"
 msgid "Choose Time"
-msgstr "Valitse Aika"
+msgstr ""
 
 #: ../am-events.php:290
 msgctxt "time picker"
 msgid "Time"
-msgstr "Aika"
+msgstr ""
 
 #: ../am-events.php:291
 msgctxt "time picker"
 msgid "Hour"
-msgstr "Tunti"
+msgstr ""
 
 #: ../am-events.php:292
 msgctxt "time picker"
 msgid "Minute"
-msgstr "Minuutti"
+msgstr ""
 
 #: ../am-events.php:293
 msgctxt "time picker"
 msgid "Second"
-msgstr "Sekunti"
+msgstr ""
 
 #: ../am-events.php:294
 msgctxt "time picker"
 msgid "Millisecond"
-msgstr "Millisekunti"
+msgstr ""
 
 #: ../am-events.php:295
 msgctxt "time picker"
 msgid "Time Zone"
-msgstr "Aikavyöhyke"
+msgstr ""
 
 #: ../am-events.php:318
 msgid ""
 "Are you sure you want to move this and all other events in the series to the "
 "Trash?"
-msgstr "Haluatko varmasti siirtää kaikki tapahtuman toistokerrat roskakoriin?"
+msgstr ""
 
 #: ../am-events.php:361 ../am-events.php:764 ../am-events.php:765
 msgid "Publish"
-msgstr "Julkaise"
+msgstr ""
 
 #: ../am-events.php:376
 msgid "Event Details"
-msgstr "Tapahtuman tiedot"
+msgstr ""
 
 #: ../am-events.php:398 ../am-events.php:400
 msgctxt "administration"
 msgid "m/d/Y H:i"
-msgstr "d.m.Y H:i"
+msgstr ""
 
 #: ../am-events.php:408
 msgid "Start Date:"
-msgstr "Alkamisaika:"
+msgstr ""
 
 #: ../am-events.php:417
 msgid "End Date:"
-msgstr "Päättymisaika"
+msgstr ""
 
 #: ../am-events.php:425
 msgid "Additional options:"
-msgstr "Lisävalinnat:"
+msgstr ""
 
 #: ../am-events.php:427
 msgid "Create recurring events:"
-msgstr "Luo toistuvia tapahtumia:"
+msgstr ""
 
 #: ../am-events.php:432
 msgid "weekly"
-msgstr "joka viikko"
+msgstr ""
 
 #: ../am-events.php:433
 msgid "every two weeks"
-msgstr "joka toinen viikko"
+msgstr ""
 
 #: ../am-events.php:438
 msgid "times (starting from this event)"
-msgstr "kertaa (alkaen tästä tapahtumasta)"
+msgstr ""
 
 #: ../am-events.php:440
 msgid ""
 "Recurring events are created when the event is published, saved or updated."
 msgstr ""
-"Huom! Toistuvat tapahtumat luodaan, kun julkaiset tai päivität tapahtuman."
 
 #: ../am-events.php:519
 msgid "Save"
-msgstr "Tallenna"
+msgstr ""
 
 #: ../am-events.php:525
 msgid "Save Draft"
-msgstr "Tallenna luonnos"
+msgstr ""
 
 #: ../am-events.php:527
 msgid "Save as Pending"
-msgstr "Tallenna vahvistettavaksi"
+msgstr ""
 
 #: ../am-events.php:536
 msgid "Preview Changes"
-msgstr "Esikatsele muutoksia"
+msgstr ""
 
 #: ../am-events.php:547
 msgid "Preview"
-msgstr "Esikatsele"
+msgstr ""
 
 #: ../am-events.php:559
 msgid "Status:"
-msgstr "Tila:"
+msgstr ""
 
 #: ../am-events.php:564 ../am-events.php:591
 msgid "Privately Published"
-msgstr "Yksityisesti Julkaistu"
+msgstr ""
 
 #: ../am-events.php:567 ../am-events.php:589
 msgid "Published"
-msgstr "Julkaistu"
+msgstr ""
 
 #: ../am-events.php:570 ../am-events.php:593
 msgid "Scheduled"
-msgstr "Julkaisuajankohta"
+msgstr ""
 
 #: ../am-events.php:573 ../am-events.php:595
 msgid "Pending Review"
-msgstr "Odottaa vahvistusta"
+msgstr ""
 
 #: ../am-events.php:577 ../am-events.php:597 ../am-events.php:599
 msgid "Draft"
-msgstr "Luonnos"
+msgstr ""
 
 #: ../am-events.php:583 ../am-events.php:629 ../am-events.php:707
 msgid "Edit"
-msgstr "Muokkaa"
+msgstr ""
 
 #: ../am-events.php:583
 msgid "Edit status"
-msgstr "Muokkaa tilaa"
+msgstr ""
 
 #: ../am-events.php:602 ../am-events.php:646
 msgid "OK"
-msgstr "OK"
+msgstr ""
 
 #: ../am-events.php:603 ../am-events.php:647
 msgid "Cancel"
-msgstr "Peruuta"
+msgstr ""
 
 #: ../am-events.php:610
 msgid "Visibility:"
-msgstr "Näkyvyys:"
+msgstr ""
 
 #: ../am-events.php:615 ../am-events.php:643
 msgid "Private"
-msgstr "Yksityinen"
+msgstr ""
 
 #: ../am-events.php:618 ../am-events.php:641
 msgid "Password protected"
-msgstr "Salasanasuojattu"
+msgstr ""
 
 #: ../am-events.php:621
 msgid "Public, Sticky"
-msgstr "Julkinen, pysyvä"
+msgstr ""
 
 #: ../am-events.php:624 ../am-events.php:637
 msgid "Public"
-msgstr "Julkinen"
+msgstr ""
 
 #: ../am-events.php:629
 msgid "Edit visibility"
-msgstr "Muokkaa näkyvyyttä"
+msgstr ""
 
 #: ../am-events.php:639
 msgid "Stick this post to the front page"
-msgstr "Näytä tämä artikkeli etusivulla"
+msgstr ""
 
 #: ../am-events.php:642
 msgid "Password:"
-msgstr "Salasana:"
+msgstr ""
 
 #. translators: Publish box date format, see http://php.net/date
 #: ../am-events.php:656
 msgid "M j, Y @ G:i"
-msgstr "M j, Y @  G:i"
+msgstr ""
 
 #: ../am-events.php:659
 #, php-format
 msgid "Scheduled for: <b>%1$s</b>"
-msgstr "Julkaisuajankohta: <b>%1$s</b>"
+msgstr ""
 
 #: ../am-events.php:661
 #, php-format
 msgid "Published on: <b>%1$s</b>"
-msgstr "Julkaisuaika: <b>%1$s</b>"
+msgstr ""
 
 #: ../am-events.php:663 ../am-events.php:671
 msgid "Publish <b>immediately</b>"
-msgstr "Julkaise <b>välittömästi</b>"
+msgstr ""
 
 #: ../am-events.php:665
 #, php-format
 msgid "Schedule for: <b>%1$s</b>"
-msgstr "Julkaisuajankohta: <b>%1$s</b>"
+msgstr ""
 
 #: ../am-events.php:667
 #, php-format
 msgid "Publish on: <b>%1$s</b>"
-msgstr "Julkaisuajankohta: <b>%1$s</b>"
+msgstr ""
 
 #: ../am-events.php:681
 #, php-format
 msgid "Your site is configured to keep only the last %s revisions."
-msgstr "Sivustosi on asetettu säilyttämään viimeiset %s versiota."
+msgstr ""
 
 #: ../am-events.php:683 ../am-events.php:686
 #, php-format
 msgid "Revisions: %s"
-msgstr "Versiot: %s"
+msgstr ""
 
 #: ../am-events.php:689
 msgctxt "revisions"
 msgid "Browse"
-msgstr "Selaa"
+msgstr ""
 
 #: ../am-events.php:689
 msgid "Browse revisions"
-msgstr "Selaa versioita"
+msgstr ""
 
 #: ../am-events.php:696
 #, php-format
 msgid "Yes, %d events"
-msgstr "Kyllä, %d tapahtumaa"
+msgstr ""
 
 #: ../am-events.php:696
 msgid "No"
-msgstr "Ei"
+msgstr ""
 
 #: ../am-events.php:697
 msgid "Recurring:"
-msgstr "Toistuva:"
+msgstr ""
 
 #: ../am-events.php:707
 msgid "Edit date and time"
-msgstr "Muokkaa päiväystä ja aikaa"
+msgstr ""
 
 #: ../am-events.php:737
 msgid ""
 "This is a recurring event. You can update just this one or all events in the "
 "series."
 msgstr ""
-"Tämä on toistuva tapahtuma. Voit päivittää vain tämän tapahtuman tai kaikki "
-"tapahtuman toistokerrat."
 
 #: ../am-events.php:746
 msgid "Delete Permanently"
-msgstr "Poista lopullisesti"
+msgstr ""
 
 #: ../am-events.php:748
 msgid "Move to Trash"
-msgstr "Siirrä roskakoriin"
+msgstr ""
 
 #: ../am-events.php:761 ../am-events.php:762
 msgid "Schedule"
-msgstr "Ajasta"
+msgstr ""
 
 #: ../am-events.php:769
 msgid "Publish All"
-msgstr "Julkaise kaikki"
+msgstr ""
 
 #: ../am-events.php:773 ../am-events.php:774
 msgid "Submit for Review"
-msgstr "Tallenna hyväksyttäväksi"
+msgstr ""
 
 #: ../am-events.php:777
 msgid "Submit All for Review"
-msgstr "Tallenna kaikki hyväksyttäväksi"
+msgstr ""
 
 #: ../am-events.php:782 ../am-events.php:783
 msgid "Update"
-msgstr "Päivitä"
+msgstr ""
 
 #: ../am-events.php:785
 msgid "Update All"
-msgstr "Päivitä kaikki"
+msgstr ""
 
 #: ../am-events.php:885
 msgid "Move this and all recurring items to trash"
-msgstr "Siirrä tämä ja toistuvat kohteet roskakoriin"
+msgstr ""
 
 #: ../am-events.php:889
 msgid "Trash&nbsp;recurring"
-msgstr "Roskakori toistuvat"
+msgstr ""
 
 #: ../am-events.php:982
 #, php-format
 msgid "%d recurrent posts moved to the Trash."
-msgstr "Tapahtuman toistokerrat (%d kpl) siirretty Roskakoriin."
+msgstr ""
 
 #: ../am-events.php:1110
 #, php-format
 msgid "%d recurring events updated."
-msgstr "%d toistuvaa tapahtumaa luotu."
+msgstr ""
 
 #: ../am-events.php:1192
 #, php-format
 msgid "Created %d recurrent events."
-msgstr "Toistuvat tapahtumat (%d kpl) luotu. "
+msgstr ""
 
-#: ../am-events.php:1238 ../am-events.php:1554
+#: ../am-events.php:1238 ../am-events.php:1553
 msgid "Start Date"
-msgstr "Alkamisaika"
+msgstr ""
 
-#: ../am-events.php:1239 ../am-events.php:1557
+#: ../am-events.php:1239 ../am-events.php:1556
 msgid "End Date"
-msgstr "Päättymisaika"
+msgstr ""
 
-#: ../am-events.php:1316 ../am-events.php:1318
+#: ../am-events.php:1315 ../am-events.php:1317
 msgid "Events"
-msgstr "Tapahtumat"
+msgstr ""
 
-#: ../am-events.php:1317 ../am-events.php:1321 ../am-events.php:1331
+#: ../am-events.php:1316 ../am-events.php:1320 ../am-events.php:1330
 msgid "Event"
-msgstr "Tapahtuma"
+msgstr ""
+
+#: ../am-events.php:1318
+msgid "All Events"
+msgstr ""
 
 #: ../am-events.php:1319
-msgid "All Events"
-msgstr "Kaikki tapahtumat"
-
-#: ../am-events.php:1320
 msgid "Add New Event"
-msgstr "Lisää uusi"
+msgstr ""
+
+#: ../am-events.php:1321
+msgid "Edit Event"
+msgstr ""
 
 #: ../am-events.php:1322
-msgid "Edit Event"
-msgstr "Muokkaa"
+msgid "New Event"
+msgstr ""
 
 #: ../am-events.php:1323
-msgid "New Event"
-msgstr "Uusi tapahtuma"
+msgid "View Events"
+msgstr ""
 
 #: ../am-events.php:1324
-msgid "View Events"
-msgstr "Näytä tapahtumat"
-
-#: ../am-events.php:1325
 msgid "Search Events"
-msgstr "Etsi tapahtumista"
+msgstr ""
 
-#: ../am-events.php:1326 ../am-events.php:1327
+#: ../am-events.php:1325 ../am-events.php:1326
 msgid "No Events Found"
-msgstr "Tapahtumia ei löytynyt"
+msgstr ""
 
-#: ../am-events.php:1341
+#: ../am-events.php:1340
 msgid "Type for events"
-msgstr "Tapahtumien tyyppi"
+msgstr ""
 
-#: ../am-events.php:1358 ../am-events.php:1372
+#: ../am-events.php:1357 ../am-events.php:1371
 msgid "Venues"
-msgstr "Tapahtumapaikat"
+msgstr ""
+
+#: ../am-events.php:1358
+msgid "Venue"
+msgstr ""
 
 #: ../am-events.php:1359
-msgid "Venue"
-msgstr "Paikka"
+msgid "Search Venues"
+msgstr ""
 
 #: ../am-events.php:1360
-msgid "Search Venues"
-msgstr "Etsi tapahtumista"
+msgid "Popular Venues"
+msgstr ""
 
 #: ../am-events.php:1361
-msgid "Popular Venues"
-msgstr "Yleisimmät tapahtumapaikat"
+msgid "All Venues"
+msgstr ""
 
 #: ../am-events.php:1362
-msgid "All Venues"
-msgstr "Kaikki"
+msgid "Parent Venue"
+msgstr ""
 
 #: ../am-events.php:1363
-msgid "Parent Venue"
-msgstr "Ylempi tapahtumapaikka"
+msgid "Parent Venue:"
+msgstr ""
 
 #: ../am-events.php:1364
-msgid "Parent Venue:"
-msgstr "Ylempi tapahtumapaikka:"
+msgid "Edit Venue"
+msgstr ""
 
 #: ../am-events.php:1365
-msgid "Edit Venue"
-msgstr "Muokkaa"
+msgid "Update Venue"
+msgstr ""
 
 #: ../am-events.php:1366
-msgid "Update Venue"
-msgstr "Päivitä tapahtumapaikka"
+msgid "Add New Venue"
+msgstr ""
 
 #: ../am-events.php:1367
-msgid "Add New Venue"
-msgstr "Lisää uusi"
+msgid "New Venue"
+msgstr ""
 
 #: ../am-events.php:1368
-msgid "New Venue"
-msgstr "Uusi tapahtumapaikka"
+msgid "Separate venues with commas"
+msgstr ""
 
 #: ../am-events.php:1369
-msgid "Separate venues with commas"
-msgstr "Erota tapahtumapaikat pilkuilla"
+msgid "Add or remove venues"
+msgstr ""
 
 #: ../am-events.php:1370
-msgid "Add or remove venues"
-msgstr "Lisää tai poista tapahtumapaikkoja"
-
-#: ../am-events.php:1371
 msgid "Choose from the most used venues"
-msgstr "Valitse yleisimmistä tapahtumapaikoista"
+msgstr ""
 
-#: ../am-events.php:1396 ../am-events.php:1410
+#: ../am-events.php:1395 ../am-events.php:1409
 msgid "Event Categories"
-msgstr "Tapahtumatyypit"
+msgstr ""
+
+#: ../am-events.php:1396
+msgid "Event Category"
+msgstr ""
 
 #: ../am-events.php:1397
-msgid "Event Category"
-msgstr "Tapahtumatyyppi"
+msgid "Search Event Categories"
+msgstr ""
 
 #: ../am-events.php:1398
-msgid "Search Event Categories"
-msgstr "Etsi tapahtumatyyppiä"
+msgid "Popular Event Categories"
+msgstr ""
 
 #: ../am-events.php:1399
-msgid "Popular Event Categories"
-msgstr "Yleisimmät tapahtumatyypit"
+msgid "All Event Categories"
+msgstr ""
 
 #: ../am-events.php:1400
-msgid "All Event Categories"
-msgstr "Kaikki tapahtumatyypit"
+msgid "Parent Event Category"
+msgstr ""
 
 #: ../am-events.php:1401
-msgid "Parent Event Category"
-msgstr "Ylätyyppi"
+msgid "Parent Event Category:"
+msgstr ""
 
 #: ../am-events.php:1402
-msgid "Parent Event Category:"
-msgstr "Ylätyyppi:"
+msgid "Edit Event Category"
+msgstr ""
 
 #: ../am-events.php:1403
-msgid "Edit Event Category"
-msgstr "Muokkaa tapahtumatyyppiä:"
+msgid "Update Event Category"
+msgstr ""
 
 #: ../am-events.php:1404
-msgid "Update Event Category"
-msgstr "Päivitä tapahtumatyyppi"
+msgid "Add New Event Category"
+msgstr ""
 
 #: ../am-events.php:1405
-msgid "Add New Event Category"
-msgstr "Lisää uusi"
+msgid "New Event Category"
+msgstr ""
 
 #: ../am-events.php:1406
-msgid "New Event Category"
-msgstr "Uusi tapahtumatyyppi"
+msgid "Separate event categories with commas"
+msgstr ""
 
 #: ../am-events.php:1407
-msgid "Separate event categories with commas"
-msgstr "Erota tapahtumatyypit pilkuilla"
+msgid "Add or remove event categories"
+msgstr ""
 
 #: ../am-events.php:1408
-msgid "Add or remove event categories"
-msgstr "Lisää tai poista tapahtumatyyppejä"
-
-#: ../am-events.php:1409
 msgid "Choose from the most used event categories"
-msgstr "Valitse yleisimmistä tapahtumatyypeistä"
+msgstr ""
 
-#: ../am-events.php:1436
+#: ../am-events.php:1435
 #, php-format
 msgid "Event updated. <a href=\"%s\">View event</a>"
-msgstr "Tapahtuma päivitetty <a href=\"%s\">Näytä</a>"
+msgstr ""
+
+#: ../am-events.php:1436
+msgid "Custom field updated."
+msgstr ""
 
 #: ../am-events.php:1437
-msgid "Custom field updated."
-msgstr "Kenttä päivitetty."
+msgid "Custom field deleted."
+msgstr ""
 
 #: ../am-events.php:1438
-msgid "Custom field deleted."
-msgstr "Kenttä poistettu"
-
-#: ../am-events.php:1439
 msgid "Event updated."
-msgstr "Tapahtuma päivitetty."
+msgstr ""
 
 #. translators: %s: date and time of the revision
-#: ../am-events.php:1441
+#: ../am-events.php:1440
 #, php-format
 msgid "Event restored to revision from %s"
-msgstr "Tapahtuma palautettu versiosta %s"
+msgstr ""
 
-#: ../am-events.php:1442
+#: ../am-events.php:1441
 #, php-format
 msgid "Event published. <a href=\"%s\">View event</a>"
-msgstr "Tapahtuma julkaistu. <a href=\"%s\">Näytä</a>"
+msgstr ""
+
+#: ../am-events.php:1442
+msgid "Event saved."
+msgstr ""
 
 #: ../am-events.php:1443
-msgid "Event saved."
-msgstr "Tapahtuma tallennettu."
-
-#: ../am-events.php:1444
 #, php-format
 msgid "Event submitted. <a target=\"_blank\" href=\"%s\">Preview event</a>"
-msgstr "Tapahtuma luotu. <a target=\"_blank\" href=\"%s\">Näytä</a>"
+msgstr ""
 
-#: ../am-events.php:1445
+#: ../am-events.php:1444
 #, php-format
 msgid ""
 "Event scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s"
 "\">Preview event</a>"
 msgstr ""
-"Tapahtuman julkaisuaika: <strong>%1$s</strong>. <a target=\"_blank\" href="
-"\"%2$s\">Esikatsele</a>"
 
 #. translators: Publish box date format, see http://php.net/date
-#: ../am-events.php:1447
+#: ../am-events.php:1446
 msgctxt "Publish box, see http://php.net/date"
 msgid "d.m.Y G:i"
-msgstr "d.m.Y H:i"
+msgstr ""
 
-#: ../am-events.php:1448
+#: ../am-events.php:1447
 #, php-format
 msgid "Event draft updated. <a target=\"_blank\" href=\"%s\">Preview event</a>"
 msgstr ""
-"Tapahtuman luonnos päivitetty. <a target=\"_blank\" href=\"%s\">Esikatsele</"
-"a>"
 
 #: ../template-tags.php:187
 msgctxt "Venue"
 msgid "Unspecified"
-msgstr "Määrittelemätön"
+msgstr ""
 
 #: ../template-tags.php:200 ../template-tags.php:203 ../template-tags.php:210
 #: ../template-tags.php:223 ../template-tags.php:226 ../template-tags.php:233
 #, php-format
 msgctxt "Venue"
 msgid "View all events in %s"
-msgstr "Näytä tapahtumat paikassa %s"
+msgstr ""
 
 #: ../template-tags.php:298
 msgid "Uncategorized"
-msgstr "Ei kategoriaa"
+msgstr ""
 
 #: ../template-tags.php:311 ../template-tags.php:314 ../template-tags.php:321
 #: ../template-tags.php:334 ../template-tags.php:337 ../template-tags.php:344
 #, php-format
 msgctxt "Category"
 msgid "View all events in %s"
-msgstr "Näytä tapahtumat kategoriassa %s"
+msgstr ""
 
 #: ../widget-upcoming-events.php:29
 msgid "Display upcoming events"
-msgstr "Näytä tulevat tapahtumat"
+msgstr ""
 
 #: ../widget-upcoming-events.php:153 ../widget-upcoming-events.php:154
 msgctxt "upcoming events widget"
 msgid "m/d/Y"
-msgstr "d.m.Y H:i"
+msgstr ""
 
 #: ../widget-upcoming-events.php:156 ../widget-upcoming-events.php:157
 msgctxt "upcoming events widget"
 msgid "H:i"
-msgstr "d.m.Y H:i"
+msgstr ""
 
 #: ../widget-upcoming-events.php:373
 msgid "Upcoming Events"
-msgstr "Tulevat tapahtumat"
+msgstr ""
 
 #: ../widget-upcoming-events.php:380
 msgid "See More Events ->"
-msgstr "Näytä lisää tapahtumia ->"
+msgstr ""
 
 #: ../widget-upcoming-events.php:405
 msgid "Title:"
-msgstr "Otsikko:"
+msgstr ""
 
 #: ../widget-upcoming-events.php:411
 msgid "Select Event category:"
-msgstr "Valitse tapahtuman tyyppi:"
+msgstr ""
 
 #: ../widget-upcoming-events.php:413 ../widget-upcoming-events.php:425
 msgid "All"
-msgstr "Kaikki"
+msgstr ""
 
 #: ../widget-upcoming-events.php:423
 msgid "Select Venue:"
-msgstr "Valitse tapahtumapaikka:"
+msgstr ""
 
 #: ../widget-upcoming-events.php:434
 msgid "Number of events:"
-msgstr "Tapahtumien määrä:"
+msgstr ""
 
 #: ../widget-upcoming-events.php:439
 msgid "Keep passed events visible for:"
-msgstr "Pidä päättyneitä tapahtumia näkyvillä:"
+msgstr ""
 
 #: ../widget-upcoming-events.php:441
 msgid "Don't keep visible"
-msgstr "Älä pidä näkyvillä"
+msgstr ""
 
 #: ../widget-upcoming-events.php:442
 msgid "1 Hour"
-msgstr "1 Tunti"
+msgstr ""
 
 #: ../widget-upcoming-events.php:443
 msgid "24 Hours"
-msgstr "24 Tuntia"
+msgstr ""
 
 #: ../widget-upcoming-events.php:444
 msgid "1 Week"
-msgstr "1 Viikko"
+msgstr ""
 
 #: ../widget-upcoming-events.php:449
 msgid "Display before events:"
-msgstr "Näytä ennen tapahtumia:"
+msgstr ""
 
 #: ../widget-upcoming-events.php:454
 msgid "Template for single event:"
-msgstr "Yksittäisen tapahtuman muotoilu:"
+msgstr ""
 
 #: ../widget-upcoming-events.php:459
 msgid "Display when no events are found:"
-msgstr "Näytä kun tapahtumia ei löydy:"
+msgstr ""
 
 #: ../widget-upcoming-events.php:464
 msgid "Display after events:"
-msgstr "Näytä tapahtuman jälkeen:"
-
-#~ msgid "times"
-#~ msgstr "kertaa"
-
-#~ msgid "View all posts in %s"
-#~ msgstr "Näytä kaikki artikkelit paikassa %s "
-
-#, fuzzy
-#~ msgctxt "am-events"
-#~ msgid "Tue"
-#~ msgstr "Ti"
-
-#, fuzzy
-#~ msgctxt "am-events"
-#~ msgid "Wed"
-#~ msgstr "Ke"
-
-#, fuzzy
-#~ msgctxt "am-events"
-#~ msgid "Thu"
-#~ msgstr "To"
-
-#, fuzzy
-#~ msgctxt "am-events"
-#~ msgid "Fri"
-#~ msgstr "Pe"
-
-#, fuzzy
-#~ msgctxt "am-events"
-#~ msgid "Sat"
-#~ msgstr "La"
-
-#, fuzzy
-#~ msgctxt "am-events"
-#~ msgid "Sun"
-#~ msgstr "Su"
-
-#~ msgid "No upcoming events."
-#~ msgstr "Ei tulevia tapahtumia."
-
-#~ msgid "Date"
-#~ msgstr "Päivämäärä"
-
-#~ msgid "Title"
-#~ msgstr "Otsikko"
-
-#~ msgid "Category"
-#~ msgstr "Kategoria"
-
-#~ msgid "first page"
-#~ msgstr "ensimmäinen"
-
-#~ msgid "previous page"
-#~ msgstr "edellinen"
-
-#~ msgid "next page"
-#~ msgstr "seuraava"
-
-#~ msgid "last page"
-#~ msgstr "viimeinen"
-
-#~ msgid "AM Events"
-#~ msgstr "Tapahtumat"
+msgstr ""
