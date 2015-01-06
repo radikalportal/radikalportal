@@ -1,4 +1,4 @@
-<div class="masthead <?php if ( ! $data['is_connected'] ) echo 'hasbutton'; ?>">
+<div class="masthead <?php if ( ! $data['is_connected'] || ! $data['is_user_connected'] ) echo 'hasbutton'; ?>">
 
 			<?php Jetpack::init()->load_view( 'admin/network-activated-notice.php' ); ?>
 
@@ -8,7 +8,7 @@
 
 			<?php if ( ! $data['is_connected'] && current_user_can( 'jetpack_connect' ) ) : ?>
 				<a href="<?php echo Jetpack::init()->build_connect_url() ?>" class="download-jetpack"><?php esc_html_e( 'Connect to Get Started', 'jetpack' ); ?></a>
-			<?php elseif ( ! $data['is_user_connected'] && current_user_can( 'jetpack_connect_user' ) ) : ?>
+			<?php elseif ( $data['is_connected'] && ! $data['is_user_connected'] && current_user_can( 'jetpack_connect_user' ) ) : ?>
 				<a href="<?php echo Jetpack::init()->build_connect_url() ?>" class="download-jetpack"><?php esc_html_e( 'Link your account to WordPress.com', 'jetpack' ); ?></a>
 			<?php endif; ?>
 
@@ -31,6 +31,11 @@
 				<h2><?php _e('Jetpack is in local development mode.', 'jetpack' ); ?></h2>
 				<?php elseif ( $data['is_connected'] ) : ?>
 				<h2><?php _e("You're successfully connected to Jetpack!", 'jetpack' ); ?></h2>
+					<?php
+						if ( Jetpack::init()->can_display_jetpack_manage_notice() ) {
+							Jetpack::init()->opt_in_jetpack_manage_notice();
+						}
+					?>
 				<?php else : ?>
 				<h2><?php _e('Once you’ve connected Jetpack, you’ll get access to all the delightful features below.', 'jetpack' ); ?></h2>
 				<?php endif; ?>

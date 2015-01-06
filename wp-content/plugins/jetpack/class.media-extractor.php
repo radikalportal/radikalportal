@@ -24,6 +24,7 @@ class Jetpack_Media_Meta_Extractor {
 		'hulu',
 		'ted',
 		'wpvideo',
+		'audio',
 	);
 
 	/**
@@ -259,8 +260,8 @@ class Jetpack_Media_Meta_Extractor {
 			}
 
 			$link_count = count( $links );
-			$extracted['link'] = $links;
 			if ( $link_count ) {
+				$extracted[ 'link' ] = $links;
 				if ( !isset( $extracted['has'] ) )
 					$extracted['has'] = array();
 				$extracted['has']['link'] = $link_count;
@@ -405,7 +406,7 @@ class Jetpack_Media_Meta_Extractor {
 					// Rebuild the URL without the query string
 					$queryless = $src['scheme'] . '://' . $src['host'] . $src['path'];
 				} elseif ( $length = strpos( $image_url, '?' ) ) {
-					// If parse_url() didn't work, strip off theh query string the old fashioned way
+					// If parse_url() didn't work, strip off the query string the old fashioned way
 					$queryless = substr( $image_url, 0, $length );
 				} else {
 					// Failing that, there was no spoon! Err ... query string!

@@ -250,7 +250,7 @@ function stats_array( $kvs ) {
  * Admin Pages
  */
 function stats_admin_menu() {
-        global $pagenow;
+	global $pagenow;
 
 	// If we're at an old Stats URL, redirect to the new one.
 	// Don't even bother with caps, menu_page_url(), etc.  Just do it.
@@ -556,7 +556,7 @@ function stats_configuration_screen() {
 			?>
 		</td></tr>
 		<tr valign="top"><th scope="row"><?php _e( 'Smiley' , 'jetpack' ); ?></th>
-		<td><label><input type='checkbox'<?php checked( isset( $options['hide_smile'] ) && $options['hide_smile'] ); ?> name='hide_smile' id='hide_smile' /> <?php _e( 'Hide the stats smiley face image.', 'jetpack' ); ?></label><br /> <span class="description"><?php _e( 'The image helps collect stats and <strong>makes the world a better place</strong> but should still work when hidden', 'jetpack' ); ?> <img class="stats-smiley" alt="<?php esc_attr_e( 'Smiley face', 'jetpack' ); ?>" src="<?php echo esc_url( plugins_url( '_inc/images/stats-smiley.gif', dirname( __FILE__ ) ) ); ?>" width="6" height="5" /></span></td></tr>
+		<td><label><input type='checkbox'<?php checked( isset( $options['hide_smile'] ) && $options['hide_smile'] ); ?> name='hide_smile' id='hide_smile' /> <?php _e( 'Hide the stats smiley face image.', 'jetpack' ); ?></label><br /> <span class="description"><?php _e( 'The image helps collect stats and <strong>makes the world a better place</strong> but should still work when hidden', 'jetpack' ); ?> <img class="stats-smiley" alt="<?php esc_attr_e( 'Smiley face', 'jetpack' ); ?>" src="<?php echo esc_url( plugins_url( 'images/stats-smiley.gif', dirname( __FILE__ ) ) ); ?>" width="6" height="5" /></span></td></tr>
 		<tr valign="top"><th scope="row"><?php _e( 'Report visibility' , 'jetpack' ); ?></th>
 		<td>
 			<?php _e( 'Select the roles that will be able to view stats reports.', 'jetpack' ); ?><br/>
@@ -803,7 +803,7 @@ jQuery(window).load( function() {
 			resizeChart();
 		}, 100) );
 	} );
-	
+
 	function resizeChart() {
 		var dashStats = jQuery( '#dashboard_stats.postbox div.inside' );
 
@@ -1032,7 +1032,7 @@ function stats_print_wp_remote_error( $get, $url ) {
 	<pre>
 	User Agent: "<?php echo esc_html( $_SERVER['HTTP_USER_AGENT'] ); ?>"
 	Page URL: "http<?php echo (is_ssl()?'s':'') . '://' . esc_html( $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ); ?>"
-	API URL: "<?php echo clean_url( $url ); ?>"
+	API URL: "<?php echo esc_url( $url ); ?>"
 <?php
 	if ( is_wp_error( $get ) ) {
 		foreach ( $get->get_error_codes() as $code ) {
@@ -1145,4 +1145,3 @@ function stats_str_getcsv( $csv ) {
 
 	return $data;
 }
-
