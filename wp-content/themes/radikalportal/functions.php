@@ -198,7 +198,7 @@ else {
 add_filter('wp_title', 'baw_hack_wp_title_for_home');
 function baw_hack_wp_title_for_home($title) {
     if( empty( $title ) && ( is_home() || is_front_page() ) ) {
-        return __( 'Radikal Portal', 'theme_domain' );
+        return __( 'Radikal Portal - Folk, miljø og demokrati, ikke rasisme, krig og ulikhet', 'theme_domain' );
     }
     return $title;
 }
