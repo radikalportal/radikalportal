@@ -39,7 +39,7 @@ foreach ($redaksjon as $r) {
 	$userdata = get_userdata($r);
 
 	echo '<div class="row">';
-	echo '<div class="pull-left" style="padding-top: 8px; margin-bottom: 20px;">';
+	echo '<div class="pull-left" style="margin: 10px;">';
 
 	if (userphoto_exists($r)) {
 		userphoto(
