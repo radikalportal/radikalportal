@@ -10,15 +10,9 @@
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
     <div class="post single">
 
-<?php if (get_the_ID() == 8373) { ?>
-<iframe src="http://new.livestream.com/accounts/2698249/events/1996825/player?width=705&height=397&autoPlay=true&mute=false" width="705" height="397" frameborder="0" scrolling="no"> </iframe>
-<?php } else { ?>
-
 <div class="thumb">
 <?php if (has_post_thumbnail()) { the_post_thumbnail('large'); echo get_post(get_post_thumbnail_id())->post_content; echo "<br>"; echo get_post(get_post_thumbnail_id())->post_excerpt; } ?>
 </div>
-
-<?php } ?>
 
 <div class="row">
   <div class="col-md-12">
