@@ -5,9 +5,6 @@
   <div style="float:left;padding:3px 0px 0px 14px;">
     <?php dd_twitter_generate('Compact','radikalportal') ?>
   </div>
-  <div class="hidden-xs" style="float:left;padding:1px 0px;margin-left:-14px;">
-    <?php dd_google1_generate('Compact (24px)') ?>
-  </div>
   <a class="hidden-xs btn btn-default btn-xs" style="float: right;" href="javascript:if(window.print)window.print()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Skriv ut</a>
   <div class="clearfix"></div>
 </div>
