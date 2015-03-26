@@ -24,13 +24,13 @@ $redaksjon = array(
 	 10,  // Irene Kosberg Skagestad
 	 20,  // Jenny Dahl Bakken
 	 76,  // Joakim Møllersen
-	  6,  // John Y. Jones
  	 30,  // Julie Holm
 	263,  // Kjersti Opstad
+	309,  // Kristian Jørgensen
 	 21,  // Linda Skjold Oksnes
-	195,  // Macel Ingles
 	 22,  // Olav Elgvin
 	 13,  // Oscar Dybedahl
+	338,  // Saroj Chumber
 	 16,  // Vegard Velle
 	 27,  // Wibeke Bergheim
 );
