@@ -58,7 +58,13 @@ class NewsletterEmails extends NewsletterModule {
     }
 
     function get_current_theme_options() {
-        return $this->themes->get_options($this->get_current_theme());
+        $theme_options = $this->themes->get_options($this->get_current_theme());
+        // main options merge
+        $main_options = Newsletter::instance()->options;
+        foreach ($main_options as $key => $value) {
+            $theme_options['main_'.$key] = $value;
+        }
+        return $theme_options;
     }
 
     /**

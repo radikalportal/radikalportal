@@ -154,15 +154,6 @@ if ($controls->is_action('import')) {
                 </td>
             </tr>
 
-            <!--
-            <tr valign="top">
-                <th>Follow up</th>
-                <td>
-            <?php $controls->select('followup', array('none' => 'None', 'activate' => 'Activate')); ?>
-                </td>
-            </tr>
-            -->
-
             <tr valign="top">
                 <th>Import mode</th>
                 <td>

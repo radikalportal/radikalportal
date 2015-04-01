@@ -38,6 +38,5 @@ $controls->merge_defaults($theme_defaults);
     </tr>
 </table>
 
-<h3>Social</h3>
 <?php include WP_PLUGIN_DIR . '/newsletter/emails/themes/default/social-options.php'; ?>
 

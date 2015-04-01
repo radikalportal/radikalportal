@@ -1,5 +1,7 @@
 <?php
 
+// This file is used only on first installation!
+
 // Message show after a subbscription request has made.
 $options['confirmation_text'] =
 "<p>Sie haben sich in unseren Newsletter eingetragen.
@@ -35,7 +37,7 @@ Willkommen zu unserem {blog_title} Newsletter.</p>
 <p>
 Wir werden Sie künftig regelm&auml;&szlig;ig &uuml;ber Neuigkeiten zu {blog_title} informieren</p>
 <p>
-Wenn Sie unseren newsletter nicht mehr erhalten m&ouml;chten, tragen Sie sich bitte unter dem folgenden Link aus dem Verteiler aus: <a href=\"{newsletter_url}\">austragen</a></p>
+Wenn Sie unseren newsletter nicht mehr erhalten m&ouml;chten, tragen Sie sich bitte unter dem folgenden Link aus dem Verteiler aus: <a href=\"{unsubscription_url}\">austragen</a></p>
 <p>Besten Dank!</p>";
 
 // Unsubscription request introductory text

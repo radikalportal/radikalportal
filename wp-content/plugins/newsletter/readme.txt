@@ -1,8 +1,9 @@
 === Newsletter ===
 Tags: newsletter,email,subscription,mass mail,list build,email marketing,direct mailing
 Requires at least: 3.3.0
-Tested up to: 4.1
+Tested up to: 4.1.1
 Stable tag: trunk
+Contributors: satollo,webagile,michael-travan
 
 Add a real newsletter to your blog. In seconds. For free. With unlimited emails and subscribers.
 
@@ -55,6 +56,34 @@ Thank you, The Newsletter Team
 No screen shots are available at this time.
 
 == Changelog ==
+
+= 3.7.0 =
+
+* Bugfix
+
+= 3.6.9 =
+
+* Little fix
+
+= 3.6.8 =
+
+* Fixed the subject of the administrative notification
+* Cleaned up obsolete code
+* Added support for extension versions check
+* Fixed typo in text only themes
+* Fixed wrong unsubscribe code in German Welcome Email
+
+= 3.6.7 =
+
+* New Blog Info configuration panel
+* New Default Theme
+* Minor layout changes
+* Fix subscription email link
+* Added notices when filters are active on subscriber management panel
+* Few fixes on statistic panel
+* Fixed undefined index noticies on subscription page
+* Several fixes
+* A TNT team member quitted smoking, so the plugin become smoking free
 
 = 3.6.6 =
 

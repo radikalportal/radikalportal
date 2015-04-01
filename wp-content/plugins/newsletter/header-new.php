@@ -22,7 +22,7 @@ $user_count = $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE . 
         <?php } ?>
         <img src="<?php echo plugins_url('newsletter'); ?>/images/header/logo.png" style="vertical-align: middle;">
 
-        <a href="http://www.thenewsletterplugin.com/" target="_blank" style="font-weight: bold; font-size: 13px; text-transform: uppercase">
+        <a href="http://www.thenewsletterplugin.com/?utm_source=plugin&utm_medium=link&utm_campaign=newsletter-extensions&utm_content=<?php echo NEWSLETTER_VERSION?>" target="_blank" style="font-weight: bold; font-size: 13px; text-transform: uppercase">
             Get the Professional Extensions!
         </a>
         &nbsp;&nbsp;&nbsp;
@@ -46,8 +46,8 @@ $user_count = $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE . 
     <div class="notice">
         <a href="<?php echo $_SERVER['REQUEST_URI'] . '&dismiss=newsletter-page' ?>" class="dismiss">&times;</a>
         <p>
-            I never asked before and I'm curious: <a href="http://wordpress.org/extend/plugins/newsletter/" target="_blank">would you rate this plugin</a>?
-            (few seconds required). (account on WordPress.org required, every blog owner should have one...). <strong>Really appreciated, The Newsletter Team</strong>.
+            We never asked before and we're curious: <a href="http://wordpress.org/extend/plugins/newsletter/" target="_blank">would you rate this plugin</a>?
+            (few seconds required - account on WordPress.org required, every blog owner should have one...). <strong>Really appreciated, The Newsletter Team</strong>.
         </p>
     </div>
 <?php } ?>

@@ -3,17 +3,23 @@ require_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 $controls = new NewsletterControls();
 $module = NewsletterEmails::instance();
 
-
 // Always required
-$email_id = $_GET['id'];
-$email = Newsletter::instance()->get_email($email_id, ARRAY_A);
+$email = Newsletter::instance()->get_email($_GET['id'], ARRAY_A);
+if (empty($email)) {
+    echo 'Wrong email identifier';
+    return;
+}
+$email_id = $email['id'];
+
 
 // If there is no action we assume we are enter the first time so we populate the
 // $nc->data with the editable email fields
 if (!$controls->is_action()) {
     $controls->data = $email;
-    if (!empty($email['preferences'])) $controls->data['preferences'] = explode(',', $email['preferences']);
-    if (!empty($email['sex'])) $controls->data['sex'] = explode(',', $email['sex']);
+    if (!empty($email['preferences']))
+        $controls->data['preferences'] = explode(',', $email['preferences']);
+    if (!empty($email['sex']))
+        $controls->data['sex'] = explode(',', $email['sex']);
     $email_options = unserialize($email['options']);
     if (is_array($email_options)) {
         $controls->data = array_merge($controls->data, $email_options);
@@ -50,11 +56,15 @@ if ($controls->is_action('test') || $controls->is_action('save') || $controls->i
 
     $email['options'] = serialize($email['options']);
 
-    if (is_array($controls->data['preferences'])) $email['preferences'] = implode(',', $controls->data['preferences']);
-    else $email['preferences'] = '';
+    if (is_array($controls->data['preferences']))
+        $email['preferences'] = implode(',', $controls->data['preferences']);
+    else
+        $email['preferences'] = '';
 
-    if (is_array($controls->data['sex'])) $email['sex'] = implode(',', $controls->data['sex']);
-    else $email['sex'] = '';
+    if (is_array($controls->data['sex']))
+        $email['sex'] = implode(',', $controls->data['sex']);
+    else
+        $email['sex'] = '';
 
     // Before send, we build the query to extract subscriber, so the delivery engine does not
     // have to worry about the email parameters
@@ -72,7 +82,7 @@ if ($controls->is_action('test') || $controls->is_action('save') || $controls->i
     if (is_array($preferences)) {
 
         // Not set one of the preferences specified
-        $operator = $controls->data['preferences_status_operator'] == 0?' or ':' and ';
+        $operator = $controls->data['preferences_status_operator'] == 0 ? ' or ' : ' and ';
         if ($controls->data['preferences_status'] == 1) {
             $query .= " and (";
             foreach ($preferences as $x) {
@@ -80,8 +90,7 @@ if ($controls->is_action('test') || $controls->is_action('save') || $controls->i
             }
             $query = substr($query, 0, -4);
             $query .= ")";
-        }
-        else {
+        } else {
             $query .= " and (";
             foreach ($preferences as $x) {
                 $query .= "list_" . $x . "=1" . $operator;
@@ -112,7 +121,7 @@ if ($controls->is_action('test') || $controls->is_action('save') || $controls->i
     $email['send_on'] = $controls->data['send_on'];
 
     if ($controls->is_action('editor')) {
-        $email['editor'] = $email['editor'] == 0?1:0;
+        $email['editor'] = $email['editor'] == 0 ? 1 : 0;
     }
 
     // Cleans up of tag
@@ -157,11 +166,19 @@ if ($controls->is_action('abort')) {
 if ($controls->is_action('test')) {
     $users = NewsletterUsers::instance()->get_test_users();
     if (count($users) == 0) {
-        $controls->errors = 'There are no test subscribers. Read more about test subscribers <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
+        $controls->messages = __('There are no test subscribers.', 'newsletter-emails');
     } else {
         Newsletter::instance()->send(Newsletter::instance()->get_email($email_id), $users);
-        $controls->messages .= 'Test emails sent to ' . count($users) . ' test subscribers. Read more about test subscribers <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
+        $controls->messages = __('Test newsletter sent to:', 'newsletter-emails');
+        foreach ($users as &$user)
+            $controls->messages .= ' ' . $user->email;
+        $controls->messages .= '.';
     }
+
+    $controls->messages .= '<br>';
+    $controls->messages .= '<a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">' .
+            __('Read more about test subscribers', 'newsletter-emails') . '</a>.';
+
     $controls->messages .= '<br>If diagnostic emails are delivered but test emails are not, try to change the encoding to "base 64" on main configuration panel';
 }
 
@@ -176,40 +193,38 @@ if ($email['editor'] == 0) {
         $controls->data['message'] = substr($controls->data['message'], $x + 1, $y - $x - 1);
     }
 }
-
 ?>
 
 <script type="text/javascript" src="<?php echo plugins_url('newsletter'); ?>/tiny_mce/tiny_mce.js"></script>
 <script type="text/javascript">
     tinyMCE.init({
         height: 700,
-        mode : "specific_textareas",
-        editor_selector : "visual",
-        theme : "advanced",
-        entity_encoding : "raw",
+        mode: "specific_textareas",
+        editor_selector: "visual",
+        theme: "advanced",
+        entity_encoding: "raw",
         plugins: "table,fullscreen,legacyoutput",
-        theme_advanced_disable : "styleselect",
+        theme_advanced_disable: "styleselect",
         theme_advanced_buttons1_add: "forecolor,blockquote,code,fontsizeselect,fontselect",
-        theme_advanced_buttons3_add : "tablecontrols,fullscreen",
-        relative_urls : false,
+        theme_advanced_buttons3_add: "tablecontrols,fullscreen",
+        relative_urls: false,
         theme_advanced_statusbar_location: "bottom",
-        remove_script_host : false,
-        theme_advanced_resizing : true,
-        theme_advanced_toolbar_location : "top",
-        document_base_url : "<?php echo get_option('home'); ?>/",
-        content_css: ["<?php echo plugins_url('newsletter')?>/emails/editor.css", "<?php echo plugins_url('newsletter') . '/emails/css.php?id=' . $email_id . '&' . time(); ?>"]
+        remove_script_host: false,
+        theme_advanced_resizing: true,
+        theme_advanced_toolbar_location: "top",
+        document_base_url: "<?php echo get_option('home'); ?>/",
+        content_css: ["<?php echo plugins_url('newsletter') ?>/emails/editor.css", "<?php echo plugins_url('newsletter') . '/emails/css.php?id=' . $email_id . '&' . time(); ?>"]
     });
 
-    jQuery(document).ready(function() {
-        jQuery('#upload_image_button').click(function() {
+    jQuery(document).ready(function () {
+        jQuery('#upload_image_button').click(function () {
             tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true');
             return false;
         });
 
-        window.send_to_editor = function(html) {
-            imgurl = jQuery('img',html).attr('src');
-            //jQuery('#upload_image').val(imgurl);
-            tinyMCE.execCommand('mceInsertContent',false,'<img src="' + imgurl + '" />');
+        window.send_to_editor = function (html) {
+            var imgURL = html.match(/src=\"(.*?)\"/);
+            tinyMCE.execCommand('mceInsertContent', false, '<img src="' + imgURL[1] + '" />');
             tb_remove();
         }
     });
@@ -217,12 +232,12 @@ if ($email['editor'] == 0) {
 
 <div class="wrap">
 
-    <?php //$help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/newsletters-module'; ?>
-    <?php //include NEWSLETTER_DIR . '/header-new.php'; ?>
+    <?php //$help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/newsletters-module';  ?>
+    <?php //include NEWSLETTER_DIR . '/header-new.php';  ?>
 
     <div id="newsletter-title">
-    <h2>Edit Newsletter</h2>
-     </div>
+        <h2>Edit Newsletter</h2>
+    </div>
     <div class="newsletter-separator"></div>
 
     <?php
@@ -249,33 +264,37 @@ if ($email['editor'] == 0) {
 
         <div id="tabs">
             <ul>
-                <li><a href="#tabs-a">Message</a></li>
-                <li><a href="#tabs-b">Message (textual)</a></li>
-                <li><a href="#tabs-c">Who will receive it</a></li>
-                <li><a href="#tabs-d">Other options</a></li>
+                <li><a href="#tabs-a"><?php _e('Message', 'newsletter-emails') ?></a></li>
+                <li><a href="#tabs-b"><?php _e('Message (textual)', 'newsletter-emails') ?></a></li>
+                <li><a href="#tabs-c"><?php _e('Targeting', 'newsletter-emails') ?></a></li>
+                <li><a href="#tabs-d"><?php _e('Other', 'newsletter-emails') ?></a></li>
+                <li><a href="#tabs-status"><?php _e('Status', 'newsletter-emails') ?></a></li>
                 <!--<li><a href="#tabs-5">Documentation</a></li>-->
             </ul>
 
 
             <div id="tabs-a">
 
-                            <?php $controls->text('subject', 70, 'Subject'); ?>
+                <?php $controls->text('subject', 70, 'Subject'); ?>
 
-                            <input id="upload_image_button" type="button" value="Choose or upload an image" />
-                            <?php $email['editor'] == 0 ? $controls->editor('message', 30) : $controls->textarea_fixed('message', '100%', '700'); ?>
-                            <div class="hints">
-                                <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-tags" target="">See the list of all tags</a> that can be used on the email text.
-                            </div>
-                        
+                <input id="upload_image_button" type="button" value="Choose or upload an image" />
+
+                <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-tags" target="_blank"><?php _e('Available tags', 'newsletter-emails') ?></a>
+
+                <br><br>
+
+                <?php $email['editor'] == 0 ? $controls->editor('message', 30) : $controls->textarea_fixed('message', '100%', '700'); ?>
+
+
             </div>
 
 
             <div id="tabs-b">
                 <div class="tab-preamble">
-                <p>
-                    This is the textual version of your newsletter. If you empty it, only an HTML version will be sent but
-                    is an anti-spam best practice to include a text only version.
-                </p>
+                    <p>
+                        This is the textual version of your newsletter. If you empty it, only an HTML version will be sent but
+                        is an anti-spam best practice to include a text only version.
+                    </p>
                 </div>
                 <table class="form-table">
                     <tr valign="top">
@@ -292,43 +311,40 @@ if ($email['editor'] == 0) {
                 <table class="form-table">
 
                     <tr valign="top">
-                        <th><?php _e('Gender', 'newsletter'); ?></th>
+                        <th><?php _e('Gender', 'newsletter-emails'); ?></th>
                         <td>
-                            <?php $controls->checkboxes_group('sex', array('f'=>'Women', 'm'=>'Men', 'n'=>'Not specified')); ?>
+                            <?php $controls->checkboxes_group('sex', array('f' => 'Women', 'm' => 'Men', 'n' => 'Not specified')); ?>
                             <div class="hints">
                                 Leaving all gender options unselected disable this filter.
                             </div>
                         </td>
                     </tr>
                     <tr valign="top">
-                        <th><?php _e('Subscriber preferences', 'newsletter'); ?></th>
+                        <th><?php _e('Subscriber preferences', 'newsletter-emails'); ?></th>
                         <td>
                             Subscribers with
-                            <?php $controls->select('preferences_status_operator', array(0=>'at least one preference', 1=>'all preferences')); ?>
+                            <?php $controls->select('preferences_status_operator', array(0 => 'at least one preference', 1 => 'all preferences')); ?>
 
-                            <?php $controls->select('preferences_status', array(0=>'active', 1=>'not active')); ?>
+                            <?php $controls->select('preferences_status', array(0 => 'active', 1 => 'not active')); ?>
                             between the selected ones below:
 
                             <?php $controls->preferences_group('preferences', true); ?>
-                            <div class="hints">
+                            <p class="description">
                                 You can address the newsletter to subscribers who selected at least one of the options or to who
                                 has not selected at least one of the options.
                                 <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">Read more about the "NOT ACTIVE" usage</a>.
-                            </div>
+                            </p>
                         </td>
                     </tr>
 
                     <tr valign="top">
-                        <th>Subscriber status</th>
+                        <th><?php _e('Subscriber status', 'newsletter-emails') ?></th>
                         <td>
-                            <?php $controls->select('status', array('C'=>'Confirmed', 'S'=>'Not confirmed')); ?>
+                            <?php $controls->select('status', array('C' => __('Confirmed', 'newsletter-emails'), 'S' => __('Not confirmed', 'newsletter-emails'))); ?>
 
-                            <div class="hints">
-                                <strong>Warning! Use this option with care!</strong>
-                                <br>
-                                You should NEVER send emails to not confirmed subscribers, but if you need to send them
-                                an email to ask for confirmation, you can use this option.
-                            </div>
+                            <p class="description">
+                                <?php _e('Send to not confirmed subscribers ONLY to ask for confirmation including the {subscription_confirm_url} tag.', 'newsletter-emails') ?>
+                            </p>
                         </td>
                     </tr>
                     <tr valign="top">
@@ -336,23 +352,22 @@ if ($email['editor'] == 0) {
                         <td>
                             <?php $controls->yesno('wp_users'); ?>
 
-                            <div class="hints">
+                            <p class="description">
                                 Limit to the subscribers which are WordPress users as well.
-                            </div>
+                            </p>
                         </td>
                     </tr>
                     <tr valign="top">
                         <th>
-                            Approximative number of receivers<br>
-                            <small>Updated everytime you save</small>
+                            <?php _e('Targeted subscribers', 'newsletter-emails') ?>
                         </th>
                         <td>
                             <?php
                             echo $wpdb->get_var(str_replace('*', 'count(*)', $email['query']));
                             ?>
-                            <div class="hints">
-                            If you change selections below, save the email to update this values.
-                            </div>
+                            <p class="description">
+                                <?php _e('Save to update if on targeting filters have been changed', 'newsletter-emails') ?>
+                            </p>
                         </td>
                     </tr>
                 </table>
@@ -362,34 +377,31 @@ if ($email['editor'] == 0) {
             <div id="tabs-d">
                 <table class="form-table">
                     <tr valign="top">
-                        <th>Private?</th>
+                        <th><?php _e('Private', 'newsletter-emails') ?></th>
                         <td>
                             <?php $controls->yesno('private'); ?>
-                            <div class="hints">
-                                Potentially used for public showing of a newsletter. Actually has not effects.
-                            </div>
+                            <p class="description">
+                                <?php _e('Hide/show from public sent newsletter list.', 'newsletter-emails') ?>
+                                <?php _e('Required', 'newsletter-emails') ?>: <a href="" target="_blank">Newsletter Archive Extension</a>
+                            </p>
                         </td>
                     </tr>
                     <tr valign="top">
-                        <th>Track clicks and message opening?</th>
+                        <th><?php _e('Track clicks and message opening', 'newsletter-emails') ?></th>
                         <td>
                             <?php $controls->yesno('track'); ?>
-                            <div class="hints">
-                                When this option is enabled, each link in the email text will be rewritten and clicks
-                                on them intercepted.
-                            </div>
                         </td>
                     </tr>
                     <tr valign="top">
-                        <th>Send on</th>
+                        <th><?php _e('Send on', 'newsletter-emails') ?></th>
                         <td>
                             <?php $controls->datetime('send_on'); ?> (<?php echo date_i18n(get_option('date_format') . ' ' . get_option('time_format')); ?> )
-
-                        <div class="hints">
-                                Change this date to schedule this newsletter.
-                            </div>
                         </td>
                     </tr>
+                </table>
+            </div>
+            <div id="tabs-status">
+                <table class="form-table">
                     <tr valign="top">
                         <th>Email status</th>
                         <td><?php echo $email['status']; ?></td>

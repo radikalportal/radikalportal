@@ -54,10 +54,7 @@ class NewsletterStatistics extends NewsletterModule {
 //        $this->upgrade_query("alter table {$wpdb->prefix}newsletter_links add column email_id int not null default 0");
 //        $this->upgrade_query("alter table {$wpdb->prefix}newsletter_links add column token varchar(10) not null default ''");
 //        $this->upgrade_query("alter table {$wpdb->prefix}newsletter_links add column text varchar(255) not null default ''");
-
-
         //$this->upgrade_query("create table if not exists {$wpdb->prefix}newsletter_stats (id int auto_increment, primary key (id)) $charset_collate");
-
     }
 
     function admin_menu() {
@@ -119,6 +116,13 @@ class NewsletterStatistics extends NewsletterModule {
         global $wpdb;
         $email_id = (int) $email_id;
         return (int) $wpdb->get_var("select count(distinct user_id) from " . NEWSLETTER_STATS_TABLE . " where email_id=" . $email_id);
+    }
+
+    function get_clicked_count($email_id) {
+        global $wpdb;
+        $email_id = (int) $email_id;
+
+        return (int) $wpdb->get_var("select count(distinct user_id) from " . NEWSLETTER_STATS_TABLE . " where url<>'' and email_id=" . $email_id);
     }
 
 }

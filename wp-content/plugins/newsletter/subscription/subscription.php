@@ -19,7 +19,7 @@ class NewsletterSubscription extends NewsletterModule {
     }
 
     function __construct() {
-        parent::__construct('subscription', '1.1.1');
+        parent::__construct('subscription', '1.1.2');
 
         add_action('wp_login', array($this, 'hook_wp_login'));
 
@@ -1037,12 +1037,12 @@ class NewsletterSubscription extends NewsletterModule {
         }
 
         $message .= "token: " . $user->token . "\n" .
-                "status: " . $user->status . "\n" .
-                "\nYours, Newsletter Pro.";
+                "status: " . $user->status . "\n";
         $email = trim($this->options['notify_email']);
         if (empty($email))
             $email = get_option('admin_email');
-        wp_mail($email, '[' . get_option('blogname') . '] ' . $subject, $message, "Content-type: text/plain; charset=UTF-8\n");
+        $blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
+        wp_mail($email, '[' . $blogname . '] ' . $subject, $message, "Content-type: text/plain; charset=UTF-8\n");
     }
 
 }

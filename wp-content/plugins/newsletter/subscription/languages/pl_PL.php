@@ -1,5 +1,7 @@
 <?php
 
+// This file is used only on first installation!
+
 // Message show after a subbscription request has made.
 $options['confirmation_text'] =
 "<p>Zostałeś zapisany do subskrypcji.
