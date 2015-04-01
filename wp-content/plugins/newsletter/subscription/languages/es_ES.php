@@ -1,5 +1,7 @@
 <?php
 
+// This file is used only on first installation!
+
 // Mostrar mensaje despues de una solicitud de suscripcion hecha.
 $options['confirmation_text'] =
 "<p>Con exito suscrito a mi boletín informativo.

@@ -144,7 +144,7 @@ if ($controls->is_action('feed_disable')) {
             <li><a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module" target="_blank">Subscribers Module</a></li>
             <li><a href="http://www.thenewsletterplugin.com/plugins/newsletter/statistics-module" target="_blank">Statistics Module</a></li>
 
-            <li><a href="http://www.thenewsletterplugin.com/plugins/newsletter/feed-by-mail-module" target="_blank">Feed by Mail Module</a></li>
+            <li><a href="http://www.thenewsletterplugin.com/feed-by-mail-extension?utm_source=plugin&utm_medium=link&utm_campaign=newsletter-feed" target="_blank">Feed by Mail Module</a></li>
             <!--<li><a href="http://www.thenewsletterplugin.com/plugins/newsletter/follow-up-module" target="_blank">Follow Up Module</a></li>
             -->
         </ul>

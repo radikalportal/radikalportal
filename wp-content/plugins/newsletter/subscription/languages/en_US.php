@@ -17,6 +17,8 @@ $options['error_text'] = '<p>This subscription can\'t be completed, sorry. The e
 
 $options['already_confirmed_text'] = '<p>This email address is already subscribed, anyway a welcome email has been resent. Thank you.</p>';
 
+$options['subscribe_wp_users'] = 0;
+
 // Subscription page introductory text (befor the subscription form)
 $options['subscription_text'] =
 "{subscription_form}";
@@ -37,8 +39,8 @@ $options['confirmation_subject'] =
 $options['confirmation_message'] =
 "<p>Hi {name},</p>
 <p>A newsletter subscription request for this email address was
-received. Please confirm it by clicking here. If you cannot
-click the link, please use the following link.</p>
+received. Please confirm it by <a href=\"{subscription_confirm_url}\"><strong>clicking here</strong></a>. If you cannot
+click the link, please use the following link:</p>
 
 <p>{subscription_confirm_url}</p>
 

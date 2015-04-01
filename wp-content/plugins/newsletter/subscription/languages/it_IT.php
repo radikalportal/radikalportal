@@ -1,5 +1,7 @@
 <?php
 
+// This file is used only on first installation!
+
 // Subscription registration message
 $options['confirmation_text'] =
 "<p>L'iscrizione è quasi completa: controlla la tua

@@ -75,12 +75,14 @@ class NewsletterControls {
     }
 
     function get_value($name) {
-        if (!isset($this->data[$name])) return null;
+        if (!isset($this->data[$name]))
+            return null;
         return $this->data[$name];
     }
 
     function get_value_array($name) {
-        if (!isset($this->data[$name]) || !is_array($this->data[$name])) return array();
+        if (!isset($this->data[$name]) || !is_array($this->data[$name]))
+            return array();
         return $this->data[$name];
     }
 
@@ -461,7 +463,7 @@ class NewsletterControls {
         echo 'User\'s preferences can be activated from the "Subscription Form" panel. They can be used to simulate lists or create private groups. The number is the "preference number". ';
         echo '<a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">Read more about preferences</a>.';
         echo '</div>';
-        }
+    }
 
     /**
      * Creates a set of checkboxes all names $name[] and the preference number as value
@@ -624,6 +626,27 @@ class NewsletterControls {
         }
       });
     });
+    function newsletter_media(name) {
+        var tnp_uploader = wp.media({
+            title: "Select an image",
+            button: {
+                text: "Select"
+            },
+            multiple: false
+        }).on("select", function() {
+            var media = tnp_uploader.state().get("selection").first();
+            document.getElementById(name + "_id").value = media.id;
+            document.getElementById(name + "_url").value = media.attributes.url;
+            document.getElementById(name + "_img").src = media.attributes.sizes.thumbnail.url;
+        }).open();
+    }
+    function newsletter_media_remove(name) {
+        if (confirm("Are you sure?")) {
+            document.getElementById(name + "_id").value = "";
+            document.getElementById(name + "_url").value = "";
+            document.getElementById(name + "_img").src = "' . plugins_url('newsletter') . '/images/nomedia.png";
+        }
+    }
 </script>
 ';
         echo '<input name="act" type="hidden" value=""/>';
@@ -678,7 +701,7 @@ class NewsletterControls {
         $value = $this->get_value($name);
 
         echo '<select id="options-' . $name . '" name="options[' . $name . ']">';
-        for ($i=8; $i<50; $i++) {
+        for ($i = 8; $i < 50; $i++) {
             echo '<option value="' . $i . '"';
             if ($value == $i)
                 echo ' selected';
@@ -691,7 +714,7 @@ class NewsletterControls {
         $value = $this->get_value($name . '_width');
 
         echo 'width&nbsp;<select id="options-' . $name . '-width" name="options[' . $name . '_width]">';
-        for ($i=0; $i<10; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             echo '<option value="' . $i . '"';
             if ($value == $i)
                 echo ' selected';
@@ -699,20 +722,60 @@ class NewsletterControls {
         }
         echo '</select>&nbsp;px&nbsp;&nbsp;';
 
-        $this->select($name . '_type', array('solid'=>'Solid', 'dashed'=>'Dashed'));
+        $this->select($name . '_type', array('solid' => 'Solid', 'dashed' => 'Dashed'));
 
         $this->color($name . '_color');
 
         $value = $this->get_value($name . '_radius');
 
         echo '&nbsp;&nbsp;radius&nbsp;<select id="options-' . $name . '-radius" name="options[' . $name . '_radius]">';
-        for ($i=0; $i<10; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             echo '<option value="' . $i . '"';
             if ($value == $i)
                 echo ' selected';
             echo '>' . $i . '</option>';
         }
         echo '</select>&nbsp;px';
+    }
+
+    function media($name, $size='thumbnail') {
+        $media_id = $this->data[$name]['id'];
+        $media = wp_get_attachment_image_src($media_id, $size);
+
+        if ($media === false) {
+            $media = array('', '', '');
+            echo '<img id="' . $name . '_img" src="' . plugins_url('newsletter') . '/images/nomedia.png" onclick="newsletter_media(\'' . $name . '\')">';
+        } else {
+            echo '<img id="' . $name . '_img" src="' . $media[0] . '" onclick="newsletter_media(\'' . $name . '\')">';
+            echo '<br>';
+            echo '<a href="#" onclick="newsletter_media_remove(\'' . $name . '\'); return false">Remove</a>';
+
+        }
+
+        echo '<input type="hidden" id="' . $name . '_id" name="options[' . $name . '][id]" value="' . $media_id . '" size="5">';
+        echo '<input type="hidden" id="' . $name . '_url" name="options[' . $name . '][url]" value="' . esc_attr($media[0]) . '" size="50">';
+
+    }
+
+    function media_input($option, $name, $label) {
+
+//        if (empty($option)) {
+//            $option = $this->currentoption;
+//        }
+//        $options = $this->get_option($option);
+//        $val = '';
+//        if (isset($options[$var])) {
+//            $val = $options[$var];
+//        }
+
+        if (!empty($label)) {
+            $output = '<label class="select" for="tnp_' . $name . '">' . $label . ':</label>';
+        }
+        $output .= '<input id="tnp_' . $name . '" type="text" size="36" name="' . $option . '[' . $name . ']" value="' . esc_attr($val) . '" />';
+        $output .= '<input id="tnp_' . $name . '_button" class="button" type="button" value="Select Image" />';
+        $output .= '<br class="clear"/>';
+
+        echo $output;
     }
 
 }

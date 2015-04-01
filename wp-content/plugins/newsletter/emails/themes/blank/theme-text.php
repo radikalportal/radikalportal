@@ -1,7 +1,8 @@
-Blank newsletter!
+This email requires a modern e-mail reader but you can view the email online here:
 
----
-To unsubscribe follow the link
-{unsubscription_url}
-to edit your profile follow the link
-{profile_url}
+{email_url}.
+
+Thank you, <?php echo wp_specialchars_decode(get_option('blogname'), ENT_QUOTES); ?>
+
+To change your subscription follow:
+{profile_url}.

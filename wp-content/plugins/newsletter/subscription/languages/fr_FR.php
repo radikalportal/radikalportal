@@ -1,5 +1,7 @@
 <?php
 
+// This file is used only on first installation!
+
 // Message show after a subbscription request has made.
 $options['confirmation_text'] =
 "<p>Votre demande d'inscription est enregistr&eacute;e. Merci ! Un e-mail de confirmation vous a été envoyé. V&eacute;rifier &eacute;galement votre dossier spam.</p>";

@@ -28,8 +28,8 @@ if ($controls->is_action('save')) {
             convenience, below there is a list of each email sent by Newsletter till now.
         </p>
         <p>
-            A more advanced report for each email can be generated installing the Reports Extension
-            from <a href="http://www.thenewsletterplugin.com/downloads" target="_blank">this page</a>.
+            <strong>Advanced reports for each email can be generated installing the
+            <a href="http://www.thenewsletterplugin.com/plugins/newsletter/reports-module?utm_source=plugin&utm_medium=link&utm_campaign=newsletter-report&utm_content=<?php echo NEWSLETTER_VERSION?>" target="_blank">Reports Extension</a></strong>.
         </p>
     </div>
     <div class="newsletter-separator"></div>
@@ -43,12 +43,14 @@ if ($controls->is_action('save')) {
                 <th>Status</th>
                 <th>&nbsp;</th>
                 <th>&nbsp;</th>
+                <th>Tracking</th>
                 <th>&nbsp;</th>
             </tr>
         </thead>
 
         <tbody>
             <?php foreach ($emails as &$email) { ?>
+            <?php if ($email->type != 'message' && $email->type != 'feed') continue; ?>
                 <tr>
                     <td><?php echo $email->id; ?></td>
                     <td><?php echo htmlspecialchars($email->subject); ?></td>
@@ -68,6 +70,7 @@ if ($controls->is_action('save')) {
                     </td>
                     <td><?php if ($email->status == 'sent' || $email->status == 'sending') echo $email->sent . ' of ' . $email->total; ?></td>
                     <td><?php if ($email->status == 'sent' || $email->status == 'sending') echo $module->format_date($email->send_on); ?></td>
+                    <td><?php echo $email->track==1?'Yes':'No'; ?></td>
                     <td>
                         <a class="button" href="<?php echo NewsletterStatistics::instance()->get_statistics_url($email->id); ?>">statistics</a>
                     </td>

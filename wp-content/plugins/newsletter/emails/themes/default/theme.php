@@ -11,7 +11,7 @@
 global $newsletter, $post;
 
 $color = $theme_options['theme_color'];
-if (empty($color)) $color = '#0088cc';
+if (empty($color)) $color = '#000000';
 
 if (isset($theme_options['theme_posts'])) {
     $filters = array();
@@ -50,24 +50,38 @@ if (isset($theme_options['theme_posts'])) {
         <table align="center">
             <tr>
                 <td style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 14px; color: #666;">
-                    <div style="text-align: left; background-color: #fff; max-width: 500px; border-top: 10px solid <?php echo $color; ?>; border-bottom: 3px solid <?php echo $color; ?>;">
-                        
-                        <?php 
-                        if (!empty($theme_options['theme_banner'])) { 
-                            echo $theme_options['theme_banner'];
-                        } else { ?>
-                        <div style="padding: 10px 20px; color: #000; font-size: 20px; background-color: #EFEFEF; border-bottom: 1px solid #ddd">
-                            <?php echo get_option('blogname'); ?>
-                        </div>
+                    <div style="text-align: left; background-color: #fff; max-width: 500px;">
+                        <div style="text-align: center">
+                        <?php //HEADER
+//                        if (!empty($theme_options['theme_banner'])) { 
+//                            echo $theme_options['theme_banner'];
+                        if (!empty($theme_options['theme_header_logo']['url'])) { ?>
+                            <img alt="<?php echo $theme_options['main_header_title'] ?>" src="<?php echo $theme_options['theme_header_logo']['url'] ?>" />
+                        <?php } elseif (!empty($theme_options['main_header_logo']['url'])) { ?>
+                            <img alt="<?php echo $theme_options['main_header_title'] ?>" src="<?php echo $theme_options['main_header_logo']['url'] ?>" />
+                        <?php } elseif (!empty($theme_options['main_header_title'])) { ?>
+                             <div style="padding: 30px 0; color: #000; font-size: 28px; background-color: #EFEFEF; border-bottom: 1px solid #ddd; text-align: center;">
+                                <?php echo $theme_options['main_header_title'] ?>
+                            </div>
+                        <?php } else { ?>
+                            <div style="padding: 30px 20px; color: #000; font-size: 28px; background-color: #EFEFEF; border-bottom: 1px solid #ddd; text-align: center;">
+                                <?php echo get_option('blogname'); ?>
+                            </div>
                         <?php } ?>
-                        
-                        <div style="padding: 20px; background-color: #fff; line-height: 18px">
+                        </div>
+                        <?php if (!empty($theme_options['main_header_sub'])) { ?>
+                            <div style="padding: 10px 0; color: #000; font-size: 16px; text-align: center;">
+                                <?php echo $theme_options['main_header_sub'] ?>
+                            </div>
+                        <?php } ?>
+                            
+                        <div style="padding: 10px 20px 20px 20px; background-color: #fff; line-height: 18px">
 
-                            <p style="text-align: center"><a target="_blank"  href="{email_url}">View this email online</a></p>
+                            <p style="text-align: center; font-size: small;"><a target="_blank"  href="{email_url}">View this email online</a></p>
 
-                            <?php if (empty($posts)) { ?>
-                            <p>Here you can start to write your message. Be polite with your readers! Do not forget the subsject of this message.</p>
-                            <?php } else { ?>
+                            <?php // if (empty($posts)) { ?>
+                            <p>Here you can start to write your message. Be polite with your readers! Don't forget the subject of this message.</p>
+                            <?php // } else { ?>
                             <table cellpadding="5">
                                 <?php foreach ($posts as $post) { setup_postdata($post); ?>
                                     <tr>
@@ -81,11 +95,10 @@ if (isset($theme_options['theme_posts'])) {
                                     </tr>
                                 <?php } ?>
                             </table>
-                            <?php } ?>
+                            <?php // } ?>
                             
-                            <?php include WP_PLUGIN_DIR . '/newsletter/emails/themes/default/social.php'; ?>
+                            <?php include WP_PLUGIN_DIR . '/newsletter/emails/themes/default/footer.php'; ?>
 
-                            <p>To change your subscription, <a target="_blank"  href="{profile_url}">click here</a>.
                         </div>
 
                     </div>

@@ -686,10 +686,21 @@
     height: 5px;
 }
 
+/*
 .wrap, .wrap td, .wrap th, .wrap input, .wrap textarea {
     font-size: 13px;
     font-family: sans-serif;
     line-height: 130%;
+}
+*/
+
+.wrap select {
+    height: auto;
+    vertical-align: initial;
+}
+.wrap {
+    background-color: white;
+    padding: 10px;
 }
 
 .wrap td a {
@@ -727,6 +738,7 @@
     font-weight: bold;
     border-right: 1px solid #ddd;
     max-width: 200px;
+    color: #000000;
 }
 .form-table th small {
     font-weight: normal;
@@ -1033,3 +1045,80 @@ table.clicks {
 .newsletter-box h3 {
     margin-top: 0;
 }
+
+
+/*  CSS The Newsletter Team */
+
+/* CSS Tips */
+
+.tnp-tip {
+    margin-top: 5px;
+}
+
+.tip-button {
+    padding: 0px 5px;
+    color: #FD5F65;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-family: "Montserrat";
+    font-size: 10px;
+    border: 1px red solid;
+}
+
+.tip-content {
+    font-family: "Montserrat";
+    font-weight: 500;
+    font-size: 11px;
+    color: #999999;
+}
+
+/* CSS General Font Styles */
+
+.wrap p {
+    font-family: "Montserrat";
+    font-weight: 400;
+}
+#tabs h3 {
+    color: #222;
+    font-size: 1.3em;
+    margin: 1em 0;
+    font-family: "Montserrat";
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    border-bottom: 1px solid black;
+    padding: 10px;
+}
+
+p.description {
+    font-size: 11px !important;
+}
+
+
+/* CSS Themes Preview */
+
+.tnp-theme-preview {
+    display: block;
+    float: left;
+    text-align: center;
+}
+
+.tnp-theme-preview p {
+    font-family: "Montserrat";
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.tnp-theme-preview img:hover {
+    border: 5px solid #FD5F65;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #FD5F65;
+}
+
+.tnp-theme-preview img {
+    border: 5px solid transparent;
+    border-radius: 10px;
+    padding: 5px;
+}
+

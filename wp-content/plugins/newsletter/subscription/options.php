@@ -252,7 +252,7 @@ if ($controls->is_action()) {
                         <td>
                             <?php $controls->editor('subscription_text'); ?>
                             <p class="description">
-                                User <strong>{subscription_form}</strong> to insert the subscription form where you prefere in the text or
+                                Use <strong>{subscription_form}</strong> to insert the subscription form where you prefer in the text or
                                 <strong>{subscription_form_N}</strong> (with N from 1 to 10) to insert one of the custom forms.
                             </p>
                         </td>

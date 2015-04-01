@@ -114,7 +114,7 @@ $options_profile = get_option('newsletter_profile');
               <?php $controls->yesno('feed'); ?>
                 <div class="hints">
                     "Yes" when this subscriber has the feed by mail service active. The 
-                    <a href="http://www.thenewsletterplugin.com/plugins/newsletter/feed-by-mail-module" target="_blank">feed by mail is an extension of this plugin</a>.
+                    <a href="http://www.thenewsletterplugin.com/feed-by-mail-extension?utm_source=plugin&utm_medium=link&utm_campaign=newsletter-feed" target="_blank">feed by mail is an extension of this plugin</a>.
                 </div>
             </td>
           </tr>

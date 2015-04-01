@@ -13,6 +13,10 @@ if ($controls->is_action('reset_cron_calls')) {
     update_option($module->prefix . '_cron_calls', false);
     $controls->messages = 'Reset.';
 }
+if ($controls->is_action('check-versions')) {
+    $newsletter->hook_newsletter_extension_versions(true);
+    $controls->messages = 'Extensions data updated. Go to the plugins panel to see if there are updates available.';
+}
 
 if ($controls->is_action('trigger')) {
     $newsletter->hook_newsletter();
@@ -176,6 +180,9 @@ if (count($calls) > 1) {
                 <li><a href="#tabs-2">Semaphores and Crons</a></li>
                 <li><a href="#tabs-4">System</a></li>
                 <li><a href="#tabs-upgrade">Maintainance</a></li>
+                <?php if (isset($_GET['debug'])) { ?>
+                <li><a href="#tabs-debug">Debug Data</a></li>
+                <?php } ?>
             </ul>
 
             <!-- TESTS -->
@@ -528,6 +535,11 @@ if (count($calls) > 1) {
                     Plugin and modules are able to upgrade them self when needed. If you urgently need to try to force an upgrade, press the
                     button below.
                 </p>
+
+                <p>
+                    <?php $controls->button('check-versions', 'Check for new extension versions'); ?>
+                </p>
+
                 <p>
                     <?php $controls->button('upgrade', 'Force an upgrade'); ?>
                 </p>
@@ -546,6 +558,16 @@ if (count($calls) > 1) {
                     <?php $controls->button('upgrade_old', 'Force an upgrade from very old versions'); ?>
                 </p>
             </div>
+
+            <?php if (isset($_GET['debug'])) { ?>
+             <div id="tabs-debug">
+                 <h3>Extension versions data</h3>
+                 <pre style="font-size: 11px"><?php echo esc_html(print_r(get_option('newsletter_extension_versions'), true)); ?></pre>
+
+                 <h3>Update plugins data</h3>
+                 <pre style="font-size: 11px"><?php echo esc_html(print_r(get_site_transient('update_plugins'), true)); ?></pre>
+             </div>
+            <?php } ?>
         </div>
 
     </form>

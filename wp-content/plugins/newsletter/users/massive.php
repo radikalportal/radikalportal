@@ -14,50 +14,46 @@ for ($i = 1; $i <= NEWSLETTER_LIST_MAX; $i++) {
 
 if ($controls->is_action('remove_unconfirmed')) {
   $r = $wpdb->query("delete from " . NEWSLETTER_USERS_TABLE . " where status='S'");
-  $controls->messages = $r . ' not confirmed deleted.';
+  $controls->messages = __('Subscribers not confirmed deleted: ', 'newsletter-users') . $r . '.';
 }
 
 if ($controls->is_action('remove_unsubscribed')) {
   $r = $wpdb->query("delete from " . NEWSLETTER_USERS_TABLE . " where status='U'");
-  $controls->messages = $r . ' unsubscribed deleted (profiles associated to WordPress users are never deleted).';
+  $controls->messages = __('Subscribers unsubscribed deleted: ', 'newsletter-users') . $r . '.';
 }
 
 if ($controls->is_action('remove_bounced')) {
   $r = $wpdb->query("delete from " . NEWSLETTER_USERS_TABLE . " where status='B'");
-  $controls->messages = $r . ' bounced deleted.';
+  $controls->messages = __('Subscribers bounced deleted: ', 'newsletter-users') . $r . '.';
 }
 
 if ($controls->is_action('unconfirm_all')) {
   $r = $wpdb->query("update " . NEWSLETTER_USERS_TABLE . " set status='S' where status='C'");
-  $controls->messages = $r . ' unconfirmed.';
+  $controls->messages = __('Subscribers changed to not confirmed: ', 'newsletter-users') . $r . '.';
 }
 
 if ($controls->is_action('confirm_all')) {
   $r = $wpdb->query("update " . NEWSLETTER_USERS_TABLE . " set status='C' where status='S'");
-  $controls->messages = $r . ' confirmed.';
+  $controls->messages = __('Subscribers changed to confirmed: ', 'newsletter-users') . $r . '.';
 }
 
 if ($controls->is_action('remove_all')) {
   $r = $wpdb->query("delete from " . NEWSLETTER_USERS_TABLE);
-  $controls->messages = $r . ' deleted.';
+  $controls->messages = __('Subscribers deleted: ', 'newsletter-users') . $r . '.';
 }
 
 if ($controls->is_action('list_add')) {
   $r = $wpdb->query("update " . NEWSLETTER_USERS_TABLE . " set list_" . $controls->data['list'] . "=1");
-  $controls->messages = $r . ' added to list ' . $controls->data['list'];
+  $controls->messages = $r . ' ' . __('added to the list/preference', 'newsletter-users') . ' ' . $controls->data['list'];
 }
 
 if ($controls->is_action('list_remove')) {
   $r = $wpdb->query("update " . NEWSLETTER_USERS_TABLE . " set list_" . $controls->data['list'] . "=0");
-  $controls->messages = $r . ' removed from list ' . $controls->data['list'];
+  $controls->messages = $r . ' ' . __('removed to the list/preference', 'newsletter-users') . ' ' . $controls->data['list'];
 }
 
 if ($controls->is_action('list_delete')) {
   $wpdb->query("delete from " . NEWSLETTER_USERS_TABLE . " where list_" . $controls->data['list'] . "<>0");
-}
-
-if ($controls->is_action('feed')) {
-  $wpdb->query("update " . NEWSLETTER_USERS_TABLE . " set list_" . $controls->data['list_feed'] . "=1 where feed=1");
 }
 
 if ($controls->is_action('list_manage')) {
@@ -77,7 +73,7 @@ if ($controls->is_action('resend_all')) {
     $opts = get_option('newsletter');
 
     if ($list) {
-        $controls->messages = 'Confirmation email sent to: ';
+        $controls->messages = __('Confirmation email sent to:', 'newsletter-users');
         foreach ($list as &$user) {
             $controls->messages .= $user->email . ' ';
             $newsletter->mail($user->email, $newsletter->replace($opts['confirmation_subject'], $user), $newsletter->replace($opts['confirmation_message'], $user));
@@ -137,7 +133,8 @@ if ($controls->is_action('align_wp_users')) {
         $module->save_user($nl_user);
         $count++;
     }
-    $controls->messages = 'Total WP users aligned ' . count($wp_users) . ', total new subscribers ' . $count . '.';
+    $controls->messages = count($wp_users) . ' ' . __('WordPress users processed', 'newsletter-users') . '. ';
+    $controls->messages .= $count  . ' ' . __('subscriptions added', 'newsletter-users') . '.';
 }
 
 
@@ -200,7 +197,7 @@ if ($controls->is_action('bounces')) {
     <div id="newsletter-title">
         <?php include NEWSLETTER_DIR . '/users/menu.inc.php'; ?>
     <h2>Massive Actions on Subscribers</h2>
-    <p>Please, backup before run a massive operation.</p>
+    <p><?php _e('Please, backup before run a massive action.', 'newsletter-users')?></p>
     </div>
 
   <div style="clear: both; height: 10px;"></div>
@@ -220,31 +217,37 @@ if ($controls->is_action('bounces')) {
 
     <div id="tabs">
       <ul>
-        <li><a href="#tabs-1">Global Actions</a></li>
-        <li><a href="#tabs-2">Preferences Management</a></li>
-        <li><a href="#tabs-3">Other</a></li>
+        <li><a href="#tabs-1"><?php _e('Massive actions', 'newsletter-users')?></a></li>
+        <li><a href="#tabs-2"><?php _e('Preferences/lists management', 'newsletter-users')?></a></li>
+        <li><a href="#tabs-3"><?php _e('Other', 'newsletter-users')?></a></li>
         <li><a href="#tabs-4">Bounces</a></li>
       </ul>
 
       <div id="tabs-1">
         <table class="widefat" style="width: 300px;">
-          <thead><tr><th>Status</th><th>Total</th><th>Actions</th></thead>
+          <thead>
+              <tr>
+                  <th><?php _e('Status', 'newsletter-users')?></th>
+                  <th><?php _e('Total', 'newsletter-users')?></th>
+                  <th><?php _e('Actions', 'newsletter-users')?></th>
+              </tr>
+          </thead>
           <tr>
-            <td>Total in database</td>
+            <td><?php _e('Total collected emails', 'newsletter-users')?></td>
             <td>
               <?php echo $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE); ?>
             </td>
             <td nowrap>
-              <?php $controls->button_confirm('remove_all', 'Delete all', 'Are you sure you want to remove ALL subscribers?'); ?>
+              <?php $controls->button_confirm('remove_all', __('Delete all', 'newsletter-users'), __('Are you sure you want to remove ALL subscribers?', 'newsletter-users')); ?>
             </td>
           </tr>
           <tr>
-            <td>Confirmed</td>
+            <td><?php _e('Confirmed', 'newsletter-users')?></td>
             <td>
               <?php echo $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE . " where status='C'"); ?>
             </td>
             <td nowrap>
-              <?php $controls->button_confirm('unconfirm_all', 'Unconfirm all', 'Are you sure? No way back.'); ?>
+              <?php $controls->button_confirm('unconfirm_all', __('Unconfirm all', 'newsletter-users'), __('Are you sure?', 'newsletter-users')); ?>
             </td>
           </tr>
           <tr>
@@ -253,47 +256,52 @@ if ($controls->is_action('bounces')) {
               <?php echo $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE . " where status='S'"); ?>
             </td>
             <td nowrap>
-              <?php $controls->button_confirm('remove_unconfirmed', 'Delete all not confirmed', 'Are you sure you want to delete ALL not confirmed subscribers?'); ?>
-              <?php $controls->button_confirm('confirm_all', 'Confirm all', 'Are you sure you want to mark ALL subscribers as confirmed?'); ?>
-                <?php $controls->hint('To send a comfirmation email to all, you can create a special newsletter.', 'http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#resend-confirm'); ?>
-              <?php //$controls->button_confirm('resend_all', 'Resend confirmation message to all', 'Are you sure?'); ?>
+              <?php $controls->button_confirm('remove_unconfirmed', __('Delete all not confirmed', 'newsletter-users'), __('Are you sure you want to delete ALL not confirmed subscribers?', 'newsletter-users')); ?>
+              <?php $controls->button_confirm('confirm_all', __('Confirm all', 'newsletter-users'), __('Are you sure you want to mark ALL subscribers as confirmed?', 'newsletter-users')); ?>
+                <p class="description">
+                    <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#resend-confirm" target="_blank"><?php _e('We have some tips about global actions, read more.', 'newsletter-users')?></a>
+                </p>
             </td>
           </tr>
           <tr>
-            <td>Unsubscribed</td>
+            <td><?php _e('Unsubscribed', 'newsletter-users')?></td>
             <td>
               <?php echo $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE . " where status='U'"); ?>
             </td>
             <td>
-              <?php $controls->button_confirm('remove_unsubscribed', 'Delete all unsubscribed', 'Are you sure you want to delete ALL unsubscribed?'); ?>
+              <?php $controls->button_confirm('remove_unsubscribed', __('Delete all unsubscribed', 'newsletter-users'), __('Are you sure?', 'newsletter-users')); ?>
             </td>
           </tr>
           <tr>
-            <td>Import WP user</td>
+            <td><?php _e('Import WordPress users', 'newsletter-users')?></td>
             <td>
                 &nbsp;
             </td>
             <td>
-                Link WordPress users with status
-                <?php $controls->select('align_wp_users_status', array('C'=>'Confirmed', 'S'=>'Not confirmed')); ?>
-                <?php $controls->button_confirm('align_wp_users', 'Go', 'Proceed?'); ?>
-                <?php $controls->hint('Please, carefully read the documentation before taking this action!', 'http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#import-wp-users'); ?>
+                <?php _e('With status', 'newsletter-users')?>
+                <?php $controls->select('align_wp_users_status', array('C'=>__('Confirmed', 'newsletter-users'), 'S'=>__('Not confirmed', 'newsletter-users'))); ?>
+                <?php $controls->button_confirm('align_wp_users', __('Go', 'newsletter-users'), __('Proceed?', 'newsletter-users')); ?>
+                <p class="description">
+                    <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#import-wp-users" target="_blank">
+                        <?php _e('Please, carefully read the documentation before taking this action!', 'newsletter-users') ?>
+                    </a>
+                </p>
             </td>
           </tr>
 
           <tr>
-            <td>Bounced</td>
+            <td><?php _e('Bounced', 'newsletter-users')?></td>
             <td>
               <?php echo $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE . " where status='B'"); ?>
             </td>
             <td>
-              <?php $controls->button_confirm('remove_bounced', 'Delete all bounced', 'Are you sure?'); ?>
+              <?php $controls->button_confirm('remove_bounced', __('Delete all bounced', 'newsletter-users'), __('Are you sure?', 'newsletter-users')); ?>
             </td>
           </tr>
         </table>
         <p>Bounce are not detected by Newsletter plugin.</p>
 
-        <h3>Sex</h3>
+        <h3><?php _e('Gender', 'newsletter-users')?></h3>
         <?php
             // TODO: do them with a single query
             $all_count = $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE . " where status='C'");
@@ -302,7 +310,7 @@ if ($controls->is_action('bounces')) {
             $other_count = ($all_count-$male_count-$female_count)
         ?>
         <table class="widefat" style="width: 300px">
-            <thead><tr><th>Sex</th><th>Total</th></thead>
+            <thead><tr><th><?php _e('Gender', 'newsletter-users')?></th><th>Total</th></thead>
             <tr><td>Male</td><td><?php echo $male_count; ?></td></tr>
             <tr><td>Female</td><td><?php echo $female_count; ?></td></tr>
             <tr><td>Not specified</td><td><?php echo $other_count; ?></td></tr>
@@ -313,12 +321,12 @@ if ($controls->is_action('bounces')) {
       <div id="tabs-2">
         <table class="form-table">
           <tr>
-            <th>Preferences management</th>
+            <th><?php _e('Preferences/lists management', 'newsletter-users')?></th>
             <td>
               For preference <?php $controls->select('list', $lists); ?>:
-              <?php $controls->button_confirm('list_add', 'Add it to every user', 'Are you sure?'); ?>
-              <?php $controls->button_confirm('list_remove', 'Remove it from every user', 'Are you sure?'); ?>
-              <?php $controls->button_confirm('list_delete', 'Delete subscribers of it', 'Are you really sure you want to delete those user from your database?'); ?>
+              <?php $controls->button_confirm('list_add', 'Add it to every user', __('Are you sure?', 'newsletter-users')); ?>
+              <?php $controls->button_confirm('list_remove', 'Remove it from every user', __('Are you sure?', 'newsletter-users')); ?>
+              <?php $controls->button_confirm('list_delete', 'Delete subscribers of it', __('Are you sure?', 'newsletter-users')); ?>
               <br /><br />
               <?php $controls->select('list_action', array('move' => 'Change', 'add' => 'Add')); ?>
               all subscribers with preference <?php $controls->select('list_1', $lists); ?>
@@ -330,23 +338,20 @@ if ($controls->is_action('bounces')) {
               </div>
             </td>
           </tr>
-          <tr>
-            <th>Feed by mail</th>
-            <td>
-              Set preference <?php $controls->select('list_feed', $lists); ?> to feed by mail subscribers
-              <?php $controls->button_confirm('feed', 'Go!', 'Are you sure?'); ?>
-              <div class="hints">
-              </div>
-            </td>
-          </tr>
         </table>
       </div>
 
 
       <div id="tabs-3">
-        <p>Totals refer only confirmed subscribers.</p>
+        <p><?php _e('Totals refer only to confirmed subscribers.', 'newsletter-users')?></p>
         <table class="widefat" style="width: 300px;">
-          <thead><tr><th>Number</th><th>Preference</th><th>Total</th></thead>
+          <thead>
+              <tr>
+                  <th><?php _e('Number', 'newsletter-users')?></th>
+                  <th><?php _e('Preference', 'newsletter-users')?></th>
+                  <th><?php _e('Total', 'newsletter-users')?></th>
+              </tr>
+          </thead>
           <?php for ($i = 1; $i <= NEWSLETTER_LIST_MAX; $i++) { ?>
             <tr>
               <td><?php echo $i; ?></td>
@@ -359,31 +364,28 @@ if ($controls->is_action('bounces')) {
         </table>
       </div>
 
-      <div id="tabs-4">
-          <div class="tab-preamble">
-              <p>
-                  Import a set of bounced email addresses: they will be marked as "bounced" and no more contacted. Sending
-                  emails to bounced address (many times) can put your server in some black list.
-              </p>
-          </div>
-          <table class="form-table">
-              <tr>
-                  <th>Bounced addresses</th>
-                  <td>
-                      <?php $controls->textarea('bounced_emails'); ?>
-          <div class="hints">
-              One email address per line.
-          </div>
-                  </td>
-              </tr>
-          </table>
-        
-         
-        <?php $controls->button_confirm('bounces', 'Mark those emails as bounced', 'Are you sure?'); ?>
-      </div>
+        <div id="tabs-4">
+            <p>
+                Import a set of bounced email addresses: they will be marked as "bounced" and no more contacted. Sending
+                emails to bounced address (many times) can put your server in some black list.
+            </p>
+
+            <table class="form-table">
+                <tr>
+                    <th><?php _e('Bounced addresses', 'newsletter-users')?></th>
+                    <td>
+                        <?php $controls->textarea('bounced_emails'); ?>
+                        <p class="description">
+                            <?php _e('One email address per line.', 'newsletter-users')?>One email address per line.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+
+            <?php $controls->button_confirm('bounces', 'Mark those emails as bounced', __('Are you sure?', 'newsletter-users')); ?>
+        </div>
 
     </div>
-
 
   </form>
   </div>

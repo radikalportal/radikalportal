@@ -25,8 +25,10 @@ class NewsletterThemes {
 
         if ($handle !== false) {
             while ($file = readdir($handle)) {
-                if ($file == '.' || $file == '..') continue;
-                if (!is_file($dir . '/' . $file . '/theme.php')) continue;
+                if ($file == '.' || $file == '..')
+                    continue;
+                if (!is_file($dir . '/' . $file . '/theme.php'))
+                    continue;
                 $list[$file] = $file;
             }
             closedir($handle);
@@ -38,9 +40,12 @@ class NewsletterThemes {
 
             if ($handle !== false) {
                 while ($file = readdir($handle)) {
-                    if ($file == '.' || $file == '..') continue;
-                    if (isset($list[$file])) continue;
-                    if (!is_file($dir . '/' . $file . '/theme.php')) continue;
+                    if ($file == '.' || $file == '..')
+                        continue;
+                    if (isset($list[$file]))
+                        continue;
+                    if (!is_file($dir . '/' . $file . '/theme.php'))
+                        continue;
 
                     $list[$file] = $file;
                 }
@@ -49,6 +54,16 @@ class NewsletterThemes {
         }
 
         return $list;
+    }
+    
+    function themescmp($a, $b)
+    {
+        $al = strtolower($a['name']);
+        $bl = strtolower($b['name']);
+        if ($al == 'default') {
+            return -1;
+        }
+        return (strcmp($al, $bl));
     }
 
     function get_all_with_data() {
@@ -59,9 +74,12 @@ class NewsletterThemes {
 
         if ($handle !== false) {
             while ($file = readdir($handle)) {
-                if ($file == '.' || $file == '..') continue;
-                if (isset($list[$file])) continue;
-                if (!is_file($dir . '/' . $file . '/theme.php')) continue;
+                if ($file == '.' || $file == '..')
+                    continue;
+                if (isset($list[$file]))
+                    continue;
+                if (!is_file($dir . '/' . $file . '/theme.php'))
+                    continue;
                 $data = array();
                 $data['name'] = $file;
                 $screenshot = $dir . '/' . $file . '/screenshot.png';
@@ -81,8 +99,10 @@ class NewsletterThemes {
 
             if ($handle !== false) {
                 while ($file = readdir($handle)) {
-                    if ($file == '.' || $file == '..') continue;
-                    if (!is_file($dir . '/' . $file . '/theme.php')) continue;
+                    if ($file == '.' || $file == '..')
+                        continue;
+                    if (!is_file($dir . '/' . $file . '/theme.php'))
+                        continue;
                     $data = array();
                     $data['name'] = $file;
                     $screenshot = $dir . '/' . $file . '/screenshot.png';
@@ -96,7 +116,8 @@ class NewsletterThemes {
                 closedir($handle);
             }
         }
-
+        
+        usort($list, array($this, "themescmp"));
 
         return $list;
     }
@@ -111,7 +132,8 @@ class NewsletterThemes {
         add_option('newsletter_' . $this->module . '_theme_' . $theme, array(), null, 'no');
         $theme_options = array();
         foreach ($options as $key => &$value) {
-            if (substr($key, 0, 6) != 'theme_') continue;
+            if (substr($key, 0, 6) != 'theme_')
+                continue;
             $theme_options[$key] = $value;
         }
         update_option('newsletter_' . $this->module . '_theme_' . $theme, $theme_options);
@@ -120,14 +142,17 @@ class NewsletterThemes {
     function get_options($theme) {
         $options = get_option('newsletter_' . $this->module . '_theme_' . $theme);
         // To avoid merge problems.
-        if (!is_array($options)) return array();
+        if (!is_array($options))
+            return array();
         return $options;
     }
 
     function get_file_path($theme, $file) {
         $path = WP_CONTENT_DIR . '/extensions/newsletter/' . $this->module . '/themes/' . $theme . '/' . $file;
-        if (is_file($path)) return $path;
-        else return NEWSLETTER_DIR . '/' . $this->module . '/themes/' . $theme . '/' . $file;
+        if (is_file($path))
+            return $path;
+        else
+            return NEWSLETTER_DIR . '/' . $this->module . '/themes/' . $theme . '/' . $file;
     }
 
     function get_theme_url($theme) {
@@ -157,7 +182,8 @@ class NewsletterThemes {
             @include $path2 . '/' . WPLANG . '.php';
         }
 
-        if (!is_array($options)) return array();
+        if (!is_array($options))
+            return array();
         return $options;
     }
 
@@ -166,6 +192,8 @@ class NewsletterThemes {
 function nt_option($name, $def = null) {
     $options = get_option('newsletter_email');
     $option = $options['theme_' . $name];
-    if (!isset($option)) return $def;
-    else return $option;
+    if (!isset($option))
+        return $def;
+    else
+        return $option;
 }

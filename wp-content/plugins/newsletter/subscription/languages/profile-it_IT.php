@@ -1,5 +1,7 @@
 <?php
 
+// This file is used only on first installation!
+
 $options = array();
 $options['email'] = 'Email';
 $options['email_error'] = 'L\'indirizzo email non è corretto';

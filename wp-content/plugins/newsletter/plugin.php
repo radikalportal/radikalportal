@@ -4,7 +4,7 @@
   Plugin Name: Newsletter
   Plugin URI: http://www.thenewsletterplugin.com/plugins/newsletter
   Description: Newsletter is a cool plugin to create your own subscriber list, to send newsletters, to build your business. <strong>Before update give a look to <a href="http://www.thenewsletterplugin.com/plugins/newsletter#update">this page</a> to know what's changed.</strong>
-  Version: 3.6.6
+  Version: 3.7.0
   Author: Stefano Lissa
   Author URI: http://www.thenewsletterplugin.com
   Disclaimer: Use at your own risk. No warranty expressed or implied is provided.
@@ -13,7 +13,7 @@
  */
 
 // Used as dummy parameter on css and js links
-define('NEWSLETTER_VERSION', '3.6.6');
+define('NEWSLETTER_VERSION', '3.7.0');
 
 global $wpdb, $newsletter;
 
@@ -130,6 +130,7 @@ class Newsletter extends NewsletterModule {
 
         add_action('init', array($this, 'hook_init'));
         add_action('newsletter', array($this, 'hook_newsletter'), 1);
+        add_action('newsletter_extension_versions', array($this, 'hook_newsletter_extension_versions'), 1);
 
         // This specific event is created by "Feed by mail" panel on configuration
         add_action('shutdown', array($this, 'hook_shutdown'));
@@ -243,6 +244,11 @@ class Newsletter extends NewsletterModule {
         wp_clear_scheduled_hook('newsletter');
         wp_schedule_event(time() + 30, 'newsletter', 'newsletter');
 
+        wp_clear_scheduled_hook('newsletter_extension_versions');
+        wp_schedule_event(time() + 30, 'newsletter_extension_versions', 'newsletter_weekly');
+
+        add_option('newsletter_extension_versions', array(), null, 'no');
+
         wp_clear_scheduled_hook('newsletter_update');
         wp_clear_scheduled_hook('newsletter_check_versions');
 
@@ -255,14 +261,12 @@ class Newsletter extends NewsletterModule {
         wp_clear_scheduled_hook('newsletter_feed_version_check');
         wp_clear_scheduled_hook('newsletter_popup_version_check');
 
-
         return true;
     }
 
     function admin_menu() {
         // This adds the main menu page
-        add_menu_page('Newsletter', 'Newsletter', ($this->options['editor'] == 1) ? 'manage_categories' : 'manage_options', 'newsletter_main_index',
-                '', plugins_url('newsletter') . '/images/menu-icon.png');
+        add_menu_page('Newsletter', 'Newsletter', ($this->options['editor'] == 1) ? 'manage_categories' : 'manage_options', 'newsletter_main_index', '', plugins_url('newsletter') . '/images/menu-icon.png');
 
         $this->add_menu_page('index', 'Welcome');
         $this->add_menu_page('main', 'Configuration');
@@ -298,6 +302,7 @@ class Newsletter extends NewsletterModule {
                 wp_enqueue_script('media-upload');
                 wp_enqueue_script('thickbox');
                 wp_enqueue_style('thickbox');
+                wp_enqueue_media();
             }
         }
 
@@ -335,7 +340,7 @@ class Newsletter extends NewsletterModule {
     }
 
     function hook_admin_init() {
-
+        
     }
 
     function hook_admin_head() {
@@ -1048,38 +1053,6 @@ class Newsletter extends NewsletterModule {
         return $wpdb->query($query);
     }
 
-    function notify_admin($user, $subject) {
-        if ($this->options['notify'] != 1)
-            return;
-        $message = "Subscriber details:\n\n" .
-                "email: " . $user->email . "\n" .
-                "first name: " . $user->name . "\n" .
-                "last name: " . $user->surname . "\n" .
-                "gender: " . $user->sex . "\n";
-
-        $options_profile = get_option('newsletter_profile');
-
-        for ($i = 0; $i < NEWSLETTER_PROFILE_MAX; $i++) {
-            if ($options_profile['profile_' . $i] == '')
-                continue;
-            $field = 'profile_' . $i;
-            $message .= $options_profile['profile_' . $i] . ': ' . $user->$field . "\n";
-        }
-
-        for ($i = 0; $i < NEWSLETTER_LIST_MAX; $i++) {
-            if ($options_profile['list_' . $i] == '')
-                continue;
-            $field = 'list_' . $i;
-            $message .= $options_profile['list_' . $i] . ': ' . $user->$field . "\n";
-        }
-
-        $message .= "token: " . $user->token . "\n" .
-                "status: " . $user->status . "\n" .
-                "\nYours, Newsletter.";
-
-        wp_mail(get_option('admin_email'), '[' . get_option('blogname') . '] ' . $subject, $message, "Content-type: text/plain; charset=UTF-8\n");
-    }
-
     function get_user_from_request($required = false) {
         if (isset($_REQUEST['nk'])) {
             list($id, $token) = @explode('-', $_REQUEST['nk'], 2);
@@ -1143,6 +1116,103 @@ class Newsletter extends NewsletterModule {
             return false;
         }
         return $r;
+    }
+
+    /**
+     * Called weekly if at least one extension is active.
+     */
+    function hook_newsletter_extension_versions($force = false) {
+        if (!$force && !defined('NEWSLETTER_EXTENSION')) {
+            return;
+        }
+        $response = wp_remote_get('http://www.thenewsletterplugin.com/wp-content/versions/all.txt');
+        if (is_wp_error($response)) {
+            $this->logger->error($response);
+            return;
+        }
+
+        $versions = json_decode(wp_remote_retrieve_body($response));
+        update_option('newsletter_extension_versions', $versions);
+    }
+
+    function get_extension_version($extension_id) {
+        $versions = get_option('newsletter_extension_versions');
+        if (!is_array($versions)) {
+            return null;
+        }
+        foreach ($versions as $data) {
+            if ($data->id == $extension_id) {
+                return $data->version;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Completes the WordPress plugin update data with the extension data. 
+     * $value is the data WordPress is saving
+     * $extension is an instance of an extension
+     */
+    function set_extension_update_data($value, $extension) {
+
+        // See the wp_update_plugins function
+        if (!is_object($value)) {
+            return $value;
+        }
+
+        // If someone registered our extension name on wordpress.org... get rid of it otherwise
+        // our extenions will be overwritten!
+        unset($value->response[$extension->plugin]);
+        unset($value->no_update[$extension->plugin]);
+
+        if (defined('NEWSLETTER_EXTENSION_UPDATE') && !NEWSLETTER_EXTENSION_UPDATE) {
+            return $value;
+        }
+
+        if (!function_exists('get_plugin_data')) {
+            return $value;
+        }
+
+        $new_version = $this->get_extension_version($extension->id);
+
+        if (empty($new_version)) {
+            return $value;
+        }
+
+        if (function_exists('get_plugin_data')) {
+            if (file_exists(WP_PLUGIN_DIR . '/' . $extension->plugin)) {
+                $plugin_data = get_plugin_data(WP_PLUGIN_DIR . '/' . $extension->plugin, false, false);
+            } else if (file_exists(WPMU_PLUGIN_DIR . '/' . $extension->plugin)) {
+                $plugin_data = get_plugin_data(WPMU_PLUGIN_DIR . '/' . $extension->plugin, false, false);
+            }
+        }
+
+        if (!isset($plugin_data)) {
+            return $value;
+        }
+
+        if (version_compare($new_version, $plugin_data['Version']) <= 0) {
+            return $value;
+        }
+
+        $plugin = new stdClass();
+        $plugin->id = $extension->id;
+        $plugin->slug = $extension->slug;
+        $plugin->plugin = $extension->plugin;
+        $plugin->new_version = $new_version;
+        $plugin->url = '';
+        $value->response[$extension->plugin] = $plugin;
+
+        if (defined('NEWSLETTER_LICENSE_KEY')) {
+            $value->response[$extension->plugin]->package = 'http://www.thenewsletterplugin.com/wp-content/plugins/file-commerce-pro/get.php?f=' . $extension->id .
+                    '&k=' . NEWSLETTER_LICENSE_KEY;
+        } else {
+            $value->response[$extension->plugin]->package = 'http://www.thenewsletterplugin.com/wp-content/plugins/file-commerce-pro/get.php?f=' . $extension->id .
+                    '&k=' . Newsletter::instance()->options['contract_key'];
+        }
+
+        return $value;
     }
 
 }
@@ -1230,5 +1300,5 @@ function newsletter_activate() {
 register_activation_hook(__FILE__, 'newsletter_deactivate');
 
 function newsletter_deactivate() {
-
+    
 }

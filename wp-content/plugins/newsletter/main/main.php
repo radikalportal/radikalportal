@@ -112,7 +112,7 @@ if (!$controls->is_action()) {
     <?php include NEWSLETTER_DIR . '/header-new.php'; ?>
 
 
-        <h2>Newsletter Main Configuration</h2>
+    <h2>Newsletter Main Configuration</h2>
 
 
     <div class="newsletter-separator"></div>
@@ -124,20 +124,21 @@ if (!$controls->is_action()) {
         <div id="tabs">
 
             <ul>
-                <li><a href="#tabs-basic">Basic settings</a></li>
-                <li><a href="#tabs-speed">Delivery speed</a></li>
-                <li><a href="#tabs-2">Advanced settings</a></li>
+                <li><a href="#tabs-basic">Basic Settings</a></li>
+                <li><a href="#tabs-user">Blog Info</a></li>
+                <li><a href="#tabs-speed">Delivery Speed</a></li>
+                <li><a href="#tabs-2">Advanced Settings</a></li>
                 <li><a href="#tabs-5">SMTP</a></li>
-                <li><a href="#tabs-3">Content locking</a></li>
+                <li><a href="#tabs-3">Content Locking</a></li>
             </ul>
 
             <div id="tabs-basic">
 
-                    <p>
-                        <strong>Important!</strong>
-                        <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration" target="_blank">Read the configuration page</a>
-                        to know every details about these settings.
-                    </p>
+                <p>
+                    <strong>Important!</strong>
+                    <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration" target="_blank">Read the configuration page</a>
+                    to know every details about these settings.
+                </p>
 
 
                 <table class="form-table">
@@ -199,7 +200,7 @@ if (!$controls->is_action()) {
                                 This key is used by <a href="http://www.thenewsletterplugin.com/plugins/newsletter" target="_blank">extensions</a> to
                                 self update. It does not unlock hidden features or like!
                                 <?php if (defined('NEWSLETTER_LICENSE_KEY')) { ?>
-                                <br>A global license key is actually defined, this value will be ignored.
+                                    <br>A global license key is actually defined, this value will be ignored.
                                 <?php } ?>
                             </p>
                         </td>
@@ -208,19 +209,164 @@ if (!$controls->is_action()) {
                 </table>
             </div>
 
+            <div id="tabs-user">
+
+                <p>
+                    These informations are used by Newsletter themes to automatically generate some sections of regular newsletters,
+                    <a href="http://www.thenewsletterplugin.com/feed-by-mail-extension?utm_source=plugin&utm_medium=link&utm_campaign=newsletter-feed" target="_blank">
+                        auto messages
+                    </a> and 
+                    <a href="http://www.thenewsletterplugin.com/plugins/newsletter/follow-up-module?utm_source=plugin&utm_medium=link&utm_campaign=newsletter-followup" target="_blank">
+                        follow-up mails
+                    </a>. 
+                    Themes may not use all these fields and/or have specific alternate configurations. All fields are <strong>optional</strong>.
+                </p>
+
+                <h3>Header Settings</h3>
+
+                <table class="form-table">
+                    <tr valign="top">
+                        <th>
+                            Header logo
+                    <div class="tnp-tip">
+                        <span class="tip-button">Tip</span>
+                        <span class="tip-content">
+                            Keep the file lightweight and ideally smaller than 500px in width and 200px in height.
+                            Remember that .png images provide best performances with text and shapes logos.
+                        </span>
+                    </div>
+                    </th>
+                    <td>
+                        <?php $controls->media('header_logo'); ?>
+                        <p class="description">
+                            Click to change. This should be your logo in .png or .jpg format.
+                        </p>
+                    </td>
+                    </tr>
+                    <tr>
+                        <th>Header title</th>
+                        <td>
+                            <?php $controls->text('header_title', 40); ?>
+                            <p class="description">Appears only when no logo has been uploaded or when it's blocked by email clients.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Header subheading</th>
+                        <td>
+                            <?php $controls->text('header_sub', 40); ?>
+                            <p class="description">Appears only if present.</p>
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>Social Settings</h3>
+
+                <p>Social icons will be added automatically to your newsletter only for set URLs.</p>
+
+                <table class="form-table">
+                    <tr valign="top">
+                        <th>Facebook</th>
+                        <td>
+                            <?php $controls->text('facebook_url', 40); ?>
+                            <p class="description">
+                                Your Facebook url (e.g. https://www.facebook.com/thenewsletterplugin)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <th>Google+</th>
+                        <td>
+                            <?php $controls->text('googleplus_url', 40); ?>
+                            <p class="description">
+                                Your Google+ url (e.g. https://plus.google.com/...)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <th>Twitter</th>
+                        <td>
+                            <?php $controls->text('twitter_url', 40); ?>
+                            <p class="description">
+                                Your Twitter url (e.g. https://twitter.com/...)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <th>Linkedin</th>
+                        <td>
+                            <?php $controls->text('linkedin_url', 40); ?>
+                            <p class="description">
+                                Your Linkedin url (e.g. https://www.linkedin.com/in/...)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <th>YouTube</th>
+                        <td>
+                            <?php $controls->text('youtube_url', 40); ?>
+                            <p class="description">
+                                Your YouTube url (e.g. https://www.youtube.com/channel/...)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <th>Vimeo</th>
+                        <td>
+                            <?php $controls->text('vimeo_url', 40); ?>
+                            <p class="description">
+                                Your Vimeo url (e.g. http://vimeo.com/...)
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>Footer Settings</h3>
+
+                <table class="form-table">
+                    <tr valign="top">
+                        <th>Blog or company name</th>
+                        <td>
+                            <?php $controls->text('footer_title', 40); ?>
+                            <p class="description">
+                                User or corporation name to be displayed on the newsletter footer.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <th>Address</th>
+                        <td>
+                            <?php $controls->text('footer_contact', 40); ?>
+                            <p class="description">
+                                Your real address, if available. The CAN-SPAM Act requires it.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Copyright, privacy or legal text</th>
+                        <td>
+                            <?php $controls->text('footer_legal', 40); ?>
+                            <p class="description">
+                                Any copyright, privacy or legal text you want on the newsletter footer.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+
             <div id="tabs-speed">
 
-                    <p>
-                        You can set the speed of the email delivery as <strong>emails per hour</strong>. The delivery engine
-                        runs every <strong>5 minutes</strong> and sends a limited number of email to keep the sending rate
-                        below the specified limit. For example if you set 120 emails per hour the delivery engine will
-                        send at most 10 emails per run.
-                    </p>
-                    <p>
-                        <strong>Important!</strong> Read the
-                        <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-delivery-engine" target="_blank">delivery engine page</a>
-                        to solve speed problems and find blog setup examples to make it work at the best.
-                    </p>
+                <p>
+                    You can set the speed of the email delivery as <strong>emails per hour</strong>. The delivery engine
+                    runs every <strong>5 minutes</strong> and sends a limited number of email to keep the sending rate
+                    below the specified limit. For example if you set 120 emails per hour the delivery engine will
+                    send at most 10 emails per run.
+                </p>
+                <p>
+                    <strong>Important!</strong> Read the
+                    <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-delivery-engine" target="_blank">delivery engine page</a>
+                    to solve speed problems and find blog setup examples to make it work at the best.
+                </p>
 
                 <table class="form-table">
                     <tr>
@@ -239,9 +385,9 @@ if (!$controls->is_action()) {
 
             <div id="tabs-2">
 
-                    <p>
-                        Every setting is explained <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration#advanced" target="_blank">here</a>.
-                    </p>
+                <p>
+                    Every setting is explained <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration#advanced" target="_blank">here</a>.
+                </p>
 
                 <table class="form-table">
 
@@ -300,20 +446,20 @@ if (!$controls->is_action()) {
 
 
             <div id="tabs-5">
-                    <p>
-                        <strong>These options can be overridden by modules which integrates with external
-                            SMTPs (like MailJet, SendGrid, ...) if installed and activated.</strong>
-                    </p>
-                    <p>
+                <p>
+                    <strong>These options can be overridden by modules which integrates with external
+                        SMTPs (like MailJet, SendGrid, ...) if installed and activated.</strong>
+                </p>
+                <p>
 
-                        What you need to know to use and external SMTP can be found
-                        <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration#smtp" target="_blank">here</a>.
-                        <br>
-                        On GoDaddy you should follow this <a href="http://www.thenewsletterplugin.com/godaddy-using-smtp-external-server-shared-hosting" target="_blank">special setup</a>.
-                    </p>
-                    <p>
-                        Consider <a href="http://www.thenewsletterplugin.com/affiliate/sendgrid" target="_blank">SendGrid</a> for a serious and reliable SMTP service.
-                    </p>
+                    What you need to know to use and external SMTP can be found
+                    <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration#smtp" target="_blank">here</a>.
+                    <br>
+                    On GoDaddy you should follow this <a href="http://www.thenewsletterplugin.com/godaddy-using-smtp-external-server-shared-hosting" target="_blank">special setup</a>.
+                </p>
+                <p>
+                    Consider <a href="http://www.thenewsletterplugin.com/affiliate/sendgrid" target="_blank">SendGrid</a> for a serious and reliable SMTP service.
+                </p>
 
                 <table class="form-table">
                     <tr>
@@ -360,10 +506,10 @@ if (!$controls->is_action()) {
 
 
             <div id="tabs-3">
-                    <p>
-                        Please, <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-locked-content" target="_blank">read more here how to use and configure</a>,
-                        since it can incredibly increase your subscription rate.
-                    </p>
+                <p>
+                    Please, <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-locked-content" target="_blank">read more here how to use and configure</a>,
+                    since it can incredibly increase your subscription rate.
+                </p>
                 <table class="form-table">
                     <tr valign="top">
                         <th>Tags or categories to lock</th>
