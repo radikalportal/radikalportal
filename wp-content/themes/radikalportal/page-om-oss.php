@@ -17,51 +17,44 @@
 
 <?php
 
-// Redaksjonens user ids.
-$redaksjon = array(
-	349,  // Christian Boger
-	121,  // Ingvar Kolbjørnsen
-	 10,  // Irene Kosberg Skagestad
-	 20,  // Jenny Dahl Bakken
-	 76,  // Joakim Møllersen
- 	 30,  // Julie Holm
-	263,  // Kjersti Opstad
-	309,  // Kristian Jørgensen
-	 21,  // Linda Skjold Oksnes
-	 22,  // Olav Elgvin
-	 13,  // Oscar Dybedahl
-	338,  // Saroj Chumber
-	 16,  // Vegard Velle
-	 27,  // Wibeke Bergheim
-);
+$redaksjonsmedlemmer = get_post_custom_values('redaksjonsmedlemmer');
 
-foreach ($redaksjon as $r) {
-	$userdata = get_userdata($r);
+if (isset($redaksjonsmedlemmer[0])) :
 
-	echo '<div class="row">';
-	echo '<div class="pull-left" style="margin: 10px;">';
+	$redaksjonsmedlemmer = unserialize($redaksjonsmedlemmer[0]);
 
-	if (userphoto_exists($r)) {
-		userphoto(
-			$r,
-			'',
-			'',
-			array(),
-			get_template_directory_uri() . '/img/anon.gif'
-		);
-	} else {
-		echo '<img class="img-rounded" src="/wp-content/themes/radikalportal/img/anon.gif">';
-	}
+	foreach (get_users(array('include' => $redaksjonsmedlemmer,
+							 'orderby' => 'display_name',
+							 'order'   => 'ASC')) as $key => $redaksjonsmedlem) :
 
-	echo '</div>';
-	echo '<div class="col-md-8">';
+		$userdata = get_userdata($redaksjonsmedlem->ID);
 
-	echo "<h3>" . $userdata->display_name . "</h3>";
-	echo "<p>" . $userdata->user_description . "</p>";
+		echo '<div class="row">';
+		echo '<div class="pull-left" style="margin: 10px;">';
 
-	echo '</div>';
-	echo '</div>';
-}
+		if (userphoto_exists($redaksjonsmedlem->ID)) {
+			userphoto(
+				$redaksjonsmedlem->ID,
+				'',
+				'',
+				array(),
+				get_template_directory_uri() . '/img/anon.gif'
+			);
+		} else {
+			echo '<img class="img-rounded" src="' . get_template_directory_uri() . '/img/anon.gif">';
+		}
+
+		echo '</div>';
+		echo '<div class="col-md-8">';
+
+		echo "<h3>" . $userdata->display_name . "</h3>";
+		echo "<p>" . $userdata->user_description . "</p>";
+
+		echo '</div>';
+		echo '</div>';
+
+	endforeach;
+endif;
 
 ?>
 
