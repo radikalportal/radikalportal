@@ -98,8 +98,10 @@ if (isset($faktabokser)) {
 
 <br>
 
-<?php if (!strcmp(get_post_meta($post->ID, 'ingendiskusjon', true), "1") == 0) : ?>
+<?php if ( comments_open() ) : ?>
+
 <div class="col-md-12">
+
   <h3 class="page-header">Diskusjon</h3>
   <div class="well">
     <p>
@@ -112,12 +114,9 @@ if (isset($faktabokser)) {
     <p>Vi fjerner innlegg som er diskriminerende, hetsende og usaklige, spam og identiske kommentarer.</p>
   </div>
 
-<?php
-  // If comments are open or we have at least one comment, load up the comment template.
-  if ( comments_open() || get_comments_number() ) {
-    comments_template();
-  }
-?>
+  <?php comments_template(); ?>
+
+</div>
 
 <?php endif; ?>
 
