@@ -108,6 +108,34 @@ if ($controls->is_action()) {
             implode(', ', $addresses) . '. Read more about test subscribers <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
         }
     }
+    
+    if ($controls->is_action('test-confirmation')) {
+
+        $users = NewsletterUsers::instance()->get_test_users();
+        if (count($users) == 0) {
+            $controls->errors = 'There are no test subscribers. Read more about test subscribers <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
+        } else {
+            $template = $controls->data['template'];
+            if (strpos($template, '{message}') === false) {
+                $template .= '{message}';
+            }
+            $message = '<p>This is a generic example of message embedded inside the template.</p>';
+            $message = str_replace('{message}', $message, $template);
+            $addresses = array();
+            foreach ($users as &$user) {
+                $addresses[] = $user->email;
+                $res = $module->mail($user->email, $module->options['confirmation_subject'], $newsletter->replace($module->options['confirmation_message'], $user));
+                if (!$res) {
+                    $controls->errors = 'The email address ' . $user->email . ' failed.';
+                    break;
+                }
+            }
+            $controls->messages .= 'Test emails sent to ' . count($users) . ' test subscribers: ' .
+            implode(', ', $addresses) . '. Read more about test subscribers <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
+            $controls->messages .= '<br>If the message is not received, try to chnage the message text it could trigger some antispam filters.';
+        }
+    }
+    
 } else {
     $controls->data = get_option('newsletter', array());
 
@@ -118,30 +146,6 @@ if ($controls->is_action()) {
     }
 }
 ?>
-
-<?php if (isset($controls->data['novisual']) && $controls->data['novisual'] != 1) { ?>
-    <script type="text/javascript" src="<?php echo plugins_url('newsletter'); ?>/tiny_mce/tiny_mce.js"></script>
-
-    <script type="text/javascript">
-        tinyMCE.init({
-            inline_styles: false,
-            mode: "specific_textareas",
-            editor_selector: "visual",
-            theme: "advanced",
-            entity_encoding: "raw",
-            theme_advanced_disable: "styleselect",
-            relative_urls: false,
-            remove_script_host: false,
-            theme_advanced_buttons1_add: "forecolor,blockquote,code,fontsizeselect,fontselect",
-            theme_advanced_buttons3_add: "tablecontrols,fullscreen",
-            theme_advanced_toolbar_location: "top",
-            theme_advanced_resizing: true,
-            theme_advanced_statusbar_location: "bottom",
-            document_base_url: "<?php echo get_option('home'); ?>/",
-            content_css: "<?php echo plugins_url('newsletter'); ?>/editor.css?" + new Date().getTime()
-        });
-    </script>
-<?php } ?>
 
 <div class="wrap">
     <?php $help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/subscription-module'; ?>
@@ -220,6 +224,7 @@ if ($controls->is_action()) {
                             </p>
                         </td>
                     </tr>
+                    <?php /*
                     <tr valign="top">
                         <th>Disable visual editors?</th>
                         <td>
@@ -230,6 +235,7 @@ if ($controls->is_action()) {
                             </p>
                         </td>
                     </tr>
+                    */ ?>
                     <tr valign="top">
                         <th>Notifications</th>
                         <td>
@@ -250,7 +256,7 @@ if ($controls->is_action()) {
                     <tr valign="top">
                         <th>Subscription page</th>
                         <td>
-                            <?php $controls->editor('subscription_text'); ?>
+                            <?php $controls->wp_editor('subscription_text'); ?>
                             <p class="description">
                                 Use <strong>{subscription_form}</strong> to insert the subscription form where you prefer in the text or
                                 <strong>{subscription_form_N}</strong> (with N from 1 to 10) to insert one of the custom forms.
@@ -283,7 +289,7 @@ if ($controls->is_action()) {
                     <tr valign="top">
                         <th>Already subscribed page content</th>
                         <td>
-                            <?php $controls->editor('already_confirmed_text'); ?><br>
+                            <?php $controls->wp_editor('already_confirmed_text'); ?><br>
                             <?php $controls->checkbox('resend_welcome_email_disabled', 'Do not resend the welcome email'); ?>
                             <p class="description">
                                 Shown when the email is already subscribed and confirmed. The welcome email, if not disabled, will
@@ -295,7 +301,7 @@ if ($controls->is_action()) {
                     <tr valign="top">
                         <th>Error page content</th>
                         <td>
-                            <?php $controls->editor('error_text'); ?>
+                            <?php $controls->wp_editor('error_text'); ?>
                             <p class="description">
                                 Message shown when the email is bounced or other errors occurred.
                             </p>
@@ -313,7 +319,7 @@ if ($controls->is_action()) {
                     <tr valign="top">
                         <th>Confirmation required message</th>
                         <td>
-                            <?php $controls->editor('confirmation_text'); ?>
+                            <?php $controls->wp_editor('confirmation_text'); ?>
                             <p class="description">
                                 This message is shown to just subscribed users which require to confirm the subscription
                                 following the instructions sent them with the following email. Invite them to check the mailbox and to
@@ -338,7 +344,8 @@ if ($controls->is_action()) {
                     <tr valign="top">
                         <th>Confirmation email</th>
                         <td>
-                            <?php $controls->email('confirmation'); ?>
+                            <?php $controls->email('confirmation', 'wordpress'); ?>
+                            <?php $controls->button('test-confirmation', 'Send a test'); ?>
                             <p class="description">
                                 Message sent by email to new subscribers with instructions to confirm their subscription
                                 (for double opt-in process). Do not forget to add the <strong>{subscription_confirm_url}</strong>
@@ -357,7 +364,7 @@ if ($controls->is_action()) {
                     <tr valign="top">
                         <th>Welcome message</th>
                         <td>
-                            <?php $controls->editor('confirmed_text'); ?>
+                            <?php $controls->wp_editor('confirmed_text'); ?>
                             <p class="description">
                                 Showed when the user follow the confirmation URL sent to him with previous email
                                 settings or if signed up directly with no double opt-in process. You can use the <strong>{profile_form}</strong> tag to let the user to
@@ -396,7 +403,7 @@ if ($controls->is_action()) {
                             Welcome email<br /><small>The right place where to put bonus content link</small>
                         </th>
                         <td>
-                            <?php $controls->email('confirmed', null, true); ?>
+                            <?php $controls->email('confirmed', 'wordpress', true); ?>
                             <p class="description">
                                 Email sent to the user to confirm his subscription, the successful confirmation
                                 page, the welcome email. This is the right message where to put a <strong>{unlock_url}</strong> link to remember to the

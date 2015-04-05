@@ -4,16 +4,16 @@
   Plugin Name: Newsletter
   Plugin URI: http://www.thenewsletterplugin.com/plugins/newsletter
   Description: Newsletter is a cool plugin to create your own subscriber list, to send newsletters, to build your business. <strong>Before update give a look to <a href="http://www.thenewsletterplugin.com/plugins/newsletter#update">this page</a> to know what's changed.</strong>
-  Version: 3.7.0
+  Version: 3.7.2
   Author: Stefano Lissa
   Author URI: http://www.thenewsletterplugin.com
   Disclaimer: Use at your own risk. No warranty expressed or implied is provided.
 
-  Copyright 2009-2014 The Newsletter Team (email: info@thenewsletterplugin.com, web: http://www.thenewsletterplugin.com)
+  Copyright 2009-2015 The Newsletter Team (email: info@thenewsletterplugin.com, web: http://www.thenewsletterplugin.com)
  */
 
 // Used as dummy parameter on css and js links
-define('NEWSLETTER_VERSION', '3.7.0');
+define('NEWSLETTER_VERSION', '3.7.2');
 
 global $wpdb, $newsletter;
 
@@ -159,7 +159,7 @@ class Newsletter extends NewsletterModule {
 
         add_shortcode('newsletter_lock', array($this, 'shortcode_newsletter_lock'));
         add_filter('the_content', array($this, 'hook_the_content'), 99);
-        add_shortcode('newsletter_profile', array($this, 'shortcode_newsletter_profile'));
+        //add_shortcode('newsletter_profile', array($this, 'shortcode_newsletter_profile'));
 
         if (is_admin()) {
             add_action('admin_head', array($this, 'hook_admin_head'));
@@ -962,7 +962,7 @@ class Newsletter extends NewsletterModule {
     }
 
     function replace_url($text, $tag, $url) {
-        $home = get_option('home') . '/';
+        $home = trailingslashit(home_url());
         $tag_lower = strtolower($tag);
         $text = str_replace($home . '{' . $tag_lower . '}', $url, $text);
         $text = str_replace($home . '%7B' . $tag_lower . '%7D', $url, $text);
@@ -1031,17 +1031,17 @@ class Newsletter extends NewsletterModule {
         return '<div class="newsletter-lock">' . $buffer . '</div>';
     }
 
-    function shortcode_newsletter_profile($attrs, $content) {
-        global $wpdb, $current_user;
-
-        $user = $this->check_user();
-
-        if ($user == null) {
-            return 'No user found.';
-        }
-
-        return $this->profile_form($user);
-    }
+//    function shortcode_newsletter_profile($attrs, $content) {
+//        global $wpdb, $current_user;
+//
+//        $user = $this->check_user();
+//
+//        if ($user == null) {
+//            return 'No user found.';
+//        }
+//
+//        return $this->profile_form($user);
+//    }
 
     /**
      * Exceutes a query and log it.

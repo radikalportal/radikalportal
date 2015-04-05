@@ -17,7 +17,41 @@ class NewsletterStatistics extends NewsletterModule {
     }
 
     function __construct() {
+        global $wpdb;
+
         parent::__construct('statistics', '1.1.0');
+
+        // Link tracking redirect
+        if (isset($_GET['nltr'])) {
+            list($email_id, $user_id, $url, $anchor) = explode(';', base64_decode($_GET['nltr']), 4);
+            $wpdb->insert(NEWSLETTER_STATS_TABLE, array(
+                'email_id' => $email_id,
+                'user_id' => $user_id,
+                'url' => $url,
+                'anchor' => $anchor,
+                'ip' => $_SERVER['REMOTE_ADDR']
+                    )
+            );
+
+            header('Location: ' . $url);
+            die();
+        }
+
+        // Open tracking image
+        if (isset($_GET['noti'])) {
+            list($email_id, $user_id) = explode(';', base64_decode($_GET['r']), 2);
+
+            $wpdb->insert(NEWSLETTER_STATS_TABLE, array(
+                'email_id' => $email_id,
+                'user_id' => $user_id,
+                'ip' => $_SERVER['REMOTE_ADDR']
+                    )
+            );
+
+            header('Content-Type: image/gif');
+            echo base64_decode('_R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
+            die();
+        }
     }
 
     function upgrade() {
@@ -67,8 +101,11 @@ class NewsletterStatistics extends NewsletterModule {
         $this->relink_user_id = $user_id;
         $text = preg_replace_callback('/(<[aA][^>]+href=["\'])([^>"\']+)(["\'][^>]*>)(.*?)(<\/[Aa]>)/', array($this, 'relink_callback'), $text);
 
-        // TODO: use the WP rewriting
-        $text = str_replace('</body>', '<img alt="newsletter" src="' . plugins_url('newsletter') . '/statistics/open.php?r=' . urlencode(base64_encode($email_id . ';' . $user_id)) . '"/></body>', $text);
+        if ($this->options['tracking_url'] == 1) {
+            $text = str_replace('</body>', '<img width="1" height="1" alt="" src="' . home_url() . '?noti=' . urlencode(base64_encode($email_id . ';' . $user_id)) . '"/></body>', $text);
+        } else {
+            $text = str_replace('</body>', '<img width="1" height="1" alt="" src="' . plugins_url('newsletter') . '/statistics/open.php?r=' . urlencode(base64_encode($email_id . ';' . $user_id)) . '"/></body>', $text);
+        }
         return $text;
     }
 
@@ -101,9 +138,13 @@ class NewsletterStatistics extends NewsletterModule {
             }
         }
 
-        $url = plugins_url('newsletter') . '/statistics/link.php?r=' .
-                urlencode(base64_encode($this->relink_email_id . ';' . $this->relink_user_id . ';' . $href . ';' . $anchor));
+        $r = urlencode(base64_encode($this->relink_email_id . ';' . $this->relink_user_id . ';' . $href . ';' . $anchor));
 
+        if ($this->options['tracking_url'] == 1) {
+            $url = home_url() . '?nltr=' . $r;
+        } else {
+            $url = plugins_url('newsletter') . '/statistics/link.php?r=' . $r;
+        }
         return $matches[1] . $url . $matches[3] . $matches[4] . $matches[5];
     }
 

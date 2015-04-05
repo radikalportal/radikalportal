@@ -79,9 +79,8 @@ if (isset($theme_options['theme_posts'])) {
 
                             <p style="text-align: center; font-size: small;"><a target="_blank"  href="{email_url}">View this email online</a></p>
 
-                            <?php // if (empty($posts)) { ?>
                             <p>Here you can start to write your message. Be polite with your readers! Don't forget the subject of this message.</p>
-                            <?php // } else { ?>
+                            <?php if (!empty($posts)) { ?>
                             <table cellpadding="5">
                                 <?php foreach ($posts as $post) { setup_postdata($post); ?>
                                     <tr>
@@ -95,7 +94,7 @@ if (isset($theme_options['theme_posts'])) {
                                     </tr>
                                 <?php } ?>
                             </table>
-                            <?php // } ?>
+                            <?php } ?>
                             
                             <?php include WP_PLUGIN_DIR . '/newsletter/emails/themes/default/footer.php'; ?>
 

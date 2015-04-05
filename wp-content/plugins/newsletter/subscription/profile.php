@@ -181,17 +181,19 @@ $rules = array(0 => 'Optional', 1 => 'Required');
                 <table class="widefat">
                     <thead>
                         <tr>
-                            <th>Field</th><th>Name/Label</th><th>When/Where</th><th>Type</th><th>Configuration</th>
+                            <th>Field</th><th>Name/Label</th><th>Placeholder</th><th>When/Where</th><th>Type</th><th>Rule</th><th>List values comma separated</th>
                         </tr>
                     </thead>
                     <?php for ($i = 1; $i <= NEWSLETTER_PROFILE_MAX; $i++) { ?>
                         <tr>
                             <td>Profile <?php echo $i; ?></td>
                             <td><?php $controls->text('profile_' . $i); ?></td>
+                            <td><?php $controls->text('profile_' . $i . '_placeholder'); ?></td>
                             <td><?php $controls->select('profile_' . $i . '_status', $status); ?></td>
                             <td><?php $controls->select('profile_' . $i . '_type', array('text' => 'Text', 'select' => 'List')); ?></td>
+                            <td><?php $controls->select('profile_' . $i . '_rules', $rules); ?></td>
                             <td>
-                                <?php $controls->textarea_fixed('profile_' . $i . '_options', '300px', '50px'); ?>
+                                <?php $controls->textarea_fixed('profile_' . $i . '_options', '200px', '50px'); ?>
                             </td>
                         </tr>
                     <?php } ?>

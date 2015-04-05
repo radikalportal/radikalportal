@@ -1,6 +1,6 @@
 <?php
 $module = NewsletterStatistics::instance();
-$email = $module->get_email($_GET['id']);
+$email = $module->get_email((int)$_GET['id']);
 ?>
 <div class="wrap">
     <?php $help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/statistics-module'; ?>

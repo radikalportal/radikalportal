@@ -179,7 +179,7 @@ if (count($calls) > 1) {
                 <li><a href="#tabs-logging">Logging</a></li>
                 <li><a href="#tabs-2">Semaphores and Crons</a></li>
                 <li><a href="#tabs-4">System</a></li>
-                <li><a href="#tabs-upgrade">Maintainance</a></li>
+                <li><a href="#tabs-upgrade">Maintenance</a></li>
                 <?php if (isset($_GET['debug'])) { ?>
                 <li><a href="#tabs-debug">Debug Data</a></li>
                 <?php } ?>
@@ -512,13 +512,33 @@ if (count($calls) > 1) {
                             </td>
                         </tr>
                         <tr>
+                            <td>Action file accessibility</td>
+                            <td>
+                                <?php                                
+                                    $res = wp_remote_get(plugins_url('newsletter') . '/do/subscribe.php?test=1');
+                                    if (is_wp_error($res)) {
+                                        echo 'It seems the Newsletter action files are not reachable. See the note and the file permission check below.';
+                                    } else {
+                                        echo 'OK';
+                                    }
+                                ?>
+                                <p class="description">
+                                    If this internal test fails, subscription, confirmation and so on could fail. Try to open 
+                                    <a href="<?php echo plugins_url('newsletter') . '/do/subscribe.php?test=1'?>" target="_blank">this link</a>: if
+                                    it reports "ok", consider this test as passed.
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
                             <td>File permissions</td>
                             <td>
                                 <?php
+                                $index_owner = fileowner(ABSPATH . '/index.php');
                                 $index_permissions = fileperms(ABSPATH . '/index.php');
                                 $subscribe_permissions = fileperms(NEWSLETTER_DIR . '/do/subscribe.php');
-                                if ($index_permissions != $subscribe_permissions) {
-                                    echo 'Plugin file permissions differ from blog index.php permissions, that may compromise the subscription process';
+                                $subscribe_owner = fileowner(NEWSLETTER_DIR . '/do/subscribe.php');
+                                if ($index_permissions != $subscribe_permissions || $index_owner != $subscribe_owner) {
+                                    echo 'Plugin file permissions or owner differ from blog index.php permissions, that may compromise the subscription process';
                                 } else {
                                     echo 'OK';
                                 }

@@ -104,38 +104,18 @@ class NewsletterModule {
         $wpdb->suppress_errors($suppress_errors);
     }
 
-//    function hook_version_check() {
-//        $this->logger->info('Checking for new version');
-//        if (empty($this->module_id)) return;
-//        $version = @file_get_contents('http://www.thenewsletterplugin.com/wp-content/plugins/file-commerce-pro/version.php?f=' . $this->module_id);
-//        if ($version) {
-//            update_option($this->prefix . '_available_version', $version);
-//            $this->available_version = $version;
-//        }
-//    }
-
     /**
-     * Return, eventually, the version of this module available on thenewsletterplugin.com
-     * @return string
+     * Kept for compatibility.
      */
     static function get_available_version($module_id, $force = false) {
-        if (empty($module_id))
-            return '';
-        $version = get_transient('newsletter_module_' . $module_id . '_version');
-        if ($force || !$version) {
-            $version = @file_get_contents('http://www.thenewsletterplugin.com/wp-content/plugins/file-commerce-pro/version.php?f=' . $module_id);
-            set_transient('newsletter_module_' . $module_id . '_version', $version, 2 * 86400);
-        }
-        return $version;
+        return '';
     }
 
+    /**
+     * Kept for compatibility.
+     */
     function new_version_available($force = false) {
-        if (empty($this->module_id))
-            return false;
-        $version = self::get_available_version($this->module_id, $force);
-        if (empty($version))
-            return false;
-        return ($version > $this->version) ? $version : false;
+        return false;
     }
 
     /** Returns a prefix to be used for option names and other things which need to be uniquely named. The parameter
@@ -540,7 +520,7 @@ class NewsletterModule {
     }
 
     function get_admin_page_url($page) {
-        return '?page=newsletter_' . $this->module . '_' . $page;
+        return admin_url('admin.php') . '?page=newsletter_' . $this->module . '_' . $page;
     }
 
     /** Returns all the emails of the give type (message, feed, followup, ...) and in the given format

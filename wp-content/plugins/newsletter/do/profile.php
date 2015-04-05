@@ -12,7 +12,7 @@ unset($_GET['na']);
 
 include '../../../../wp-load.php';
 
-$user = NewsletterSubscription::instance()->get_user_from_request();
+$user = NewsletterSubscription::instance()->check_user();
 if ($user == null)
     die('No subscriber found.');
 

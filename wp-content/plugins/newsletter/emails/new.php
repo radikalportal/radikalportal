@@ -1,4 +1,8 @@
 <?php
+if (function_exists('load_plugin_textdomain')) {
+    load_plugin_textdomain('newsletter-emails', false, 'newsletter/emails/languages');
+    load_plugin_textdomain('newsletter', false, 'newsletter/languages');
+}
 require_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 $controls = new NewsletterControls();
 $module = NewsletterEmails::instance();
@@ -148,7 +152,7 @@ function newsletter_emails_get_theme_options($theme) {
 
                 </td>
                 <td style="text-align: left; vertical-align: top; border-bottom: 1px solid #ddd; padding-bottom: 10px">
-                    <div style="float: right"><?php $controls->button_primary('create', 'Proceed to edit &raquo;'); ?></div>
+                    <div style="float: right"><?php $controls->button_primary('create', 'Proceed to edit &raquo;', 'this.form.action=\'' . plugins_url('newsletter') . '/emails/create.php\';this.form.submit()'); ?></div>
                     <img style="position: relative; left: 5px; top: 10px;"src="<?php echo plugins_url('newsletter') ?>/images/arrow.png" height="35">
                 </td>
             </tr>

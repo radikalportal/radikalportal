@@ -1,4 +1,9 @@
 <?php
+if (isset($_GET['test'])) {
+    header('Content-Type: text/plain');
+    echo 'ok';
+    return;
+}
 header('Content-Type: text/html;charset=UTF-8');
 header('X-Robots-Tag: noindex,nofollow,noarchive');
 header('Cache-Control: no-cache,no-store,private');

@@ -44,10 +44,19 @@ $user_count = $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE . 
 
 <?php if (NEWSLETTER_DEBUG || !isset($dismissed['rate']) && $user_count > 200) { ?>
     <div class="notice">
-        <a href="<?php echo $_SERVER['REQUEST_URI'] . '&dismiss=newsletter-page' ?>" class="dismiss">&times;</a>
+        <a href="<?php echo $_SERVER['REQUEST_URI'] . '&dismiss=rate' ?>" class="dismiss">&times;</a>
         <p>
             We never asked before and we're curious: <a href="http://wordpress.org/extend/plugins/newsletter/" target="_blank">would you rate this plugin</a>?
             (few seconds required - account on WordPress.org required, every blog owner should have one...). <strong>Really appreciated, The Newsletter Team</strong>.
+        </p>
+    </div>
+<?php } ?>
+
+<?php if (NEWSLETTER_DEBUG || !isset($dismissed['tracking-url'])) { ?>
+    <div class="notice">
+        <a href="<?php echo $_SERVER['REQUEST_URI'] . '&dismiss=tracking-url' ?>" class="dismiss">&times;</a>
+        <p>
+            There is a new option avoid to hit spam filters available on statistics panel. Check it out.
         </p>
     </div>
 <?php } ?>
