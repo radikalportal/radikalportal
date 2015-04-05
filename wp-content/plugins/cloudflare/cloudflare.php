@@ -3,7 +3,7 @@
 Plugin Name: CloudFlare
 Plugin URI: http://www.cloudflare.com/wiki/CloudFlareWordPressPlugin
 Description: CloudFlare integrates your blog with the CloudFlare platform.
-Version: 1.3.16
+Version: 1.3.17
 Author: Ian Pye, Jerome Chen, James Greene, Simon Moore, David Fritsch (CloudFlare Team)
 License: GPLv2
 */
@@ -26,7 +26,7 @@ Plugin adapted from the Akismet WP plugin.
 
 */	
 
-define('CLOUDFLARE_VERSION', '1.3.16');
+define('CLOUDFLARE_VERSION', '1.3.17');
 define('CLOUDFLARE_API_URL', 'https://www.cloudflare.com/api_json.html'); 
 define('CLOUDFLARE_SPAM_URL', 'https://www.cloudflare.com/ajax/external-event.html');
 
@@ -47,7 +47,7 @@ function cloudflare_init() {
     if (isset($_SERVER["REMOTE_ADDR"])) {
 		if (strpos($_SERVER["REMOTE_ADDR"], ":") === FALSE) {
 	
-			$cf_ip_ranges = array("199.27.128.0/21","173.245.48.0/20","103.21.244.0/22","103.22.200.0/22","103.31.4.0/22","141.101.64.0/18","108.162.192.0/18","190.93.240.0/20","188.114.96.0/20","197.234.240.0/22","198.41.128.0/17","162.158.0.0/15","104.16.0.0/12");
+			$cf_ip_ranges = array("199.27.128.0/21","173.245.48.0/20","103.21.244.0/22","103.22.200.0/22","103.31.4.0/22","141.101.64.0/18","108.162.192.0/18","190.93.240.0/20","188.114.96.0/20","197.234.240.0/22","198.41.128.0/17","162.158.0.0/15","104.16.0.0/12","172.64.0.0/13");
 			// IPV4: Update the REMOTE_ADDR value if the current REMOTE_ADDR value is in the specified range.
 			foreach ($cf_ip_ranges as $range) {
 				if (ipv4_in_range($_SERVER["REMOTE_ADDR"], $range)) {
@@ -564,14 +564,32 @@ function cloudflare_curl($url, $fields = array(), $json = true) {
 }
 
 function cloudflare_buffer_wrapup($buffer) {
-    // replace href or src attributes within script, link, base, and img tags with just "//" for protocol
-    $re = "/(<(script|link|base|img|form)([^>]*)(?<!rel=['\"]canonical['\"] )(href|src|action)=[\"'])https?:\\/\\//i"; 
-    $subst = "$1//"; 
-    $return = preg_replace($re, $subst, $buffer);
-    
-    // on regex error, skip overwriting buffer
-    if ($return) {
-        $buffer = $return;
+    // Check for a Content-Type header. Currently only apply rewriting to "text/html" or undefined
+    $headers = headers_list();
+    $content_type = null;
+
+    foreach ($headers as $header) {
+        if (strpos(strtolower($header), 'content-type:') === 0) {
+            $pieces = explode(':', strtolower($header));
+            $content_type = trim($pieces[1]);
+            break;
+        }
+    }
+
+    if (is_null($content_type) || substr($content_type, 0, 9) === 'text/html') {
+        // replace href or src attributes within script, link, base, and img tags with just "//" for protocol
+        $re     = "/(<(script|link|base|img|form)([^>]*)(href|src|action)=[\"'])https?:\\/\\//i";
+        $subst  = "$1//";
+        $return = preg_replace($re, $subst, $buffer);
+
+        foreach (headers_list() as $header) {
+            $buffer .= $header;
+        }
+
+        // on regex error, skip overwriting buffer
+        if ($return) {
+            $buffer = $return;
+        }
     }
     
     return $buffer;
