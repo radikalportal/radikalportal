@@ -102,4 +102,5 @@ if (isset($forfatterids)) {
 <?php endif; ?>
 
 	</div>
+  <div style="clear: both;"></div>
 </div>
