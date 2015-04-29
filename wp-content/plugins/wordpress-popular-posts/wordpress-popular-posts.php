@@ -275,7 +275,7 @@ if ( !class_exists('WordpressPopularPosts') ) {
                 <script type="text/javascript">
                     /* <![CDATA[ */
                     jQuery(document).ready(function(){
-                        jQuery.get('<?php echo admin_url('admin-ajax.php'); ?>', {action: 'wpp_ajax_get_popular', id: '<?php echo $this->number; ?>'}, function(data){
+                        jQuery.get('<?php echo "/wp-admin/admin-ajax.php"; ?>', {action: 'wpp_ajax_get_popular', id: '<?php echo $this->number; ?>'}, function(data){
 							jQuery('#<?php echo $widget_id; ?>').append(data);
 						});
                     });
