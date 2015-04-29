@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<img src="<?= get_template_directory_uri(); ?>/img/romfolket.png" alt="Romfolket ser oss">
+<img style="width: 100%;" src="<?= get_template_directory_uri(); ?>/img/romfolket.png" alt="Romfolket ser oss">
 
 <?php 
 global $more;    // Declare global $more (before the loop).
