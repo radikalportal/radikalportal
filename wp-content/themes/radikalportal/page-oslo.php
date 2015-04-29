@@ -22,6 +22,7 @@ query_posts('&tag=osloportalen&paged=' . $paged);
     <?php
       if ( have_posts() ) :
         // Start the Loop.
+	    $first = true;
         while ( have_posts() ) : the_post();
 
           /*
@@ -29,7 +30,12 @@ query_posts('&tag=osloportalen&paged=' . $paged);
            * use this in a child theme, then include a file called called content-___.php
            * (where ___ is the post format) and that will be used instead.
            */
-          get_template_part( 'content', get_post_format() );
+          if ($first) {
+	          get_template_part( 'content-oslo-featured', get_post_format() );
+          } else {
+	          get_template_part( 'content-oslo', get_post_format() );
+          }
+          $first = false;
 
         endwhile;
 
