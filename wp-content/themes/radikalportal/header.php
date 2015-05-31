@@ -102,3 +102,10 @@
     </div>
 
     <div class="container">
+
+<div style="margin-bottom: 22px;">
+  <a href="/stott-radikal-portal/">
+    <img width="100%" src="/wp-content/themes/radikalportal/img/innsamlingsbanner.jpg">
+  </a>
+</div>
+
