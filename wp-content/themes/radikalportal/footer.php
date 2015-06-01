@@ -47,6 +47,10 @@
 <script src="<?php bloginfo('template_directory'); ?>/js/js.cookie.js"></script>
 <script>
   jQuery(function() {
+    if (jQuery.browser.msie && parseFloat(jQuery.browser.version) <= parseFloat("8.0")) {
+      return;
+    }
+
     var cookieName = "innsamling";
     var msToNext = 1000*60*60*24*2;
     var msBeforeModal = 500;
