@@ -35,7 +35,7 @@
             </div>
             <div class="col-md-7">
               <p>For å fortsette og forbedre det viktige arbeidet ber vi deg som leser bidra. Setter du deg på fast trekk 100 kroner i måneden får du en eksklusiv Radikal Portal-t-skjorte.</p>
-              <p>Vi ønsker å styrke antirasismen, arbeiderkampen, miljøaktivismen, fredsarbeidet og en reell demokratisering. Vi er et en motvekt til kommersielle medier og en selvstending kraft som vil løfte fram stemmer som jobber for en bedre verden. Håper du vil hjelpe.</p>
+              <p>Vi ønsker å styrke antirasismen, arbeiderkampen, miljøaktivismen, fredsarbeidet og en reell demokratisering. Vi er en motvekt til kommersielle medier og en selvstending kraft som vil løfte fram stemmer som jobber for en bedre verden. Håper du vil hjelpe.</p>
               <p><a href="/stott-radikal-portal/" class="btn btn-primary btn-lg">Donér til Radikal Portal</a></p>
             </div>
           </div>
