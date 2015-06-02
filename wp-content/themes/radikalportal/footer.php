@@ -57,14 +57,14 @@
 
     if (-1 == document.location.href.indexOf("/stott-radikal-portal/")) {
       if (jQuery.cookie(cookieName) == undefined) {
-        jQuery.cookie(cookieName, new Date().toISOString());
+        jQuery.cookie(cookieName, new Date().toISOString(), { expires: 365 });
         setTimeout(function() {
           jQuery('#myModal').modal();
         }, msBeforeModal);
       } else {
         var msSinceLast = (new Date() - Date.parse(jQuery.cookie(cookieName)));
         if (msSinceLast > msToNext) {
-          jQuery.cookie(cookieName, new Date().toISOString());
+          jQuery.cookie(cookieName, new Date().toISOString(), { expires: 365 });
           setTimeout(function() {
             jQuery('#myModal').modal();
           }, msBeforeModal);
