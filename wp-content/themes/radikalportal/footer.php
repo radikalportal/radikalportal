@@ -52,7 +52,7 @@
     }
 
     var cookieName = "innsamling";
-    var msToNext = 1000*60*60*24*2;
+    var msToNext = 1000*60*60*24*3;
     var msBeforeModal = 500;
 
     if (-1 == document.location.href.indexOf("/stott-radikal-portal/")) {
