@@ -28,7 +28,7 @@ query_posts($query_string . 'cat=-1,-387,-388,-415,-427,-428,-525&paged=' . $pag
            * (where ___ is the post format) and that will be used instead.
            */
           get_template_part( 'content', get_post_format() );
-        
+
         endwhile;
 
         get_template_part( 'pagination' );

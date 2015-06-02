@@ -6,7 +6,7 @@
     <title><?php wp_title(' ', true, 'right'); ?></title>
     <meta http-equiv="X-UA-Compatible" content="IE=9" />
     <meta name="description" content="<?php if ( is_single() ) {
-        single_post_title('', true); 
+        single_post_title('', true);
     } else {
         bloginfo('description');
     }
@@ -103,9 +103,10 @@
 
     <div class="container">
 
+<!-- Innsamlingskampanje -->
 <div style="margin-bottom: 22px;">
   <a href="/stott-radikal-portal/">
     <img width="100%" src="/wp-content/themes/radikalportal/img/innsamlingsbanner.jpg">
   </a>
 </div>
-
+<!-- /Innsamlingskampanje -->
