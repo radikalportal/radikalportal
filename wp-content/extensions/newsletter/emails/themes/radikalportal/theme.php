@@ -96,7 +96,7 @@ $font_size = $theme_options['theme_font_size'];
                                         <tbody><tr>
                                                 <td style="width:100%; padding: 2% ;vertical-align:top; background:#fff">
 
-                                                    <p style="font-family:arial,sans-serif;color:#456;font-size:20px;line-height:22px;margin:0;padding:0"><strong><a target="_tab" href="<?php echo get_permalink(); ?>" style="color:#F0F;text-decoration:none" target="_blank"><?php the_title(); ?></a></strong></p>
+                                                    <p style="font-family:arial,sans-serif;color:#456;font-size:20px;line-height:22px;margin:0;padding:0"><strong><a target="_tab" href="<?php echo get_permalink(); ?>" style="color:#000;text-decoration:none" target="_blank"><?php the_title(); ?></a></strong></p>
 
                                                     <p style="font-family:arial,sans-serif;line-height:1.5em;margin:15px 0;padding:0"><?php the_excerpt(); ?>. </p>
 
@@ -106,7 +106,7 @@ $font_size = $theme_options['theme_font_size'];
 
                                                     <a target="_tab" href="<?php echo get_permalink(); ?>" target="_blank"><img src="<?php echo $image; ?>" alt="" width="100" border="0" height="100"></a>
 
-                                                    <p style="background:#F0F;text-align:center;margin:10px 0 0 0;font-size:11px;line-height:14px;font-family:arial,sans-serif;padding:4px 2px;border-radius:4px"><a target="_tab" href="<?php echo get_permalink(); ?>" style="color:#fff;text-decoration:none" target="_blank"><strong><?php echo $theme_options['theme_read_more']; ?></strong></a></p>
+                                                    <p style="background:#E22620;text-align:center;margin:10px 0 0 0;font-size:11px;line-height:14px;font-family:arial,sans-serif;padding:4px 2px;border-radius:4px"><a target="_tab" href="<?php echo get_permalink(); ?>" style="color:#fff;text-decoration:none" target="_blank"><strong><?php echo $theme_options['theme_read_more']; ?></strong></a></p>
 
                                                 </td>
 
