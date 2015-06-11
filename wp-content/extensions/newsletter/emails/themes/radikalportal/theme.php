@@ -91,7 +91,7 @@ $font_size = $theme_options['theme_font_size'];
                                     ?>
 
 
-                                    <table style="width:100%;color:#456;font:normal 12px/1.5em helvetica,sans-serif;margin:15px 0 0 0;padding:0 0 15px 0;">
+                                    <table style="width:100%;color:#456;font:normal 12px/1.5em helvetica,sans-serif;margin:15px 0 0 0;padding:0;">
 
                                         <tbody><tr>
                                                 <td style="width:100%; padding: 2% ;vertical-align:top; background:#fff">
