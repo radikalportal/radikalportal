@@ -104,7 +104,7 @@
     <div class="container">
 
 <!-- Innsamlingskampanje -->
-<div style="margin-bottom: 22px;">
+<div class="hidden-print" style="margin-bottom: 22px;">
   <a href="/stott-radikal-portal/">
     <img width="100%" src="/wp-content/themes/radikalportal/img/innsamlingsbanner.jpg">
   </a>
