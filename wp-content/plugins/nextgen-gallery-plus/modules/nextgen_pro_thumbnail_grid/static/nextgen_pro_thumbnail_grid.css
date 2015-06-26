@@ -1,0 +1,37 @@
+.nextgen_pro_thumbnail_grid {
+	text-align: center;
+	width: 100%;
+}
+
+.nextgen_pro_thumbnail_grid .image-wrapper {
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+}
+.nextgen_pro_thumbnail_grid .image-wrapper .ngg-trigger-buttons {
+	clear: both;
+	margin: 3px auto 4px auto;
+}
+
+.nextgen_pro_thumbnail_grid .image-wrapper a {
+	display: block;
+	border: 0px;
+	font-size: 0px;
+	text-decoration: none;
+}
+
+.nextgen_pro_thumbnail_grid .image-wrapper img {
+	border: none;
+    display: inline;
+}
+
+.nextgen_pro_thumbnail_grid img {
+	margin: 0px;
+	margin-top: 0px;
+}
+
+.nextgen_pro_thumbnail_grid img:hover {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+    filter: alpha(opacity=90);
+    opacity: .9;
+}

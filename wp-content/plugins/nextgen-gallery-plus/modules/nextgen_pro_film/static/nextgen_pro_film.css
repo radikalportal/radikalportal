@@ -1,0 +1,28 @@
+div.nextgen_pro_film {
+    text-align:center;
+}
+
+.nextgen_pro_film .image-wrapper {
+    display: inline-block;
+    text-align: center;
+    padding: 15px;
+    vertical-align: middle;
+}
+.nextgen_pro_film .image-wrapper a {
+	display: block;
+	border: 0px;
+	font-size: 0px;
+	text-decoration: none;
+}
+.nextgen_pro_film .nextgen_pro_film_image {
+  position: relative;
+  border: none;
+}
+.nextgen_pro_film .image-wrapper .ngg-trigger-buttons {
+	clear: both;
+  float: none;
+	margin: 5px 0 0 0;
+}
+.nextgen_pro_film .ngg-navigation {
+	clear: both;
+}
