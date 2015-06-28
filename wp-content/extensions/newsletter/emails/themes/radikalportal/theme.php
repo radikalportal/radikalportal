@@ -81,8 +81,7 @@ $font_size = $theme_options['theme_font_size'];
 
 
 
-                                <p style="color:#456;font-family:arial,sans-serif;font-size:24px;line-height:1.2;margin:15px 0;padding:0"><a target="_tab" href="<?php echo get_option('home'); ?>" style="color:#E22620;text-decoration:none" target="_blank"><?php echo get_option('blogname'); ?></a></p>
-
+                                <p style="color:#456;font-family:News Cycle, Arial Narrow Bold, sans-serif; font-size:24px;line-height:1.2;margin:15px 0;padding:0"><a target="_tab" href="<?php echo get_option('home'); ?>" style="color:#E22620;text-decoration:none" target="_blank"><?php echo get_option('blogname'); ?></a></p>
 
                                 <?php
                                 foreach ($posts as $post) {
@@ -104,7 +103,7 @@ $font_size = $theme_options['theme_font_size'];
 
                                                 <td style="vertical-align:middle; width: 100px">
 
-                                                    <a target="_tab" href="<?php echo get_permalink(); ?>" target="_blank"><img src="<?php echo $image; ?>" alt="" width="100" border="0" height="100"></a>
+                                                    <a target="_tab" href="<?php echo get_permalink(); ?>" target="_blank"><img src="<?php echo $image; ?>" alt="" width="200" border="0" height="200"></a>
 
                                                     <p style="background:#E22620;text-align:center;margin:10px 0 0 0;font-size:11px;line-height:14px;font-family:arial,sans-serif;padding:4px 2px;border-radius:4px"><a target="_tab" href="<?php echo get_permalink(); ?>" style="color:#fff;text-decoration:none" target="_blank"><strong><?php echo $theme_options['theme_read_more']; ?></strong></a></p>
 
