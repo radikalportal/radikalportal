@@ -212,7 +212,7 @@ add_filter( 'wp', 'jetpackme_remove_rp', 20 );
 
 function jetpackme_related_posts_headline( $headline ) {
     $headline = sprintf(
-        '<h3 class="page-header jp-relatedposts-headline">%s</h3>',
+        '<h3 class="page-header">%s</h3>',
         esc_html( 'Relaterte' )
     );
     return $headline;
