@@ -209,3 +209,12 @@ function jetpackme_remove_rp() {
     remove_filter( 'the_content', $callback, 40 );
 }
 add_filter( 'wp', 'jetpackme_remove_rp', 20 );
+
+function jetpackme_related_posts_headline( $headline ) {
+    $headline = sprintf(
+        '<h3 class="page-header jp-relatedposts-headline">%s</h3>',
+        esc_html( 'Relaterte' )
+    );
+    return $headline;
+}
+add_filter( 'jetpack_relatedposts_filter_headline', 'jetpackme_related_posts_headline' );

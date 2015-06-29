@@ -99,8 +99,6 @@ if (isset($faktabokser)) {
 <br>
 
 <div class="col-md-12 hidden-xs">
-  <br>
-  <h3 class="page-header">Relaterte</h3>
   <?php echo do_shortcode( '[jetpack-related-posts]' ); ?>
 </div>
 
