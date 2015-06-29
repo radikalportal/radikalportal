@@ -98,6 +98,12 @@ if (isset($faktabokser)) {
 
 <br>
 
+<div class="col-md-12 hidden-xs">
+  <br>
+  <h3 class="page-header">Relaterte</h3>
+  <?php echo do_shortcode( '[jetpack-related-posts]' ); ?>
+</div>
+
 <?php if ( comments_open() ) : ?>
 
 <div class="col-md-12">
@@ -124,12 +130,6 @@ if (isset($faktabokser)) {
   <br>
   <h3 class="page-header">Tips oss</h3>
   Har du et tips om en sak du mener vi burde skrive om, eller en lenke vi burde dele på siden så send oss et <a href="http://radikalportal.no/tips-oss/">tips</a>.
-</div>
-
-<div class="col-md-12 hidden-xs">
-  <br>
-  <br>
-  <div><?php wp_related_posts(); ?></div>
 </div>
 
     </div> <!--/.row -->

@@ -202,3 +202,10 @@ function baw_hack_wp_title_for_home($title) {
     }
     return $title;
 }
+
+function jetpackme_remove_rp() {
+    $jprp = Jetpack_RelatedPosts::init();
+    $callback = array( $jprp, 'filter_add_target_to_dom' );
+    remove_filter( 'the_content', $callback, 40 );
+}
+add_filter( 'wp', 'jetpackme_remove_rp', 20 );
