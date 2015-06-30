@@ -92,11 +92,19 @@ if (isset($faktabokser)) {
 </div> <!-- /.span15 -->
 
 <div class="col-md-12">
+	<div class="tags">
+		<?php if (has_tag()) {the_tags('<ul><li>', '</li><li>', '</li></ul>');} ?>
+	</div>
+</div>
+
+<div class="col-md-12">
   <?php get_template_part('sharebar'); ?>
   <br>
 </div>
 
-<br>
+<div class="col-md-12">
+  <?php echo do_shortcode( '[jetpack-related-posts]' ); ?>
+</div>
 
 <?php if ( comments_open() ) : ?>
 
@@ -124,12 +132,6 @@ if (isset($faktabokser)) {
   <br>
   <h3 class="page-header">Tips oss</h3>
   Har du et tips om en sak du mener vi burde skrive om, eller en lenke vi burde dele på siden så send oss et <a href="http://radikalportal.no/tips-oss/">tips</a>.
-</div>
-
-<div class="col-md-12 hidden-xs">
-  <br>
-  <br>
-  <div><?php wp_related_posts(); ?></div>
 </div>
 
     </div> <!--/.row -->

@@ -319,6 +319,31 @@ body {
   display: block;
 }
 
+.tags ul {
+  margin: 0px;
+  padding: 0px;
+}
+.tags li {
+  display: inline-block;
+  list-style: none;
+  padding: 5px 9px;
+  -webkit-border-radius: 62.5rem;
+  border-radius: 62.5rem;
+  border-width: 0.0625rem;
+  border-style: solid;
+  background-color: #999999;
+  margin: 0px 5px;
+  color: #ffffff;
+}
+.tags li:hover {
+background:#555555;
+}
+.tags li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+
 @media print {
   .main-content {
     border: none;
