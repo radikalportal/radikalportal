@@ -92,6 +92,12 @@ if (isset($faktabokser)) {
 </div> <!-- /.span15 -->
 
 <div class="col-md-12">
+	<div class="tags">
+		<?php if (has_tag()) {the_tags('<ul><li>', '</li><li>', '</li></ul>');} ?>
+	</div>
+</div>
+
+<div class="col-md-12">
   <?php get_template_part('sharebar'); ?>
   <br>
 </div>
