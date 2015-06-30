@@ -103,7 +103,7 @@ $font_size = $theme_options['theme_font_size'];
 
                                                 <td style="vertical-align:middle; width: 100px">
 
-                                                    <a target="_tab" href="<?php echo get_permalink(); ?>" target="_blank"><img src="<?php echo $image; ?>" alt="" width="200" border="0" height="200"></a>
+                                                    <a target="_tab" href="<?php echo get_permalink(); ?>" target="_blank"><img src="<?php echo $image; ?>" alt="" width="100" border="0" height="100"></a>
 
                                                     <p style="background:#E22620;text-align:center;margin:10px 0 0 0;font-size:11px;line-height:14px;font-family:arial,sans-serif;padding:4px 2px;border-radius:4px"><a target="_tab" href="<?php echo get_permalink(); ?>" style="color:#fff;text-decoration:none" target="_blank"><strong><?php echo $theme_options['theme_read_more']; ?></strong></a></p>
 
