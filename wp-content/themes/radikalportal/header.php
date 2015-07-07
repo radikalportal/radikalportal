@@ -60,6 +60,8 @@ Sjekk: github.com/radikalportal -->
     </script>
 
     <meta property="fb:app_id" content="446811972038512">
+    <meta property="og:title" content="<?php wp_title(' ', true, 'right'); ?>">
+    <meta property="og:type" content="article">
     <?php if ( has_post_thumbnail() ) : ?>
         <meta property="og:image" content="<?php echo wp_get_attachment_image_src(get_post_thumbnail_id(), 'full')[0]; ?>">
     <?php endif; ?>
