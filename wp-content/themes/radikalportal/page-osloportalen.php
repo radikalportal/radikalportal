@@ -1,6 +1,6 @@
 <?php
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-query_posts('&tag=osloportalen&paged=' . $paged);
+query_posts('cat=2111&paged=' . $paged);
 ?>
 
 <?php get_header(); ?>
