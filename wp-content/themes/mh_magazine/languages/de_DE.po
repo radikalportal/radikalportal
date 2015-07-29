@@ -1,0 +1,1904 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: MH Magazine v2.4.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-14 12:05+0100\n"
+"PO-Revision-Date: 2015-07-28 16:47:44+0000\n"
+"Last-Translator: Michael Hebenstreit <mail@michael-hebenstreit.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.6.6\n"
+"X-Poedit-Language: \n"
+"X-Poedit-Country: \n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: 404.php:8
+#: content-none.php:9
+#@ mh
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "Es konnten keine passenden Inhalte gefunden werden. Vielleicht kann Ihnen die Suchfunktion weiterhelfen."
+
+#: 404.php:11
+#: content-none.php:12
+#: includes/mh-breadcrumb.php:66
+#@ mh
+msgid "Search"
+msgstr "Suche"
+
+#: 404.php:17
+#: content-none.php:17
+#@ mh
+msgid "Popular Articles"
+msgstr "Beliebte Artikel"
+
+#: 404.php:22
+#: content-none.php:22
+#@ mh
+msgid "Random Articles"
+msgstr "Zuf&auml;llige Artikel"
+
+#: admin/admin.php:88
+#@ mh
+msgid "Post Options"
+msgstr "Artikel Optionen"
+
+#: admin/admin.php:98
+#@ mh
+msgid "Subheading (will be displayed below post title)"
+msgstr "Zweit&uuml;berschrift (erscheint unterhalb des Titels)"
+
+#: admin/admin.php:103
+#@ mh
+msgid "Alternative ad code (this will overwrite the global content ad code)"
+msgstr "Alternativer Werbecode (&uuml;berschreibt den globalen Content-Ad Werbecode)"
+
+#: admin/admin.php:110
+#@ mh
+msgid "Disable Content Ad for this Post"
+msgstr "Content-Ad f&uuml;r diesen Artikel ausblenden"
+
+#: admin/admin.php:114
+#@ mh
+msgid "Disable Featured Image for this Post"
+msgstr "Beitragsbild f&uuml;r diesen Artikel ausblenden"
+
+#: comments.php:9
+#, php-format
+#@ mh
+msgid "1 Comment on %2$s"
+msgid_plural "%1$s Comments on %2$s"
+msgstr[0] "1 Kommentar zu %2$s"
+msgstr[1] "%1$s Kommentare zu %2$s"
+
+#: comments.php:16
+#: includes/mh-custom-functions.php:422
+#: includes/mh-post-content.php:143
+#@ mh
+msgid "&laquo;"
+msgstr "&laquo;"
+
+#: comments.php:16
+#: includes/mh-custom-functions.php:423
+#: includes/mh-post-content.php:143
+#@ mh
+msgid "&raquo;"
+msgstr "&raquo;"
+
+#: comments.php:22
+#, php-format
+#@ mh
+msgid "%s Trackbacks & Pingbacks"
+msgstr "%s Trackbacks & Pingbacks"
+
+#: comments.php:30
+#@ mh
+msgid "Comments are closed."
+msgstr "Kommentare sind deaktiviert."
+
+#: comments.php:35
+#@ mh
+msgid "Leave a comment"
+msgstr "Kommentar hinterlassen"
+
+#: comments.php:36
+#@ mh
+msgid "Your email address will not be published."
+msgstr "E-Mail Adresse wird nicht ver&ouml;ffentlicht."
+
+#: comments.php:38
+#@ mh
+msgid "Comment"
+msgstr "Kommentar"
+
+#: content-none.php:5
+#@ mh
+msgid "Sorry, but nothing matched your search terms. Please try again with different keywords."
+msgstr "Es konnten keine passenden Inhalte gefunden werden. Bitte versuchen Sie es erneut mit einem anderen Suchbegriff."
+
+#: functions.php:77
+#@ mh
+msgid "Header Navigation"
+msgstr "Navigation Kopfzeile"
+
+#: functions.php:78
+#@ mh
+msgid "Main Navigation"
+msgstr "Hauptnavigation"
+
+#: functions.php:79
+#@ mh
+msgid "Additional Navigation (below Main Navigation)"
+msgstr "Zus&auml;tzliche Navigation (unterhalb Hauptnavigation)"
+
+#: functions.php:80
+#@ mh
+msgid "Footer Navigation"
+msgstr "Navigation Fußzeile"
+
+#: functions.php:147
+#@ mh
+msgctxt "widget area name"
+msgid "Header"
+msgstr "Header"
+
+#: functions.php:147
+#@ mh
+msgid "Widget area on top of the site"
+msgstr "Widgetbereich oberhalb des Headers"
+
+#: functions.php:148
+#@ mh
+msgctxt "widget area name"
+msgid "Sidebar"
+msgstr "Sidebar"
+
+#: functions.php:148
+#@ mh
+msgid "Widget area (sidebar left/right) on single posts, pages and archives"
+msgstr "Widgetbereich (Sidebar links/rechts) in Artikeln, Seiten und Archiven"
+
+#: functions.php:150
+#, php-format
+#@ mh
+msgctxt "widget area name"
+msgid "Sidebar %d"
+msgstr "Sidebar %d"
+
+#: functions.php:150
+#@ mh
+msgid "Second sidebar on single posts, pages and archives"
+msgstr "Zweite Sidebar auf Artikeln, Seiten und Archiven"
+
+#: functions.php:152
+#: functions.php:153
+#: functions.php:154
+#: functions.php:155
+#: functions.php:156
+#: functions.php:157
+#: functions.php:158
+#: functions.php:159
+#: functions.php:160
+#: functions.php:161
+#: functions.php:162
+#: functions.php:164
+#, php-format
+#@ mh
+msgctxt "widget area name"
+msgid "Home %d"
+msgstr "Home %d"
+
+#: functions.php:152
+#: functions.php:153
+#: functions.php:154
+#: functions.php:155
+#: functions.php:156
+#: functions.php:157
+#: functions.php:158
+#: functions.php:159
+#: functions.php:160
+#: functions.php:161
+#: functions.php:162
+#@ mh
+msgid "Widget area on homepage"
+msgstr "Widgetbereich auf der Startseite"
+
+#: functions.php:164
+#@ mh
+msgid "Sidebar on homepage"
+msgstr "Sidebar auf der Startseite"
+
+#: functions.php:166
+#: functions.php:167
+#, php-format
+#@ mh
+msgctxt "widget area name"
+msgid "Posts %d"
+msgstr "Posts %d"
+
+#: functions.php:166
+#@ mh
+msgid "Widget area above single post content"
+msgstr "Widgetbereich oberhalb des Contents auf Artikelebene"
+
+#: functions.php:167
+#@ mh
+msgid "Widget area below single post content"
+msgstr "Widgetbereich unterhalb des Contents auf Artikelebene"
+
+#: functions.php:168
+#: functions.php:169
+#, php-format
+#@ mh
+msgctxt "widget area name"
+msgid "Pages %d"
+msgstr "Pages %d"
+
+#: functions.php:168
+#@ mh
+msgid "Widget area above single page content"
+msgstr "Widgetbereich oberhalb des Contents auf Seitenebene"
+
+#: functions.php:169
+#@ mh
+msgid "Widget area below single page content"
+msgstr "Widgetbereich unterhalb des Contents auf Seitenebene"
+
+#: functions.php:170
+#: functions.php:171
+#: functions.php:172
+#: functions.php:173
+#, php-format
+#@ mh
+msgctxt "widget area name"
+msgid "Footer %d"
+msgstr "Footer %d"
+
+#: functions.php:170
+#: functions.php:171
+#: functions.php:172
+#: functions.php:173
+#@ mh
+msgid "Widget area in footer"
+msgstr "Widgetbereich im Footer"
+
+#: functions.php:174
+#@ mh
+msgctxt "widget area name"
+msgid "Contact"
+msgstr "Kontakt"
+
+#: functions.php:174
+#@ mh
+msgid "Widget area (sidebar) on contact page template"
+msgstr "Widgetbereich (Sidebar) auf der Kontaktseite (Kontakt-Template)"
+
+#: functions.php:176
+#, php-format
+#@ mh
+msgctxt "widget area name"
+msgid "Contact %d"
+msgstr "Kontakt %d"
+
+#: functions.php:176
+#@ mh
+msgid "2nd widget area (sidebar) on contact page template"
+msgstr "Zweiter Widgetbereich (Sidebar) auf dem Kontakt Template"
+
+#: woocommerce/mh-custom-woocommerce.php:10
+#@ mh
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: woocommerce/mh-custom-woocommerce.php:10
+#@ mh
+msgid "Widget area (sidebar) on WooCommerce pages"
+msgstr "Widgetbereich (Sidebar) auf WooCommerce Seiten"
+
+#: includes/mh-breadcrumb.php:15
+#@ mh
+msgid "Home"
+msgstr "Startseite"
+
+#: includes/mh-breadcrumb.php:27
+#@ mh
+msgid "Media"
+msgstr "Medien"
+
+#: includes/mh-breadcrumb.php:62
+#: includes/widgets/mh-authors.php:59
+#@ mh
+msgid "Authors"
+msgstr "Autoren"
+
+#: includes/mh-breadcrumb.php:64
+#: includes/mh-custom-functions.php:266
+#@ mh
+msgid "Page not found (404)"
+msgstr "Seite nicht gefunden (404)"
+
+#: includes/mh-breadcrumb.php:76
+#: includes/mh-breadcrumb.php:79
+#@ mh
+msgid "Yearly Archives"
+msgstr "J&auml;hrliche Archive"
+
+#: includes/mh-breadcrumb.php:77
+#@ mh
+msgid "Monthly Archives"
+msgstr "Monatliche Archive"
+
+#: includes/mh-custom-functions.php:104
+#, php-format
+#@ mh
+msgid "About %s"
+msgstr "&Uuml;ber %s"
+
+#: includes/mh-custom-functions.php:104
+#, php-format
+#@ mh
+msgid "More articles written by %s"
+msgstr "Weitere Artikel von %s"
+
+#: includes/mh-custom-functions.php:104
+#, php-format
+#@ mh
+msgid "%s Articles"
+msgstr "%s Artikel"
+
+#: includes/mh-custom-functions.php:108
+#@ mh
+msgid "The author has not yet added any personal or biographical info to his author profile."
+msgstr "Dieser Autor hat noch keine pers&ouml;nlichen oder biographischen Angaben zum Autorenprofil hinzugef&uuml;gt."
+
+#: includes/mh-custom-functions.php:114
+#@ mh
+msgid "Contact:"
+msgstr "Kontakt:"
+
+#: includes/mh-custom-functions.php:116
+#, php-format
+#@ mh
+msgid "Visit the website of %s"
+msgstr "Besuche die Webseite von %s"
+
+#: includes/mh-custom-functions.php:116
+#: includes/mh-custom-functions.php:396
+#@ mh
+msgid "Website"
+msgstr "Webseite"
+
+#: includes/mh-custom-functions.php:119
+#, php-format
+#@ mh
+msgid "Follow %s on Facebook"
+msgstr "Folge %s bei Facebook"
+
+#: admin/admin.php:24
+#: includes/mh-custom-functions.php:119
+#@ mh
+msgid "Facebook"
+msgstr "Facebook"
+
+#: includes/mh-custom-functions.php:122
+#, php-format
+#@ mh
+msgid "Follow %s on Twitter"
+msgstr "Folge %s bei Twitter"
+
+#: admin/admin.php:25
+#: includes/mh-custom-functions.php:122
+#@ mh
+msgid "Twitter"
+msgstr "Twitter"
+
+#: includes/mh-custom-functions.php:125
+#, php-format
+#@ mh
+msgid "Follow %s on Google+"
+msgstr "Folge %s bei Google+"
+
+#: includes/mh-custom-functions.php:125
+#@ mh
+msgid "Google+"
+msgstr "Google+"
+
+#: includes/mh-custom-functions.php:128
+#, php-format
+#@ mh
+msgid "Follow %s on YouTube"
+msgstr "Folge %s bei YouTube"
+
+#: admin/admin.php:26
+#: includes/mh-custom-functions.php:128
+#@ mh
+msgid "YouTube"
+msgstr "YouTube"
+
+#: includes/mh-custom-functions.php:164
+#: includes/mh-custom-functions.php:169
+#@ mh
+msgid "&larr; Back to article"
+msgstr "&larr; Zur&uuml;ck zum Artikel"
+
+#: includes/mh-custom-functions.php:166
+#@ mh
+msgid "&larr; Previous image"
+msgstr "&larr; Vorheriges Bild"
+
+#: includes/mh-custom-functions.php:172
+#@ mh
+msgid "&larr; Previous article"
+msgstr "&larr; Vorheriger Artikel"
+
+#: includes/mh-custom-functions.php:179
+#@ mh
+msgid "Next image &rarr;"
+msgstr "N&auml;chstes Bild &rarr;"
+
+#: includes/mh-custom-functions.php:181
+#@ mh
+msgid "Next article &rarr;"
+msgstr "N&auml;chster Artikel &rarr;"
+
+#: includes/mh-custom-functions.php:205
+#: includes/mh-options.php:113
+#@ mh
+msgid "Related Articles"
+msgstr "&Auml;hnliche Artikel"
+
+#: includes/mh-custom-functions.php:248
+#, php-format
+#@ mh
+msgctxt "post author"
+msgid "Articles by %s"
+msgstr "Artikel von %s"
+
+#: includes/mh-custom-functions.php:260
+#: includes/mh-options.php:114
+#: page-sitemap.php:31
+#@ mh
+msgid "Archives"
+msgstr "Archive"
+
+#: includes/mh-custom-functions.php:268
+#, php-format
+#@ mh
+msgid "Search Results for %s"
+msgstr "Suchergebnisse f&uuml;r %s"
+
+#: includes/mh-custom-functions.php:367
+#, php-format
+#@ mh
+msgid "%1$s at %2$s"
+msgstr "%1$s um %2$s"
+
+#: includes/mh-custom-functions.php:372
+#@ mh
+msgid "(Edit)"
+msgstr "(Bearbeiten)"
+
+#: includes/mh-custom-functions.php:376
+#@ mh
+msgid "Your comment is awaiting moderation."
+msgstr "Der Kommentar wartet auf Freischaltung."
+
+#: includes/mh-custom-functions.php:394
+#@ mh
+msgid "Name "
+msgstr "Name"
+
+#: includes/mh-custom-functions.php:395
+#@ mh
+msgid "Email "
+msgstr "E-Mail"
+
+#: includes/mh-custom-functions.php:407
+#, php-format
+#@ mh
+msgctxt "comments number"
+msgid "1 Comment"
+msgid_plural "%1$s Comments"
+msgstr[0] "1 Kommentar"
+msgstr[1] "%1$s Kommentare"
+
+#: includes/mh-options.php:29
+#@ mh
+msgid "General Options"
+msgstr "Allgemeine Optionen"
+
+#: includes/mh-options.php:30
+#@ mh
+msgid "Layout Options"
+msgstr "Layout Optionen"
+
+#: includes/mh-options.php:31
+#@ mh
+msgid "Typography Options"
+msgstr "Typographie Optionen"
+
+#: includes/mh-options.php:32
+#@ mh
+msgid "News Ticker Options"
+msgstr "Newsticker Optionen"
+
+#: includes/mh-options.php:33
+#@ mh
+msgid "Posts/Pages Options"
+msgstr "Artikel/Seiten Optionen"
+
+#: includes/mh-options.php:34
+#: includes/widgets/mh-advertising-widget.php:53
+#@ mh
+msgid "Advertising"
+msgstr "Werbung"
+
+#: includes/mh-options.php:35
+#: includes/mh-options.php:151
+#@ mh
+msgid "Custom CSS"
+msgstr "Benutzerdefiniertes CSS"
+
+#: includes/mh-options.php:36
+#@ mh
+msgid "Tracking Code"
+msgstr "Tracking Code"
+
+#: includes/mh-options.php:104
+#@ mh
+msgid "Favicon Upload"
+msgstr "Favicon hochladen"
+
+#: includes/mh-options.php:105
+#@ mh
+msgid "Custom Excerpt Length in Characters"
+msgstr "L&auml;nge der Textausz&uuml;ge in Zeichen"
+
+#: includes/mh-options.php:106
+#@ mh
+msgid "Custom Excerpt More-Text"
+msgstr "Beliebiger More-Text"
+
+#: includes/mh-options.php:107
+#@ mh
+msgid "Copyright Text"
+msgstr "Copyright Text"
+
+#: includes/mh-options.php:109
+#@ mh
+msgid "Widget Titles"
+msgstr "Widget Titel"
+
+#: includes/mh-options.php:109
+#: includes/mh-options.php:110
+#: includes/mh-options.php:111
+#: includes/mh-options.php:113
+#: includes/mh-options.php:114
+#: includes/mh-options.php:206
+#: includes/mh-options.php:207
+#: includes/mh-options.php:208
+#, php-format
+#@ mh
+msgctxt "options panel"
+msgid "Layout %d"
+msgstr "Layout %d"
+
+#: includes/mh-options.php:110
+#@ mh
+msgid "Page Titles"
+msgstr "Seitentitel"
+
+#: includes/mh-options.php:111
+#@ mh
+msgid "Author Box"
+msgstr "Autorbox"
+
+#: includes/mh-options.php:111
+#: includes/mh-options.php:112
+#: includes/mh-options.php:113
+#: includes/mh-options.php:120
+#: includes/mh-options.php:134
+#: includes/mh-options.php:135
+#: includes/mh-options.php:136
+#: includes/mh-options.php:137
+#: includes/mh-options.php:138
+#: includes/mh-options.php:139
+#: includes/mh-options.php:140
+#: includes/mh-options.php:197
+#@ mh
+msgid "Disable"
+msgstr "Deaktivieren"
+
+#: includes/mh-options.php:112
+#@ mh
+msgid "Author Box Contact"
+msgstr "Autorbox Kontakt"
+
+#: includes/mh-options.php:112
+#: includes/mh-options.php:120
+#: includes/mh-options.php:134
+#: includes/mh-options.php:135
+#: includes/mh-options.php:136
+#: includes/mh-options.php:137
+#: includes/mh-options.php:138
+#: includes/mh-options.php:139
+#: includes/mh-options.php:196
+#@ mh
+msgid "Enable"
+msgstr "Aktivieren"
+
+#: includes/mh-options.php:115
+#@ mh
+msgid "Sidebars"
+msgstr "Sidebars"
+
+#: includes/mh-options.php:115
+#: includes/mh-options.php:193
+#@ mh
+msgid "One Sidebar"
+msgstr "Eine Sidebar"
+
+#: includes/mh-options.php:115
+#: includes/mh-options.php:194
+#@ mh
+msgid "Two Sidebars"
+msgstr "Zwei Sidebars"
+
+#: includes/mh-options.php:115
+#: includes/mh-options.php:195
+#@ mh
+msgid "No Sidebars"
+msgstr "Keine Sidebar"
+
+#: includes/mh-options.php:116
+#@ mh
+msgid "Position of default Sidebar"
+msgstr "Position der standard Sidebar"
+
+#: includes/mh-options.php:116
+#: includes/mh-options.php:198
+#@ mh
+msgid "Left"
+msgstr "Links"
+
+#: includes/mh-options.php:116
+#: includes/mh-options.php:199
+#@ mh
+msgid "Right"
+msgstr "Rechts"
+
+#: includes/mh-options.php:118
+#@ mh
+msgid "Change default Font Size (px)"
+msgstr "Standard Schriftgr&ouml;&szlig;e (px)"
+
+#: includes/mh-options.php:120
+#@ mh
+msgid "Google Webfonts"
+msgstr "Google Webfonts"
+
+#: includes/mh-options.php:121
+#@ mh
+msgid "Google Webfonts Characters"
+msgstr "Google Webfonts Zeichen"
+
+#: includes/mh-options.php:121
+#: includes/mh-options.php:200
+#@ mh
+msgid "Latin"
+msgstr "Lateinisch"
+
+#: includes/mh-options.php:121
+#: includes/mh-options.php:201
+#@ mh
+msgid "Latin Extended"
+msgstr "Lateinisch erweitert"
+
+#: includes/mh-options.php:121
+#: includes/mh-options.php:202
+#@ mh
+msgid "Greek"
+msgstr "Griechisch"
+
+#: includes/mh-options.php:121
+#: includes/mh-options.php:203
+#@ mh
+msgid "Greek Extended"
+msgstr "Griechisch erweitert"
+
+#: includes/mh-options.php:121
+#: includes/mh-options.php:204
+#@ mh
+msgid "Cyrillic"
+msgstr "Kyrillisch"
+
+#: includes/mh-options.php:121
+#: includes/mh-options.php:205
+#@ mh
+msgid "Cyrillic Extended"
+msgstr "Kyrillisch erweitert"
+
+#: includes/mh-options.php:122
+#@ mh
+msgid "Google Webfont for Headings"
+msgstr "Google Webfont f&uuml;r &Uuml;berschriften"
+
+#: includes/mh-options.php:123
+#@ mh
+msgid "Google Webfont for Body Text"
+msgstr "Google Webfont f&uuml;r Body Text"
+
+#: includes/mh-options.php:124
+#@ mh
+msgid "Imported Google Font Styles"
+msgstr "Importierte Google Font Styles"
+
+#: includes/mh-options.php:126
+#@ mh
+msgid "Enable Ticker"
+msgstr "Ticker anzeigen"
+
+#: includes/mh-options.php:127
+#@ mh
+msgid "Ticker Title"
+msgstr "Ticker-Titel"
+
+#: includes/mh-options.php:128
+#@ mh
+msgid "Limit Post Number"
+msgstr "Anzahl Artikel"
+
+#: includes/mh-options.php:129
+#@ mh
+msgid "Custom Categories (use ID - e.g. 3,5,9):"
+msgstr "Kategorienfilter (ID - z.B. 3,5,9):"
+
+#: includes/mh-options.php:130
+#@ mh
+msgid "Custom Tags (use slug - e.g. lifestyle):"
+msgstr "Tag-Filter (slug - z.B. lifestyle):"
+
+#: includes/mh-options.php:131
+#: includes/widgets/mh-carousel.php:104
+#: includes/widgets/mh-custom-posts.php:147
+#: includes/widgets/mh-nip.php:87
+#: includes/widgets/mh-slider.php:115
+#: includes/widgets/mh-spotlight.php:116
+#@ mh
+msgid "Skip Posts (Offset):"
+msgstr "Anzahl &uuml;berspringen (Offset):"
+
+#: includes/mh-options.php:132
+#: includes/widgets/mh-carousel.php:124
+#: includes/widgets/mh-custom-posts.php:185
+#: includes/widgets/mh-nip.php:100
+#: includes/widgets/mh-slider.php:146
+#@ mh
+msgid "Ignore Sticky Posts"
+msgstr "Sticky Posts ignorieren"
+
+#: includes/mh-options.php:134
+#@ mh
+msgid "Breadcrumb Navigation"
+msgstr "Breadcrumb Navigation"
+
+#: includes/mh-options.php:135
+#@ mh
+msgid "Teaser Text on Posts"
+msgstr "Teaser Text in Artikeln"
+
+#: includes/mh-options.php:136
+#@ mh
+msgid "Featured Image on Posts"
+msgstr "Beitragsbild in Artikeln"
+
+#: includes/mh-options.php:137
+#@ mh
+msgid "Link Featured Image to Attachment"
+msgstr "Beitragsbild mit Attachment Seite verlinken"
+
+#: includes/mh-options.php:138
+#@ mh
+msgid "Comments on Pages"
+msgstr "Kommentare auf Seiten"
+
+#: includes/mh-options.php:139
+#@ mh
+msgid "Post/Attachment Navigation"
+msgstr "Seiten-/Artikelnavigation"
+
+#: includes/mh-options.php:140
+#@ mh
+msgid "Social Buttons on Posts"
+msgstr "Social Buttons in Artikeln"
+
+#: includes/mh-options.php:140
+#@ mh
+msgid "Top and bottom"
+msgstr "Oberhalb und Unterhalb"
+
+#: includes/mh-options.php:140
+#@ mh
+msgid "Top of posts"
+msgstr "Oberhalb der Artikel"
+
+#: includes/mh-options.php:140
+#@ mh
+msgid "Bottom of posts"
+msgstr "Unterhalb der Artikel"
+
+#: includes/mh-options.php:141
+#@ mh
+msgid "Disable Post Meta Data"
+msgstr "Post Meta Daten"
+
+#: includes/mh-options.php:142
+#@ mh
+msgid "Disable Date"
+msgstr "Datum deaktivieren"
+
+#: includes/mh-options.php:143
+#@ mh
+msgid "Disable Author"
+msgstr "Autor deaktivieren"
+
+#: includes/mh-options.php:144
+#@ mh
+msgid "Disable Categories"
+msgstr "Kategorien deaktivieren"
+
+#: includes/mh-options.php:145
+#: includes/widgets/mh-spotlight.php:148
+#@ mh
+msgid "Disable Comments"
+msgstr "Kommentare ausblenden"
+
+#: includes/mh-options.php:147
+#@ mh
+msgid "Ad Code for Content Ad on Posts"
+msgstr "Werbecode f&uuml;r Content Ad in Artikeln"
+
+#: includes/mh-options.php:148
+#@ mh
+msgid "Ad Code for Ads on Archives"
+msgstr "Werbecode f&uuml;r Archive"
+
+#: includes/mh-options.php:149
+#@ mh
+msgid "Display Ad every x Posts on Archives:"
+msgstr "Werbung in Archiven alle x Artikel anzeigen:"
+
+#: includes/mh-options.php:152
+#@ mh
+msgid "Tracking Code (e.g. Google Analytics)"
+msgstr "Tracking Code (z.B. Google Analytics)"
+
+#: includes/mh-options.php:154
+#@ mh
+msgid "Background Header"
+msgstr "Hintergrundfarbe Kopfleiste"
+
+#: includes/mh-options.php:155
+#@ mh
+msgid "Background Inner"
+msgstr "Hintergrundfarbe Contentbereich"
+
+#: includes/mh-options.php:158
+#@ mh
+msgid "Text: General"
+msgstr "Text: Allgemein"
+
+#: includes/mh-options.php:161
+#@ mh
+msgid "Text: Post Meta"
+msgstr "Text: Metaangaben"
+
+#: includes/mh-options.php:165
+#@ mh
+msgid "Scale Background Image to Full Size"
+msgstr "Hintergrundbild automatisch skalieren"
+
+#: includes/mh-options.php:209
+#@ mh
+msgid "Top and Bottom"
+msgstr "Oberhalb und Unterhalb"
+
+#: includes/mh-options.php:210
+#@ mh
+msgid "Top of Posts"
+msgstr "Anfang der Artikel"
+
+#: includes/mh-options.php:211
+#@ mh
+msgid "Bottom of Posts"
+msgstr "Ende der Artikel"
+
+#: includes/mh-post-content.php:28
+#, php-format
+#@ mh
+msgctxt "post date"
+msgid "on %s"
+msgstr "am %s"
+
+#: includes/mh-post-content.php:29
+#, php-format
+#@ mh
+msgctxt "post author"
+msgid "by %s"
+msgstr "von %s"
+
+#: includes/mh-post-content.php:30
+#, php-format
+#@ mh
+msgctxt "post category"
+msgid "in %s"
+msgstr "in %s"
+
+#: includes/mh-post-content.php:31
+#, php-format
+#@ mh
+msgctxt "post meta"
+msgid "Posted %1$s %2$s %3$s"
+msgstr "Ver&ouml;ffentlicht %1$s %2$s %3$s"
+
+#: includes/widgets/mh-advertising-widget.php:9
+#@ mh
+msgid "MH Advertising Widget to display ads in widget locations of your choice."
+msgstr "MH Advertising Widget um Werbung innerhalb der Widgetbereiche auszugeben."
+
+#: includes/widgets/mh-advertising-widget.php:8
+#@ mh
+msgid "MH Advertising Widget"
+msgstr "MH Advertising Widget"
+
+#: includes/widgets/mh-advertising-widget.php:56
+#: includes/widgets/mh-affiliate.php:35
+#: includes/widgets/mh-authors.php:63
+#: includes/widgets/mh-carousel.php:73
+#: includes/widgets/mh-comments.php:49
+#: includes/widgets/mh-custom-posts.php:116
+#: includes/widgets/mh-custom-slider.php:128
+#: includes/widgets/mh-custom-slider.php:150
+#: includes/widgets/mh-custom-slider.php:172
+#: includes/widgets/mh-custom-slider.php:194
+#: includes/widgets/mh-custom-slider.php:216
+#: includes/widgets/mh-facebook-page.php:47
+#: includes/widgets/mh-nip.php:56
+#: includes/widgets/mh-social-widget.php:106
+#: includes/widgets/mh-spotlight.php:89
+#: includes/widgets/mh-youtube.php:37
+#@ mh
+msgid "Title:"
+msgstr "Titel:"
+
+#: includes/widgets/mh-advertising-widget.php:60
+#@ mh
+msgid "Banner Size:"
+msgstr "Bannergr&ouml;&szlig;e:"
+
+#: includes/widgets/mh-advertising-widget.php:67
+#: includes/widgets/mh-advertising-widget.php:71
+#: includes/widgets/mh-advertising-widget.php:75
+#: includes/widgets/mh-advertising-widget.php:79
+#@ mh
+msgid "Ad Code"
+msgstr "Werbecode"
+
+#: includes/widgets/mh-affiliate.php:9
+#@ mh
+msgid "MH Affiliate Widget to earn money by promoting WordPress themes by MH Themes."
+msgstr "MH Affiliate Widget mit dem Sie Geld durch die Weiterempfehlung der WordPress Themes von MH Themes verdienen k&ouml;nnen,"
+
+#: includes/widgets/mh-affiliate.php:8
+#@ mh
+msgid "MH Affiliate Widget"
+msgstr "MH Affiliate Widget"
+
+#: includes/widgets/mh-affiliate.php:42
+#@ mh
+msgid "With this widget you can earn money by promoting WordPress themes by MH Themes. If you do not have a Creative Market Username yet, please visit our"
+msgstr "Mit diesem Widget k&ouml;nnen Sie durch die Weiterempfehlung der WordPress Themes von MH Themes Geld verdienen. Falls Sie noch keinen Creative Market Username haben, besuchen Sie bitte unsere"
+
+#: includes/widgets/mh-affiliate.php:42
+#@ mh
+msgid "infopage for affiliates"
+msgstr "Infoseite f&uuml;r Affiliates"
+
+#: includes/widgets/mh-authors.php:9
+#@ mh
+msgid "MH Authors widget to display a list of authors including the number of published posts."
+msgstr "MH Authors Widget um eine Liste der Autoren samt Anzahl der ver&ouml;ffentlichten Artikel auszugeben."
+
+#: includes/widgets/mh-authors.php:8
+#@ mh
+msgid "MH Authors Widget"
+msgstr "MH Authors Widget"
+
+#: includes/widgets/mh-authors.php:33
+#: includes/widgets/mh-authors.php:36
+#, php-format
+#@ mh
+msgid "Articles by %s"
+msgstr "Artikel von %s"
+
+#: includes/widgets/mh-authors.php:37
+#, php-format
+#@ mh
+msgctxt "author post count"
+msgid "published %d articles"
+msgstr "ver&ouml;ffentlichte %d Artikel"
+
+#: includes/widgets/mh-authors.php:42
+#@ mh
+msgid "No authors found"
+msgstr "Keine Autoren gefunden"
+
+#: includes/widgets/mh-authors.php:67
+#@ mh
+msgid "Limit Author Number:"
+msgstr "Anzahl Autoren:"
+
+#: includes/widgets/mh-authors.php:71
+#@ mh
+msgid "Skip Authors (Offset):"
+msgstr "Anzahl &uuml;berspringen (Offset):"
+
+#: includes/widgets/mh-authors.php:75
+#@ mh
+msgid "User Role:"
+msgstr "Nutzerrolle:"
+
+#: includes/widgets/mh-authors.php:77
+#@ mh
+msgid "All Users"
+msgstr "Alle User"
+
+#: includes/widgets/mh-authors.php:78
+#@ mh
+msgid "Administrator"
+msgstr "Administrator"
+
+#: includes/widgets/mh-authors.php:79
+#@ mh
+msgid "Editor"
+msgstr "Redakteur"
+
+#: includes/widgets/mh-authors.php:80
+#@ mh
+msgid "Author"
+msgstr "Autor"
+
+#: includes/widgets/mh-authors.php:81
+#@ mh
+msgid "Contributor"
+msgstr "Mitarbeiter"
+
+#: includes/widgets/mh-authors.php:82
+#@ mh
+msgid "Subscriber"
+msgstr "Abonnent"
+
+#: includes/widgets/mh-authors.php:86
+#@ mh
+msgid "Order Authors by:"
+msgstr "Autoren sortieren nach:"
+
+#: includes/widgets/mh-authors.php:88
+#@ mh
+msgid "Number of Posts"
+msgstr "Anzahl der Artikel"
+
+#: includes/widgets/mh-authors.php:89
+#@ mh
+msgid "User Name"
+msgstr "Nutzernamen"
+
+#: includes/widgets/mh-authors.php:93
+#@ mh
+msgid "Order:"
+msgstr "Reihenfolge:"
+
+#: includes/widgets/mh-authors.php:95
+#@ mh
+msgid "Ascending"
+msgstr "aufsteigend"
+
+#: includes/widgets/mh-authors.php:96
+#@ mh
+msgid "Descending"
+msgstr "absteigend"
+
+#: includes/widgets/mh-authors.php:100
+#: includes/widgets/mh-comments.php:61
+#@ mh
+msgid "Avatar Size in px:"
+msgstr "Gr&ouml;&szlig;e Avatar in px:"
+
+#: includes/widgets/mh-authors.php:106
+#: includes/widgets/mh-comments.php:67
+#@ mh
+msgid "No Avatars"
+msgstr "Keine Avatare"
+
+#: includes/widgets/mh-carousel.php:9
+#@ mh
+msgid "Carousel widget for use on homepage template."
+msgstr "Carousel Widget f&uuml;r die Verwendung auf dem Homepage Template."
+
+#: includes/widgets/mh-carousel.php:8
+#@ mh
+msgid "MH Carousel Widget (Homepage)"
+msgstr "MH Carousel Widget (Homepage)"
+
+#: includes/widgets/mh-carousel.php:77
+#: includes/widgets/mh-custom-posts.php:120
+#: includes/widgets/mh-nip.php:60
+#: includes/widgets/mh-slider.php:88
+#: includes/widgets/mh-spotlight.php:93
+#@ mh
+msgid "Select a Category:"
+msgstr "Kategorie w&auml;hlen:"
+
+#: includes/widgets/mh-carousel.php:79
+#: includes/widgets/mh-custom-posts.php:122
+#: includes/widgets/mh-nip.php:62
+#: includes/widgets/mh-slider.php:90
+#: includes/widgets/mh-spotlight.php:95
+#@ mh
+msgid "All"
+msgstr "Alle"
+
+#: includes/widgets/mh-carousel.php:92
+#: includes/widgets/mh-custom-posts.php:135
+#: includes/widgets/mh-nip.php:75
+#: includes/widgets/mh-slider.php:103
+#: includes/widgets/mh-spotlight.php:108
+#@ mh
+msgid "Multiple Categories Filter by ID:"
+msgstr "Mehrere Kategorien nach ID filtern:"
+
+#: includes/widgets/mh-carousel.php:96
+#: includes/widgets/mh-custom-posts.php:139
+#: includes/widgets/mh-nip.php:79
+#: includes/widgets/mh-slider.php:107
+#: includes/widgets/mh-spotlight.php:112
+#@ mh
+msgid "Filter Posts by Tags (e.g. lifestyle):"
+msgstr "Artikel nach Tags filtern (z.B. Lifestyle):"
+
+#: includes/widgets/mh-carousel.php:100
+#: includes/widgets/mh-custom-posts.php:143
+#: includes/widgets/mh-nip.php:83
+#: includes/widgets/mh-slider.php:111
+#@ mh
+msgid "Limit Post Number:"
+msgstr "Anzahl Artikel:"
+
+#: includes/widgets/mh-carousel.php:108
+#: includes/widgets/mh-custom-posts.php:151
+#: includes/widgets/mh-nip.php:91
+#: includes/widgets/mh-slider.php:119
+#: includes/widgets/mh-spotlight.php:120
+#@ mh
+msgid "Post Order:"
+msgstr "Artikel sortieren nach:"
+
+#: includes/widgets/mh-carousel.php:110
+#: includes/widgets/mh-custom-posts.php:153
+#: includes/widgets/mh-nip.php:93
+#: includes/widgets/mh-slider.php:121
+#: includes/widgets/mh-spotlight.php:122
+#@ mh
+msgid "Latest Posts"
+msgstr "Datum"
+
+#: includes/widgets/mh-carousel.php:111
+#: includes/widgets/mh-custom-posts.php:154
+#: includes/widgets/mh-nip.php:94
+#: includes/widgets/mh-slider.php:122
+#: includes/widgets/mh-spotlight.php:123
+#@ mh
+msgid "Random Posts"
+msgstr "Zufall"
+
+#: includes/widgets/mh-carousel.php:112
+#: includes/widgets/mh-custom-posts.php:155
+#: includes/widgets/mh-nip.php:95
+#: includes/widgets/mh-slider.php:123
+#: includes/widgets/mh-spotlight.php:124
+#@ mh
+msgid "Popular Posts"
+msgstr "Beliebtheit"
+
+#: includes/widgets/mh-carousel.php:116
+#@ mh
+msgid "Carousel Layout:"
+msgstr "Carousel Layout:"
+
+#: includes/widgets/mh-comments.php:9
+#@ mh
+msgid "MH Recent Comments widget to display your recent comments including user avatars."
+msgstr "MH Recent Comments Widget um die neuesten Kommentare inklusive Avatar des Nutzers anzuzeigen."
+
+#: includes/widgets/mh-comments.php:8
+#@ mh
+msgid "MH Recent Comments"
+msgstr "MH Recent Comments"
+
+#: includes/widgets/mh-comments.php:29
+#, php-format
+#@ mh
+msgctxt "comment widget"
+msgid "%1$s on %2$s"
+msgstr "%1$s zu %2$s"
+
+#: includes/widgets/mh-comments.php:45
+#@ mh
+msgid "Recent Comments"
+msgstr "Neueste Kommentare"
+
+#: includes/widgets/mh-comments.php:53
+#@ mh
+msgid "Limit Comment Number:"
+msgstr "Anzahl der Kommentare:"
+
+#: includes/widgets/mh-comments.php:57
+#@ mh
+msgid "Skip Comments (Offset):"
+msgstr "Anzahl &uuml;berspringen (Offset):"
+
+#: includes/widgets/mh-custom-pages.php:9
+#@ mh
+msgid "Custom Pages Widget to display pages based on page IDs."
+msgstr "Custom Pages Widget um Seiten anhand der Seiten-ID auszugeben."
+
+#: includes/widgets/mh-custom-pages.php:8
+#@ mh
+msgid "MH Custom Pages"
+msgstr "MH Custom Pages"
+
+#: includes/widgets/mh-custom-pages.php:77
+#@ mh
+msgid "Title (optional):"
+msgstr "Titel (optional):"
+
+#: includes/widgets/mh-custom-pages.php:81
+#@ mh
+msgid "Link Title to URL (optional):"
+msgstr "Titel mit URL verlinken (optional):"
+
+#: includes/widgets/mh-custom-pages.php:85
+#@ mh
+msgid "Filter Pages by ID (comma separated):"
+msgstr "Seiten nach ID filtern (Komma getrennt):"
+
+#: includes/widgets/mh-custom-pages.php:89
+#: includes/widgets/mh-custom-posts.php:159
+#@ mh
+msgid "Display Excerpts:"
+msgstr "Textausz&uuml;ge anzeigen:"
+
+#: includes/widgets/mh-custom-pages.php:91
+#@ mh
+msgid "Excerpt for first Page"
+msgstr "Excerpt f&uuml;r erste Seite"
+
+#: includes/widgets/mh-custom-pages.php:92
+#@ mh
+msgid "Excerpt for all Pages"
+msgstr "Excerpts f&uuml;r alle Seiten"
+
+#: includes/widgets/mh-custom-pages.php:93
+#: includes/widgets/mh-custom-posts.php:163
+#@ mh
+msgid "No Excerpts"
+msgstr "Keine Excerpts"
+
+#: includes/widgets/mh-custom-pages.php:97
+#: includes/widgets/mh-custom-posts.php:167
+#: includes/widgets/mh-slider.php:141
+#: includes/widgets/mh-spotlight.php:135
+#@ mh
+msgid "Excerpt Character Limit:"
+msgstr "L&auml;nge Textauszug in Zeichen:"
+
+#: includes/widgets/mh-custom-pages.php:101
+#: includes/widgets/mh-custom-posts.php:175
+#@ mh
+msgid "Thumbnails:"
+msgstr "Thumbnails:"
+
+#: includes/widgets/mh-custom-pages.php:103
+#: includes/widgets/mh-custom-posts.php:177
+#@ mh
+msgid "Show all Thumbnails"
+msgstr "Alle Thumbnails zeigen"
+
+#: includes/widgets/mh-custom-pages.php:104
+#: includes/widgets/mh-custom-posts.php:178
+#@ mh
+msgid "Hide all Thumbnails"
+msgstr "Alle Thumbnails verbergen"
+
+#: includes/widgets/mh-custom-pages.php:105
+#: includes/widgets/mh-custom-posts.php:179
+#@ mh
+msgid "Hide only large Thumbnails"
+msgstr "Nur gro&szlig;e Thumbnails verbergen"
+
+#: includes/widgets/mh-custom-pages.php:106
+#: includes/widgets/mh-custom-posts.php:180
+#@ mh
+msgid "Hide only small Thumbnails"
+msgstr "Nur kleine Thumbnails verbergen"
+
+#: includes/widgets/mh-custom-posts.php:9
+#@ mh
+msgid "Custom Posts Widget to display posts based on categories or tags."
+msgstr "Custom Posts Widget um Artikel anhand von Kategorien oder Tags anzuzeigen."
+
+#: includes/widgets/mh-custom-posts.php:8
+#@ mh
+msgid "MH Custom Posts"
+msgstr "MH Custom Posts"
+
+#: includes/widgets/mh-custom-posts.php:161
+#@ mh
+msgid "Excerpt for first Post"
+msgstr "Excerpt f&uuml;r ersten Artikel"
+
+#: includes/widgets/mh-custom-posts.php:162
+#@ mh
+msgid "Excerpt for all Posts"
+msgstr "Excerpts f&uuml;r alle Artikel"
+
+#: includes/widgets/mh-custom-posts.php:171
+#@ mh
+msgid "Link Title to custom URL (optional):"
+msgstr "Titel mit beliebiger URL verlinken (optional):"
+
+#: includes/widgets/mh-custom-posts.php:189
+#@ mh
+msgid "Hide Date"
+msgstr "Datum ausblenden"
+
+#: includes/widgets/mh-custom-posts.php:193
+#@ mh
+msgid "Hide Comment Count"
+msgstr "Kommentare ausblenden"
+
+#: includes/widgets/mh-custom-slider.php:9
+#@ mh
+msgid "Custom Slider Widget to display custom content for use on homepage template."
+msgstr "Custom Slider Widget um beliebigen Content in einem Slider auf dem Homepage Template auszugeben."
+
+#: includes/widgets/mh-custom-slider.php:8
+#@ mh
+msgid "MH Custom Slider Widget"
+msgstr "MH Custom Slider Widget"
+
+#: includes/widgets/mh-custom-slider.php:126
+#: includes/widgets/mh-custom-slider.php:148
+#: includes/widgets/mh-custom-slider.php:170
+#: includes/widgets/mh-custom-slider.php:192
+#: includes/widgets/mh-custom-slider.php:214
+#@ mh
+msgid "Slide"
+msgstr "Slide"
+
+#: includes/widgets/mh-custom-slider.php:132
+#: includes/widgets/mh-custom-slider.php:154
+#: includes/widgets/mh-custom-slider.php:176
+#: includes/widgets/mh-custom-slider.php:198
+#: includes/widgets/mh-custom-slider.php:220
+#@ mh
+msgid "Custom URL:"
+msgstr "Beliebige URL:"
+
+#: includes/widgets/mh-custom-slider.php:136
+#: includes/widgets/mh-custom-slider.php:158
+#: includes/widgets/mh-custom-slider.php:180
+#: includes/widgets/mh-custom-slider.php:202
+#: includes/widgets/mh-custom-slider.php:224
+#@ mh
+msgid "Custom Image URL:"
+msgstr "Beliebige Bild URL:"
+
+#: includes/widgets/mh-custom-slider.php:140
+#: includes/widgets/mh-custom-slider.php:162
+#: includes/widgets/mh-custom-slider.php:184
+#: includes/widgets/mh-custom-slider.php:206
+#: includes/widgets/mh-custom-slider.php:228
+#@ mh
+msgid "Custom Excerpt:"
+msgstr "Beliebiger Textauszug:"
+
+#: includes/widgets/mh-custom-slider.php:145
+#: includes/widgets/mh-custom-slider.php:167
+#: includes/widgets/mh-custom-slider.php:189
+#: includes/widgets/mh-custom-slider.php:211
+#: includes/widgets/mh-custom-slider.php:233
+#: includes/widgets/mh-social-widget.php:167
+#@ mh
+msgid "Open Links in new Window / Tab"
+msgstr "Links in neuem Fenster &ouml;ffnen"
+
+#: includes/widgets/mh-custom-slider.php:236
+#@ mh
+msgid "Slider Settings"
+msgstr "Slider Einstellungen"
+
+#: includes/widgets/mh-custom-slider.php:238
+#: includes/widgets/mh-slider.php:134
+#@ mh
+msgid "Slider Layout:"
+msgstr "Slider Layout:"
+
+#: includes/widgets/mh-facebook-page.php:51
+#@ mh
+msgid "Facebook Page URL:"
+msgstr "Facebook url:"
+
+#: includes/widgets/mh-nip.php:9
+#@ mh
+msgid "News in Pictures Widget to display a gallery of thumbnails linked to the post content."
+msgstr "News in Pictures Widget um eine verlinkte Galerie von Artikel-Thumbnails auszugeben."
+
+#: includes/widgets/mh-nip.php:8
+#@ mh
+msgid "MH News in Pictures"
+msgstr "MH News in Pictures"
+
+#: includes/widgets/mh-slider.php:9
+#@ mh
+msgid "Slider widget for use on homepage template."
+msgstr "Slider Widget zur Ausgabe von Artikeln für die Nutzung auf dem Homepage Template."
+
+#: includes/widgets/mh-slider.php:8
+#@ mh
+msgid "MH Slider Widget (Homepage)"
+msgstr "MH Slider Widget (Homepage)"
+
+#: includes/widgets/mh-slider.php:127
+#@ mh
+msgid "Slider Image Size:"
+msgstr "Slider Bildgr&ouml;&szlig;e:"
+
+#: includes/widgets/mh-slider.php:150
+#: includes/widgets/mh-spotlight.php:140
+#@ mh
+msgid "Disable Excerpt"
+msgstr "Textausz&uuml;ge ausblenden"
+
+#: includes/widgets/mh-social-widget.php:9
+#@ mh
+msgid "Widget to display linked social media icons in sidebar or footer."
+msgstr "Widget um verlinkte Social Media Icons auszugeben."
+
+#: includes/widgets/mh-social-widget.php:8
+#@ mh
+msgid "MH Social Widget"
+msgstr "MH Social Widget"
+
+#: includes/widgets/mh-facebook-page.php:13
+#: includes/widgets/mh-facebook-page.php:43
+#: includes/widgets/mh-social-widget.php:36
+#@ mh
+msgid "Follow on Facebook"
+msgstr "Folge uns bei Facebook"
+
+#: includes/widgets/mh-social-widget.php:39
+#@ mh
+msgid "Follow on Twitter"
+msgstr "Folge uns bei Twitter"
+
+#: includes/widgets/mh-social-widget.php:42
+#@ mh
+msgid "Follow on Google+"
+msgstr "Folge uns bei Google+"
+
+#: includes/widgets/mh-social-widget.php:45
+#@ mh
+msgid "Follow on YouTube"
+msgstr "Folge uns bei YouTube"
+
+#: includes/widgets/mh-social-widget.php:48
+#@ mh
+msgid "Follow on Flickr"
+msgstr "Folge uns bei Flickr"
+
+#: includes/widgets/mh-social-widget.php:51
+#@ mh
+msgid "Follow on Vimeo"
+msgstr "Folge uns bei Vimeo"
+
+#: includes/widgets/mh-social-widget.php:54
+#@ mh
+msgid "Follow on SoundCloud"
+msgstr "Folge uns bei SoundCloud"
+
+#: includes/widgets/mh-social-widget.php:57
+#@ mh
+msgid "Follow on Pinterest"
+msgstr "Folge uns bei Pinterest"
+
+#: includes/widgets/mh-social-widget.php:60
+#@ mh
+msgid "Follow on Instagram"
+msgstr "Folge uns bei Instagram"
+
+#: includes/widgets/mh-social-widget.php:63
+#@ mh
+msgid "Follow on LinkedIn"
+msgstr "LinkedIn"
+
+#: includes/widgets/mh-social-widget.php:66
+#@ mh
+msgid "Follow on Myspace"
+msgstr "Folge uns bei Myspace"
+
+#: includes/widgets/mh-social-widget.php:69
+#@ mh
+msgid "Follow on Tumblr"
+msgstr "Tumblr"
+
+#: includes/widgets/mh-social-widget.php:72
+#@ mh
+msgid "Follow on deviantART"
+msgstr "deviantART"
+
+#: includes/widgets/mh-social-widget.php:75
+#@ mh
+msgid "Subscribe to our RSS feed"
+msgstr "RSS Feed abonnieren"
+
+#: includes/widgets/mh-social-widget.php:102
+#@ mh
+msgid "Stay connected"
+msgstr "Folge uns bei"
+
+#: includes/widgets/mh-social-widget.php:110
+#@ mh
+msgid "Facebook URL:"
+msgstr "Facebook URL:"
+
+#: includes/widgets/mh-social-widget.php:114
+#@ mh
+msgid "Twitter URL:"
+msgstr "Twitter URL:"
+
+#: includes/widgets/mh-social-widget.php:118
+#@ mh
+msgid "Google+ URL:"
+msgstr "Google+ URL:"
+
+#: includes/widgets/mh-social-widget.php:122
+#@ mh
+msgid "YouTube URL:"
+msgstr "YouTube URL:"
+
+#: includes/widgets/mh-social-widget.php:126
+#@ mh
+msgid "Flickr URL:"
+msgstr "Flickr URL:"
+
+#: includes/widgets/mh-social-widget.php:130
+#@ mh
+msgid "Vimeo URL:"
+msgstr "Vimeo URL:"
+
+#: includes/widgets/mh-social-widget.php:134
+#@ mh
+msgid "SoundCloud URL:"
+msgstr "SoundCloud URL:"
+
+#: includes/widgets/mh-social-widget.php:138
+#@ mh
+msgid "Pinterest URL:"
+msgstr "Pinterest URL:"
+
+#: includes/widgets/mh-social-widget.php:142
+#@ mh
+msgid "Instagram URL:"
+msgstr "Instagram URL:"
+
+#: includes/widgets/mh-social-widget.php:146
+#@ mh
+msgid "LinkedIn URL:"
+msgstr "LinkedIn URL:"
+
+#: includes/widgets/mh-social-widget.php:150
+#@ mh
+msgid "Myspace URL:"
+msgstr "Myspace URL:"
+
+#: includes/widgets/mh-social-widget.php:154
+#@ mh
+msgid "Tumblr URL:"
+msgstr "Tumblr"
+
+#: includes/widgets/mh-social-widget.php:158
+#@ mh
+msgid "deviantART URL:"
+msgstr "deviantART URL:"
+
+#: includes/widgets/mh-social-widget.php:162
+#@ mh
+msgid "RSS Feed URL:"
+msgstr "RSS Feed URL:"
+
+#: includes/widgets/mh-social-widget.php:171
+#@ mh
+msgid "Set Links to nofollow"
+msgstr "Links auf nofollow setzen"
+
+#: includes/widgets/mh-spotlight.php:9
+#@ mh
+msgid "Spotlight / Featured widget for use on homepage template."
+msgstr "MH Spotlight Widget um einen Artikel auf dem Homepage Template besonders zu pr&auml;sentieren."
+
+#: includes/widgets/mh-spotlight.php:8
+#@ mh
+msgid "MH Spotlight Widget (Homepage)"
+msgstr "MH Spotlight Widget (Homepage)"
+
+#: includes/widgets/mh-spotlight.php:85
+#@ mh
+msgid "In the spotlight"
+msgstr "Im Fokus"
+
+#: includes/widgets/mh-spotlight.php:57
+#, php-format
+#@ mh
+msgctxt "post meta"
+msgid "by %1$s in %2$s"
+msgstr "von %1$s in %2$s"
+
+#: includes/widgets/mh-spotlight.php:128
+#@ mh
+msgid "Image size:"
+msgstr "Bildgr&ouml;&szlig;e:"
+
+#: includes/widgets/mh-spotlight.php:144
+#@ mh
+msgid "Disable Post Meta"
+msgstr "Post Meta ausblenden"
+
+#: page-sitemap.php:8
+#@ mh
+msgid "Recent Articles"
+msgstr "Neueste Artikel"
+
+#: page-sitemap.php:22
+#@ mh
+msgid "Pages"
+msgstr "Seiten"
+
+#: page-sitemap.php:39
+#@ mh
+msgid "Categories"
+msgstr "Kategorien"
+
+#: page-sitemap.php:42
+#@ mh
+msgid "No categories"
+msgstr "Keine Kategorien"
+
+#: searchform.php:3
+#@ mh
+msgid "To search, type and hit enter"
+msgstr "Suchbegriff eingeben und mit Enter best&auml;tigen"
+
+#: includes/mh-custom-functions.php:69
+#, php-format
+#@ mh
+msgctxt "post meta newsticker"
+msgid "%1$s in %2$s"
+msgstr "%1$s in %2$s"
+
+#: includes/mh-options.php:156
+#: includes/mh-options.php:157
+#, php-format
+#@ mh
+msgctxt "options panel"
+msgid "Theme Color %d"
+msgstr "Theme Farbe %d"
+
+#: includes/mh-options.php:159
+#: includes/mh-options.php:160
+#, php-format
+#@ mh
+msgctxt "options panel"
+msgid "Text: Colored Sections (Color %d)"
+msgstr "Text: Farbige Sektionen (Farbe %d)"
+
+#: includes/mh-options.php:162
+#@ mh
+msgid "Links: General Color"
+msgstr "Links: Allgemeine Farbe"
+
+#: includes/mh-options.php:163
+#@ mh
+msgid "Links: Hover Color"
+msgstr "Links: Hover Farbe"
+
+#: admin/admin.php:7
+#@ mh
+msgid "Welcome to MH Magazine"
+msgstr "Willkommen zu MH Magazine"
+
+#: admin/admin.php:7
+#@ mh
+msgid "Theme Info"
+msgstr "Theme Info"
+
+#: admin/admin.php:16
+#, php-format
+#@ mh
+msgid "Welcome to %1s %2s"
+msgstr "Willkommen zu %1s %2s"
+
+#: admin/admin.php:21
+#@ mh
+msgid "Important Links:"
+msgstr "Wichtige Links:"
+
+#: admin/admin.php:22
+#@ mh
+msgid "Theme Info Page"
+msgstr "Theme Info Seite"
+
+#: admin/admin.php:23
+#@ mh
+msgid "Support Center"
+msgstr "Support Center"
+
+#: admin/admin.php:31
+#, php-format
+#@ mh
+msgid "Getting Started with %s"
+msgstr "Erste Schritte mit %s"
+
+#: admin/admin.php:35
+#@ mh
+msgid "Theme Documentation"
+msgstr "Theme Dokumentation"
+
+#: admin/admin.php:36
+#, php-format
+#@ mh
+msgid "Need support to setup and configure %s? Please have a look at the instructions in the theme documentation or register at our support forums when you click on \"Support\" in your MH Themes account."
+msgstr "Ben&ouml;tigen Sie Hilfe beim Setup und der Konfiguration von %s? Bitte lesen Sie sich die Theme Dokumentation durch oder registrieren Sie sich in unserem Support Forum: Klicken Sie auf \"Support\" in Ihrem MH Themes Account."
+
+#: admin/admin.php:38
+#@ mh
+msgid "Visit Documentation"
+msgstr "Besuchen Sie die Dokumentation"
+
+#: admin/admin.php:42
+#@ mh
+msgid "Theme Options"
+msgstr "Theme Optionen"
+
+#: admin/admin.php:43
+#, php-format
+#@ mh
+msgid "%s WordPress theme supports the Theme Customizer for all theme settings. Click \"Customize Theme\" to open the Customizer now."
+msgstr "%s WordPress Theme unterst&uuml;tzt den Theme Customizer f&uuml;r alle Theme Einstellungen. Klicken Sie auf \"Theme anpassen\" um den Customizer jetzt zu &ouml;ffnen."
+
+#: admin/admin.php:45
+#@ mh
+msgid "Customize Theme"
+msgstr "Theme anpassen"
+
+#: admin/admin.php:49
+#@ mh
+msgid "Upgrade to MH Themes Bundle"
+msgstr "Upgrade zum MH Themes Bundle"
+
+#: admin/admin.php:50
+#@ mh
+msgid "Do you want to have access to all Premium WordPress Themes by MH Themes including support and lifetime updates? You can upgrade to the MH Themes Bundle right away when you click on \"Shop\" in your MH Themes account."
+msgstr "Bevorzugen Sie Zugang zu allen Premium WordPress Themes von MH Themes inklusive Support und Lifetime Updates? Sie k&ouml;nnen jetzt auf das MH Themes Bundle upgraden indem Sie auf \"Shop\" in Ihrem MH Themes Account klicken."
+
+#: admin/admin.php:52
+#@ mh
+msgid "Login to MH Themes account"
+msgstr "Login MH Themes Account"
+
+#: admin/admin.php:57
+#@ mh
+msgid "Theme Screenshot"
+msgstr "Theme Screenshot"
+
+#: admin/admin.php:63
+#, php-format
+#@ mh
+msgid "%1s WordPress theme is proudly brought to you by %2s."
+msgstr "%1s WordPress Theme wird Ihnen pr&auml;sentiert von %2s."
+
+#: admin/admin.php:77
+#, php-format
+#@ mh
+msgid "Thanks for using %1s by MH Themes. To learn more about this theme, please %1s."
+msgstr "Vielen Dank, dass Sie %1s von MH Themes nutzen. Um mehr &uuml;ber das Theme zu erfahren, bitte %1s."
+
+#: admin/admin.php:77
+#@ mh
+msgid "click here"
+msgstr "klicken Sie hier"
+
+#: includes/mh-options.php:62
+#: includes/mh-options.php:253
+#@ mh
+msgid "News Ticker"
+msgstr "News Ticker"
+
+#: includes/widgets/mh-youtube.php:9
+#@ mh
+msgid "Widget to display a YouTube Video."
+msgstr "Widget um ein YouTube Video anzuzeigen."
+
+#: includes/widgets/mh-youtube.php:8
+#@ mh
+msgid "MH YouTube Video"
+msgstr "MH YouTube Video"
+
+#: includes/widgets/mh-youtube.php:41
+#@ mh
+msgid "Video ID of your Featured Video:"
+msgstr "Video ID f&uuml;r Featured Video:"
+
+#: includes/widgets/mh-youtube.php:43
+#@ mh
+msgid "Also known as the Watch Code (Eg: fQydqPWdjoc)"
+msgstr "Auch bekannt als Watch Code (z.B.: fQydqPWdjoc)"
+
+#: includes/widgets/mh-facebook-page.php:8
+#@ mh
+msgctxt "widget name"
+msgid "MH Facebook Page"
+msgstr "MH Facebook Page"
+
+#: includes/widgets/mh-facebook-page.php:9
+#@ mh
+msgid "Widget to display your Facebook page on your website."
+msgstr "Widget um eine Facebook Seite auf der Webseite anzuzeigen."
+
+#: includes/widgets/mh-facebook-page.php:55
+#@ mh
+msgid "Width (min. 280px):"
+msgstr "Breite (min. 280px):"
+
+#: includes/widgets/mh-facebook-page.php:59
+#@ mh
+msgid "Height (min. 130px):"
+msgstr "H&ouml;he (min. 130px):"
+
+#: includes/widgets/mh-facebook-page.php:64
+#@ mh
+msgid "Hide cover photo"
+msgstr "Coverfoto verbergen"
+
+#: includes/widgets/mh-facebook-page.php:68
+#@ mh
+msgid "Show profile photos"
+msgstr "Profilfotos zeigen"
+
+#: includes/widgets/mh-facebook-page.php:72
+#@ mh
+msgid "Show posts from FB page"
+msgstr "Facebook Posts zeigen"
+
+#: includes/widgets/mh-affiliate.php:39
+#@ mh
+msgid "Creative Market Username:"
+msgstr "Creative Market Username:"
+

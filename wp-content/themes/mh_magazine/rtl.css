@@ -1,0 +1,95 @@
+/***** Stylesheet to support RTL languages *****/
+
+body { direction: rtl; unicode-bidi: embed; }
+.mh-sidebar, .hp-sidebar, .mh-two-sb .hp-main, .mh-two-sb .mh-main { float: right; }
+.mh-sidebar-2, .hp-sidebar-2 { float: left; }
+.sb-right { margin-right: 20px; margin-left: 0; }
+.sb-left { margin-left: 20px; margin-right: 0;  }
+.left { float: right; }
+.right { float: left; }
+[class*='col-'] { float: right; margin-right: 2.04%; margin-left: 0; }
+blockquote { border-right: 5px solid #e64946; border-left: 2px solid #e64946; }
+.entry ul, .commentlist ul, .entry ol, .commentlist ol { margin: 0px 40px 20px 0px; margin: 0rem 2.5rem 1.25rem 0rem; }
+.entry ul ul, .commentlist ul ul, .entry ol ol, .commentlist ol ol { margin: 0px 40px 0px 0px; margin: 0rem 2.5rem 0rem 0rem; }
+.box ul, .box ol { margin: 0 20px 20px 0; margin: 0 1.25rem 1.25rem 0; }
+dl { margin: 0px 20px 10px 0px; margin: 0rem 1.25rem 0.625rem 0rem; }
+dd { margin-right: 20px; margin-right: 1.25rem; margin-left: 0; }
+.logo-overlay { left: 5px; right: auto; text-align: left; }
+.logo-overlay .logo-desc { text-align: left; }
+.ticker-title { float: right; }
+.ticker-item-meta { margin-left: 5px; margin-right: 0; }
+.header-nav { left: 20px; right: auto; }
+.header-nav li, .info-nav li, .footer-nav li { float: right; }
+.main-nav li { float: right; border-left: 1px solid #000; border-right: none; }
+.footer-nav ul { float: left; }
+.header-nav ul ul ul, .main-nav ul ul ul, .info-nav ul ul ul, .footer-nav ul ul ul { right: 100%; left: auto; }
+.slicknav_btn { float: left; }
+.slicknav_menu  .slicknav_menutxt { float: right; }
+.slicknav_menu .slicknav_icon { float: right; margin: 0.188rem 0.438rem 0 0; }
+.slicknav_nav .slicknav_arrow {  margin: 0 0.4rem 0 0; }
+.slicknav_nav ul { padding: 20px 15px 0 0; }
+.slicknav_nav ul ul { padding: 0 15px 0 0; }
+.slicknav_nav .slicknav_txtnode { margin-right: 15px; margin-left: 0; }
+.flex-viewport { direction: ltr; }
+.slide-caption { left: 0; right: auto; box-shadow: none; }
+.slider-layout2 .flex-control-nav { text-align: right; }
+[id*='carousel-'] li { direction: rtl; }
+.content-ad { float: right; margin: 0px 0px 10px 20px; margin: 0rem 0rem 0.625rem 1.25rem; }
+.post-tags li { float: right; margin: 0px 0px 6px 6px; margin: 0rem 0rem 0.375rem 0.375rem; }
+.rp-layout1 .related-thumb { float: right; margin: 0px 0 15px 15px; margin: 0rem 0 0.9375rem 0.9375rem; }
+.rp-layout2 .related-thumb { float: right; margin-left: 15px; margin-left: 0.9375rem; margin-right: 0; }
+.author-box-avatar { float: right; margin-left: 10px; margin-left: 0.625rem; margin-right: 0; }
+.ab-layout1 .author-box-contact a { border-right: 2px solid #ccc; border-left: none; }
+.sitemap-list { margin-right: 0; }
+.sitemap .children { margin: 0 16px 0 0; margin: 0 1rem 0 0; }
+.loop-layout1 .loop-thumb, .loop-layout2 .loop-thumb { float: right; margin-left: 20px; margin-right: 0; }
+.alignleft { float: right; margin: 5px 0 20px 20px; margin: 0.3125rem 0 1.25rem 1.25rem; }
+.alignright { float: left; margin: 5px 20px 20px 0; margin: 0.3125rem 1.25rem 1.25rem 0; }
+.gallery-item { float: right; margin: 0 0 4px 4px; }
+.gallery-columns-1 .gallery-item:nth-of-type(1n), .gallery-columns-2 .gallery-item:nth-of-type(2n), .gallery-columns-3 .gallery-item:nth-of-type(3n), .gallery-columns-4 .gallery-item:nth-of-type(4n), .gallery-columns-5 .gallery-item:nth-of-type(5n), .gallery-columns-6 .gallery-item:nth-of-type(6n), .gallery-columns-7 .gallery-item:nth-of-type(7n), .gallery-columns-8 .gallery-item:nth-of-type(8n), .gallery-columns-9 .gallery-item:nth-of-type(9n) { margin-left: 0; }
+.gallery-columns-1.gallery-size-medium figure.gallery-item:nth-of-type(1n+1), .gallery-columns-1.gallery-size-thumbnail figure.gallery-item:nth-of-type(1n+1), .gallery-columns-2.gallery-size-thumbnail figure.gallery-item:nth-of-type(2n+1), .gallery-columns-3.gallery-size-thumbnail figure.gallery-item:nth-of-type(3n+1) { clear: right; }
+.gallery-caption { right: 0; left: auto; text-align: right; }
+.gallery-caption:before { right: 0; left: auto; }
+.wt-layout3 .widget-title { border-right: 10px solid #e64946; border-left: none; }
+.cp-thumb, .uw-avatar { float: right; margin-left: 10px; margin-left: 0.625rem; margin-right: 0; }
+.home-wide .cp-thumb-xl { float: right; margin: 0px 0px 0px 20px; margin: 0rem 0rem 0rem 1.25rem; }
+.home-wide .cp-small { float: right; }
+.home-wide .cp-small .cp-data { margin-left: 10px; margin-right: 0; }
+.ad-sb { padding: 16px 16px 0 0; }
+.ad-sb .ad-item { float: right; margin-left: 16px; margin-right: 0; }
+.ad-other .ad-item { float: right; margin-left: 20px; margin-right: 0; }
+.nip-thumb { float: right; margin: 0 0 3px 3px; }
+.mh-social-widget li { float: right; margin: 0 0 8px 8px; }
+#wp-calendar caption, #wp-calendar #prev { text-align: right; }
+.commentlist .bypostauthor .vcard { border-right: 3px solid #e64946; border-left: 0; }
+.share-button { float: right; }
+.dropcap { float: right; margin-left: 6px; margin-left: 0.375rem; margin-right: 0; }
+.hide-box { left: 8px; right: auto; }
+.testimonial { padding: 10px 60px 10px 10px; padding: 0.625rem 3.75rem 0.625rem 0.625rem; }
+.testimonial:before { right: 10px; left: auto; }
+
+/***** Media Queries *****/
+
+@media screen and (max-width: 1000px) {
+	.sb-wide .cp-thumb-xl { float: right; margin: 0 0 0 20px; margin: 0 0 0 1.25rem; }
+	.sb-wide .cp-small { float: right; }
+	.sb-wide .cp-small .cp-data { margin-left: 10px; margin-right: 0; }
+}
+@media screen and (max-width: 767px) {
+	.sb-right { margin: 0; }
+	.cp-thumb-xl, .home-2 .cp-thumb-xl, .home-5 .cp-thumb-xl, .mh-two-sb .home-2 .cp-thumb-xl, .mh-two-sb .home-5 .cp-thumb-xl { float: right; margin: 0 0 0 20px; margin: 0 0 0 1.25rem; }
+	.cp-small { float: right; }
+	.cp-small .cp-data { margin-left: 10px; margin-right: 0; }
+	.header-nav { left: 0; right: auto; }
+	.header-nav ul { float: left; }
+	.mq-footer { float: none; width: 100%; margin: 0; }
+}
+@media screen and (max-width: 620px) {
+	[class*='col-'] { float: none; width: 100%; margin: 0; }
+	.cp-thumb-xl, .home-wide .cp-thumb-xl, .home-2 .cp-thumb-xl, .home-5 .cp-thumb-xl, .sb-wide .cp-thumb-xl, .mh-two-sb .home-2 .cp-thumb-xl, .mh-two-sb .home-5 .cp-thumb-xl { margin: 0 0 0 10px; margin: 0 0 0 0.625rem; }
+	.loop-layout1 .loop-thumb { float: none; margin: 0 0 20px; }
+	.loop-layout2 .loop-thumb { float: none; margin: 0; }
+	.logo-overlay, .logo-overlay .logo-desc { text-align: center; }
+	.ad-sb { padding: 10px 10px 0 0; }
+	.ad-sb .ad-item { margin-left: 10px; margin-right: 0; }
+}

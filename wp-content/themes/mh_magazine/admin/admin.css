@@ -1,0 +1,33 @@
+/***** Widgets Custom CSS *****/
+
+#widget-list [id*='_mh_'] .widget-top { background: #0074a2; color: #fff; }
+.widget-separator { font-size: 18px; font-weight: 600; border-bottom: 2px solid #ddd; }
+
+/***** Theme Info Page *****/
+
+.theme-info-wrap { margin: 25px 40px 0 20px; max-width: 1050px; position: relative; }
+.theme-info-wrap img { max-width: 100%; }
+.theme-info-wrap .clearfix:before, .theme-info-wrap .clearfix:after { content: " "; display: table; }
+.theme-info-wrap .clearfix:after { clear: both; }
+.theme-info-wrap .clearfix { *zoom: 1; }
+.theme-info-wrap .row [class*='col-']:first-child { margin: 0; }
+.theme-info-wrap [class*='col-'] { float: left; margin-left: 2.04%; overflow: hidden; }
+.theme-info-wrap .col-1-2 { width: 48.98%; }
+.theme-info-wrap h1 { font-size: 40px; font-size: 2.5rem; font-weight: 400; line-height: 1.2; margin-bottom: 0; color: #333333; }
+.theme-info-wrap h3 { font-size: 24px; font-size: 1.5rem; line-height: 1.2; }
+.theme-info-wrap h4 { font-size: 18px; font-size: 1.125rem; margin: 10px 0; margin: 0.625rem 0; }
+.theme-info-wrap .theme-description { font-size: 18px; font-size: 1.125rem; margin: 10px 0; margin: 0.625rem 0; min-height: 60px; font-weight: 400; line-height: 1.5; color: #777777; }
+.theme-info-wrap .theme-links p strong { font-size: 14px; font-size: 0.875rem; margin-right: 16px; margin-right: 1rem; }
+.theme-info-wrap .theme-links p a { font-size: 14px; font-size: 0.875rem; margin-right: 16px; margin-right: 1rem; }
+#getting-started { margin: 16px 0; margin: 1rem 0; }
+#getting-started .section { margin: 8px 0 30px; margin: 0.5rem 0 1.875rem; }
+#getting-started .section .about { font-size: 14px; font-size: 0.875rem; line-height: 1.5; color: #777777; }
+#getting-started .section .button { max-width: 100%; }
+#getting-started img { margin-top: 16px; margin-top: 1rem; }
+#theme-author { margin: 16px 0; margin: 1rem 0; }
+#theme-author p { font-size: 14px; font-size: 0.875rem; color: #777777; }
+
+@media screen and (max-width: 1000px) {
+	.theme-info-wrap .theme-links p strong { display: block; }
+	.theme-info-wrap [class*='col-'] { float: none; width: 100%; margin: 0; }
+}

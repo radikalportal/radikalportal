@@ -1,0 +1,9 @@
+<wpml-config>
+  <admin-texts>
+    <key name="mh_options">
+      <key name="excerpt_more"/>
+      <key name="copyright"/>
+      <key name="ticker_title"/>
+    </key>
+  </admin-texts>
+</wpml-config>
