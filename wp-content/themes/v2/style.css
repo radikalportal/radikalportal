@@ -10,10 +10,32 @@ License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 *****/
 
-body {
-    background: #ebe7e4;
-}
-
 .mh-container {
     box-shadow: none;
+    margin: 0 auto;
+}
+
+.copyright-wrap {
+    margin: 0;
+}
+
+.mh-sidebar-2 {
+    display: none;
+}
+
+.mh-two-sb .mh-main {
+    width: 1260px;
+}
+
+.mh-content {
+    width: 940px;
+}
+
+@media screen and (max-width: 1340px) {
+    .mh-two-sb .hp-content {
+        width: 460px;
+    }
+    .mh-two-sb .mh-content {
+        width: 700px;
+    }
 }
