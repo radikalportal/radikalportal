@@ -1,0 +1,1835 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: MH Magazine v2.4.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-01 17:27+0200\n"
+"PO-Revision-Date: 2015-08-01 18:31+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.3\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Textdomain-Support: yes\n"
+"Last-Translator: \n"
+"Language: nb_NO\n"
+"X-Poedit-SearchPath-0: .\n"
+
+# @ mh
+#: 404.php:8 content-none.php:9
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+"Det ser ut som vi ikke fant det du ser etter. Kanskje det hjelper å søke?"
+
+# @ mh
+#: 404.php:10 content-none.php:12 includes/mh-breadcrumb.php:66
+msgid "Search"
+msgstr "Søk"
+
+# @ mh
+#: 404.php:15 content-none.php:17
+msgid "Popular Articles"
+msgstr "Populære artikler"
+
+# @ mh
+#: 404.php:20 content-none.php:22
+msgid "Random Articles"
+msgstr "Tilfeldige artikler"
+
+# @ mh
+#: admin/admin.php:88
+msgid "Post Options"
+msgstr "Innleggsvalg"
+
+# @ mh
+#: admin/admin.php:98
+msgid "Subheading (will be displayed below post title)"
+msgstr "Undertittel (vil bli vist under innleggstittel)"
+
+# @ mh
+#: admin/admin.php:103
+msgid "Alternative ad code (this will overwrite the global content ad code)"
+msgstr ""
+
+# @ mh
+#: admin/admin.php:110
+msgid "Disable Content Ad for this Post"
+msgstr ""
+
+# @ mh
+#: admin/admin.php:114
+msgid "Disable Featured Image for this Post"
+msgstr ""
+
+# @ mh
+#: comments.php:9
+#, php-format
+msgid "1 Comment on %2$s"
+msgid_plural "%1$s Comments on %2$s"
+msgstr[0] "1 kommentar på %2$s"
+msgstr[1] "%1$s kommentarer på %2$s"
+
+# @ mh
+#: comments.php:16 includes/mh-custom-functions.php:436
+#: includes/mh-post-content.php:144
+msgid "&laquo;"
+msgstr "&laquo;"
+
+# @ mh
+#: comments.php:16 includes/mh-custom-functions.php:437
+#: includes/mh-post-content.php:144
+msgid "&raquo;"
+msgstr "&raquo;"
+
+# @ mh
+#: comments.php:22
+#, php-format
+msgid "%s Trackbacks & Pingbacks"
+msgstr ""
+
+# @ mh
+#: comments.php:30
+msgid "Comments are closed."
+msgstr "Kommentarfeltet er lukket."
+
+# @ mh
+#: comments.php:35
+msgid "Leave a comment"
+msgstr "Skriv en kommentar"
+
+# @ mh
+#: comments.php:36
+msgid "Your email address will not be published."
+msgstr "Din e-postadresse vil ikke bli publisert."
+
+# @ mh
+#: comments.php:38
+msgid "Comment"
+msgstr "Kommentar"
+
+# @ mh
+#: content-none.php:5
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with "
+"different keywords."
+msgstr ""
+
+# @ mh
+#: functions.php:87
+msgid "Header Navigation"
+msgstr ""
+
+# @ mh
+#: functions.php:88
+msgid "Main Navigation"
+msgstr "Hovednavigasjon"
+
+# @ mh
+#: functions.php:89
+msgid "Additional Navigation (below Main Navigation)"
+msgstr ""
+
+# @ mh
+#: functions.php:90
+msgid "Footer Navigation"
+msgstr ""
+
+# @ mh
+#: functions.php:149
+msgctxt "widget area name"
+msgid "Header"
+msgstr ""
+
+# @ mh
+#: functions.php:149
+msgid "Widget area on top of the site"
+msgstr ""
+
+# @ mh
+#: functions.php:150
+msgctxt "widget area name"
+msgid "Sidebar"
+msgstr ""
+
+# @ mh
+#: functions.php:150
+msgid "Widget area (sidebar left/right) on single posts, pages and archives"
+msgstr ""
+
+# @ mh
+#: functions.php:152
+#, php-format
+msgctxt "widget area name"
+msgid "Sidebar %d"
+msgstr ""
+
+# @ mh
+#: functions.php:152
+msgid "Second sidebar on single posts, pages and archives"
+msgstr ""
+
+# @ mh
+#: functions.php:154 functions.php:155 functions.php:156 functions.php:157
+#: functions.php:158 functions.php:159 functions.php:160 functions.php:161
+#: functions.php:162 functions.php:163 functions.php:164 functions.php:166
+#, php-format
+msgctxt "widget area name"
+msgid "Home %d"
+msgstr "Hjem %d"
+
+# @ mh
+#: functions.php:154 functions.php:155 functions.php:156 functions.php:157
+#: functions.php:158 functions.php:159 functions.php:160 functions.php:161
+#: functions.php:162 functions.php:163 functions.php:164
+msgid "Widget area on homepage"
+msgstr ""
+
+# @ mh
+#: functions.php:166
+msgid "Sidebar on homepage"
+msgstr ""
+
+# @ mh
+#: functions.php:168 functions.php:169
+#, php-format
+msgctxt "widget area name"
+msgid "Posts %d"
+msgstr ""
+
+# @ mh
+#: functions.php:168
+msgid "Widget area above single post content"
+msgstr ""
+
+# @ mh
+#: functions.php:169
+msgid "Widget area below single post content"
+msgstr ""
+
+# @ mh
+#: functions.php:170 functions.php:171
+#, php-format
+msgctxt "widget area name"
+msgid "Pages %d"
+msgstr ""
+
+# @ mh
+#: functions.php:170
+msgid "Widget area above single page content"
+msgstr ""
+
+# @ mh
+#: functions.php:171
+msgid "Widget area below single page content"
+msgstr ""
+
+# @ mh
+#: functions.php:172 functions.php:173 functions.php:174 functions.php:175
+#, php-format
+msgctxt "widget area name"
+msgid "Footer %d"
+msgstr ""
+
+# @ mh
+#: functions.php:172 functions.php:173 functions.php:174 functions.php:175
+msgid "Widget area in footer"
+msgstr ""
+
+# @ mh
+#: functions.php:176
+msgctxt "widget area name"
+msgid "Contact"
+msgstr "Kontakt"
+
+# @ mh
+#: functions.php:176
+msgid "Widget area (sidebar) on contact page template"
+msgstr ""
+
+# @ mh
+#: functions.php:178
+#, php-format
+msgctxt "widget area name"
+msgid "Contact %d"
+msgstr ""
+
+# @ mh
+#: functions.php:178
+msgid "2nd widget area (sidebar) on contact page template"
+msgstr ""
+
+# @ mh
+#: woocommerce/mh-custom-woocommerce.php:10
+msgid "WooCommerce"
+msgstr ""
+
+# @ mh
+#: woocommerce/mh-custom-woocommerce.php:10
+msgid "Widget area (sidebar) on WooCommerce pages"
+msgstr ""
+
+# @ mh
+#: includes/mh-breadcrumb.php:15
+msgid "Home"
+msgstr "Hjem"
+
+# @ mh
+#: includes/mh-breadcrumb.php:27
+msgid "Media"
+msgstr "Media"
+
+# @ mh
+#: includes/mh-breadcrumb.php:62 includes/widgets/mh-authors.php:57
+msgid "Authors"
+msgstr "Forfattere"
+
+# @ mh
+#: includes/mh-breadcrumb.php:64 includes/mh-custom-functions.php:283
+msgid "Page not found (404)"
+msgstr "Siden ikke funnet (404)"
+
+# @ mh
+#: includes/mh-breadcrumb.php:76 includes/mh-breadcrumb.php:79
+msgid "Yearly Archives"
+msgstr "Årlig arkiv"
+
+# @ mh
+#: includes/mh-breadcrumb.php:77
+msgid "Monthly Archives"
+msgstr "Månedlig arkiv"
+
+# @ mh
+#: includes/mh-custom-functions.php:101
+#, php-format
+msgid "About %s"
+msgstr "Om %s"
+
+# @ mh
+#: includes/mh-custom-functions.php:101
+#, php-format
+msgid "More articles written by %s"
+msgstr "Flere artikler skrevet av %s"
+
+# @ mh
+#: includes/mh-custom-functions.php:101
+#, php-format
+msgid "%s Articles"
+msgstr "%s artikler"
+
+# @ mh
+#: includes/mh-custom-functions.php:105
+msgid ""
+"The author has not yet added any personal or biographical info to his author "
+"profile."
+msgstr ""
+
+# @ mh
+#: includes/mh-custom-functions.php:111
+msgid "Contact:"
+msgstr "Kontakt:"
+
+# @ mh
+#: includes/mh-custom-functions.php:113
+#, php-format
+msgid "Visit the website of %s"
+msgstr ""
+
+# @ mh
+#: includes/mh-custom-functions.php:113 includes/mh-custom-functions.php:410
+msgid "Website"
+msgstr "Nettside"
+
+# @ mh
+#: includes/mh-custom-functions.php:116
+#, php-format
+msgid "Follow %s on Facebook"
+msgstr "Følg %s på Facebook"
+
+# @ mh
+#: admin/admin.php:24 includes/mh-custom-functions.php:116
+msgid "Facebook"
+msgstr "Facebook"
+
+# @ mh
+#: includes/mh-custom-functions.php:119
+#, php-format
+msgid "Follow %s on Twitter"
+msgstr "Følg %s på Twitter"
+
+# @ mh
+#: admin/admin.php:25 includes/mh-custom-functions.php:119
+msgid "Twitter"
+msgstr "Twitter"
+
+# @ mh
+#: includes/mh-custom-functions.php:122
+#, php-format
+msgid "Follow %s on Google+"
+msgstr "Følg %s på Google+"
+
+# @ mh
+#: includes/mh-custom-functions.php:122
+msgid "Google+"
+msgstr "Google+"
+
+# @ mh
+#: includes/mh-custom-functions.php:125
+#, php-format
+msgid "Follow %s on YouTube"
+msgstr "Følg %s på YouTube"
+
+# @ mh
+#: admin/admin.php:26 includes/mh-custom-functions.php:125
+msgid "YouTube"
+msgstr "YouTube"
+
+# @ mh
+#: includes/mh-custom-functions.php:162 includes/mh-custom-functions.php:167
+msgid "&larr; Back to article"
+msgstr "&larr; Tilbake til artikkel"
+
+# @ mh
+#: includes/mh-custom-functions.php:164
+msgid "&larr; Previous image"
+msgstr "&larr; Forrige bilde"
+
+# @ mh
+#: includes/mh-custom-functions.php:170
+msgid "&larr; Previous article"
+msgstr "&larr; Forrige artikkel"
+
+# @ mh
+#: includes/mh-custom-functions.php:177
+msgid "Next image &rarr;"
+msgstr "Neste bilde &rarr;"
+
+# @ mh
+#: includes/mh-custom-functions.php:179
+msgid "Next article &rarr;"
+msgstr "Neste artikkel &rarr;"
+
+# @ mh
+#: includes/mh-custom-functions.php:203 includes/mh-options.php:113
+msgid "Related Articles"
+msgstr "Relaterte artikler"
+
+# @ mh
+#: includes/mh-custom-functions.php:244
+#, php-format
+msgid "Page %s"
+msgstr "Side %s"
+
+# @ mh
+#: includes/mh-custom-functions.php:265
+#, php-format
+msgctxt "post author"
+msgid "Articles by %s"
+msgstr "Artikler av %s"
+
+# @ mh
+#: includes/mh-custom-functions.php:277 includes/mh-options.php:114
+#: page-sitemap.php:22
+msgid "Archives"
+msgstr "Arkiv"
+
+# @ mh
+#: includes/mh-custom-functions.php:285
+#, php-format
+msgid "Search Results for %s"
+msgstr "Søkeresultater for %s"
+
+# @ mh
+#: includes/mh-custom-functions.php:384
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "%1$s kl %2$s"
+
+# @ mh
+#: includes/mh-custom-functions.php:388
+msgid "(Edit)"
+msgstr "(Rediger)"
+
+# @ mh
+#: includes/mh-custom-functions.php:391
+msgid "Your comment is awaiting moderation."
+msgstr "Din kommentar venter på å bli moderert."
+
+# @ mh
+#: includes/mh-custom-functions.php:408
+msgid "Name "
+msgstr "Navn"
+
+# @ mh
+#: includes/mh-custom-functions.php:409
+msgid "Email "
+msgstr "E-post"
+
+# @ mh
+#: includes/mh-custom-functions.php:421
+#, php-format
+msgctxt "comments number"
+msgid "1 Comment"
+msgid_plural "%1$s Comments"
+msgstr[0] "1 kommentar"
+msgstr[1] "%1$s kommentarer"
+
+# @ mh
+#: includes/mh-options.php:29
+msgid "General Options"
+msgstr "Generelle valg"
+
+# @ mh
+#: includes/mh-options.php:30
+msgid "Layout Options"
+msgstr "Layoutvalg"
+
+# @ mh
+#: includes/mh-options.php:31
+msgid "Typography Options"
+msgstr "Typografivalg"
+
+# @ mh
+#: includes/mh-options.php:32
+msgid "News Ticker Options"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:33
+msgid "Posts/Pages Options"
+msgstr "Innlegg-/sidevalg"
+
+# @ mh
+#: includes/mh-options.php:34 includes/widgets/mh-advertising-widget.php:51
+msgid "Advertising"
+msgstr "Reklame"
+
+# @ mh
+#: includes/mh-options.php:35 includes/mh-options.php:151
+msgid "Custom CSS"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:36
+msgid "Tracking Code"
+msgstr "Sporingskode"
+
+# @ mh
+#: includes/mh-options.php:104
+msgid "Favicon Upload"
+msgstr "Faviconopplastning"
+
+# @ mh
+#: includes/mh-options.php:105
+msgid "Custom Excerpt Length in Characters"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:106
+msgid "Custom Excerpt More-Text"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:107
+msgid "Copyright Text"
+msgstr "Opphavsrettstekst"
+
+# @ mh
+#: includes/mh-options.php:109
+msgid "Widget Titles"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:109 includes/mh-options.php:110
+#: includes/mh-options.php:111 includes/mh-options.php:113
+#: includes/mh-options.php:114 includes/mh-options.php:199
+#: includes/mh-options.php:200 includes/mh-options.php:201
+#, php-format
+msgctxt "options panel"
+msgid "Layout %d"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:110
+msgid "Page Titles"
+msgstr "Sidetitler"
+
+# @ mh
+#: includes/mh-options.php:111
+msgid "Author Box"
+msgstr "Forfatterboks"
+
+# @ mh
+#: includes/mh-options.php:111 includes/mh-options.php:112
+#: includes/mh-options.php:113 includes/mh-options.php:120
+#: includes/mh-options.php:134 includes/mh-options.php:135
+#: includes/mh-options.php:136 includes/mh-options.php:137
+#: includes/mh-options.php:138 includes/mh-options.php:139
+#: includes/mh-options.php:140 includes/mh-options.php:190
+msgid "Disable"
+msgstr "Skru av"
+
+# @ mh
+#: includes/mh-options.php:112
+msgid "Author Box Contact"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:112 includes/mh-options.php:120
+#: includes/mh-options.php:134 includes/mh-options.php:135
+#: includes/mh-options.php:136 includes/mh-options.php:137
+#: includes/mh-options.php:138 includes/mh-options.php:139
+#: includes/mh-options.php:189
+msgid "Enable"
+msgstr "Skru på"
+
+# @ mh
+#: includes/mh-options.php:115
+msgid "Sidebars"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:115 includes/mh-options.php:186
+msgid "One Sidebar"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:115 includes/mh-options.php:187
+msgid "Two Sidebars"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:115 includes/mh-options.php:188
+msgid "No Sidebars"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:116
+msgid "Position of default Sidebar"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:116 includes/mh-options.php:191
+msgid "Left"
+msgstr "Venstre"
+
+# @ mh
+#: includes/mh-options.php:116 includes/mh-options.php:192
+msgid "Right"
+msgstr "Høyre"
+
+# @ mh
+#: includes/mh-options.php:118
+msgid "Change default Font Size (px)"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:120
+msgid "Google Webfonts"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:121
+msgid "Google Webfonts Characters"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:121 includes/mh-options.php:193
+msgid "Latin"
+msgstr "Latin"
+
+# @ mh
+#: includes/mh-options.php:121 includes/mh-options.php:194
+msgid "Latin Extended"
+msgstr "Latin utvidet"
+
+# @ mh
+#: includes/mh-options.php:121 includes/mh-options.php:195
+msgid "Greek"
+msgstr "Gresk"
+
+# @ mh
+#: includes/mh-options.php:121 includes/mh-options.php:196
+msgid "Greek Extended"
+msgstr "Gresk utvidet"
+
+# @ mh
+#: includes/mh-options.php:121 includes/mh-options.php:197
+msgid "Cyrillic"
+msgstr "Kyrillisk"
+
+# @ mh
+#: includes/mh-options.php:121 includes/mh-options.php:198
+msgid "Cyrillic Extended"
+msgstr "Kyrillisk utvidet"
+
+# @ mh
+#: includes/mh-options.php:122
+msgid "Google Webfont for Headings"
+msgstr "Google Webfont for overskrifter"
+
+# @ mh
+#: includes/mh-options.php:123
+msgid "Google Webfont for Body Text"
+msgstr "Google Webfont for brødtekst"
+
+# @ mh
+#: includes/mh-options.php:124
+msgid "Imported Google Font Styles"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:126
+msgid "Enable Ticker"
+msgstr "Skru på ticker"
+
+# @ mh
+#: includes/mh-options.php:127
+msgid "Ticker Title"
+msgstr "Tickertittel"
+
+# @ mh
+#: includes/mh-options.php:128
+msgid "Limit Post Number"
+msgstr "Begrens antall innlegg"
+
+# @ mh
+#: includes/mh-options.php:129
+msgid "Custom Categories (use ID - e.g. 3,5,9):"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:130
+msgid "Custom Tags (use slug - e.g. lifestyle):"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:131 includes/widgets/mh-carousel.php:94
+#: includes/widgets/mh-custom-posts.php:145 includes/widgets/mh-nip.php:85
+#: includes/widgets/mh-slider.php:113 includes/widgets/mh-spotlight.php:114
+msgid "Skip Posts (Offset):"
+msgstr "Skip Posts (Offset):"
+
+# @ mh
+#: includes/mh-options.php:132 includes/widgets/mh-carousel.php:114
+#: includes/widgets/mh-custom-posts.php:183 includes/widgets/mh-nip.php:98
+#: includes/widgets/mh-slider.php:144
+msgid "Ignore Sticky Posts"
+msgstr "Ignorer klebrige innlegg"
+
+# @ mh
+#: includes/mh-options.php:134
+msgid "Breadcrumb Navigation"
+msgstr "Brødsmulenavigasjon"
+
+# @ mh
+#: includes/mh-options.php:135
+msgid "Teaser Text on Posts"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:136
+msgid "Featured Image on Posts"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:137
+msgid "Link Featured Image to Attachment"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:138
+msgid "Comments on Pages"
+msgstr "Kommentarer på sider"
+
+# @ mh
+#: includes/mh-options.php:139
+msgid "Post/Attachment Navigation"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:140
+msgid "Social Buttons on Posts"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:140
+msgid "Top and bottom"
+msgstr "Topp og bunn"
+
+# @ mh
+#: includes/mh-options.php:140
+msgid "Top of posts"
+msgstr "Innleggstopp"
+
+# @ mh
+#: includes/mh-options.php:140
+msgid "Bottom of posts"
+msgstr "Innleggsbunn"
+
+# @ mh
+#: includes/mh-options.php:141
+msgid "Disable Post Meta Data"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:142
+msgid "Disable Date"
+msgstr "Skru av dato"
+
+# @ mh
+#: includes/mh-options.php:143
+msgid "Disable Author"
+msgstr "Skru av forfatter"
+
+# @ mh
+#: includes/mh-options.php:144
+msgid "Disable Categories"
+msgstr "Skru av kategorier"
+
+# @ mh
+#: includes/mh-options.php:145 includes/widgets/mh-spotlight.php:146
+msgid "Disable Comments"
+msgstr "Skru av kommentarer"
+
+# @ mh
+#: includes/mh-options.php:147
+msgid "Ad Code for Content Ad on Posts"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:148
+msgid "Ad Code for Ads on Archives"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:149
+msgid "Display Ad every x Posts on Archives:"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:152
+msgid "Tracking Code (e.g. Google Analytics)"
+msgstr "Sporingskode (f.eks. Google Analytics)"
+
+# @ mh
+#: includes/mh-options.php:154
+msgid "Background Header"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:155
+msgid "Background Inner"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:158
+msgid "Text: General"
+msgstr "Tekst: Generell"
+
+# @ mh
+#: includes/mh-options.php:161
+msgid "Text: Post Meta"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:165
+msgid "Scale Background Image to Full Size"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:202
+msgid "Top and Bottom"
+msgstr "Topp og bunn"
+
+# @ mh
+#: includes/mh-options.php:203
+msgid "Top of Posts"
+msgstr "Innleggstopp"
+
+# @ mh
+#: includes/mh-options.php:204
+msgid "Bottom of Posts"
+msgstr "Innleggsbunn"
+
+# @ mh
+#: includes/mh-post-content.php:28
+#, php-format
+msgctxt "post date"
+msgid "on %s"
+msgstr "den %s"
+
+# @ mh
+#: includes/mh-post-content.php:29
+#, php-format
+msgctxt "post author"
+msgid "by %s"
+msgstr "av %s"
+
+# @ mh
+#: includes/mh-post-content.php:30
+#, php-format
+msgctxt "post category"
+msgid "in %s"
+msgstr "i %s"
+
+# @ mh
+#: includes/mh-post-content.php:31
+#, php-format
+msgctxt "post meta"
+msgid "Posted %1$s %2$s %3$s"
+msgstr "Publisert %1$s %2$s %3$s"
+
+# @ mh
+#: includes/mh-shortcodes.php:25
+msgid "Advertisement"
+msgstr "Reklame"
+
+# @ mh
+#: includes/widgets/mh-advertising-widget.php:7
+msgid ""
+"MH Advertising Widget to display ads in widget locations of your choice."
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-advertising-widget.php:8
+msgid "MH Advertising Widget"
+msgstr "MH Reklamewidget"
+
+# @ mh
+#: includes/widgets/mh-advertising-widget.php:54
+#: includes/widgets/mh-affiliate.php:33 includes/widgets/mh-authors.php:61
+#: includes/widgets/mh-carousel.php:63 includes/widgets/mh-comments.php:47
+#: includes/widgets/mh-custom-posts.php:114
+#: includes/widgets/mh-custom-slider.php:126
+#: includes/widgets/mh-custom-slider.php:148
+#: includes/widgets/mh-custom-slider.php:170
+#: includes/widgets/mh-custom-slider.php:192
+#: includes/widgets/mh-custom-slider.php:214
+#: includes/widgets/mh-facebook-page.php:47 includes/widgets/mh-nip.php:54
+#: includes/widgets/mh-social-widget.php:104
+#: includes/widgets/mh-spotlight.php:87 includes/widgets/mh-youtube.php:35
+msgid "Title:"
+msgstr "Tittel:"
+
+# @ mh
+#: includes/widgets/mh-advertising-widget.php:58
+msgid "Banner Size:"
+msgstr "Bannerstørrelse:"
+
+# @ mh
+#: includes/widgets/mh-advertising-widget.php:65
+#: includes/widgets/mh-advertising-widget.php:69
+#: includes/widgets/mh-advertising-widget.php:73
+#: includes/widgets/mh-advertising-widget.php:77
+msgid "Ad Code"
+msgstr "Reklamekode"
+
+# @ mh
+#: includes/widgets/mh-affiliate.php:7
+msgid ""
+"MH Affiliate Widget to earn money by promoting WordPress themes by MH Themes."
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-affiliate.php:8
+msgid "MH Affiliate Widget"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-affiliate.php:40
+msgid ""
+"With this widget you can earn money by promoting WordPress themes by MH "
+"Themes. If you do not have a Creative Market Username yet, please visit our"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-affiliate.php:40
+msgid "infopage for affiliates"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-authors.php:7
+msgid ""
+"MH Authors widget to display a list of authors including the number of "
+"published posts."
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-authors.php:8
+msgid "MH Authors Widget"
+msgstr "MH Forfatterwidget"
+
+# @ mh
+#: includes/widgets/mh-authors.php:31 includes/widgets/mh-authors.php:34
+#, php-format
+msgid "Articles by %s"
+msgstr "Artikler av %s"
+
+# @ mh
+#: includes/widgets/mh-authors.php:35
+#, php-format
+msgctxt "author post count"
+msgid "published %d articles"
+msgstr "publiserte %d artikler"
+
+# @ mh
+#: includes/widgets/mh-authors.php:40
+msgid "No authors found"
+msgstr "Ingen forfattere funnet"
+
+# @ mh
+#: includes/widgets/mh-authors.php:65
+msgid "Limit Author Number:"
+msgstr "Begrens antall forfattere:"
+
+# @ mh
+#: includes/widgets/mh-authors.php:69
+msgid "Skip Authors (Offset):"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-authors.php:73
+msgid "User Role:"
+msgstr "Brukerroller"
+
+# @ mh
+#: includes/widgets/mh-authors.php:75
+msgid "All Users"
+msgstr "Alle brukere"
+
+# @ mh
+#: includes/widgets/mh-authors.php:76
+msgid "Administrator"
+msgstr "Administrator"
+
+# @ mh
+#: includes/widgets/mh-authors.php:77
+msgid "Editor"
+msgstr "Redaktør"
+
+# @ mh
+#: includes/widgets/mh-authors.php:78
+msgid "Author"
+msgstr "Forfatter"
+
+# @ mh
+#: includes/widgets/mh-authors.php:79
+msgid "Contributor"
+msgstr "Bidragsyter"
+
+# @ mh
+#: includes/widgets/mh-authors.php:80
+msgid "Subscriber"
+msgstr "Abonnent"
+
+# @ mh
+#: includes/widgets/mh-authors.php:84
+msgid "Order Authors by:"
+msgstr "Ordne forfattere ved:"
+
+# @ mh
+#: includes/widgets/mh-authors.php:86
+msgid "Number of Posts"
+msgstr "Antall innlegg"
+
+# @ mh
+#: includes/widgets/mh-authors.php:87
+msgid "User Name"
+msgstr "Brukernavn"
+
+# @ mh
+#: includes/widgets/mh-authors.php:91
+msgid "Order:"
+msgstr "Ordning:"
+
+# @ mh
+#: includes/widgets/mh-authors.php:93
+msgid "Ascending"
+msgstr "Økende"
+
+# @ mh
+#: includes/widgets/mh-authors.php:94
+msgid "Descending"
+msgstr "Synkende"
+
+# @ mh
+#: includes/widgets/mh-authors.php:98 includes/widgets/mh-comments.php:59
+msgid "Avatar Size in px:"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-authors.php:104 includes/widgets/mh-comments.php:65
+msgid "No Avatars"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-carousel.php:7
+msgid "Carousel widget for use on homepage template."
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-carousel.php:8
+msgid "MH Carousel Widget (Homepage)"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-carousel.php:67 includes/widgets/mh-custom-posts.php:118
+#: includes/widgets/mh-nip.php:58 includes/widgets/mh-slider.php:86
+#: includes/widgets/mh-spotlight.php:91
+msgid "Select a Category:"
+msgstr "Velg en kategori:"
+
+# @ mh
+#: includes/widgets/mh-carousel.php:69 includes/widgets/mh-custom-posts.php:120
+#: includes/widgets/mh-nip.php:60 includes/widgets/mh-slider.php:88
+#: includes/widgets/mh-spotlight.php:93
+msgid "All"
+msgstr "Alle"
+
+# @ mh
+#: includes/widgets/mh-carousel.php:82 includes/widgets/mh-custom-posts.php:133
+#: includes/widgets/mh-nip.php:73 includes/widgets/mh-slider.php:101
+#: includes/widgets/mh-spotlight.php:106
+msgid "Multiple Categories Filter by ID:"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-carousel.php:86 includes/widgets/mh-custom-posts.php:137
+#: includes/widgets/mh-nip.php:77 includes/widgets/mh-slider.php:105
+#: includes/widgets/mh-spotlight.php:110
+msgid "Filter Posts by Tags (e.g. lifestyle):"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-carousel.php:90 includes/widgets/mh-custom-posts.php:141
+#: includes/widgets/mh-nip.php:81 includes/widgets/mh-slider.php:109
+msgid "Limit Post Number:"
+msgstr "Begrens antall innlegg:"
+
+# @ mh
+#: includes/widgets/mh-carousel.php:98 includes/widgets/mh-custom-posts.php:149
+#: includes/widgets/mh-nip.php:89 includes/widgets/mh-slider.php:117
+#: includes/widgets/mh-spotlight.php:118
+msgid "Post Order:"
+msgstr "Innleggsordning:"
+
+# @ mh
+#: includes/widgets/mh-carousel.php:100
+#: includes/widgets/mh-custom-posts.php:151 includes/widgets/mh-nip.php:91
+#: includes/widgets/mh-slider.php:119 includes/widgets/mh-spotlight.php:120
+msgid "Latest Posts"
+msgstr "Siste innlegg"
+
+# @ mh
+#: includes/widgets/mh-carousel.php:101
+#: includes/widgets/mh-custom-posts.php:152 includes/widgets/mh-nip.php:92
+#: includes/widgets/mh-slider.php:120 includes/widgets/mh-spotlight.php:121
+msgid "Random Posts"
+msgstr "Tilfeldig innlegg"
+
+# @ mh
+#: includes/widgets/mh-carousel.php:102
+#: includes/widgets/mh-custom-posts.php:153 includes/widgets/mh-nip.php:93
+#: includes/widgets/mh-slider.php:121 includes/widgets/mh-spotlight.php:122
+msgid "Popular Posts"
+msgstr "Populære innlegg"
+
+# @ mh
+#: includes/widgets/mh-carousel.php:106
+msgid "Carousel Layout:"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-comments.php:7
+msgid ""
+"MH Recent Comments widget to display your recent comments including user "
+"avatars."
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-comments.php:8
+msgid "MH Recent Comments"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-comments.php:27
+#, php-format
+msgctxt "comment widget"
+msgid "%1$s on %2$s"
+msgstr "%1$s på %2$s"
+
+# @ mh
+#: includes/widgets/mh-comments.php:43
+msgid "Recent Comments"
+msgstr "Siste kommentarer"
+
+# @ mh
+#: includes/widgets/mh-comments.php:51
+msgid "Limit Comment Number:"
+msgstr "Begrens kommentarantall:"
+
+# @ mh
+#: includes/widgets/mh-comments.php:55
+msgid "Skip Comments (Offset):"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-custom-pages.php:7
+msgid "Custom Pages Widget to display pages based on page IDs."
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-custom-pages.php:8
+msgid "MH Custom Pages"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-custom-pages.php:75
+msgid "Title (optional):"
+msgstr "Tittel (valgfri):"
+
+# @ mh
+#: includes/widgets/mh-custom-pages.php:79
+msgid "Link Title to URL (optional):"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-custom-pages.php:83
+msgid "Filter Pages by ID (comma separated):"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-custom-pages.php:87
+#: includes/widgets/mh-custom-posts.php:157
+msgid "Display Excerpts:"
+msgstr "Vis utdrag:"
+
+# @ mh
+#: includes/widgets/mh-custom-pages.php:89
+msgid "Excerpt for first Page"
+msgstr "Utdrag for først side"
+
+# @ mh
+#: includes/widgets/mh-custom-pages.php:90
+msgid "Excerpt for all Pages"
+msgstr "Utdrag for alle sider"
+
+# @ mh
+#: includes/widgets/mh-custom-pages.php:91
+#: includes/widgets/mh-custom-posts.php:161
+msgid "No Excerpts"
+msgstr "Ingen utdrag"
+
+# @ mh
+#: includes/widgets/mh-custom-pages.php:95
+#: includes/widgets/mh-custom-posts.php:165 includes/widgets/mh-slider.php:139
+#: includes/widgets/mh-spotlight.php:133
+msgid "Excerpt Character Limit:"
+msgstr "Utdrags bokstavgrense:"
+
+# @ mh
+#: includes/widgets/mh-custom-pages.php:99
+#: includes/widgets/mh-custom-posts.php:173
+msgid "Thumbnails:"
+msgstr "Thumbnails:"
+
+# @ mh
+#: includes/widgets/mh-custom-pages.php:101
+#: includes/widgets/mh-custom-posts.php:175
+msgid "Show all Thumbnails"
+msgstr "Vis alle thumbnails"
+
+# @ mh
+#: includes/widgets/mh-custom-pages.php:102
+#: includes/widgets/mh-custom-posts.php:176
+msgid "Hide all Thumbnails"
+msgstr "Skjul alle thumbnails"
+
+# @ mh
+#: includes/widgets/mh-custom-pages.php:103
+#: includes/widgets/mh-custom-posts.php:177
+msgid "Hide only large Thumbnails"
+msgstr "Bare skjul store thumbnails"
+
+# @ mh
+#: includes/widgets/mh-custom-pages.php:104
+#: includes/widgets/mh-custom-posts.php:178
+msgid "Hide only small Thumbnails"
+msgstr "Bare skjul små thumbnails"
+
+# @ mh
+#: includes/widgets/mh-custom-posts.php:7
+msgid "Custom Posts Widget to display posts based on categories or tags."
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-custom-posts.php:8
+msgid "MH Custom Posts"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-custom-posts.php:159
+msgid "Excerpt for first Post"
+msgstr "Utdrag for første innlegg"
+
+# @ mh
+#: includes/widgets/mh-custom-posts.php:160
+msgid "Excerpt for all Posts"
+msgstr "Utdrag for alle innlegg"
+
+# @ mh
+#: includes/widgets/mh-custom-posts.php:169
+msgid "Link Title to custom URL (optional):"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-custom-posts.php:187
+msgid "Hide Date"
+msgstr "Skjul dato"
+
+# @ mh
+#: includes/widgets/mh-custom-posts.php:191
+msgid "Hide Comment Count"
+msgstr "Skjul kommentarantall"
+
+# @ mh
+#: includes/widgets/mh-custom-slider.php:7
+msgid ""
+"Custom Slider Widget to display custom content for use on homepage template."
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-custom-slider.php:8
+msgid "MH Custom Slider Widget"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-custom-slider.php:124
+#: includes/widgets/mh-custom-slider.php:146
+#: includes/widgets/mh-custom-slider.php:168
+#: includes/widgets/mh-custom-slider.php:190
+#: includes/widgets/mh-custom-slider.php:212
+msgid "Slide"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-custom-slider.php:130
+#: includes/widgets/mh-custom-slider.php:152
+#: includes/widgets/mh-custom-slider.php:174
+#: includes/widgets/mh-custom-slider.php:196
+#: includes/widgets/mh-custom-slider.php:218
+msgid "Custom URL:"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-custom-slider.php:134
+#: includes/widgets/mh-custom-slider.php:156
+#: includes/widgets/mh-custom-slider.php:178
+#: includes/widgets/mh-custom-slider.php:200
+#: includes/widgets/mh-custom-slider.php:222
+msgid "Custom Image URL:"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-custom-slider.php:138
+#: includes/widgets/mh-custom-slider.php:160
+#: includes/widgets/mh-custom-slider.php:182
+#: includes/widgets/mh-custom-slider.php:204
+#: includes/widgets/mh-custom-slider.php:226
+msgid "Custom Excerpt:"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-custom-slider.php:143
+#: includes/widgets/mh-custom-slider.php:165
+#: includes/widgets/mh-custom-slider.php:187
+#: includes/widgets/mh-custom-slider.php:209
+#: includes/widgets/mh-custom-slider.php:231
+#: includes/widgets/mh-social-widget.php:165
+msgid "Open Links in new Window / Tab"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-custom-slider.php:234
+msgid "Slider Settings"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-custom-slider.php:236 includes/widgets/mh-slider.php:132
+msgid "Slider Layout:"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-facebook-page.php:51
+msgid "Facebook Page URL:"
+msgstr "Facebookside URL:"
+
+# @ mh
+#: includes/widgets/mh-nip.php:7
+msgid ""
+"News in Pictures Widget to display a gallery of thumbnails linked to the "
+"post content."
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-nip.php:8
+msgid "MH News in Pictures"
+msgstr "MH Nyheter i bilder"
+
+# @ mh
+#: includes/widgets/mh-slider.php:7
+msgid "Slider widget for use on homepage template."
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-slider.php:8
+msgid "MH Slider Widget (Homepage)"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-slider.php:125
+msgid "Slider Image Size:"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-slider.php:148 includes/widgets/mh-spotlight.php:138
+msgid "Disable Excerpt"
+msgstr "Skru av utdrag"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:7
+msgid "Widget to display linked social media icons in sidebar or footer."
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:8
+msgid "MH Social Widget"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-facebook-page.php:13
+#: includes/widgets/mh-facebook-page.php:43
+#: includes/widgets/mh-social-widget.php:34
+msgid "Follow on Facebook"
+msgstr "Følg på Facebook"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:37
+msgid "Follow on Twitter"
+msgstr "Følg på Twitter"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:40
+msgid "Follow on Google+"
+msgstr "Følg på Google+"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:43
+msgid "Follow on YouTube"
+msgstr "Følg på YouTube"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:46
+msgid "Follow on Flickr"
+msgstr "Følg på Flickr"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:49
+msgid "Follow on Vimeo"
+msgstr "Følg på Vimeo"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:52
+msgid "Follow on SoundCloud"
+msgstr "Følg på SoundCloud"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:55
+msgid "Follow on Pinterest"
+msgstr "Følg på Pinterest"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:58
+msgid "Follow on Instagram"
+msgstr "Følg på Instagram"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:61
+msgid "Follow on LinkedIn"
+msgstr "Følg på LinkedIn"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:64
+msgid "Follow on Myspace"
+msgstr "Følg på Myspace"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:67
+msgid "Follow on Tumblr"
+msgstr "Følg på Tumblr"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:70
+msgid "Follow on deviantART"
+msgstr "Følg på deviantART"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:73
+msgid "Subscribe to our RSS feed"
+msgstr "Abonner på vår RSS-strøm"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:100
+msgid "Stay connected"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:108
+msgid "Facebook URL:"
+msgstr "Facebook URL:"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:112
+msgid "Twitter URL:"
+msgstr "Twitter URL:"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:116
+msgid "Google+ URL:"
+msgstr "Google+ URL:"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:120
+msgid "YouTube URL:"
+msgstr "YouTube URL:"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:124
+msgid "Flickr URL:"
+msgstr "Flickr URL:"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:128
+msgid "Vimeo URL:"
+msgstr "Vimeo URL:"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:132
+msgid "SoundCloud URL:"
+msgstr "SoundCloud URL:"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:136
+msgid "Pinterest URL:"
+msgstr "Pinterest URL:"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:140
+msgid "Instagram URL:"
+msgstr "Instagram URL:"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:144
+msgid "LinkedIn URL:"
+msgstr "LinkedIn URL:"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:148
+msgid "Myspace URL:"
+msgstr "Myspace URL:"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:152
+msgid "Tumblr URL:"
+msgstr "Tumblr URL:"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:156
+msgid "deviantART URL:"
+msgstr "deviantART URL:"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:160
+msgid "RSS Feed URL:"
+msgstr "RSS-strøm URL:"
+
+# @ mh
+#: includes/widgets/mh-social-widget.php:169
+msgid "Set Links to nofollow"
+msgstr "Sett lenker til nofollow"
+
+# @ mh
+#: includes/widgets/mh-spotlight.php:7
+msgid "Spotlight / Featured widget for use on homepage template."
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-spotlight.php:8
+msgid "MH Spotlight Widget (Homepage)"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-spotlight.php:83
+msgid "In the spotlight"
+msgstr "I søkelyset"
+
+# @ mh
+#: includes/widgets/mh-spotlight.php:55
+#, php-format
+msgctxt "post meta"
+msgid "by %1$s in %2$s"
+msgstr "av %1$s i %2$s"
+
+# @ mh
+#: includes/widgets/mh-spotlight.php:126
+msgid "Image size:"
+msgstr "Bildestørrelse:"
+
+# @ mh
+#: includes/widgets/mh-spotlight.php:142
+msgid "Disable Post Meta"
+msgstr ""
+
+# @ mh
+#: page-sitemap.php:7
+msgid "Recent Articles"
+msgstr ""
+
+# @ mh
+#: page-sitemap.php:15
+msgid "Pages"
+msgstr "Sider"
+
+# @ mh
+#: page-sitemap.php:28
+msgid "Categories"
+msgstr "Kategorier"
+
+# @ mh
+#: page-sitemap.php:30
+msgid "No categories"
+msgstr "Ingen kategorier"
+
+# @ mh
+#: searchform.php:3
+msgid "To search, type and hit enter"
+msgstr "For å søke, skriv og trykk enter."
+
+# @ mh
+#: includes/mh-custom-functions.php:66
+#, php-format
+msgctxt "post meta newsticker"
+msgid "%1$s in %2$s"
+msgstr "%1$s i %2$s"
+
+# @ mh
+#: includes/mh-options.php:156 includes/mh-options.php:157
+#, php-format
+msgctxt "options panel"
+msgid "Theme Color %d"
+msgstr "Temafarge %d"
+
+# @ mh
+#: includes/mh-options.php:159 includes/mh-options.php:160
+#, php-format
+msgctxt "options panel"
+msgid "Text: Colored Sections (Color %d)"
+msgstr ""
+
+# @ mh
+#: includes/mh-options.php:162
+msgid "Links: General Color"
+msgstr "Lenker: Generell farge"
+
+# @ mh
+#: includes/mh-options.php:163
+msgid "Links: Hover Color"
+msgstr ""
+
+# @ mh
+#: admin/admin.php:7
+msgid "Welcome to MH Magazine"
+msgstr "Velkommen til MH Magazine"
+
+# @ mh
+#: admin/admin.php:7
+msgid "Theme Info"
+msgstr "Temainfo"
+
+# @ mh
+#: admin/admin.php:16
+#, php-format
+msgid "Welcome to %1s %2s"
+msgstr "Velkommen til %1s %2s"
+
+# @ mh
+#: admin/admin.php:21
+msgid "Important Links:"
+msgstr "Viktige lenker:"
+
+# @ mh
+#: admin/admin.php:22
+msgid "Theme Info Page"
+msgstr "Tema infoside"
+
+# @ mh
+#: admin/admin.php:23
+msgid "Support Center"
+msgstr "Supportsenter"
+
+# @ mh
+#: admin/admin.php:31
+#, php-format
+msgid "Getting Started with %s"
+msgstr "Komme i gang med %s"
+
+# @ mh
+#: admin/admin.php:35
+msgid "Theme Documentation"
+msgstr "Temadokumentasjon"
+
+# @ mh
+#: admin/admin.php:36
+#, php-format
+msgid ""
+"Need support to setup and configure %s? Please have a look at the "
+"instructions in the theme documentation or register at our support forums "
+"when you click on \"Support\" in your MH Themes account."
+msgstr ""
+
+# @ mh
+#: admin/admin.php:38
+msgid "Visit Documentation"
+msgstr "Besøk dokumentasjon"
+
+# @ mh
+#: admin/admin.php:42
+msgid "Theme Options"
+msgstr "Temavalg"
+
+# @ mh
+#: admin/admin.php:43
+#, php-format
+msgid ""
+"%s WordPress theme supports the Theme Customizer for all theme settings. "
+"Click \"Customize Theme\" to open the Customizer now."
+msgstr ""
+
+# @ mh
+#: admin/admin.php:45
+msgid "Customize Theme"
+msgstr "Tilpass tema"
+
+# @ mh
+#: admin/admin.php:49
+msgid "Upgrade to MH Themes Bundle"
+msgstr ""
+
+# @ mh
+#: admin/admin.php:50
+msgid ""
+"Do you want to have access to all Premium WordPress Themes by MH Themes "
+"including support and lifetime updates? You can upgrade to the MH Themes "
+"Bundle right away when you click on \"Shop\" in your MH Themes account."
+msgstr ""
+
+# @ mh
+#: admin/admin.php:52
+msgid "Login to MH Themes account"
+msgstr ""
+
+# @ mh
+#: admin/admin.php:57
+msgid "Theme Screenshot"
+msgstr "Temaskjermbilde"
+
+# @ mh
+#: admin/admin.php:63
+#, php-format
+msgid "%1s WordPress theme is proudly brought to you by %2s."
+msgstr ""
+
+# @ mh
+#: admin/admin.php:77
+#, php-format
+msgid ""
+"Thanks for using %1s by MH Themes. To learn more about this theme, please "
+"%1s."
+msgstr ""
+
+# @ mh
+#: admin/admin.php:77
+msgid "click here"
+msgstr "klikk her"
+
+# @ mh
+#: includes/mh-options.php:62 includes/mh-options.php:246
+msgid "News Ticker"
+msgstr "Nyhetsticker"
+
+# @ mh
+#: includes/widgets/mh-youtube.php:7
+msgid "Widget to display a YouTube Video."
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-youtube.php:8
+msgid "MH YouTube Video"
+msgstr "MH YouTube-video"
+
+# @ mh
+#: includes/widgets/mh-youtube.php:39
+msgid "Video ID of your Featured Video:"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-youtube.php:41
+msgid "Also known as the Watch Code (Eg: fQydqPWdjoc)"
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-facebook-page.php:8
+msgctxt "widget name"
+msgid "MH Facebook Page"
+msgstr "MH Facebookside"
+
+# @ mh
+#: includes/widgets/mh-facebook-page.php:9
+msgid "Widget to display your Facebook page on your website."
+msgstr ""
+
+# @ mh
+#: includes/widgets/mh-facebook-page.php:55
+msgid "Width (min. 280px):"
+msgstr "Bredde (min. 280px):"
+
+# @ mh
+#: includes/widgets/mh-facebook-page.php:59
+msgid "Height (min. 130px):"
+msgstr "Høyde (min. 130px):"
+
+# @ mh
+#: includes/widgets/mh-facebook-page.php:64
+msgid "Hide cover photo"
+msgstr "Skjul coverfoto"
+
+# @ mh
+#: includes/widgets/mh-facebook-page.php:68
+msgid "Show profile photos"
+msgstr "Vis profilbilder"
+
+# @ mh
+#: includes/widgets/mh-facebook-page.php:72
+msgid "Show posts from FB page"
+msgstr "Vis bilder fra FB-side"
+
+# @ mh
+#: includes/widgets/mh-affiliate.php:37
+msgid "Creative Market Username:"
+msgstr ""
