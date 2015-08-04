@@ -31,6 +31,17 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
     width: 940px;
 }
 
+@media screen and (max-width: 1340px) {
+    .mh-two-sb .hp-content {
+        width: 460px;
+    }
+    .mh-two-sb .mh-content {
+        width: 700px;
+    }
+}
+
+/* Spotlight */
+
 .spotlight {
     background: #fff;
     color: #000;
@@ -42,11 +53,20 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
     color: #000;
 }
 
-@media screen and (max-width: 1340px) {
-    .mh-two-sb .hp-content {
-        width: 460px;
-    }
-    .mh-two-sb .mh-content {
-        width: 700px;
-    }
+/* Redaksjonsmedlemmer */
+
+.redaksjonsmedlem {
+    display: inline-block;
+    width: 100%;
+}
+.redaksjonsmedlem-portrett {
+    padding: 0 30px 30px 0;
+    float: left;
+    width: 20%;
+}
+.redaksjonsmedlem-portrett img {
+    width: 100%;
+}
+.redaksjonsmedlem-biografi {
+    width: 80%;
 }
