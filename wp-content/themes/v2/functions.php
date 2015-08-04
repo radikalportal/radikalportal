@@ -23,3 +23,5 @@ function mh_scripts() {
 	    wp_enqueue_script('comment-reply');
     }
 }
+
+require_once('includes/v2-widgets.php');
