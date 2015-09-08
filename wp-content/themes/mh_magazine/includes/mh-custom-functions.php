@@ -186,7 +186,6 @@ if (!function_exists('mh_postnav')) {
 		}
 	}
 }
-add_action('mh_after_post_content', 'mh_postnav');
 
 /***** Related Posts *****/
 
