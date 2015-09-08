@@ -1,5 +1,14 @@
 <?php
 
+function mh_share_buttons_content() {
+    $sb_output = '<section class="share-buttons-container clearfix">' . "\n";
+    $sb_output .= '<div class="share-button"><div class="fb-like" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div></div>' . "\n";
+    $sb_output .= '<div class="share-button"><a href="' . esc_url('https://twitter.com/share') . '" class="twitter-share-button" data-via="radikalportal">Tweet</a></div>' . "\n";
+    $sb_output .= '<div class="share-button"><div class="g-plusone" data-size="medium"></div></div>' . "\n";
+    $sb_output .= '</section>' . "\n";
+    echo $sb_output;
+}
+
 /***** Load Stylesheets *****/
 
 function mh_magazine_child_styles() {
