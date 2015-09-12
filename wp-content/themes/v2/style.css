@@ -31,6 +31,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
     width: 940px;
 }
 
+.copyright-wrap {
+    display: none;
+}
+
 @media screen and (max-width: 1340px) {
     .mh-two-sb .hp-content {
         width: 460px;
