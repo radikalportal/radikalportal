@@ -133,8 +133,10 @@ if (!function_exists('mh_author_box')) {
 			echo '</section>' . "\n";
 		}
 	}
+
+        /* Trengs for å overstyre plasseringen av author_box. */
+	add_action('mh_after_post_content', 'mh_author_box');
 }
-add_action('mh_after_post_content', 'mh_author_box');
 
 /***** Post / Image Navigation *****/
 

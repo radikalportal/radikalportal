@@ -26,3 +26,4 @@ function mh_scripts() {
 }
 
 require_once('includes/v2-widgets.php');
+require_once('includes/v2-custom-functions.php');
