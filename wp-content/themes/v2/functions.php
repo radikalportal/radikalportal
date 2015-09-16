@@ -27,3 +27,21 @@ function mh_scripts() {
 
 require_once('includes/v2-widgets.php');
 require_once('includes/v2-custom-functions.php');
+
+function v2_apple_touch_icons() {
+    $output = "";
+
+    $output .= "<link rel=\"shortcut icon\" href=\"/favicon.ico\" type=\"image/x-icon\">\n";
+    $output .= "<link rel=\"apple-touch-icon\" href=\"/apple-touch-icon.png\">\n";
+    $output .= "<link rel=\"apple-touch-icon\" sizes=\"57x57\" href=\"/apple-touch-icon-57x57.png\">\n";
+    $output .= "<link rel=\"apple-touch-icon\" sizes=\"72x72\" href=\"/apple-touch-icon-72x72.png\">\n";
+    $output .= "<link rel=\"apple-touch-icon\" sizes=\"76x76\" href=\"/apple-touch-icon-76x76.png\">\n";
+    $output .= "<link rel=\"apple-touch-icon\" sizes=\"114x114\" href=\"/apple-touch-icon-114x114.png\">\n";
+    $output .= "<link rel=\"apple-touch-icon\" sizes=\"120x120\" href=\"/apple-touch-icon-120x120.png\">\n";
+    $output .= "<link rel=\"apple-touch-icon\" sizes=\"144x144\" href=\"/apple-touch-icon-144x144.png\">\n";
+    $output .= "<link rel=\"apple-touch-icon\" sizes=\"152x152\" href=\"/apple-touch-icon-152x152.png\">\n";
+    $output .= "<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon-180x180.png\">\n";
+
+    echo $output;
+}
+add_action('wp_head', 'v2_apple_touch_icons');
