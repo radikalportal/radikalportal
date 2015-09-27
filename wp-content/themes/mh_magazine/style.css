@@ -209,7 +209,7 @@ select { max-width: 100%; }
 
 /***** FlexSlider Necessary Styles *****/
 
-.flexslider { margin: 0; padding: 0; }
+.flexslider { margin: 0; padding: 0; min-height: 450px; }
 .flexslider .slides > li { display: none; -webkit-backface-visibility: hidden; }
 .flexslider .slides img { width: 100%; display: block; }
 .flex-pauseplay span { text-transform: capitalize; }
