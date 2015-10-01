@@ -1,97 +1,229 @@
-/**
- * Used for removing anchors surrounding featured videos
- *
- * @since 1.8
- */
-function fvp_unwrap() {
-	jQuery('.featured_video_plus, a.fvp_overlay, a.fvp_dynamic').each(function() {
-		if( jQuery(this).parent().is('a') )
-			jQuery(this).unwrap();
-	});
-}
+var initFeaturedVideoPlus;
 
-/**
- * Replace featured image with the featured video on click
- *
- * @since 1.7
- */
-function fvp_dynamic(id){
-	var t = jQuery('#fvp_'+id);
-	t.css({'position':'relative'})
-	 .prepend(jQuery('<div />', {
-		'class':'fvp_loader',
-		'style':'background:transparent url(\''+fvpdata.loadingb+'\') no-repeat center center;'+
-						'position: absolute; margin: '+t.children('img').css('margin')+';'+
-						'height:'+t.children('img').css('height')+';width:'+t.children('img').css('width')+'; z-index:1000;'
-	}));
-	jQuery.post( fvpdata.ajaxurl,
-		{
-			'action': 'fvp_get_embed',
-			'nonce' : fvpdata.nonce,
-			'id'    : id
-		},
-	function(data){
-		if (data.success){
-			t.replaceWith(data.html);
-			fvp_unwrap();
-			if ( fvpdata.fitvids && fvpdata.overlay )
-				jQuery(".featured_video_plus").fitVids({customSelector: "iframe[src*='dailymotion.com']"});
-		}
-	});
-}
+(function($) {
+  'use strict';
+  /* global fvpdata */
 
-jQuery(document).ready(function($){
-	// remove wrapping anchors
-	fvp_unwrap();
+  var videoCache = {};
+  var selectorCache;
+  var initTimeout = 0;
 
-	// add hover effect
-	if( fvpdata.overlay || fvpdata.dynamic ){
-		$('.fvp_overlay,.fvp_dynamic').hover(
-			function(){ $(this).children('img').animate({opacity:0.65});	},
-			function(){ $(this).children('img').animate({opacity:1   }); 	}
-		);
-	}
 
-	// overlay click handler
-	if(fvpdata.overlay){
-	  $('.fvp_overlay').click(function(){
-			$(this).openDOMWindow({
-				eventType:null,
-				windowPadding:0,
-				borderSize:0,
-				windowBGColor:'transparent',
-				overlayOpacity:fvpdata.opacity
-			});
-			$('#DOMWindow').css({'background':"transparent url('"+fvpdata.loadingw+"') center center no-repeat"});
-	  	var id = new RegExp('[\\?&amp;\\#]fvp_([0-9]+)').exec($(this).attr('href'));
-			if ($('#fvp_'+id[1]).html().length === 0){
-				jQuery.post( fvpdata.ajaxurl,
-					{
-						'action': 'fvp_get_embed',
-						'nonce' : fvpdata.nonce,
-						'id'    : id[1]
-					},
-				function(data){
-					if (data.success){
-						// save the data to not reload when opened again
-						//$('#fvp_'+id[1]).html(data.html); // removed due to bugs with Video.js
+  /**
+   * Remove the link wrapping featured images on index pages and the
+   * possibile repetition of .post-thumbnail-classes.
+   */
+  function unwrap() {
+    // Remove links around videos.
+    $('.has-post-video a>.featured-video-plus,' +
+      '.has-post-video a>.fvp-dynamic,' +
+      '.has-post-video a>.fvp-overlay,' +
+      '.has-post-video a>.wp-video,' +
+      '.has-post-video a>.wp-video-shortcode'
+    ).unwrap();
 
-						$('#DOMWindow').html(data.html).css({'width':'auto','height':'auto','margin':'auto auto','overflow':'hidden'});
-						$(window).trigger('scroll');
+    // Remove wrapped .post-thumbnail-classes
+    $('.has-post-video .post-thumbnail>.post-thumbnail')
+      .removeClass('post-thumbnail');
 
-						if ( fvpdata.videojs )
-							videojs('videojs'+data.id,{'autoplay':true},function(){});
-					}
-				});//.fail(function() { alert("failed here"); });;
-			}else{
-				$('#DOMWindow').html( $('#fvp_'+id[1]).html() ).css({'width':'auto','height':'auto','margin':'auto auto','overflow':'hidden'});
-				$(window).trigger('scroll');
-			}
-		});
-	}
+    // There might still be some empty .post-thumbnail links to be removed.
+    $('a.post-thumbnail:empty').not('.fvp-dynamic, .fvp-overlay').remove();
+  }
 
-	// fitvids
-	if ( fvpdata.fitvids && ! fvpdata.dynamic && ! fvpdata.overlay )
-	  $(".featured_video_plus").fitVids( { customSelector: ["iframe", "object", "embed", ".video-js"] } );
 
-});
+  /**
+   * Autosize videos using fitvids for responsive videos
+   */
+  function fitVids() {
+    if (fvpdata.fitvids) {
+      $('.featured-video-plus.fvp-responsive').fitVids({
+        customSelector: ['iframe', 'object', 'embed']
+      });
+    }
+  }
+
+
+  /**
+   * WordPress forces a maximum size of the global $contentwidth onto local
+   * videos - overwrite it.
+   */
+  function sizeLocal() {
+    if (fvpdata.width && ! fvpdata.fitvids) {
+      $('.fvp-local .wp-video').css({width: fvpdata.width, height: 'auto'});
+      var video = $('.fvp-local .wp-video .wp-video-shortcode');
+      video.attr({
+        width: fvpdata.width,
+        height: (fvpdata.width / video.attr('width') ) * video.attr('heigth')
+      });
+    }
+  }
+
+
+  /**
+   * Get the actionicon element from the provided container.
+   */
+  function getActioniconElem(elem) {
+    var $elem = $(elem);
+    var $icon = $elem.children('.fvp-actionicon');
+    $icon.css({
+      height: $elem.height(),
+      width : $elem.width(),
+      margin: $elem.css('margin')
+    });
+
+    return $icon;
+  }
+
+
+  /**
+   * Handle mouseover and mouseout events.
+   */
+  function hoverAction(event) {
+    var $img = $(event.currentTarget).children('img');
+    var $icon = getActioniconElem(event.currentTarget);
+
+    $icon.toggleClass('play');
+    if ($icon.hasClass('play')) {
+      $img.animate({ opacity: fvpdata.opacity });
+    } else {
+      $img.animate({ opacity: 1 });
+    }
+  }
+
+
+  /**
+   * Replace a featured image with its featured video on-click.
+   */
+  function dynamicTrigger(event) {
+    event.preventDefault();
+    var $self = $(event.currentTarget);
+    var id = parseInt($self.attr('data-id'), 10);
+
+    var $icon = getActioniconElem(event.currentTarget);
+    $icon.addClass('load ' + fvpdata.color);
+
+    $.post(fvpdata.ajaxurl, {
+      'action'    : 'fvp_get_embed',
+      'fvp_nonce' : fvpdata.nonce,
+      'id'        : id
+    }, function(response){
+      if (response.success) {
+        var $parent = $self.parent();
+        $self.replaceWith(response.data);
+
+        // Initialize mediaelement.js, autosize and unwrap the new videos.
+        $parent.find('.wp-audio-shortcode, .wp-video-shortcode')
+          .mediaelementplayer();
+        fitVids();
+        unwrap();
+      }
+
+      $icon.removeClass('load ' + fvpdata.color);
+    });
+  }
+
+
+  /**
+   * Show the overlay on-click.
+   */
+  function overlayTrigger(event) {
+    event.preventDefault();
+    var $self = $(event.currentTarget);
+    var id = parseInt($self.attr('data-id'), 10);
+
+    $self.openDOMWindow({
+      eventType     : null,
+      windowPadding : 0,
+      borderSize    : 0,
+      windowBGColor : 'transparent',
+      overlayOpacity: fvpdata.opacity * 100,
+      width : '100%',
+      height: '100%'
+    });
+
+    // Check if the result is already cached
+    if (! videoCache[id]) {
+      $.post(fvpdata.ajaxurl, {
+        'action'    : 'fvp_get_embed',
+        'fvp_nonce' : fvpdata.nonce,
+        'id'        : id
+      }, function(response) {
+        if (response.success) {
+          // cache the result to not reload when opened again
+          videoCache[id] = response.data;
+
+          $('#DOMWindow').html(response.data);
+          sizeLocal();
+          $(window).trigger('scroll');
+        }
+      });
+    } else {
+      // From cache
+      $('#DOMWindow').html( videoCache[id] );
+      sizeLocal();
+      $(window).trigger('scroll');
+    }
+  }
+
+
+  /**
+   * Initialize the plugins JS functionality.
+   */
+  function init() {
+    var newSet = $('.featured-video-plus, .fvp-overlay, .fvp-dynamic');
+    if (newSet.is(selectorCache)) { return false; }
+    selectorCache = newSet;
+
+    // remove wrapping anchors
+    // doing this twice with a 1 second delay to fix wrapped local video posters
+    unwrap();
+    setTimeout(unwrap, 1000);
+
+    // initialize fitvids if available
+    fitVids();
+
+    sizeLocal();
+
+    // add hover effect and preload icons
+    $('.fvp-overlay, .fvp-dynamic')
+      .off('mouseenter').on('mouseenter', hoverAction)
+      .off('mouseleave').on('mouseleave', hoverAction);
+
+    // on-demand video insertion click handler
+    $('.fvp-dynamic').off('click').on('click', dynamicTrigger);
+
+    // overlay click handler
+    $('.fvp-overlay').off('click').on('click', overlayTrigger);
+  }
+
+
+  /**
+   * Debounced version of the init function.
+   */
+  initFeaturedVideoPlus = function() {
+    if (0 === initTimeout) {
+      init();
+      initTimeout = setTimeout(function() {}, 100);
+    } else {
+      clearTimeout(initTimeout);
+      initTimeout = setTimeout(init, 100);
+    }
+  };
+
+
+  // Initialization after DOM is completly loaded.
+  $(document).ready(function() {
+    // Wordaround for chrome bug
+    // See https://code.google.com/p/chromium/issues/detail?id=395791
+    if (!! window.chrome) {
+      $('.featured-video-plus iframe').each(function() {
+        this.src = this.src;
+      });
+    }
+
+    // preload images
+    [fvpdata.playicon, fvpdata.loadicon].forEach(function(val) {
+      $('body').append($('<img/>', {src: val, alt: 'preload image'}).hide());
+    });
+  });
+})(jQuery);
