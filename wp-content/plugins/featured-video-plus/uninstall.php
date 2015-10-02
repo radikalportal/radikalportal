@@ -1,24 +1,34 @@
 <?php
 
 /**
- * Runs on uninstallation, deletes all data including post metadata, video screen captures and options.
- *
- * @since 1.2
+ * Runs on uninstallation, deletes all data including post metadata,
+ * video screen captures and options.
  */
-if( !defined('WP_UNINSTALL_PLUGIN') ) exit();
+function featured_video_plus_uninstall() {
+	global $wpdb;
 
-delete_option( 'fvp-settings' );
+	// Get posts with featured videos.
+	$ids = $wpdb->get_col( $wpdb->prepare(
+		"SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key=%s",
+		'_fvp_video'
+	) );
 
-$post_types = get_post_types( array("public" => true) );
-foreach( $post_types as $post_type )
-	if( $post_type != 'attachment' ) {
-		$allposts = get_posts('numberposts=-1&post_type=' . $post_type . '&post_status=any');
-		foreach( $allposts as $post ) {
-			$meta = get_post_meta( $post->ID, '_fvp_video', true );
+	// For each post remove FVP data.
+	foreach ( $ids AS $id ) {
+		$meta = get_post_meta( $id, '_fvp_video', true );
+
+		if ( ! empty( $meta ) ) {
 			wp_delete_attachment( $meta['img'] );
-			delete_post_meta($meta['img'], 	'_fvp_image');
-			delete_post_meta($post->ID, 	'_fvp_video');
+			delete_post_meta( $meta['img'], '_fvp_image' );
+			delete_post_meta( $id, '_fvp_video' );
 		}
 	}
 
-?>
+	// Delete options row.
+	delete_option( 'fvp-settings' );
+}
+
+// Run uninstall.
+if ( defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+	featured_video_plus_uninstall();
+}
