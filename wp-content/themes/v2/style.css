@@ -44,6 +44,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
     }
 }
 
+/* FB widget is cut in half without this fix. */
+.fb_iframe_widget > span {
+    width: 940px !important;
+}
+
 /* Spotlight */
 
 .spotlight {

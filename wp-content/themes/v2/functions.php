@@ -1,5 +1,14 @@
 <?php
 
+function v2_login_logo() { ?>
+    <style type="text/css">
+     .login h1 a {
+         background-image: url(http://radikalportal.no/apple-touch-icon-180x180.png);
+     }
+    </style>
+<?php }
+add_action('login_enqueue_scripts', 'v2_login_logo');
+
 function mh_share_buttons_content() {
     $sb_output = '<section class="share-buttons-container clearfix">' . "\n";
     $sb_output .= '<div class="share-button"><div class="fb-like" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div></div>' . "\n";
