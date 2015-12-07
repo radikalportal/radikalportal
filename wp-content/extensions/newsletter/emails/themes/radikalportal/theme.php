@@ -65,10 +65,6 @@ $font_size = $theme_options['theme_font_size'];
         <table style="background:#F8F8F8" width="600" align="center" border="0" cellpadding="0" cellspacing="0">
 
             <tr>
-                <td style="color:#9ab;font:normal 11px helvetica,sans-serif;text-align:center;padding:10px 0 20px 0"><?php echo $theme_options['theme_pre_message']; ?></td>
-            </tr>
-
-            <tr>
 
                 <td style="background:#F8F8F8">
 
@@ -81,12 +77,12 @@ $font_size = $theme_options['theme_font_size'];
 
 
 
-                                <p style="color:#456;font-family:News Cycle, Arial Narrow Bold, sans-serif; font-size:24px;line-height:1.2;margin:15px 0;padding:0"><a target="_tab" href="<?php echo get_option('home'); ?>" style="color:#E22620;text-decoration:none" target="_blank"><?php echo get_option('blogname'); ?></a></p>
+                                <p style="color:#456;font-family:News Cycle, Arial Narrow Bold, sans-serif; font-size:24px;line-height:1.2;margin:15px 0;padding:0"><a target="_tab" href="<?php echo get_option('home'); ?>" style="color:#E22620;text-decoration:none" target="_blank"><img src="logo-avlang.png" alt="Radikal Portal"></a></p>
 
                                 <?php
                                 foreach ($posts as $post) {
                                     setup_postdata($post);
-                                    $image = nt_post_image(get_the_ID());
+                                    $image = nt_post_image(get_the_ID(), medium);
                                     ?>
 
 
@@ -95,15 +91,15 @@ $font_size = $theme_options['theme_font_size'];
                                         <tbody><tr>
                                                 <td style="width:100%; padding: 2% ;vertical-align:top; background:#fff">
 
-                                                    <p style="font-family:arial,sans-serif;color:#456;font-size:20px;line-height:22px;margin:0;padding:0"><strong><a target="_tab" href="<?php echo get_permalink(); ?>" style="color:#000;text-decoration:none" target="_blank"><?php the_title(); ?></a></strong></p>
+                                                    <p style="font-family:open-sans-bold,sans-serif;color:#456;font-size:20px;line-height:22px;margin:0;padding:0"><strong><a target="_tab" href="<?php echo get_permalink(); ?>" style="color:#000;text-decoration:none" target="_blank"><?php the_title(); ?></a></strong></p>
 
-                                                    <p style="font-family:arial,sans-serif;line-height:1.5em;margin:15px 0;padding:0"><?php the_excerpt(); ?>. </p>
+                                                    <p style="font-family:noto-sans-regular,sans-serif;line-height:1.5em;margin:15px 0;padding:0"><?php the_excerpt(); ?></p>
 
                                                 </td>
 
                                                 <td style="vertical-align:middle; width: 100px">
 
-                                                    <a target="_tab" href="<?php echo get_permalink(); ?>" target="_blank"><img src="<?php echo $image; ?>" alt="" width="100" border="0" height="100"></a>
+                                                    <a target="_tab" href="<?php echo get_permalink(); ?>" target="_blank"><img src="<?php echo $image; ?>" alt="" width="200" border="0"></a>
 
                                                     <p style="background:#E22620;text-align:center;margin:10px 0 0 0;font-size:11px;line-height:14px;font-family:arial,sans-serif;padding:4px 2px;border-radius:4px"><a target="_tab" href="<?php echo get_permalink(); ?>" style="color:#fff;text-decoration:none" target="_blank"><strong><?php echo $theme_options['theme_read_more']; ?></strong></a></p>
 
@@ -123,7 +119,7 @@ $font_size = $theme_options['theme_font_size'];
 
                                 <br><br>
                                 <p style="color:#456;font-family:arial,sans-serif;font-size:12px;line-height:1.6em;font-style:italic;margin:0 0 15px 0;padding:0">
-                                    To change your subscription, <a target="_blank"  href="{profile_url}">click here</a>.
+                                    Dersom du ikke ønsker å motta nyhetsbrevet lenger <a target="_blank"  href="{profile_url}">klikk her</a>.
                                 </p>
                             </td>
                         </tr>
@@ -132,13 +128,13 @@ $font_size = $theme_options['theme_font_size'];
                 </td>
             </tr>
 
-            <?php if (!isset($theme_options['theme_social_disable'])) { ?>
+<!--            <?php if (!isset($theme_options['theme_social_disable'])) { ?>
             <tr>
                 <td style="font:normal 11px helvetica,sans-serif;">
                      <?php include WP_PLUGIN_DIR . '/newsletter/emails/themes/default/social.php'; ?>
                 </td>
             </tr>
-            <?php } ?>
+            <?php } ?>-->
          </table>
 
     </body>
