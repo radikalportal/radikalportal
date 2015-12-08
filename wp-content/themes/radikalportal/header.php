@@ -45,6 +45,7 @@ Sjekk: github.com/radikalportal -->
 
     <?php wp_head(); ?>
     <link rel="alternate" type="application/rss+xml" title="Artikler (RSS)" href="<?php bloginfo('rss2_url'); ?>" />
+    <script type='text/javascript' src='http://radikalportal.no/wp-content/themes/radikalportal/js/bootstrap.min.js'></script>
     <script type="text/javascript">
 
   var _gaq = _gaq || [];
