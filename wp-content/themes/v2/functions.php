@@ -54,3 +54,26 @@ function v2_apple_touch_icons() {
     echo $output;
 }
 add_action('wp_head', 'v2_apple_touch_icons');
+
+function v2_rules_to_comment_template($comment_template) {
+    global $post;
+    if ('open' == $post->comment_status) {
+        echo '<section class="comments">';
+        echo '<h3 class="section-title">Diskusjon</h3>';
+        echo '<div class="section-title">';
+        echo '<p>';
+        echo '<strong>DEBATTREGLER:</strong>';
+        echo '<ul>';
+        echo '<li>- Respekter dine meddebattanter og utøv normal folkeskikk</li>';
+        echo '<li>- Vær saklig og hold deg til tema</li>';
+        echo '<li>- Ta ballen – ikke spilleren!</li>';
+        echo '</ul>';
+        echo '</p>';
+        echo '<p>Vi fjerner innlegg som er diskriminerende, hetsende og usaklige, spam og identiske kommentarer.</p>';
+        echo '</div>';
+        echo '</section>';
+    }
+
+    return $comment_template;
+}
+add_filter("comments_template", "v2_rules_to_comment_template");
