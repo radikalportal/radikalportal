@@ -3,7 +3,7 @@
 function v2_login_logo() { ?>
     <style type="text/css">
      .login h1 a {
-         background-image: url(http://radikalportal.no/apple-touch-icon-180x180.png);
+         background-image: url(//radikalportal.no/apple-touch-icon-180x180.png);
      }
     </style>
 <?php }
