@@ -11,8 +11,18 @@
 // langiage dependant.
 
 $options = array();
-$options['profile_text'] = "{profile_form}<p>To cancel your subscription, <a href='{unsubscription_confirm_url}'>click here</a>.</p>";
 
+// Profile page
+$options['profile_text'] = "<p>Change your subscription preferences to get what you are most interested in.</p>
+    <p>If you change your email address, a confirmation email will be sent to activate it.</p>
+    </p>
+    {profile_form}
+    <p>To cancel your subscription, <a href='{unsubscription_confirm_url}'>click here</a>.</p>";
+
+// Profile page messages
+$options['profile_email_changed'] = "Your email has been changed, an activation email has been sent. Please follow the instructions to activate the new address.";
+$options['profile_error'] = "Your email is not valid or already in use by another subscriber or another generic error has been found. Check your data or contact the site owner.";
+    
 $options['error_text'] = '<p>This subscription can\'t be completed, sorry. The email address is blocked or already subscribed. You should contact the owner to unlock that email address. Thank you.</p>';
 
 $options['already_confirmed_text'] = '<p>This email address is already subscribed, anyway a welcome email has been resent. Thank you.</p>';
@@ -66,15 +76,17 @@ $options['confirmed_message'] =
 <p>To unsubscribe, <a href='{unsubscription_url}'>click here</a>.  To change subscriber options,
 <a href='{profile_url}'>click here</a>.</p>";
 
-// Unsubscription request introductory text
+$options['confirmed_tracking'] = '';
+        
+// Unsubscription process
+
 $options['unsubscription_text'] = "<p>Please confirm that you want to unsubscribe by <a href='{unsubscription_confirm_url}'>clicking here</a>.</p>";
+$options['unsubscription_error_text'] = "<p>The subscriber was not found, it probably has already been removed. No further actions are required. Thank you.</p>";
 
 // When you finally loosed your subscriber
-$options['unsubscribed_text'] =
-"<p>Your subscription has been deleted. Thank you.</p>";
+$options['unsubscribed_text'] = "<p>Your subscription has been deleted. Thank you.</p>";
 
-$options['unsubscribed_subject'] =
-"Goodbye, {name}";
+$options['unsubscribed_subject'] = "Goodbye!";
 
 $options['unsubscribed_message'] =
 "<p>This message confirms that you have unsubscribed from the {blog_title} newsletter.</p>

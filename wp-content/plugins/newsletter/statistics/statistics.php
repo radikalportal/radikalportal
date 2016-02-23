@@ -19,27 +19,23 @@ class NewsletterStatistics extends NewsletterModule {
     function __construct() {
         global $wpdb;
 
-        parent::__construct('statistics', '1.1.0');
+        parent::__construct('statistics', '1.1.4');
+        
+        add_action('wp_loaded', array($this, 'hook_wp_loaded'));
+    }
 
-        // Link tracking redirect
+    function hook_wp_loaded() {
+        global $wpdb;
+        
         if (isset($_GET['nltr'])) {
-            list($email_id, $user_id, $url, $anchor) = explode(';', base64_decode($_GET['nltr']), 4);
-            $wpdb->insert(NEWSLETTER_STATS_TABLE, array(
-                'email_id' => $email_id,
-                'user_id' => $user_id,
-                'url' => $url,
-                'anchor' => $anchor,
-                'ip' => $_SERVER['REMOTE_ADDR']
-                    )
-            );
-
-            header('Location: ' . $url);
+            $_GET['r'] = $_GET['nltr'];
+            include dirname(__FILE__) . '/link.php';
             die();
         }
-
-        // Open tracking image
+        
+        // Newsletter Open Traking Image
         if (isset($_GET['noti'])) {
-            list($email_id, $user_id) = explode(';', base64_decode($_GET['r']), 2);
+            list($email_id, $user_id) = explode(';', base64_decode($_GET['noti']), 2);
 
             $wpdb->insert(NEWSLETTER_STATS_TABLE, array(
                 'email_id' => $email_id,
@@ -51,7 +47,7 @@ class NewsletterStatistics extends NewsletterModule {
             header('Content-Type: image/gif');
             echo base64_decode('_R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
             die();
-        }
+        }        
     }
 
     function upgrade() {
@@ -83,6 +79,14 @@ class NewsletterStatistics extends NewsletterModule {
         $this->upgrade_query("ALTER TABLE `{$wpdb->prefix}newsletter_stats` ADD INDEX `email_id` (`email_id`)");
         $this->upgrade_query("ALTER TABLE `{$wpdb->prefix}newsletter_stats` ADD INDEX `user_id` (`user_id`)");
 
+        if (empty($this->options['key'])) {
+            $this->options['key'] = md5($_SERVER['REMOTE_ADDR'] . rand(100000, 999999) . time());
+            $this->save_options($this->options);
+        }
+
+        $this->upgrade_query("ALTER TABLE `{$wpdb->prefix}newsletter_emails` ADD COLUMN `read_count` int UNSIGNED NOT NULL DEFAULT 0");
+        $this->upgrade_query("ALTER TABLE `{$wpdb->prefix}newsletter_emails` ADD COLUMN `click_count`  int UNSIGNED NOT NULL DEFAULT 0");
+        
         // Stores the link of every email to create short links
 //        $this->upgrade_query("create table if not exists {$wpdb->prefix}newsletter_links (id int auto_increment, primary key (id)) $charset_collate");
 //        $this->upgrade_query("alter table {$wpdb->prefix}newsletter_links add column email_id int not null default 0");
@@ -92,7 +96,7 @@ class NewsletterStatistics extends NewsletterModule {
     }
 
     function admin_menu() {
-        $this->add_menu_page('index', 'Statistics');
+        $this->add_admin_page('index', 'Statistics');
         $this->add_admin_page('view', 'Statistics');
     }
 
@@ -101,11 +105,7 @@ class NewsletterStatistics extends NewsletterModule {
         $this->relink_user_id = $user_id;
         $text = preg_replace_callback('/(<[aA][^>]+href=["\'])([^>"\']+)(["\'][^>]*>)(.*?)(<\/[Aa]>)/', array($this, 'relink_callback'), $text);
 
-        if ($this->options['tracking_url'] == 1) {
-            $text = str_replace('</body>', '<img width="1" height="1" alt="" src="' . home_url() . '?noti=' . urlencode(base64_encode($email_id . ';' . $user_id)) . '"/></body>', $text);
-        } else {
-            $text = str_replace('</body>', '<img width="1" height="1" alt="" src="' . plugins_url('newsletter') . '/statistics/open.php?r=' . urlencode(base64_encode($email_id . ';' . $user_id)) . '"/></body>', $text);
-        }
+        $text = str_replace('</body>', '<img width="1" height="1" alt="" src="' . home_url('/') . '?noti=' . urlencode(base64_encode($email_id . ';' . $user_id)) . '"/></body>', $text);
         return $text;
     }
 
@@ -116,6 +116,11 @@ class NewsletterStatistics extends NewsletterModule {
         if (strpos($href, '/newsletter/') !== false) {
             return $matches[0];
         }
+
+        if (strpos($href, '?na=') !== false) {
+            return $matches[0];
+        }
+
         // Do not relink anchors
         if (substr($href, 0, 1) == '#') {
             return $matches[0];
@@ -127,24 +132,23 @@ class NewsletterStatistics extends NewsletterModule {
 
         // This is the link text which is added to the tracking data
         $anchor = '';
-        if ($this->options['anchor'] == 1) {
-            $anchor = trim(str_replace(';', ' ', $matches[4]));
-            // Keep images but not other tags
-            $anchor = strip_tags($anchor, '<img>');
+//        if ($this->options['anchor'] == 1) {
+//            $anchor = trim(str_replace(';', ' ', $matches[4]));
+//            // Keep images but not other tags
+//            $anchor = strip_tags($anchor, '<img>');
+//
+//            // Truncate if needed to avoid to much long URLs
+//            if (stripos($anchor, '<img') === false && strlen($anchor) > 100) {
+//                $anchor = substr($anchor, 0, 100);
+//            }
+//        }
+        $r = $this->relink_email_id . ';' . $this->relink_user_id . ';' . $href . ';' . $anchor;
+        $r = $r . ';' . md5($r . $this->options['key']);
+        $r = base64_encode($r);
+        $r = urlencode($r);
 
-            // Truncate if needed to avoid to much long URLs
-            if (stripos($anchor, '<img') === false && strlen($anchor) > 100) {
-                $anchor = substr($anchor, 0, 100);
-            }
-        }
+        $url = home_url('/') . '?nltr=' . $r;
 
-        $r = urlencode(base64_encode($this->relink_email_id . ';' . $this->relink_user_id . ';' . $href . ';' . $anchor));
-
-        if ($this->options['tracking_url'] == 1) {
-            $url = home_url() . '?nltr=' . $r;
-        } else {
-            $url = plugins_url('newsletter') . '/statistics/link.php?r=' . $r;
-        }
         return $matches[1] . $url . $matches[3] . $matches[4] . $matches[5];
     }
 

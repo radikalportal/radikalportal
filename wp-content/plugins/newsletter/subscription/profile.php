@@ -4,10 +4,11 @@ $controls = new NewsletterControls();
 $module = NewsletterSubscription::instance();
 
 if (!$controls->is_action()) {
-    $controls->data = get_option('newsletter_profile');
+    $controls->data = $module->get_options('profile');
 } else {
     if ($controls->is_action('save')) {
-        update_option('newsletter_profile', $controls->data);
+        $module->merge_options($controls->data, 'profile');
+        $controls->add_message_saved();
     }
 
     if ($controls->is_action('reset')) {
@@ -15,50 +16,33 @@ if (!$controls->is_action()) {
         @include NEWSLETTER_DIR . '/subscription/languages/profile-en_US.php';
         @include NEWSLETTER_DIR . '/subscription/languages/profile-' . WPLANG . '.php';
         update_option('newsletter_profile', array_merge(get_option('newsletter_profile', array()), $options));
-        $controls->data = get_option('newsletter_profile');
+        $controls->data = $module->get_options('profile');
     }
 }
 
 $status = array(0 => 'Disabled/Private use', 1 => 'Only on profile page', 2 => 'Even on subscription forms');
 $rules = array(0 => 'Optional', 1 => 'Required');
 ?>
-<script type="text/javascript" src="<?php echo get_option('siteurl'); ?>/wp-content/plugins/newsletter/tiny_mce/tiny_mce.js"></script>
-<script type="text/javascript">
-    tinyMCE.init({
-        mode: "specific_textareas",
-        editor_selector: "visual",
-        theme: "advanced",
-        theme_advanced_disable: "styleselect",
-        relative_urls: false,
-        remove_script_host: false,
-        theme_advanced_buttons3: "",
-        theme_advanced_toolbar_location: "top",
-        theme_advanced_resizing: true,
-        theme_advanced_statusbar_location: "bottom",
-        document_base_url: "<?php echo get_option('home'); ?>/",
-        content_css: "<?php echo get_option('blogurl'); ?>/wp-content/plugins/newsletter/editor.css?" + new Date().getTime()
-    });
-</script>
 
-<div class="wrap">
+<div class="wrap" id="tnp-wrap">
+    
     <?php $help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/subscription-module'; ?>
-    <?php include NEWSLETTER_DIR . '/header-new.php'; ?>
+    
+        <?php include NEWSLETTER_DIR . '/tnp-header.php'; ?>
 
-    <div id="newsletter-title">
-        <?php include NEWSLETTER_DIR . '/subscription/menu.inc.php'; ?>
-
-        <h2>Subscription Form Fields and Layout</h2>
-        <p>
+    <div id="tnp-heading">
+    
+        <h2><?php _e('Subscription Form Fields and Layout', 'newsletter') ?></h2>
+           <p>
             This panel contains the configuration of the subscription and profile editing forms which collect the subscriber data you want to have.<br>
             And let you to <strong>translate</strong> every single button and label.<br>
             <strong>Preferences</strong> can be an important setting for your newsletter: <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-preferences" target="_blank">here you can read more about them</a>.
         </p>
+        
+      </div>
 
-    </div>
-    <div class="newsletter-separator"></div>
-
-
-    <?php $controls->show(); ?>
+    <div id="tnp-body">  
+        
     <form action="" method="post">
         <?php $controls->init(); ?>
 
@@ -177,6 +161,18 @@ $rules = array(0 => 'Optional', 1 => 'Required');
                     or selection list. Fields of type "list" must be configured with a set of options, comma separated
                     like: "first option, second option, third option".
                 </p>
+                <p>
+                    The placeholder works only on HTML 5 compliant browsers.
+                </p>
+                
+                 <table class="form-table">
+                    <tr>
+                        <th>Error message</th>
+                        <td>
+                            <?php $controls->text('profile_error', 50); ?>
+                        </td>
+                    </tr>
+                </table>
 
                 <table class="widefat">
                     <thead>
@@ -264,9 +260,13 @@ $rules = array(0 => 'Optional', 1 => 'Required');
         </div>
 
         <p>
-            <?php $controls->button('save', 'Save'); ?>
+            <?php $controls->button_save(); ?>
             <?php $controls->button_confirm('reset', 'Reset all', 'Are you sure you want to reset all?'); ?>
         </p>
 
     </form>
+</div>
+    
+    <?php include NEWSLETTER_DIR . '/tnp-footer.php'; ?>
+    
 </div>

@@ -44,21 +44,24 @@ if ($controls->is_action()) {
             $controls->data['confirmed_message'] = $defaults['confirmed_message'];
         }
 
-        if (empty($controls->data['unsubscribed_text'])) {
-            $controls->data['unsubscribed_text'] = $defaults['unsubscribed_text'];
-        }
-
         $controls->data['confirmed_message'] = NewsletterModule::clean_url_tags($controls->data['confirmed_message']);
         $controls->data['confirmed_text'] = NewsletterModule::clean_url_tags($controls->data['confirmed_text']);
         $controls->data['confirmation_text'] = NewsletterModule::clean_url_tags($controls->data['confirmation_text']);
         $controls->data['confirmation_message'] = NewsletterModule::clean_url_tags($controls->data['confirmation_message']);
-        $controls->data['unsubscription_text'] = NewsletterModule::clean_url_tags($controls->data['unsubscription_text']);
-        $controls->data['unsubscribed_text'] = NewsletterModule::clean_url_tags($controls->data['unsubscribed_text']);
-        $controls->data['unsubscribed_message'] = NewsletterModule::clean_url_tags($controls->data['unsubscribed_message']);
 
         $controls->data['confirmed_url'] = trim($controls->data['confirmed_url']);
         $controls->data['confirmation_url'] = trim($controls->data['confirmation_url']);
-        $module->save_options($controls->data);
+        
+        // Checkboxes patch
+        $options = get_option('newsletter', array());
+        for ($i = 1; $i <= NEWSLETTER_LIST_MAX; $i++) {
+            if (isset($options['preferences_' . $i])) {
+                unset($options['preferences_' . $i]);
+            }
+        }
+        update_option('newsletter', $options);
+        
+        $module->merge_options($controls->data);
         $controls->messages = 'Saved.';
     }
 
@@ -83,44 +86,12 @@ if ($controls->is_action()) {
         $controls->data = $module->reset_options();
     }
 
-    if ($controls->is_action('reset-template')) {
-        $controls->data['template'] = file_get_contents(dirname(__FILE__) . '/email.html');
-    }
-
-    if ($controls->is_action('test-template')) {
-
-        $users = NewsletterUsers::instance()->get_test_users();
-        if (count($users) == 0) {
-            $controls->errors = 'There are no test subscribers. Read more about test subscribers <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
-        } else {
-            $template = $controls->data['template'];
-            if (strpos($template, '{message}') === false) {
-                $template .= '{message}';
-            }
-            $message = '<p>This is a generic example of message embedded inside the template.</p>';
-            $message = str_replace('{message}', $message, $template);
-            $addresses = array();
-            foreach ($users as &$user) {
-                $addresses[] = $user->email;
-                Newsletter::instance()->mail($user->email, 'Newsletter Messages Template Test', $newsletter->replace($message, $user));
-            }
-            $controls->messages .= 'Test emails sent to ' . count($users) . ' test subscribers: ' .
-            implode(', ', $addresses) . '. Read more about test subscribers <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
-        }
-    }
-    
     if ($controls->is_action('test-confirmation')) {
 
         $users = NewsletterUsers::instance()->get_test_users();
         if (count($users) == 0) {
             $controls->errors = 'There are no test subscribers. Read more about test subscribers <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
         } else {
-            $template = $controls->data['template'];
-            if (strpos($template, '{message}') === false) {
-                $template .= '{message}';
-            }
-            $message = '<p>This is a generic example of message embedded inside the template.</p>';
-            $message = str_replace('{message}', $message, $template);
             $addresses = array();
             foreach ($users as &$user) {
                 $addresses[] = $user->email;
@@ -131,48 +102,60 @@ if ($controls->is_action()) {
                 }
             }
             $controls->messages .= 'Test emails sent to ' . count($users) . ' test subscribers: ' .
-            implode(', ', $addresses) . '. Read more about test subscribers <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
-            $controls->messages .= '<br>If the message is not received, try to chnage the message text it could trigger some antispam filters.';
+                    implode(', ', $addresses) . '. Read more about test subscribers <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
+            $controls->messages .= '<br>If the message is not received, try to change the message text it could trigger some antispam filters.';
         }
     }
-    
+
+    if ($controls->is_action('test-confirmed')) {
+
+        $users = NewsletterUsers::instance()->get_test_users();
+        if (count($users) == 0) {
+            $controls->errors = 'There are no test subscribers. Read more about test subscribers <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
+        } else {
+            $addresses = array();
+            foreach ($users as &$user) {
+                $addresses[] = $user->email;
+                $res = $module->mail($user->email, $module->options['confirmed_subject'], $newsletter->replace($module->options['confirmed_message'], $user));
+                if (!$res) {
+                    $controls->errors = 'The email address ' . $user->email . ' failed.';
+                    break;
+                }
+            }
+            $controls->messages .= 'Test emails sent to ' . count($users) . ' test subscribers: ' .
+                    implode(', ', $addresses) . '. Read more about test subscribers <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
+            $controls->messages .= '<br>If the message is not received, try to change the message text it could trigger some antispam filters.';
+        }
+    }    
 } else {
     $controls->data = get_option('newsletter', array());
-
-    // Patch
-    if (isset($controls->data['subscribed_text'])) {
-        $controls->data['confirmation_text'] = $controls->data['subscribed_text'];
-        unset($controls->data['subscribed_text']);
-    }
 }
 ?>
 
-<div class="wrap">
-    <?php $help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/subscription-module'; ?>
-    <?php include NEWSLETTER_DIR . '/header-new.php'; ?>
+<div class="wrap" id="tnp-wrap">
 
-    <div id="newsletter-title">
-        <?php include NEWSLETTER_DIR . '/subscription/menu.inc.php'; ?>
+    <?php include NEWSLETTER_DIR . '/tnp-header.php'; ?>
 
-        <h2>Subscription, Unsubscription, Profile Page Configuration</h2>
+    <div id="tnp-heading">
+    
+    <h2><?php _e('Subscription, Profile Page Configuration', 'newsletter') ?></h2>
 
+    <p>
+        In this panel you can configure the subscription and cancellation process, set up every message, the single or double opt in and
+        even a customized subscription form.
+    </p>
+    <p>
+        Emails sent during subscription process are themed with the file subscription/email.php. Open that file to learn how to customize it.
+    </p>
+    <p>
+        Page layout where messages are shown is managed by subscription/page.php file which contains instruction on how to
+        customize it OR use a WordPress page for messages as described on subscription configuration.
+    </p>
 
-        <p>
-            In this panel you can configure the subscription and cancellation process, set up every message, the single or double opt in and
-            even a customized subscription form.
-        </p>
-        <p>
-            Emails sent during subscription process are themed with the file subscription/email.php. Open that file to learn how to customize it.
-        </p>
-        <p>
-            Page layout where messages are shown is managed by subscription/page.php file which contains instruction on how to
-            customize it OR use a WordPress page for messages as described on subscription configuration.
-        </p>
     </div>
-    <div class="newsletter-separator"></div>
 
-
-    <?php $controls->show(); ?>
+    <div id="tnp-body">
+    
     <form method="post" action="">
         <?php $controls->init(); ?>
         <div id="tabs">
@@ -181,10 +164,7 @@ if ($controls->is_action()) {
                 <li><a href="#tabs-2">Subscription</a></li>
                 <li><a href="#tabs-3">Confirmation</a></li>
                 <li><a href="#tabs-4">Welcome</a></li>
-                <li><a href="#tabs-8">Template</a></li>
                 <li><a href="#tabs-9">Profile</a></li>
-                <li><a href="#tabs-5">Unsubscription</a></li>
-                <li><a href="#tabs-wp">WP Registration</a></li>
                 <li><a href="#tabs-7">Docs</a></li>
             </ul>
 
@@ -224,18 +204,6 @@ if ($controls->is_action()) {
                             </p>
                         </td>
                     </tr>
-                    <?php /*
-                    <tr valign="top">
-                        <th>Disable visual editors?</th>
-                        <td>
-                            <?php $controls->yesno('novisual'); ?>
-                            <p class="description">
-                                If you prefer to edit the messages on this cofiguration panel writing them in HTML, you can
-                                disable the visual editors.
-                            </p>
-                        </td>
-                    </tr>
-                    */ ?>
                     <tr valign="top">
                         <th>Notifications</th>
                         <td>
@@ -273,11 +241,11 @@ if ($controls->is_action()) {
                         </td>
                     </tr>
                     <tr valign="top">
-                        <th>Enable the antibot?</th>
+                        <th>Disable antibot/antispam?</th>
                         <td>
-                            <?php $controls->yesno('antibot'); ?>
+                            <?php $controls->checkbox('antibot_disable'); ?>
                             <p class="description">
-                                Tries to block bot generated subscriptions (without the annoying captcha).
+                                Required for ajax form subsmissions.
                             </p>
                         </td>
                     </tr>
@@ -286,11 +254,12 @@ if ($controls->is_action()) {
                 <h3>Special cases</h3>
 
                 <table class="form-table">
+                    <!--
                     <tr valign="top">
                         <th>Already subscribed page content</th>
                         <td>
-                            <?php $controls->wp_editor('already_confirmed_text'); ?><br>
-                            <?php $controls->checkbox('resend_welcome_email_disabled', 'Do not resend the welcome email'); ?>
+                    <?php $controls->wp_editor('already_confirmed_text'); ?><br>
+                    <?php $controls->checkbox('resend_welcome_email_disabled', 'Do not resend the welcome email'); ?>
                             <p class="description">
                                 Shown when the email is already subscribed and confirmed. The welcome email, if not disabled, will
                                 be sent. Find out more on this topic on its
@@ -298,6 +267,7 @@ if ($controls->is_action()) {
                             </p>
                         </td>
                     </tr>
+                    -->
                     <tr valign="top">
                         <th>Error page content</th>
                         <td>
@@ -404,6 +374,7 @@ if ($controls->is_action()) {
                         </th>
                         <td>
                             <?php $controls->email('confirmed', 'wordpress', true); ?>
+                            <?php $controls->button('test-confirmed', 'Send a test'); ?>
                             <p class="description">
                                 Email sent to the user to confirm his subscription, the successful confirmation
                                 page, the welcome email. This is the right message where to put a <strong>{unlock_url}</strong> link to remember to the
@@ -417,50 +388,32 @@ if ($controls->is_action()) {
                 </table>
             </div>
 
-            <!-- TEMPLATE -->
-            <div id="tabs-8">
-                <p>
-                    Edit the default template of confirmation, welcome and cancellation emails. Add the {message} tag where you
-                    want the specific message text to be included.
-                </p>
-
-                <table class="form-table">
-                    <tr valign="top">
-                        <th>Enabled?</th>
-                        <td>
-                            <?php $controls->yesno('template_enabled'); ?>
-                            <p class="description">
-                                When not enabled, the old templating system is used (see the file
-                                wp-content/plugins/newsletter/subscription/email.php).
-                            </p>
-                        </td>
-                    </tr>
-                    <tr valign="top">
-                        <th>Email template</th>
-                        <td>
-                            <?php $controls->textarea('template'); ?>
-                            <?php $controls->button('reset-template', 'Reset this template'); ?>
-                            <?php $controls->button('test-template', 'Send a test'); ?>
-                        </td>
-                    </tr>
-                </table>
-
-            </div>
-
             <!-- PROFILE -->
             <div id="tabs-9">
 
                 <p>
-                    The page shown when the subscriber wants to edit hid profile following the link
-                    {profile_url} you added to a newsletter.
+                    The page shown when the subscriber wants to edit his profile following the link
+                    {profile_url} you added to a newsletter pr the welcome email.
                 </p>
 
 
                 <table class="form-table">
                     <tr valign="top">
+                        <th>Customized profile page</th>
+                        <td>
+                            <?php $controls->text('profile_url', 70); ?>
+                            <p class="description">
+                                A full page address (e.g. http://yourblog.com/profile) to be used to show and edit the subscriber profile.
+                                Leave empty to use an auto generated page or the main Newsletter page with the message below.
+                                <br>
+                                The custom page must contain the [newsletter_profile] shortcode.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr valign="top">
                         <th>Profile page</th>
                         <td>
-                            <?php $controls->editor('profile_text'); ?>
+                            <?php $controls->wp_editor('profile_text'); ?>
                             <?php $controls->hint('This is the page where subscribers can edit their data and it must contain the {profile_form} tag.', 'http://www.thenewsletterplugin.com/plugins/newsletter/subscription-module#profile');
                             ?>
                         </td>
@@ -468,67 +421,19 @@ if ($controls->is_action()) {
                     <tr>
                         <th>Other messages</th>
                         <td>
-                            confirmation after profile save: <?php $controls->text('profile_saved', 50); ?>
+                            confirmation after profile save<br>
+                            <?php $controls->text('profile_saved', 80); ?><br><br>
+                            email changed notice<br>
+                            <?php $controls->text('profile_email_changed', 80); ?>
+                            <p class="description">when a subscriber changes his email, he will be unconfirmed and a new confirmation email is sent</p>
+                            <br><br>
+                            generic error<br>
+                            <?php $controls->text('profile_error', 80); ?>
+                            <p class="description">when the email is not valid or already used by another subscriber</p>
                         </td>
                     </tr>
                 </table>
             </div>
-
-
-            <div id="tabs-5">
-
-                <p>
-                    A user starts the cancellation process clicking the unsubscription link in
-                    a newsletter. This link contains the email to unsubscribe and some unique information
-                    to avoid hacking. The user are required to confirm the unsubscription: this is the last
-                    step where YOU can communicate with your almost missed user.
-                </p>
-                <p>
-                    To create immediate cancellation, you can use the <strong>{unsubscription_confirm_url}</strong>
-                    in your newsletters and upon click on that link goodbye message and email are used directly
-                    skipping the confirm request.
-                </p>
-
-                <table class="form-table">
-                    <tr valign="top">
-                        <th>Cancellation message</th>
-                        <td>
-                            <?php $controls->editor('unsubscription_text'); ?>
-                            <p class="description">
-                                This text is show to users who click on a "unsubscription link" in a newsletter
-                                email. You <strong>must</strong> insert a link in the text that user can follow to confirm the
-                                unsubscription request using the tag <strong>{unsubscription_confirm_url}</strong>.
-                            </p>
-                        </td>
-                    </tr>
-
-                    <!-- Text showed to the user on successful unsubscription -->
-                    <tr valign="top">
-                        <th>Goodbye message</th>
-                        <td>
-                            <?php $controls->editor('unsubscribed_text'); ?>
-                            <p class="description">
-                                Shown to users after the cancellation has been completed.
-                            </p>
-                        </td>
-                    </tr>
-
-                    <!-- GOODBYE EMAIL -->
-                    <tr valign="top">
-                        <th>Goodbye email</th>
-                        <td>
-                            <?php $controls->email('unsubscribed'); ?>
-                            <p class="description">
-                                Sent after a cancellation, is the last message you send to the user before his removal
-                                from your newsletter subscribers. Leave the subject empty to disable this message.
-                            </p>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-
-
-
 
             <div id="tabs-7">
 
@@ -567,46 +472,16 @@ if ($controls->is_action()) {
                     Insert the profile form with user's data. Usually it make sense only on welcome page.<br />
                 </p>
             </div>
-
-
-            <div id="tabs-wp">
-
-                <p>
-                    Configure if and how a regular WordPress user registration can be connected to a Newsletter subscription.
-                </p>
-                <p>
-                    Important! This type of subscription does not require confirmation, it's automatic on first login.
-                    <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscription-module#registration" target="_blank">Read more on documentation page</a>.
-                </p>
-
-                <table class="form-table">
-                    <tr valign="top">
-                        <th>Subscription on registration</th>
-                        <td>
-                            <?php $controls->select('subscribe_wp_users', array(0 => 'No', 1 => 'Yes, force subscription', 2 => 'Yes, show the option', 3 => 'Yes, show the option already checked')); ?>
-                            <?php $controls->hint('Adds a newsletter subscription option on registration.', 'http://www.thenewsletterplugin.com/plugins/newsletter/subscription-module#registration'); ?>
-                        </td>
-                    </tr>
-                    <tr valign="top">
-                        <th>Check box label</th>
-                        <td>
-                            <?php $controls->text('subscribe_wp_users_label', 30); ?>
-                        </td>
-                    </tr>
-                    <tr valign="top">
-                        <th>Send welcome email to registered users</th>
-                        <td>
-                            <?php $controls->yesno('wp_welcome'); ?>
-                        </td>
-                    </tr>
-                </table>
-            </div>
         </div>
 
         <p>
-            <?php $controls->button('save', 'Save'); ?>
+            <?php $controls->button_save(); ?>
             <?php $controls->button_confirm('reset', 'Reset all', 'Are you sure you want to reset all?'); ?>
         </p>
 
     </form>
+</div>
+    
+    <?php include NEWSLETTER_DIR . '/tnp-footer.php'; ?>
+    
 </div>

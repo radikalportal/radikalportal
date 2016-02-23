@@ -1,15 +1,3 @@
-
-var tabs;
-jQuery(document).ready(function(){
-  jQuery(function() {
-    tabs = jQuery("#tabs").tabs({
-      cookie: {
-        expires: 30
-      }
-    });
-  });    
-});
-
 jQuery.cookie = function(name, value, options) {
   if (typeof value != 'undefined') { // name and value given, set cookie
     options = options || {};

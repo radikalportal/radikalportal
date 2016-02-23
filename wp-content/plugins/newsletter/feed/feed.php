@@ -19,7 +19,7 @@ class NewsletterFeed extends NewsletterModule {
     }
 
     function admin_menu() {
-        $this->add_menu_page('index', 'Feed by Mail');
+//        $this->add_menu_page('index', 'Feed by Mail');
     }
 }
 

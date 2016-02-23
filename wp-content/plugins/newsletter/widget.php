@@ -5,15 +5,15 @@
  */
 class NewsletterWidget extends WP_Widget {
 
-    function NewsletterWidget() {
-        parent::WP_Widget(false, $name = 'Newsletter', array('description' => 'Newsletter widget to add subscription forms on sidebars'), array('width' => '350px'));
+    function __construct() {
+        parent::__construct(false, $name = 'Newsletter', array('description' => 'Newsletter widget to add subscription forms on sidebars'), array('width' => '350px'));
     }
 
     static function get_widget_form() {
         $options_profile = get_option('newsletter_profile');
         $form = NewsletterSubscription::instance()->get_form_javascript();
 
-        $form .= '<form action="' . plugins_url('newsletter/do/subscribe.php') . '" onsubmit="return newsletter_check(this)" method="post">';
+        $form .= '<form action="' . home_url('/') . '?na=s" onsubmit="return newsletter_check(this)" method="post">';
         // Referrer
         $form .= '<input type="hidden" name="nr" value="widget"/>';
 
@@ -125,7 +125,7 @@ class NewsletterWidget extends WP_Widget {
                 }
             }
         } else {
-            $buffer = str_ireplace('<form', '<form method="post" action="' . plugins_url('newsletter/do/subscribe.php') . '" onsubmit="return newsletter_check(this)"', $buffer);
+            $buffer = str_ireplace('<form', '<form method="post" action="' . esc_attr(home_url('/') . '?na=s') . '" onsubmit="return newsletter_check(this)"', $buffer);
             $buffer = str_ireplace('</form>', '<input type="hidden" name="nr" value="widget"/></form>', $buffer);
         }
 
@@ -144,6 +144,8 @@ class NewsletterWidget extends WP_Widget {
     }
 
     function form($instance) {
+        if (!is_array($instance)) $instance = array();
+        $instance = array_merge(array('title'=>'', 'text'=>''), $instance);
         ?>
         <p>
             <label for="<?php echo $this->get_field_id('title'); ?>">

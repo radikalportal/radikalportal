@@ -1,10 +1,21 @@
 <?php
 
+// Stops WP Super Cache which removes the logged_in cookie
+$_GET['preview'] = 'true';
+
 require_once '../../../../wp-load.php';
 
-if (!is_user_logged_in()) die();
-if (Newsletter::instance()->options['editor'] == 1 && !current_user_can('manage_categories')) die();
-else if (!current_user_can('manage_options')) die();
+if (!is_user_logged_in()) {
+    die('No logged in user found. A plugin is almost surely removing the authentication cookies, usually a cache plugin. Try to report the issue on http://www.thenewsletterplugin.com forum.');
+}
+
+if (!current_user_can('manage_categories')) {
+    die('Not enough privileges');
+}
+
+if (Newsletter::instance()->options['editor'] != 1 && !current_user_can('manage_options')) {
+    die('Not enough privileges');
+}
 
 require_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 $controls = new NewsletterControls();
@@ -15,7 +26,7 @@ if ($controls->is_action('create')) {
 
     $email = array();
     $email['status'] = 'new';
-    $email['subject'] = __('Here the email subject', 'newsletter-emails');
+    $email['subject'] = ''; //__('Here the email subject', 'newsletter');
     $email['track'] = 1;
 
     $theme_options = $module->get_current_theme_options();

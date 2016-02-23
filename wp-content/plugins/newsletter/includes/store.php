@@ -51,7 +51,7 @@ class NewsletterStore {
 
     function get_single_by_field($table, $field_name, $field_value, $format = OBJECT) {
         global $wpdb;
-        return $this->get_single_by_query("select * from $table where $field_name='" . $wpdb->escape($field_value) . "' limit 1", $format);
+        return $this->get_single_by_query("select * from $table where $field_name='" . esc_sql($field_value) . "' limit 1", $format);
     }
 
     function get_count($table, $where = null) {
@@ -84,6 +84,13 @@ class NewsletterStore {
         return $r;
     }
 
+    function sanitize($data) {
+        foreach ($data as $key => $value) {
+            $data[$key] = preg_replace('%(?:\xF0[\x90-\xBF][\x80-\xBF]{2}|[\xF1-\xF3][\x80-\xBF]{3}|\xF4[\x80-\x8F][\x80-\xBF]{2})%xs', '', $value);
+        }
+        return $data;
+    }
+
     /**
      * Save a record on given table, updating it id the "id" value is set (as key or object property) or inserting it
      * if "id" is not set. Accepts objects or associative arrays as data.
@@ -103,14 +110,14 @@ class NewsletterStore {
         if (isset($data['id'])) {
             $id = $data['id'];
             unset($data['id']);
-            $r = $wpdb->update($table, $data, array('id' => $id));
+            $r = $wpdb->update($table, $this->sanitize($data), array('id' => $id));
             if ($r === false) {
                 $this->logger->fatal($wpdb->last_error);
                 die('Database error.');
             }
             //$this->logger->debug('save: ' . $wpdb->last_query);
         } else {
-            $r = $wpdb->insert($table, $data);
+            $r = $wpdb->insert($table, $this->sanitize($data));
             if ($r === false) {
                 $this->logger->fatal($wpdb->last_error);
                 die('Database error.');
@@ -202,4 +209,3 @@ class NewsletterStore {
     }
 
 }
-

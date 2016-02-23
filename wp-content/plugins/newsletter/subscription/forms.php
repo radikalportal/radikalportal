@@ -9,26 +9,26 @@ if (!$controls->is_action()) {
 
 if ($controls->is_action('save')) {
     update_option('newsletter_forms', $controls->data);
-    $controls->messages = 'Saved.';
+    $controls->add_message_saved();
 }
 ?>
 
-<div class="wrap">
-    <?php $help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-forms'; ?>
-    <?php include NEWSLETTER_DIR . '/header-new.php'; ?>
+<div class="wrap" id="tnp-wrap">
 
-    <div id="newsletter-title">
-        <?php include NEWSLETTER_DIR . '/subscription/menu.inc.php'; ?>
+    <?php include NEWSLETTER_DIR . '/tnp-header.php'; ?>
 
-        <h2>Alternative Hand-Coded Forms</h2>
-        <p>
-            Here you can store your hand coded forms to recall them from short codes.
-            <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-forms" target="_blank">Read more about forms</a>.
-        </p>
+    <div id="tnp-heading">
+    
+    <h2><?php _e('Custom Forms', 'newsletter') ?></h2>
+    <p>
+        Here you can store your hand coded forms to recall them from short codes.
+        <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-forms" target="_blank">Read more about forms</a>.
+    </p>
+
     </div>
-    <div class="newsletter-separator"></div>
 
-    <?php $controls->show(); ?>
+	<div id="tnp-body">
+    
     <form method="post" action="">
         <?php $controls->init(); ?>
 
@@ -46,7 +46,7 @@ if ($controls->is_action('save')) {
                             <td>
                                 <?php $controls->textarea('form_' . $i); ?>
                                 <br />
-                                <?php $controls->button('save', 'Save'); ?>
+                                <?php $controls->button_save(); ?>
                             </td>
                         </tr>
                     <?php } ?>
@@ -57,3 +57,8 @@ if ($controls->is_action('save')) {
     </form>
 
 </div>
+    
+   <?php include NEWSLETTER_DIR . '/tnp-footer.php'; ?>
+    
+</div> 
+    

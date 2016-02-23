@@ -1,40 +1,59 @@
 === Newsletter ===
 Tags: newsletter,email,subscription,mass mail,list build,email marketing,direct mailing
-Requires at least: 3.3.0
-Tested up to: 4.1.1
+Requires at least: 3.4.0
+Tested up to: 4.4.1
 Stable tag: trunk
 Contributors: satollo,webagile,michael-travan
 
-Add a real newsletter to your blog. In seconds. For free. With unlimited emails and subscribers.
+Add a real newsletter system to your blog. For free. With unlimited newsletters and subscribers.
 
 == Description ==
 
-This plug-in adds a real newsletter system to your WordPress blog. Perfect for list building,
-you can create cool emails with visual editor, send and
-track them.
+Newsletter is a **real newsletter system** for your WordPress blog: perfect for list building, you can easily create,
+send and track e-mails, headache-free. It just works out of box! 
 
-** Let me know if the plugin is doing well: rate it, thank you!** (see the stars on the right)
+= Main Features =
 
-Unlimited subscribers, unlimited e-mails.
+* **Unlimited Subscribers** with statistics 
+* **Unlimited Emails** with tracking
+* Customizable **subscription widget**, **page** or **custom form**
+* Wordpress User Registration **seamless integration**
+* **Single** And **Double Opt-In** plus privacy checkbox for EU laws compliance
+* **Subscribers preferences** to fine-target your campaigns
+* SMTP-Ready 
+* Customizable Themes
+* Html and Text versions of Emails 
+* All messages are **fully translatable** from Admin Panel (no .po/.mo)
+* Diagnostics Panel to check your blog mailing capability 
 
-Key features:
+**Set Up Your First Newsletter In Just A Couple Of Clicks**
+[youtube https://www.youtube.com/watch?v=JaxK7XwqvVI]
 
-* **unlimited subscribers** (the database is your, why should I limit you?) with statistics
-* **unlimited emails** with tracking
-* subscription widget, page or via custom form
-* integrated with **WordPress user registration**
-* single and double opt-in plus privacy acceptance checkbox (as per European laws)
-* subscriber preferences to fine target your campaigns
-* **SMTP** ready (Gmail, SendGrid, ...)
-* html and text version messages
-* configurable themes
-* every message and label **fully translatable** from administrative panels (no .po/.mo file to edit)
-* diagnostic panel for **easy system tests**
-* **extensible** with specific modules (Facebook, Reports, Feed by Mail, Follow Up)
+= Integration with WordPress registration =
 
-Visit the [Newsletter official page](http://www.thenewsletterplugin.com/) to know more.
+* Newsletter subscription check box on standard WordPress registration form
+* Auto confirmation on first login
+* Imports already registered users
 
-Thank you, The Newsletter Team
+= Professional Extensions =
+
+Need *more power*? Feel *something's missing*? The Newsletter Plugin features can be easily extended through 
+our **premium, professional Extensions**! Let us introduce just two of them : )
+
+* [Reports Extension](http://www.thenewsletterplugin.com/plugins/newsletter/reports-module) is a regular WordPress plugin which improves the internal statistics collection system and provides better reports of data collected for each sent email. Neat.
+* [Feed By Mail Extension](http://www.thenewsletterplugin.com/feed-by-mail-extension) generates and sends your newsletters using your blog last posts, even custom ones like events or products. Just sit and watch!
+* [WooCommerce Extension](http://www.thenewsletterplugin.com/woocommerce-extension) subscribe customers to a mailing list and generate product newletters.
+* [Amazon SES Extension](http://www.thenewsletterplugin.com/amazon-ses-extension-for-the-newsletter-plugin) seamlessly integrate Amazon SES with The Newsletter Plugin. Hassle-free.
+
+= Support =
+
+We provide support for our plugin on [Wordpress.org forums](https://wordpress.org/support/plugin/newsletter) and through our official [forum here](http://www.thenewsletterplugin.com/forums), but only Premium Users with an active license have access to one-to-one support via our [ticketing system](http://www.thenewsletterplugin.com/support-ticket). 
+
+= Follow Us =
+
+* **Our Official Website** - http://www.thenewsletterplugin.com/ 
+* **Our Facebook Page** - https://www.facebook.com/thenewsletterplugin 
+* **Our Twitter Account** - https://twitter.com/newsletterwp 
 
 == Installation ==
 
@@ -53,13 +72,213 @@ Thank you, The Newsletter Team
 
 == Screen shots ==
 
-No screen shots are available at this time.
+No screenshots are available at this time.
 
 == Changelog ==
 
-= coming =
+= 4.0.9 =
 
+* Updated jQuery UI
+* Updated compatibility notice
+* Fixed tabs on subscriber stats panel
+* Fixed documentation on profile page
+
+= 4.0.8 =
+
+* Dashboard style fix for WordPress >= 4.4
+* Minor improvements
+
+= 4.0.7 =
+
+* New check to prevent not correct message template settings to block emails
+* Improved confirmation email test
+* Added welcome email test
+* Resubscription in single opt-in does not send the confirmation email anymore
+* Fixed second subscription with Facebook extension
+
+= 4.0.6 =
+
+* Fixed forced lists on subscription panel
+* Fixed few i18n tags
+* Fixed background color on theme selector
+
+= 4.0.5 =
+
+* Fixed an error on content lock
+* Fixed CSS for extensions
+* Fixed few debug notices
+* Improved the content lock user recognition
+* Subscriber search by list 
+
+= 4.0.4 =
+
+* Fixed and improved the email template for service messages
+
+= 4.0.3 =
+
+* Fixed the welcome email enable/disable setting 
+
+= 4.0.2 =
+
+* Fixed main settings saving
+* Fixed unsubscription settings saving
+
+= 4.0.0 =
+
+* Shiny new look
+* New top menu
+* Locked content feature moved into the subscription module
+* Separated SMTP configuration panel
+* Newsletter users import transfer first and last name
+* Various bug fixes and improvements
+
+= 3.9.5 =
+
+* Corrected the call to maybe_maybe_convert_table_to_utf8mb4
+
+= 3.9.4 =
+
+* CSV export fix
+* Delete button on newsletter list fixed (wrong since version 3.9.3)
+
+= 3.9.3 =
+
+* Added the blog charset to the dagnostic panel
+* Fixed the read count (was due to antispam filter changes)
+* Language domain fixes
+
+= 3.9.2 =
+
+* Fixed the tab separator in CSV export
+* Removed the already subscribed option
+* Removed obsolete code for anchor tracking
+* Added the sent newsletters to the subscriber editing panel
+* Added a sent-to table
+
+= 3.9.1 =
+
+* Enable the tracking key edit
+* Removed the antibot option, active by default
+* First round of changes for translate.wordpress.org
+* Fixed few notices
+* Added deprecation notices for the email.php and email-alternative.php files
+* Fixed the export separator
+* Removed reference to plugin files in URLs to avoid spam filter
+* Removed the selection of Newsletter action URL
+* Removed obsolete files
+
+= 3.9.0 =
+
+* Fixed the new excerpt extraction
+
+= 3.8.9 =
+
+* Fixed few debug notices
+* Improved support for browser without javascript
+* Adding multi subscription support
+* Improved antibot
+* Fixed some debug/deprecated noticies
+* Added support for new beta Report Extension features
+
+= 3.8.8 =
+
+* Unsubscription works now only with JavaScript enabled browser to block bots
+* New way to extract excerpts to avoid third party filters
+* Fixed the image selector for header logo
+* Added preview form subscription message template
+* Added WordPress like metadata on themes
+* Fixed the default theme
+* Changed few theme screeshots
+* Added attribute "layout" to shortcode with value "html5" for tableless form
+
+= 3.8.7 =
+
+* Fixed the widget constructor
+
+= 3.8.6 =
+
+* Improved checks on tracking links which could be used for spamming links (open redirect)
+
+= 3.8.5 =
+
+* Changed the widget constructor
+* Fixed the newsletter_form shortcode
 * Added shortcodes for in page form building (beta): see the [plugin documentation](http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-documentation).
+
+= 3.8.4 =
+
+* Fixed the unsubscription problem
+
+= 3.8.3 =
+
+* Fixed the editor for unsubscription messages
+* Added the unsubscription error message
+* Fixed the email change from admin panels
+* Fixed the profile field check when set as optionals
+
+= 3.8.2 =
+
+* Improved the profile editing page (with confirmation for email change)
+* Added new sync between confirmed email and linked wp user email
+* Improved check and messages on subscriber edit panel
+* Changed the confirmation behavior for already confirmed users (welcome page reshown)
+* Added the subscription delete option when a WordPress user si deleted
+* Unsubscribe action for already unsubscribed subscribers reshow the unsubscription message
+* Better management of emoji (creating sometime a database error)
+
+= 3.8.1 =
+
+* Corrected open tracking with new tracking URL schema
+
+= 3.8.0 =
+
+* CSV import fix
+
+= 3.7.9 =
+
+* Added subject empty check when sending tests
+* Added option to import subscribers as confirmed or not confirmed 
+* Added import subscribers from CSV file
+* Updated the WP compatibility version number
+* Fixed the save button on sent emails
+* Fixed the List-§Unsubscribe header with new URL schema
+
+= 3.7.8 =
+
+* Fixed the online email view with the new URL schema
+
+= 3.7.7 =
+
+* Fixed the editor role
+* Fixed the unsubscription url with the new action url schema
+* Fixed the readme.txt
+* Tested with WP 4.2
+
+= 3.7.6 =
+
+* Fixed the new action URL schema
+* Added a notice for blank page on newsletter creation
+* Few notices removed
+* Added more html require attributes
+* Fixed the alternative confirmation redirect
+
+= 3.7.5 =
+
+* Fixed the referrer attribute on shortcodes
+
+= 3.7.4 =
+
+* Added control to avoid the wp super cache caching on newsletter services
+* Added the new action URL schema (see the subscription steps panel)
+* Added confirmation_url attribute to the form short code
+* Added referrer attribute to the form short code
+* Newsletters now start with empty subject and it's require to write it
+* Fixed the API add service key check
+* Fixed a couple of PHP noticies on widget (when not configured)
+
+= 3.7.3 =
+
+* Fixed extra profile field rules and placeholder
 
 = 3.7.2 =
 
@@ -683,25 +902,3 @@ Version 2.5.0.1
 Version 2.5.0
 - Official first release
 
-= SVN =
-
-Actually I'm using SVN in a wrong way (deliberately). Usually development with SNV
-should be done in this way:
-
-* the trunk is where the latest (eventually not working code) is available
-* the tags should contains some folders with public releases (stable or beta or alpha)
-* the branches should contains some folders representing stable releases which are there to be eventually fixed
-
-For example, when I released the version 3.0 of this plugin, I should have created
-a 3.0 folder inside the branches and fixed it when bug were reported. From time to
-time from that branch I should have created a tag, for example 3.0.4.
-
-Actually, to make this tag available it should have been reported on the readme.txt
-committed on the trunk.
-
-To make it easier, I keep in the trunk the 3.0 branch and I fix it committing the patches
-and leaving the official stable tag on readme.txt set to "trunk". That helps me
-in quick fixing the plugin without creating tags.
-
-On branches I have the 3.1 branch where I'm develping new features and when ready to be
-committed I'll merge them on trunk, updating the trunk.

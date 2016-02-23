@@ -5,10 +5,13 @@ include '../../../../wp-load.php';
 if (!isset($newsletter)) $newsletter = new Newsletter();
 
 $key = stripslashes($_REQUEST['nk']);
-if (empty(trim($newsletter->options_main['api_key'])) || $key != $newsletter->options_main['api_key'])
+if (empty($newsletter->options['api_key']) || $key != $newsletter->options['api_key']) {
     die('Wrong API key');
+}
 
-if (!is_email($_REQUEST['ne'])) die('Wrong email');
+if (!is_email($_REQUEST['ne'])) {
+    die('Wrong email');
+}
 
 $subscriber = array();
 $subscriber['name'] = stripslashes($_REQUEST['nn']);

@@ -13,22 +13,22 @@ for ($i = 1; $i <= NEWSLETTER_LIST_MAX; $i++) {
 }
 ?>
 
-<div class="wrap">
-    <?php include NEWSLETTER_DIR . '/header-new.php'; ?>
+<div class="wrap" id="tnp-wrap">
+    
+    <?php include NEWSLETTER_DIR . '/tnp-header.php'; ?>
 
-    <div id="newsletter-title">
-        <?php include NEWSLETTER_DIR . '/users/menu.inc.php'; ?>
-
-        <h2>Subscriber Export</h2>
+    <div id="tnp-heading">
+        
+        <h2><?php _e('Export', 'newsletter') ?></h2>
         <p>
             The import and export functions <strong>ARE NOT for backup</strong>. 
             If you want to backup you should consider to backup the
             wp_newsletter* tables.
         </p>
+
     </div>
-    <div class="newsletter-separator"></div>    
-
-
+        <div id="tnp-body">
+            
     <form method="post" action="<?php echo plugins_url('newsletter'); ?>/users/csv.php">
         <?php $controls->init(); ?>
         <table class="form-table">
@@ -52,4 +52,8 @@ for ($i = 1; $i <= NEWSLETTER_LIST_MAX; $i++) {
         </p>
     </form>
 
+</div>
+    
+    <?php include NEWSLETTER_DIR . '/tnp-footer.php'; ?>
+    
 </div>

@@ -1,8 +1,4 @@
 <?php
-if (function_exists('load_plugin_textdomain')) {
-    load_plugin_textdomain('newsletter-statistics', false, 'newsletter/statistics/languages');
-    load_plugin_textdomain('newsletter', false, 'newsletter/languages');
-}
 require_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 $module = NewsletterStatistics::instance();
 $controls = new NewsletterControls();
@@ -18,13 +14,15 @@ if ($controls->is_action('save')) {
 }
 ?>
 
-<div class="wrap">
+<div class="wrap" id="tnp-wrap">
+
     <?php $help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/statistics-module'; ?>
 
-    <?php include NEWSLETTER_DIR . '/header-new.php'; ?>
+    <?php include NEWSLETTER_DIR . '/tnp-header.php'; ?>
 
-    <div id="newsletter-title">
-        <h2>Configuration and Email List</h2>
+	<div id="tnp-heading">
+    
+        <h2><?php _e('Configuration and Email List', 'newsletter') ?></h2>
 
         <p>
             This module is a core part of Newsletter that collects statistics about sent emails: how many have
@@ -40,25 +38,24 @@ if ($controls->is_action('save')) {
             <a href="http://www.thenewsletterplugin.com/plugins/newsletter/reports-module?utm_source=plugin&utm_medium=link&utm_campaign=newsletter-report&utm_content=<?php echo NEWSLETTER_VERSION?>" target="_blank">Reports Extension</a></strong>.
         </p>
     </div>
-    <div class="newsletter-separator"></div>
+    
+    <div id="tnp-body">
     
     <form method="post" action="">
         <?php $controls->init(); ?>
     <table class="form-table">
         <tr>
-            <th><?php _e('Tracking URL', 'newsletter-statistics') ?></th>
+            <th><?php _e('Secret key', 'newsletter') ?></th>
             <td>
-                <?php $controls->select('tracking_url', array(0=>__('Standard', 'newsletter-statistics'), 
-                    1=>__('Blog Home URL with parameters', 'newsletter-statistics'))) ?>
+                <?php $controls->text('key') ?>
                 <p class="description">
-                    <?php _e('How the links inside newsletters are rewritten to track clicks.', 'newsletter-statistics') ?> 
-                    <?php _e('Since spam filters check links inside emails, <a href="http://www.thenewsletterplugin.com/plugins/newsletter/statistics-module#tracking-url" target="_blank">read more about this setting</a>.', 'newsletter-statistics') ?> 
+                    <?php _e('This auto-generated key is used to protect the click tracking. If you change it old tracking links to external domains won\'t be registered anymore.', 'newsletter-statistics') ?> 
                 </p>
             </td>
-        </tr>
+        </tr>        
     </table>
     <p>
-        <?php $controls->button('save', __('Save', 'newsletter')) ?>
+        <?php $controls->button_save() ?>
     </p>
     </form>
 
@@ -87,10 +84,10 @@ if ($controls->is_action('save')) {
                             <?php
                             if ($email->status == 'sending') {
                                 if ($email->send_on > time()) {
-                                    _e('Scheduled', 'newsletter-emails');
+                                    _e('Scheduled', 'newsletter');
                                 }
                                 else {
-                                    _e('Sending', 'newsletter-emails');
+                                    _e('Sending', 'newsletter');
                                 }
                             } else  {
                                 echo $email->status;
@@ -107,4 +104,8 @@ if ($controls->is_action('save')) {
             <?php } ?>
         </tbody>
     </table>
+</div>
+
+    <?php include NEWSLETTER_DIR . '/tnp-footer.php'; ?>
+    
 </div>

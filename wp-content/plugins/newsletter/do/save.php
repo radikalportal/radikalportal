@@ -6,4 +6,5 @@ header('Cache-Control: no-cache,no-store,private');
 include '../../../../wp-load.php';
 
 $user = NewsletterSubscription::instance()->save_profile();
-NewsletterSubscription::instance()->show_message('profile', $user, NewsletterSubscription::instance()->options['profile_saved']);
+// $user->alert is a temporary field
+NewsletterSubscription::instance()->show_message('profile', $user, $user->alert);

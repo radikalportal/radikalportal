@@ -2,24 +2,25 @@
 $module = NewsletterStatistics::instance();
 $email = $module->get_email((int)$_GET['id']);
 ?>
-<div class="wrap">
+
+<div class="wrap" id="tnp-wrap">
+    
     <?php $help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/statistics-module'; ?>
-    <?php include NEWSLETTER_DIR . '/header-new.php'; ?>
+    <?php include NEWSLETTER_DIR . '/tnp-header.php'; ?>
 
-    <div id="newsletter-title">
-        <h2>Statistics for "<?php echo esc_html($email->subject); ?>"</h2>
+    <div id="tnp-heading">
+    
+        <h2><?php _e('Statistics for', 'newsletter') ?> "<?php echo esc_html($email->subject); ?>"</h2>
 
-        <div class="updated">
         <p>
             Complete statistics for this email are available with
             <a href="http://www.thenewsletterplugin.com/plugins/newsletter/reports-module?utm_source=plugin&utm_medium=link&utm_campaign=newsletter-report&utm_content=<?php echo NEWSLETTER_VERSION?>" target="_blank">Reports for Newsletter</a>.
             Even for already sent email, the Reports for Newsletter will display collected data.
         </p>
-        </div>
-
     </div>
-    <div class="newsletter-separator"></div>
 
+    <div id="tnp-body">
+    
     <?php if (!$email->track) { ?>
         <div class="error"><p>Warning! This email has the tracking option disabled, no data will be collected.</p></div>
     <?php } ?>
@@ -73,4 +74,8 @@ $email = $module->get_email((int)$_GET['id']);
         </tbody>
     </table>
 
+</div>
+
+    <?php include NEWSLETTER_DIR . '/tnp-footer.php'; ?>
+    
 </div>

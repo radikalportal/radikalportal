@@ -1,8 +1,4 @@
 <?php
-if (function_exists('load_plugin_textdomain')) {
-    load_plugin_textdomain('newsletter-emails', false, 'newsletter/emails/languages');
-    load_plugin_textdomain('newsletter', false, 'newsletter/languages');
-}
 require_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 $controls = new NewsletterControls();
 $module = NewsletterEmails::instance();
@@ -15,7 +11,7 @@ if ($controls->is_action('theme')) {
     if (!file_exists($module->get_current_theme_file_path('theme-options.php'))) {
         $email = array();
         $email['status'] = 'new';
-        $email['subject'] = __('Here the email subject', 'newsletter-emails');
+        $email['subject'] = __('Here the email subject', 'newsletter');
         $email['track'] = 1;
 
         $theme_options = $module->get_current_theme_options();
@@ -59,7 +55,7 @@ if ($controls->is_action('create')) {
 
     $email = array();
     $email['status'] = 'new';
-    $email['subject'] = __('Here the email subject', 'newsletter-emails');
+    $email['subject'] = __('Here the email subject', 'newsletter');
     $email['track'] = 1;
 
     $theme_options = $module->get_current_theme_options();
@@ -126,20 +122,23 @@ function newsletter_emails_get_theme_options($theme) {
 }
 ?>
 
-<div class="wrap">
+<div class="wrap" id="tnp-wrap">
 
-    <?php //$help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/newsletters-module';  ?>
-    <?php //include NEWSLETTER_DIR . '/header-new.php';  ?>
+    <?php $help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/newsletters-module';  ?>
+	<?php include NEWSLETTER_DIR . '/tnp-header.php'; ?>
 
-    <div id="newsletter-title">
-        <h2><?php _e('Create a newsletter', 'newsletter-emails') ?>
-            <a class="add-new-h2" href="<?php echo NewsletterEmails::instance()->get_admin_page_url('theme'); ?>"><?php _e('Back to the themes', 'newsletter-emails') ?></a>
+	<div id="tnp-heading">
+
+        <h2><?php _e('Create a newsletter', 'newsletter') ?>
+            <a class="tnp-btn-h1" href="<?php echo NewsletterEmails::instance()->get_admin_page_url('theme'); ?>"><?php _e('Back to newsletter themes', 'newsletter') ?></a>
         </h2>
-    </div>
-    <div class="newsletter-separator"></div>
+            <br>
+            <p>Theme options are saved for next time you'll use this theme.</p>
 
-    <?php $controls->show(); ?>
+           </div>
 
+	<div id="tnp-body" class="tnp-body-lite"> 
+            
     <form method="post" action="<?php echo $module->get_admin_page_url('new'); ?>">
         <?php $controls->init(); ?>
         <?php $controls->hidden('theme'); ?>
@@ -147,8 +146,7 @@ function newsletter_emails_get_theme_options($theme) {
         <table style="width: 100%; border-collapse: collapse">
             <tr>
                 <td style="text-align: left; vertical-align: top; border-bottom: 1px solid #ddd; padding-bottom: 10px">
-                    <div style="float: right; margin-left: 15px;"><?php $controls->button_primary('save', __('Refresh the preview', 'newsletter-emails')); ?></div>
-                    <span style="font-size: 1.1em"><?php _e('Theme options are saved for next time you\'ll use this theme.', 'newsletter-emails') ?></span>
+                    <div style="float: right; margin-left: 15px;"><?php $controls->button_primary('save', __('Refresh the preview', 'newsletter')); ?></div>
 
                 </td>
                 <td style="text-align: left; vertical-align: top; border-bottom: 1px solid #ddd; padding-bottom: 10px">
@@ -161,10 +159,14 @@ function newsletter_emails_get_theme_options($theme) {
                     <?php @include $module->get_current_theme_file_path('theme-options.php'); ?>
                 </td>
                 <td style="vertical-align: top; padding-top: 15px; padding-left: 15px">
-                    <iframe src="<?php echo wp_nonce_url(plugins_url('newsletter') . '/emails/preview.php?' . time()); ?>" width="100%" height="700" style="border: 1px solid #ccc"></iframe>
+                    <iframe src="<?php echo wp_nonce_url(plugins_url('newsletter') . '/emails/preview.php?' . time(), 'view'); ?>" height="700" style="width: 100%; border: 1px solid #ccc"></iframe>
                 </td>
             </tr>
         </table>
 
     </form>
+</div>
+
+    <?php include NEWSLETTER_DIR . '/tnp-footer.php'; ?>
+    
 </div>

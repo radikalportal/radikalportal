@@ -1,9 +1,16 @@
-<div class="wrap">
 
-    <?php include NEWSLETTER_DIR . '/header-new.php'; ?>
+<div class="wrap" id="tnp-wrap">
 
-    <h5>Feed by Mail</h5>
+	<?php include NEWSLETTER_DIR . '/tnp-header.php'; ?>
 
+	<div id="tnp-heading">
+            
+    <h2>Feed by Mail</h2>
+
+    </div>
+
+	<div id="tnp-body">
+    
     <div class="updated">
         <p>
             The Feed by Mail demo has been removed to make the plugin <strong>faster</strong>. You can install the demo separately getting it
@@ -12,4 +19,8 @@
         </p>
     </div>
 
+</div>
+    
+    <?php include NEWSLETTER_DIR . '/tnp-footer.php'; ?>
+    
 </div>

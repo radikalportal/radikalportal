@@ -19,7 +19,37 @@ class NewsletterEmails extends NewsletterModule {
 
     function __construct() {
         $this->themes = new NewsletterThemes('emails');
-        parent::__construct('emails', '1.1.1');
+        parent::__construct('emails', '1.1.2');
+        add_action('wp_loaded', array($this, 'hook_wp_loaded'));
+    }
+
+    function hook_wp_loaded() {
+        global $newsletter, $wpdb;
+        switch ($newsletter->action) {
+            case 'v':
+                // TODO: Change to Newsletter::instance()->get:email(), not urgent
+                $email = $this->get_email((int) $_GET['id']);
+                if (empty($email)) {
+                    die('Email not found');
+                }
+                
+                if ($email->private == 1) {
+                    die('Email not found');
+                }
+
+                $user = NewsletterSubscription::instance()->get_user_from_request();
+                header('Content-Type: text/html;charset=UTF-8');
+                header('X-Robots-Tag: noindex,nofollow,noarchive');
+                header('Cache-Control: no-cache,no-store,private');
+                if (is_file(WP_CONTENT_DIR . '/extensions/newsletter/view.php')) {
+                    include WP_CONTENT_DIR . '/extensions/newsletter/view.php';
+                    die();
+                }
+
+                echo $newsletter->replace($email->message, $user, $email->id);
+
+                die();
+        }
     }
 
     function upgrade() {
@@ -52,9 +82,11 @@ class NewsletterEmails extends NewsletterModule {
      * Returns the current selected theme.
      */
     function get_current_theme() {
-       $theme = $this->options['theme'];
-       if (empty($theme)) return 'blank';
-       else return $theme;
+        $theme = $this->options['theme'];
+        if (empty($theme))
+            return 'blank';
+        else
+            return $theme;
     }
 
     function get_current_theme_options() {
@@ -62,7 +94,7 @@ class NewsletterEmails extends NewsletterModule {
         // main options merge
         $main_options = Newsletter::instance()->options;
         foreach ($main_options as $key => $value) {
-            $theme_options['main_'.$key] = $value;
+            $theme_options['main_' . $key] = $value;
         }
         return $theme_options;
     }
@@ -100,7 +132,8 @@ class NewsletterEmails extends NewsletterModule {
             $email['type'] = 'message';
             $query = "select * from " . NEWSLETTER_USERS_TABLE . " where status='C'";
 
-            if ($email['list'] != 0) $query .= " and list_" . $email['list'] . "=1";
+            if ($email['list'] != 0)
+                $query .= " and list_" . $email['list'] . "=1";
             $email['preferences'] = $email['list'];
 
             if (!empty($email['sex'])) {
