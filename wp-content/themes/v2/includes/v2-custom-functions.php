@@ -106,4 +106,40 @@ function v2_coauthors_boxes() {
 }
 add_action('mh_post_content_top', 'v2_coauthors_boxes', 12);
 
+
+//Eksterne lenker
+function rp_create_eksternt_innhold() {
+	// set up labels
+	$labels = array(
+ 		'name' => 'Eksternt innhold',
+    	'singular_name' => 'Eksternt innhold',
+    	'add_new' => 'Nytt innhold',
+    	'add_new_item' => 'Nytt innhold',
+    	'edit_item' => 'Rediger eksternt innhold',
+    	'new_item' => 'Nytt innhold',
+    	'all_items' => 'Alt innhold',
+    	'view_item' => 'Vis eksternt innhold',
+    	'search_items' => 'Søk eksterne innhold',
+    	'not_found' =>  'Ingen eksterne innhold funnet',
+    	'not_found_in_trash' => 'Ingen eksternt innhold funnet i papirkurven.', 
+    	'parent_item_colon' => '',
+    	'menu_name' => 'Eksternt innhold',
+    );
+    //register post type
+	register_post_type( 'Eksternt innhold', array(
+		'labels' => $labels,
+		'has_archive' => true,
+ 		'public' => true,
+		'supports' => array( 'title', 'editor', 'excerpt', 'custom-fields', 'thumbnail','page-attributes' ),
+		'taxonomies' => array( 'post_tag', 'category' ),	
+		'exclude_from_search' => false,
+		'capability_type' => 'post',
+		'rewrite' => array( 'slug' => 'eksternt-innhold' ),
+		'menu_icon'   => 'dashicons-layout',
+		)
+	);
+}
+add_action( 'init', 'rp_create_eksternt_innhold' );
+
+
 ?>
