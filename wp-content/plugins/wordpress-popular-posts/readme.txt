@@ -3,12 +3,12 @@ Contributors: hcabrera
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=hcabrerab%40gmail%2ecom&lc=GB&item_name=WordPress%20Popular%20Posts%20Plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG_global%2egif%3aNonHosted
 Tags: popular, posts, widget, popularity, top
 Requires at least: 3.8
-Tested up to: 4.3
-Stable tag: 3.3.1
+Tested up to: 4.4
+Stable tag: 3.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-WordPress Popular Posts is a highly customizable widget that displays the most popular posts on your blog.
+A highly customizable, easy-to-use popular posts widget!
 
 == Description ==
 
@@ -31,9 +31,6 @@ WordPress Popular Posts is a highly customizable widget that displays the most p
 * **Localizable** to your own language (*See the [FAQ section](http://wordpress.org/extend/plugins/wordpress-popular-posts/faq/) for more info*).
 * **[WP-PostRatings](http://wordpress.org/extend/plugins/wp-postratings/) support**. Show your visitors how your readers are rating your posts!
 
-= Notices =
-* Starting version 3.0.0, the way plugin tracks views count switched back to [AJAX](http://codex.wordpress.org/AJAX). The reason for this change is to prevent bots / spiders from inflating views count, so if you're using a caching plugin you should clear its cache after installing / upgrading the WordPress Popular Posts plugin so it can track your posts and pages normally.
-
 **WordPress Popular Posts** is now also on [GitHub](https://github.com/cabrerahector/wordpress-popular-posts)!
 
 == Installation ==
@@ -52,8 +49,8 @@ That's it!
 
 WordPress Popular Posts can be used in three different ways:
 
-1. As a [widget](http://codex.wordpress.org/WordPress_Widgets), simply drag and drop it into your theme's sidebar and configure it.
-2. As a template tag, you can place it anywhere on your theme with [wpp_get_mostpopular()](https://github.com/cabrerahector/wordpress-popular-posts/wiki/2.-Template-tags#wpp_get_mostpopular).
+1. As a [widget](http://codex.wordpress.org/WordPress_Widgets): simply drag and drop it into your theme's sidebar and configure it.
+2. As a template tag: you can place it anywhere on your theme with [wpp_get_mostpopular()](https://github.com/cabrerahector/wordpress-popular-posts/wiki/2.-Template-tags#wpp_get_mostpopular).
 3. Via [shortcode](https://github.com/cabrerahector/wordpress-popular-posts/wiki/1.-Using-WPP-on-posts-&-pages), so you can embed it inside a post or a page.
 
 Make sure to stop by the **[Wiki](https://github.com/cabrerahector/wordpress-popular-posts/wiki)** as well, you'll find even more info there!
@@ -70,6 +67,19 @@ The [FAQ section](https://github.com/cabrerahector/wordpress-popular-posts/wiki/
 4. WordPress Popular Posts Stats panel.
 
 == Changelog ==
+= 3.3.3 =
+- Fixes potential XSS exploit in WPP's admin dashboard.
+- Adds filter to set which post types should be tracked by WPP ([details](https://github.com/cabrerahector/wordpress-popular-posts/wiki/3.-Filters#wpp_trackable_post_types)).
+- Adds ability to select first attached image as thumbnail source (thanks, [@serglopatin](https://github.com/serglopatin)!)
+
+= 3.3.2 =
+- Fixes warning message: 'stream does not support seeking in...'
+- Removes excerpt HTML encoding.
+- Passes widget ID to the instance variable for customization.
+- Adds CSS class current.
+- Documentation cleanup.
+- Other minor bug fixes / improvements.
+
 = 3.3.1 =
 - Fixes undefined index notice.
 - Makes sure legacy tables are deleted on plugin upgrade.
@@ -114,33 +124,6 @@ The [FAQ section](https://github.com/cabrerahector/wordpress-popular-posts/wiki/
 * Fixes missing HTML decoding for custom HTML in widget.
 * Puts LIMIT clause back to the outer query.
 
-= 3.2.0 =
-* Adds check for jQuery.
-* Fixes invalid parameter in htmlspecialchars().
-* Switches AJAX update to POST method.
-* Removes href attribute from link when popular post is viewed.
-* Removes unnecesary ORDER BY clause in views/comments subquery.
-* Fixes Javascript console not working under IE8 (thanks, @[raphaelsaunier](https://github.com/raphaelsaunier)!)
-* Fixes WPML compatibility bug storing post IDs as 0.
-* Removes wpp-upload.js since it was no longer in use.
-* Fixes undefined default thumbnail image (thanks, Lea Cohen!)
-* Fixes rating parameter returning false value.
-* Adds Data Sampling (thanks, @[kurtpayne](https://github.com/kurtpayne)!)
-* Minor query optimizations.
-* Adds {date} (thanks, @[matsuoshi](https://github.com/matsuoshi)!) and {thumb_img} tags to custom html.
-* Adds minute time option for caching.
-* Adds wpp_data_sampling filter.
-* Removes jQuery's DOM ready hook for AJAX views update.
-* Adds back missing GROUP BY clause.
-* Removes unnecesary HTML decoding for custom HTML (thanks, Lea Cohen!)
-* Translates category name when WPML is detected.
-* Adds list of available thumbnail sizes to the widget.
-* Other minor bugfixes and improvements.
-
-= 3.1.1 =
-* Adds check for exif extension availability.
-* Rolls back check for user's default thumbnail.
-
 See [full changelog](https://github.com/cabrerahector/wordpress-popular-posts/blob/master/changelog.md).
 
 == Language support ==
@@ -156,6 +139,5 @@ All translations are community made: people who are nice enough to share their t
 * Flame graphic by freevector/Vecteezy.com.
 
 == Upgrade Notice ==
-
-= 3.2.3 =
-If you're using a caching plugin, flushing its cache after upgrading is highly recommended.
+= 3.3.3 =
+This version fixes a potential security issue. You should upgrade as soon as possible.
