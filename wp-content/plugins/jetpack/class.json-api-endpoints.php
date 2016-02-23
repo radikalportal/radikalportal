@@ -45,7 +45,7 @@ abstract class WPCOM_JSON_API_Endpoint {
 		),
 		'http_envelope' => array(
 			'false' => '',
-			'true'  => 'Some environments (like in-browser Javascript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.',
+			'true'  => 'Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.',
 		),
 		'pretty' => array(
 			'false' => '',
@@ -351,8 +351,8 @@ abstract class WPCOM_JSON_API_Endpoint {
 			$return[$key] = (string) esc_url_raw( $value );
 			break;
 		case 'string' :
-			// Fallback string -> array
-			if ( is_array( $value ) ) {
+			// Fallback string -> array, or string -> object
+			if ( is_array( $value ) || is_object( $value ) ) {
 				if ( !empty( $types[0] ) ) {
 					$next_type = array_shift( $types );
 					return $this->cast_and_filter_item( $return, $next_type, $key, $value, $types, $for_output );
@@ -539,6 +539,8 @@ abstract class WPCOM_JSON_API_Endpoint {
 				/**
 				 * Filter the documentation returned for a post attachment.
 				 *
+				 * @module json-api
+				 *
 				 * @since 1.9.0
 				 *
 				 * @param array $docs Array of documentation about a post attachment.
@@ -584,6 +586,8 @@ abstract class WPCOM_JSON_API_Endpoint {
 				$value,
 				/**
 				 * Filter the documentation returned for a plugin.
+				 *
+				 * @module json-api
 				 *
 				 * @since 3.1.0
 				 *
@@ -965,6 +969,8 @@ abstract class WPCOM_JSON_API_Endpoint {
 			/**
 			 * Filter access to a specific post.
 			 *
+			 * @module json-api
+			 *
 			 * @since 3.4.0
 			 *
 			 * @param bool current_user_can( 'read_post', $post->ID ) Can the current user access the post.
@@ -1019,6 +1025,8 @@ abstract class WPCOM_JSON_API_Endpoint {
 					return null;
 				/**
 				 * Filter whether the current site is a Jetpack site.
+				 *
+				 * @module json-api
 				 *
 				 * @since 3.3.0
 				 *
@@ -1161,12 +1169,29 @@ abstract class WPCOM_JSON_API_Endpoint {
 				$response['height'] = $metadata['height'];
 				$response['width'] = $metadata['width'];
 			}
-			if ( is_array( $metadata['sizes'] ) ) {
-			      	foreach ( $metadata['sizes'] as $size => $size_details ) {
-			      	      	$response['thumbnails'][ $size ] = dirname( $response['URL'] ) . '/' . $size_details['file'];
-			      	}
+
+			if ( isset( $metadata['sizes'] ) ) {
+				/**
+				 * Filter the thumbnail sizes available for each attachment ID.
+				 *
+				 * @module json-api
+				 *
+				 * @since 3.9.0
+				 *
+				 * @param array $metadata['sizes'] Array of thumbnail sizes available for a given attachment ID.
+				 * @param string $media_id Attachment ID.
+				 */
+				$sizes = apply_filters( 'rest_api_thumbnail_sizes', $metadata['sizes'], $media_id );
+				if ( is_array( $sizes ) ) {
+					foreach ( $sizes as $size => $size_details ) {
+						$response['thumbnails'][ $size ] = dirname( $response['URL'] ) . '/' . $size_details['file'];
+					}
+				}
 			}
-			$response['exif']   = $metadata['image_meta'];
+
+			if ( isset( $metadata['image_meta'] ) ) {
+				$response['exif'] = $metadata['image_meta'];
+			}
 		}
 
 		if ( in_array( $ext, array( 'mp3', 'm4a', 'wav', 'ogg' ) ) ) {
@@ -1254,7 +1279,6 @@ abstract class WPCOM_JSON_API_Endpoint {
 				return new WP_Error( 'unauthorized', 'User cannot edit taxonomy', 403 );
 			break;
 		case 'display' :
-			$tax = get_taxonomy( $taxonomy_type );
 			if ( -1 == get_option( 'blog_public' ) && ! current_user_can( 'read' ) ) {
 				return new WP_Error( 'unauthorized', 'User cannot view taxonomy', 403 );
 			}
@@ -1437,6 +1461,8 @@ abstract class WPCOM_JSON_API_Endpoint {
 		 * '/inc/jetpack.compat.php', '/inc/jetpack.php', '/includes/jetpack.compat.php files
 		 * of the theme (parent and child) and copy functions hooked onto 'after_setup_theme' within those files.
 		 *
+		 * @module json-api
+		 *
 		 * @since 3.2.0
 		 */
 		do_action( 'restapi_theme_after_setup_theme' );
@@ -1449,6 +1475,8 @@ abstract class WPCOM_JSON_API_Endpoint {
 		 * To enable theme-based functionality, the API will load the '/functions.php',
 		 * '/inc/jetpack.compat.php', '/inc/jetpack.php', '/includes/jetpack.compat.php files
 		 * of the theme (parent and child) and copy functions hooked onto 'init' within those files.
+		 *
+		 * @module json-api
 		 *
 		 * @since 3.2.0
 		 */
@@ -1767,6 +1795,8 @@ abstract class WPCOM_JSON_API_Endpoint {
 		/**
 		 * Filter the post types Jetpack has access to, and can synchronize with WordPress.com.
 		 *
+		 * @module json-api
+		 *
 		 * @since 2.2.3
 		 *
 		 * @param array $allowed_types Array of whitelisted post types. Default to `array( 'post', 'page', 'revision' )`.
@@ -1933,6 +1963,8 @@ abstract class WPCOM_JSON_API_Endpoint {
 		/**
 		 * Filter the list of whitelisted video clients.
 		 *
+		 * @module json-api
+		 *
 		 * @since 3.2.0
 		 *
 		 * @param array $clients_allowed_video_uploads Array of whitelisted Video clients.
@@ -1947,6 +1979,8 @@ abstract class WPCOM_JSON_API_Endpoint {
 		$video_exts = explode( ' ', get_site_option( 'video_upload_filetypes', false, false ) );
 		/**
 		 * Filter the video filetypes allowed on the site.
+		 *
+		 * @module json-api
 		 *
 		 * @since 3.2.0
 		 *

@@ -123,10 +123,8 @@ class Jetpack_Landing_Page extends Jetpack_Admin_Page {
 				$module_name[] = $val['module_name'];
 			}
 		}
-		$last_item = array_pop( $module_name );
-		$jumpstart_module_list = implode( $module_name, ', ' ) . ', and ' . $last_item;
 
-		return $jumpstart_module_list;
+		return $module_name;
 	}
 
 	function jetpack_menu_order( $menu_order ) {
@@ -203,7 +201,7 @@ class Jetpack_Landing_Page extends Jetpack_Admin_Page {
 			?>
 			<div id="message" class="jetpack-message">
 				<div class="squeezer">
-					<h4><?php echo wp_kses( $message, array( 'strong' => array(), 'a' => array( 'href' => true ), 'br' => true ) ); ?></h4>
+					<h2><?php echo wp_kses( $message, array( 'strong' => array(), 'a' => array( 'href' => true ), 'br' => true ) ); ?></h2>
 					<?php
 					/**
 					 * Fires within the displayed message when a feature configuation is updated.

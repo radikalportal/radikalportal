@@ -81,6 +81,8 @@ function vimeo_shortcode( $atts ) {
 	/**
 	 * Filter the Vimeo player width.
 	 *
+	 * @module shortcodes
+	 *
 	 * @since 3.4.0
 	 *
 	 * @param int $width Width of the Vimeo player in pixels.
@@ -90,13 +92,15 @@ function vimeo_shortcode( $atts ) {
 	/**
 	 * Filter the Vimeo player height.
 	 *
+	 * @module shortcodes
+	 *
 	 * @since 3.4.0
 	 *
 	 * @param int $height Height of the Vimeo player in pixels.
 	 */
 	$height = (int) apply_filters( 'vimeo_height', $height );
 
-	$url = esc_url( set_url_scheme( "http://player.vimeo.com/video/$id" ) );
+	$url = esc_url( "https://player.vimeo.com/video/$id" );
 
 	// $args['autoplay'] is parsed from the embedded url.
 	// $autoplay is parsed from shortcode arguments.
@@ -114,6 +118,8 @@ function vimeo_shortcode( $atts ) {
 	/**
 	 * Filter the Vimeo player HTML.
 	 *
+	 * @module shortcodes
+	 *
 	 * @since 1.2.3
 	 *
 	 * @param string $html Embedded Vimeo player HTML.
@@ -124,6 +130,36 @@ function vimeo_shortcode( $atts ) {
 }
 
 add_shortcode( 'vimeo', 'vimeo_shortcode' );
+
+/**
+ * Callback to modify output of embedded Vimeo video using Jetpack's shortcode.
+ *
+ * @since 3.9
+ *
+ * @param array $matches Regex partial matches against the URL passed.
+ * @param array $attr Attributes received in embed response
+ * @param array $url Requested URL to be embedded
+ *
+ * @return string Return output of Vimeo shortcode with the proper markup.
+ */
+function wpcom_vimeo_embed_url( $matches, $attr, $url ) {
+	return vimeo_shortcode( array( $url ) );
+}
+
+/**
+ * For bare URLs on their own line of the form
+ * http://vimeo.com/12345
+ *
+ * @since 3.9
+ *
+ * @uses wpcom_vimeo_embed_url
+ */
+function wpcom_vimeo_embed_url_init() {
+	wp_embed_register_handler( 'wpcom_vimeo_embed_url', '#https?://(.+\.)?vimeo\.com/#i', 'wpcom_vimeo_embed_url' );
+}
+
+// Register handler to modify Vimeo embeds using Jetpack's shortcode output.
+add_action( 'init', 'wpcom_vimeo_embed_url_init' );
 
 function vimeo_embed_to_shortcode( $content ) {
 	if ( false === stripos( $content, 'player.vimeo.com/video/' ) )
