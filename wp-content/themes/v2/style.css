@@ -79,3 +79,17 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 .redaksjonsmedlem-biografi {
     width: 80%;
 }
+
+.rp_eksterntinnhold span {
+    float: right;
+    font-size: 12px;
+    color: #cecece;
+}
+.rp_eksterntinnhold li {
+    border-bottom: 1px solid #dedede;
+    padding-bottom: 5px;
+	margin-bottom:5px;
+}
+.rp_eksterntinnhold .post-date{float:left;}
+.rp_eksterntinnhold .ekstern-kilde{float:right;}
+.rp_eksterntinnhold .ekstern-content{padding:5px;}
