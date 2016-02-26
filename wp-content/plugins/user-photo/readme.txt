@@ -1,14 +1,13 @@
 === User Photo ===
-Contributors: westonruter, ryanhellyer
+Contributors: westonruter, ryanhellyer, glen_scott
 Tags: users, photos, images
 Requires at least: 3.0.5
-Stable tag: 0.9.5.2
+Tested up to: 4.3.1
+Stable tag: 0.9.6
 
 Allows a user to associate a photo with their account and for this photo to be displayed in their posts and comments.
 
 == Description ==
-
-***Make sure you upgrade to version 0.9.5.2!***
 
 Allows a user to associate a profile photo with their account through their "Your Profile" page. Admins may 
 add a user profile photo by accessing the "Edit User" page. Uploaded images are resized to fit the dimensions specified 
@@ -114,6 +113,10 @@ Localizations included for Spanish, German, Dutch, Polish, Russian, French, Hung
 If you value this plugin, *please donate* to ensure that it may continue to be maintained and improved.
 
 == Changelog ==
+
+= 0.9.6 =
+* Fixed PHP notice about deprecated argument
+* Use semantic versioning for plugin files
 
 = 2012-05-08: 0.9.5.2 =
 
