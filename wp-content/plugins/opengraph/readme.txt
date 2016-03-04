@@ -2,8 +2,8 @@
 Contributors: willnorris, pfefferle
 Tags: social, opengraph, ogp, facebook
 Requires at least: 2.3
-Tested up to: 4.1
-Stable tag: 1.6
+Tested up to: 4.4.1
+Stable tag: 1.8.0
 License: Apache License, Version 2.0
 License URI: http://www.apache.org/licenses/LICENSE-2.0.html
 
@@ -74,11 +74,32 @@ whose keys are the qualified Open Graph property names.  For example:
 Note that you may need to define the RDFa prefix for your properties.  Do this
 using the `opengraph_prefixes` filter.
 
+= How to enable/disable "strict mode" =
+
+The plugin populates the meta 'name' attribute alongside the 'property' attribute
+by default. Because both, the `og:*` and `twitter:*` names, are actually registered
+at http://wiki.whatwg.org/wiki/MetaExtensions, this stays compliant with the
+HTML5 spec. If you want to use a more strict way anyways, you can enable the scrict
+mode by adding the following line to your `config.php`
+
+    define( 'OPENGRAPH_STRICT_MODE', true );
+
 
 == Changelog ==
 
-Project maintined on github at
+Project maintained on github at
 [willnorris/wordpress-opengraph](https://github.com/willnorris/wordpress-opengraph).
+
+= version 1.8.0 (Jan 29, 2016) =
+ - fixed `article:author` property
+ - added `article:modified_time`
+ - added first category as `article:section`
+
+= version 1.7.0 (Jan 18, 2016) =
+ - added "strict mode" setting
+ - better twitter:card handling
+ - basic twitter:creator support
+ - WordPress coding standard
 
 = version 1.6 (Dec 30, 2014) =
  - implemented `get_the_archive_title` and `get_the_archive_description` (new in WordPress 4.1)
