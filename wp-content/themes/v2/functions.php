@@ -1,5 +1,14 @@
 <?php
 
+/**
+ *  Facebook vil ha en app_id som metatagg.
+ */
+function v2_opengraph_metadata($metadata) {
+    $metadata["fb:app_id"] = "446811972038512";
+    return $metadata;
+}
+add_filter("opengraph_metadata", "v2_opengraph_metadata");
+
 function v2_login_logo() { ?>
     <style type="text/css">
      .login h1 a {
