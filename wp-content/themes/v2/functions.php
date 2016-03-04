@@ -77,3 +77,35 @@ function v2_rules_to_comment_template($comment_template) {
     return $comment_template;
 }
 add_filter("comments_template", "v2_rules_to_comment_template");
+
+/**
+ *  Overstyrer mh_featured_image definert i
+ *  mh_magazine/includes/mh-post-content.php for å bruke
+ *  get_the_post_thumbnail for å få featured videos til å fungere.
+ */
+function mh_featured_image() {
+    global $page, $post;
+    $options = mh_theme_options();
+    if (has_post_thumbnail() && $page == '1' && $options['featured_image'] == 'enable' && !get_post_meta($post->ID, 'mh-no-image', true)) {
+        if ($options['sidebars'] == 'no') {
+            $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id(), 'slider');
+        } else {
+            $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id(), 'content');
+        }
+        if ($options['link_featured_image'] == 'enable') {
+            $att_url_begin = '<a href="' . esc_url(get_attachment_link(get_post_thumbnail_id())) . '">';
+            $att_url_end = '</a>';
+        } else {
+            $att_url_begin = '';
+            $att_url_end = '';
+        }
+        $caption_text = get_post(get_post_thumbnail_id())->post_excerpt;
+        echo "\n" . '<div class="post-thumbnail">' . "\n";
+        echo $att_url_begin . get_the_post_thumbnail() . $att_url_end . "\n";
+        if ($caption_text) {
+            echo '<span class="wp-caption-text">' . wp_kses_post($caption_text) . '</span>' . "\n";
+        }
+        echo '</div>' . "\n";
+    }
+}
+add_action('mh_post_content_top', 'mh_featured_image');
