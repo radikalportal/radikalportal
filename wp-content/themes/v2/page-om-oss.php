@@ -28,17 +28,7 @@ if (isset($redaksjonsmedlemmer[0])) {
         echo '<div class="redaksjonsmedlem">';
         echo '<div class="redaksjonsmedlem-portrett">';
 
-        if (userphoto_exists($redaksjonsmedlem->ID)) {
-            userphoto(
-                $redaksjonsmedlem->ID,
-                '',
-                '',
-                array(),
-                get_template_directory_uri() . '/img/anon.gif'
-            );
-        } else {
-            echo '<img class="img-rounded" src="' . get_template_directory_uri() . '/img/anon.gif">';
-        }
+        echo get_avatar($redaksjonsmedlem->ID, 140);
 
         echo '</div>';
         echo '<div class="redaksjonsmedlem-biografi">';
