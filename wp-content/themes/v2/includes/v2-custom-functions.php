@@ -107,26 +107,26 @@ function v2_coauthors_boxes() {
 add_action('mh_post_content_top', 'v2_coauthors_boxes', 12);
 
 
-//Eksterne lenker
-function rp_create_eksternt_innhold() {
+//Anbefalinger
+function rp_create_anbefalinger() {
 	// set up labels
 	$labels = array(
- 		'name' => 'Eksternt innhold',
-    	'singular_name' => 'Eksternt innhold',
-    	'add_new' => 'Nytt innhold',
-    	'add_new_item' => 'Nytt innhold',
-    	'edit_item' => 'Rediger eksternt innhold',
-    	'new_item' => 'Nytt innhold',
-    	'all_items' => 'Alt innhold',
-    	'view_item' => 'Vis eksternt innhold',
-    	'search_items' => 'Søk eksterne innhold',
-    	'not_found' =>  'Ingen eksterne innhold funnet',
-    	'not_found_in_trash' => 'Ingen eksternt innhold funnet i papirkurven.', 
+ 		'name' => 'Anbefalinger',
+    	'singular_name' => 'Anbefaling',
+    	'add_new' => 'Ny anbefaling',
+    	'add_new_item' => 'Ny anbefaling',
+    	'edit_item' => 'Rediger anbefaling',
+    	'new_item' => 'Ny anbefaling',
+    	'all_items' => 'Alle anbefalinger',
+    	'view_item' => 'Vis anbefaling',
+    	'search_items' => 'Søk anbefalinger',
+    	'not_found' =>  'Ingen anbefaling funnet',
+    	'not_found_in_trash' => 'Ingen anbefaling funnet i papirkurven.', 
     	'parent_item_colon' => '',
-    	'menu_name' => 'Eksternt innhold',
+    	'menu_name' => 'Anbefalinger',
     );
     //register post type
-	register_post_type( 'Eksternt innhold', array(
+	register_post_type( 'Anbefalinger', array(
 		'labels' => $labels,
 		'has_archive' => true,
  		'public' => true,
@@ -134,12 +134,11 @@ function rp_create_eksternt_innhold() {
 		'taxonomies' => array( 'post_tag', 'category' ),	
 		'exclude_from_search' => false,
 		'capability_type' => 'post',
-		'rewrite' => array( 'slug' => 'eksternt-innhold' ),
+		'rewrite' => array( 'slug' => 'anbefalinger' ),
 		'menu_icon'   => 'dashicons-layout',
 		)
 	);
 }
-add_action( 'init', 'rp_create_eksternt_innhold' );
-
+add_action( 'init', 'rp_create_anbefalinger' );
 
 ?>
