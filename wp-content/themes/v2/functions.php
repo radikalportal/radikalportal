@@ -20,7 +20,7 @@ add_action('login_enqueue_scripts', 'v2_login_logo');
 
 function mh_share_buttons_content() {
     $sb_output = '<section class="share-buttons-container clearfix">' . "\n";
-    $sb_output .= '<div class="share-button"><div class="fb-like" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div></div>' . "\n";
+    $sb_output .= '<div class="share-button"><div class="fb-like" data-layout="button_count" '.((get_the_date('Y-m-d')<'2016-01-10')?'data-href="'.str_replace('https://','http://',get_permalink()).'"':'').'" data-action="like" data-show-faces="true" data-share="false"></div></div>' . "\n";
     $sb_output .= '<div class="share-button"><a href="' . esc_url('https://twitter.com/share') . '" class="twitter-share-button" data-text="' . get_the_title() . '" data-via="radikalportal">Tweet</a></div>' . "\n";
     $sb_output .= '<div class="share-button"><div class="g-plusone" data-size="medium"></div></div>' . "\n";
     $sb_output .= '</section>' . "\n";
