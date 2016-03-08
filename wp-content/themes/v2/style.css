@@ -84,16 +84,22 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
     width: 80%;
 }
 
-.rp_eksterntinnhold span {
+.rp_anbefalinger span {
     float: right;
     font-size: 12px;
-    color: #cecece;
+    color: #979797;
 }
-.rp_eksterntinnhold li {
+.rp_anbefalinger li {
     border-bottom: 1px solid #dedede;
     padding-bottom: 5px;
 	margin-bottom:5px;
 }
-.rp_eksterntinnhold .post-date{float:left;}
-.rp_eksterntinnhold .ekstern-kilde{float:right;}
-.rp_eksterntinnhold .ekstern-content{padding:5px;}
+.rp_anbefalinger .post-date{float:left;}
+.rp_anbefalinger .ekstern-kilde{float:right;}
+.rp_anbefalinger .ekstern-content{padding:5px;}
+.rp_anbefalinger img.size-cp_small {float: left; padding-right: 5px;}
+
+@media print {/*sjuler meny, sidebar, kommentarer og relaterte artikler på printutseende*/
+.main-nav,.mh-sidebar,.share-buttons-container,.related-posts,.comments,#disqus_thread{display:none;}
+.mh-content {   width: 100%;}
+}
