@@ -99,6 +99,39 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 .rp_anbefalinger .ekstern-content{padding:5px;}
 .rp_anbefalinger img.size-cp_small {float: left; padding-right: 5px;}
 
+.stott_oss{clear:both;}
+.stott_oss span{font-weight:bolder;color:#e64946;}
+.stott_oss table, .stott_oss tr{border:0px;padding:0px;margin:10px 0px;border-spacing:10px;border-collapse: separate;}
+.stott_oss td{background: #f6f6f6;border: 1px solid #d7d8d8;padding:10px;margin:5px;text-align: center;}
+.stott_oss select { font-size: 16px;    padding: 5px;  margin:20px 0px;  width: 100%;}
+.stott_oss option {margin:5px 0px;}
+
+
+.lesogsa {width:300px; max-width: 100%; background: #f6f6f6;   border: 1px solid #d7d8d8;box-sizing: border-box;padding:10px;}
+.lesogsa img{max-width:none;}
+.lesogsa table {border:0px;margin:0px;}
+.lesogsa table  tr{font-size:14px;line-height:18px;margin-bottom:10px;}
+.lesogsa tr  td:first-of-type{padding:0px;}
+.lesogsa tr:last-of-type{margin:0px;}
+.lesogsa table  td{ border: 0px;padding:0px;padding-left:10px;  vertical-align: top;}
+.sisteartikler {width:240px;float:right;margin-left:20px;}
+.sisteartikler tr{display:block;}
+
+.brodtekst{max-width:640px;padding-right:100px;}
+
+@media screen and (max-width: 667px) {
+.stott_oss td {display: block;}
+}
+
+@media screen and (max-width: 480px) {
+.sisteartikler table td{display:block;padding:0px;font-size:12px;line-height:16px;}
+.sisteartikler {width:150px;}
+.brodtekst{padding:0px;}
+}
+@media screen and (max-width: 360px) {
+.sisteartikler {width:100px;}
+}
+
 @media print {/*sjuler meny, sidebar, kommentarer og relaterte artikler på printutseende*/
 .main-nav,.mh-sidebar,.share-buttons-container,.related-posts,.comments,#disqus_thread{display:none;}
 .mh-content {   width: 100%;}
