@@ -141,4 +141,8 @@ function rp_create_anbefalinger() {
 }
 add_action( 'init', 'rp_create_anbefalinger' );
 
+include_once('v2_stott_oss.php');
+include_once('v2_les_ogsa.php');
+include_once('v2_custom_post_content.php');
+
 ?>
