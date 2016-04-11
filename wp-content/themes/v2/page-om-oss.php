@@ -11,7 +11,7 @@
             endif; ?>
 
 <?php
-echo '<h1>Redaksjonen</h1>';
+echo '<h1>Styret</h1>';
 echo '<br>';
 
 $redaksjonsmedlemmer = get_post_custom_values('redaksjonsmedlemmer');
