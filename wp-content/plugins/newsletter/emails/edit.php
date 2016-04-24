@@ -1,4 +1,5 @@
 <?php
+/* @var $wpdb wpdb */
 require_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 $controls = new NewsletterControls();
 $module = NewsletterEmails::instance();
@@ -96,14 +97,14 @@ if ($controls->is_action('test') || $controls->is_action('save') || $controls->i
         if ($controls->data['preferences_status'] == 1) {
             $query .= " and (";
             foreach ($preferences as $x) {
-                $query .= "list_" . $x . "=0" . $operator;
+                $query .= "list_" . ((int)$x) . "=0" . $operator;
             }
             $query = substr($query, 0, -4);
             $query .= ")";
         } else {
             $query .= " and (";
             foreach ($preferences as $x) {
-                $query .= "list_" . $x . "=1" . $operator;
+                $query .= "list_" . ((int)$x) . "=1" . $operator;
             }
             $query = substr($query, 0, -4);
             $query .= ")";
@@ -114,7 +115,7 @@ if ($controls->is_action('test') || $controls->is_action('save') || $controls->i
     if (is_array($sex)) {
         $query .= " and sex in (";
         foreach ($sex as $x) {
-            $query .= "'" . $x . "', ";
+            $query .= "'" . esc_sql($x) . "', ";
         }
         $query = substr($query, 0, -2);
         $query .= ")";
@@ -327,6 +328,9 @@ if ($email['editor'] == 0) {
 
 
             <div id="tabs-b">
+                <?php if (Newsletter::instance()->options['phpmailer'] == 0) { ?>
+                <p class="tnp-tab-warning">The text part is sent only when Newsletter manages directly the sending process. <a href="admin.php?page=newsletter_main_main" target="_blank">See the main settings</a>.</p>
+                <?php } ?>
                 <p>
                     This is the textual version of your newsletter. If you empty it, only an HTML version will be sent but
                     is an anti-spam best practice to include a text only version.
@@ -432,6 +436,7 @@ if ($email['editor'] == 0) {
                     </tr>
                 </table>
             </div>
+            
             <div id="tabs-status">
                 <table class="form-table">
                     <tr valign="top">

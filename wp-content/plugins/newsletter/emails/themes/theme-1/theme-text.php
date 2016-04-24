@@ -11,8 +11,8 @@ global $post; // Current post managed by WordPress
 
 $filters = array();
 
-$filters['showposts'] = (int)$theme_options['max_posts'];
-if ($filters['showposts'] == 0) $filters['showposts'] = 10;
+$filters['posts_per_page'] = (int)$theme_options['max_posts'];
+if ($filters['posts_per_page'] == 0) $filters['posts_per_page'] = 10;
 
 // This theme has an option with categories to be included.
 if (is_array($theme_options['categories'])) {

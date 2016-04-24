@@ -4,22 +4,23 @@ $module = Newsletter::instance();
 $controls = new NewsletterControls();
 
 if (!$controls->is_action()) {
-    $controls->data = get_option('newsletter_main');
+    $controls->data = $module->get_options('smtp');
 } else {
 
 
     if ($controls->is_action('save')) {
-        $errors = null;
 
-        // SMTP Validation (?)
+        if ($controls->data['enabled'] && empty($controls->data['host'])) {
+            $controls->errors = 'The host must be set to enable the SMTP';
+        }
 
         if (empty($controls->errors)) {
-            $module->merge_options($controls->data);
-            $controls->messages .= __('Saved.', 'newsletter');
+            $module->save_options($controls->data, 'smtp');
+            $controls->messages .= __('Saved. Remember to test your changes right now!', 'newsletter');
         }
     }
 
-    if ($controls->is_action('smtp_test')) {
+    if ($controls->is_action('test')) {
 
         require_once ABSPATH . WPINC . '/class-phpmailer.php';
         require_once ABSPATH . WPINC . '/class-smtp.php';
@@ -42,23 +43,33 @@ if (!$controls->is_action()) {
 
         $mail->Subject = '[' . get_option('blogname') . '] SMTP test';
 
-        $mail->Host = $controls->data['smtp_host'];
-        if (!empty($controls->data['smtp_port'])) {
-            $mail->Port = (int) $controls->data['smtp_port'];
+        $mail->Host = $controls->data['host'];
+        if (!empty($controls->data['port'])) {
+            $mail->Port = (int) $controls->data['port'];
         }
 
-        $mail->SMTPSecure = $controls->data['smtp_secure'];
+        $mail->SMTPSecure = $controls->data['secure'];
         $mail->SMTPAutoTLS = false;
+        
+        if ($controls->data['ssl_insecure'] == 1) {
+                $mail->SMTPOptions = array(
+                    'ssl' => array(
+                        'verify_peer' => false,
+                        'verify_peer_name' => false,
+                        'allow_self_signed' => true
+                    )
+                );
+        }
 
-        if (!empty($controls->data['smtp_user'])) {
+        if (!empty($controls->data['user'])) {
             $mail->SMTPAuth = true;
-            $mail->Username = $controls->data['smtp_user'];
-            $mail->Password = $controls->data['smtp_pass'];
+            $mail->Username = $controls->data['user'];
+            $mail->Password = $controls->data['pass'];
         }
 
         $mail->SMTPKeepAlive = true;
         $mail->ClearAddresses();
-        $mail->AddAddress($controls->data['smtp_test_email']);
+        $mail->AddAddress($controls->data['test_email']);
 
         $mail->Send();
         $mail->SmtpClose();
@@ -70,7 +81,7 @@ if (!$controls->is_action()) {
         } else
             $controls->messages = 'Success.';
 
-        $controls->messages .= '<textarea style="width:100%;height:250px;font-size:10px">';
+        $controls->messages .= '<textarea style="width:100%; height:200px; font-size:12px; font-family: monospace">';
         $controls->messages .= $debug;
         $controls->messages .= '</textarea>';
     }
@@ -100,7 +111,7 @@ if (!$controls->is_action()) {
         </p>
         <p>
 
-            What you need to know to use and external SMTP can be found
+            What you need to know to use an external SMTP can be found
             <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-configuration#smtp" target="_blank">here</a>.
             <br>
             On GoDaddy you should follow this <a href="http://www.thenewsletterplugin.com/godaddy-using-smtp-external-server-shared-hosting" target="_blank">special setup</a>.
@@ -119,14 +130,14 @@ if (!$controls->is_action()) {
         <table class="form-table">
             <tr>
                 <th>Enable the SMTP?</th>
-                <td><?php $controls->yesno('smtp_enabled'); ?></td>
+                <td><?php $controls->yesno('enabled'); ?></td>
             </tr>
             <tr>
                 <th>SMTP host/port</th>
                 <td>
-                    host: <?php $controls->text('smtp_host', 30); ?>
-                    port: <?php $controls->text('smtp_port', 6); ?>
-                    <?php $controls->select('smtp_secure', array('' => 'No secure protocol', 'tls' => 'TLS protocol', 'ssl' => 'SSL protocol')); ?>
+                    host: <?php $controls->text('host', 30); ?>
+                    port: <?php $controls->text('port', 6); ?>
+                    <?php $controls->select('secure', array('' => 'No secure protocol', 'tls' => 'TLS protocol', 'ssl' => 'SSL protocol')); ?>
                     <p class="description">
                         Leave port empty for default value (25). To use Gmail try host "smtp.gmail.com" and port "465" and SSL protocol (without quotes).
                         For GoDaddy use "relay-hosting.secureserver.net".
@@ -136,18 +147,24 @@ if (!$controls->is_action()) {
             <tr>
                 <th>Authentication</th>
                 <td>
-                    user: <?php $controls->text('smtp_user', 30); ?>
-                    password: <?php $controls->text('smtp_pass', 30); ?>
+                    user: <?php $controls->text('user', 30); ?>
+                    password: <?php $controls->text('pass', 30); ?>
                     <p class="description">
                         If authentication is not required, leave "user" field blank.
                     </p>
                 </td>
             </tr>
             <tr>
+                <th>Insecure SSL Connections</th>
+                <td>
+                    <?php $controls->yesno('ssl_insecure'); ?> <a href="http://www.thenewsletterplugin.com/?p=21989" target="_blank">Read more</a>.
+                </td>
+            </tr>
+            <tr>
                 <th>Test email address</th>
                 <td>
-                    <?php $controls->text_email('smtp_test_email', 30); ?>
-                    <?php $controls->button('smtp_test', 'Send a test email to this address'); ?>
+                    <?php $controls->text_email('test_email', 30); ?>
+                    <?php $controls->button('test', 'Send a test email to this address'); ?>
                     <p class="description">
                         If the test reports a "connection failed", review your settings and, if correct, contact
                         your provider to unlock the connection (if possible).

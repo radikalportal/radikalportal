@@ -1,7 +1,7 @@
 === Newsletter ===
 Tags: newsletter,email,subscription,mass mail,list build,email marketing,direct mailing
 Requires at least: 3.4.0
-Tested up to: 4.4.1
+Tested up to: 4.5
 Stable tag: trunk
 Contributors: satollo,webagile,michael-travan
 
@@ -25,6 +25,7 @@ send and track e-mails, headache-free. It just works out of box!
 * Html and Text versions of Emails 
 * All messages are **fully translatable** from Admin Panel (no .po/.mo)
 * Diagnostics Panel to check your blog mailing capability 
+* **Compatible with Postman, WP Mail SMTP, Easy WP SMTP, Easy SMTP Mail, WP Mail Bank**
 
 **Set Up Your First Newsletter In Just A Couple Of Clicks**
 [youtube https://www.youtube.com/watch?v=JaxK7XwqvVI]
@@ -75,6 +76,34 @@ Thank you, The Newsletter Team
 No screenshots are available at this time.
 
 == Changelog ==
+
+= 4.2.0 =
+
+* New statistics dashboard
+* Newsletter Reports 4 support
+
+= 4.1.3 =
+
+* Fixed the notice dismiss not working on every page
+* Fixed debug notice on WP 4.5
+* Added unverified SSL connection option on SMTP panel
+
+= 4.1.2 =
+
+* Minor security fix (on admin side with admin access)
+= 4.2.0 =
+
+* Added support for Reports Extension 4
+* Improved license check
+
+= 4.1.1 =
+
+* Added compatibility with SMTP plugins (Newsletter now sends with wp_mail if not otherwise configured)
+* Small CSS fixes
+
+= 4.1.0 =
+
+* Fix statistics link in the dashboard newsletter list
 
 = 4.0.9 =
 

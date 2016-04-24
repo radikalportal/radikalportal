@@ -19,7 +19,8 @@ $user = $module->get_user_from_request();
 $message_key = $module->get_message_key_from_request();
 $message = $newsletter->replace($module->options[$message_key . '_text'], $user);
 $message .= $module->options[$message_key . '_tracking'];
-$alert = stripslashes($_REQUEST['alert']);
+$alert = '';
+if (isset($_REQUEST['alert'])) $alert = stripslashes($_REQUEST['alert']);
 
 // Force the UTF-8 charset
 header('Content-Type: text/html;charset=UTF-8');
@@ -35,20 +36,21 @@ if (is_file(WP_CONTENT_DIR . '/extensions/newsletter/subscription/page.php')) {
             body {
                 font-family: verdana;
                 background-color: #ddd;
-                font-size: 12px;
+                font-size: 14px;
+                color: #333;
             }
             #container {
-                border: 1px solid #aaa;
-                border-radius: 5px;
+                border: 1px solid #ccc;
+                border-radius: 0px;
                 background-color: #fff;
                 margin: 40px auto;
-                width: 600px;
-                padding: 20px
+                width: 650px;
+                padding: 30px
             }
             h1 {
-                font-size: 24px;
+                font-size: 30px;
                 font-weight: normal;
-                border-bottom: 1px solid #aaa;
+                border-bottom: 0px solid #aaa;
                 margin-top: 0;
             }
             h2 {
@@ -63,6 +65,10 @@ if (is_file(WP_CONTENT_DIR . '/extensions/newsletter/subscription/page.php')) {
                 vertical-align: middle;
                 font-weight: normal;
             }
+            
+            #message {
+                line-height: 1.6em;
+            }
         </style>
     </head>
 
@@ -74,7 +80,9 @@ if (is_file(WP_CONTENT_DIR . '/extensions/newsletter/subscription/page.php')) {
         <?php } ?>
         <div id="container">
             <h1><?php echo get_option('blogname'); ?></h1>
+            <div id="message">
             <?php echo $message; ?>
+            </div>
         </div>
     </body>
 </html>

@@ -22,14 +22,14 @@ global $post; // Current post managed by WordPress
 $filters = array();
 
 // Maximum number of post to retrieve
-$filters['showposts'] = (int) $theme_options['theme_max_posts'];
-if ($filters['showposts'] == 0)
-    $filters['showposts'] = 10;
+$filters['posts_per_page'] = (int) $theme_options['theme_max_posts'];
+if ($filters['posts_per_page'] == 0)
+    $filters['posts_per_page'] = 10;
 
 
 // Include only posts from specified categories. Do not filter per category is no
 // one category has been selected.
-if (is_array($theme_options['theme_categories'])) {
+if (isset($theme_options['theme_categories']) && is_array($theme_options['theme_categories'])) {
     $filters['cat'] = implode(',', $theme_options['theme_categories']);
 }
 

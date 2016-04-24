@@ -19,35 +19,36 @@ class NewsletterStatistics extends NewsletterModule {
     function __construct() {
         global $wpdb;
 
-        parent::__construct('statistics', '1.1.4');
-        
+        parent::__construct('statistics', '1.1.6');
+
         add_action('wp_loaded', array($this, 'hook_wp_loaded'));
     }
 
     function hook_wp_loaded() {
         global $wpdb;
-        
+
+        // Newsletter Link Tracking
         if (isset($_GET['nltr'])) {
             $_GET['r'] = $_GET['nltr'];
             include dirname(__FILE__) . '/link.php';
             die();
         }
-        
+
         // Newsletter Open Traking Image
         if (isset($_GET['noti'])) {
             list($email_id, $user_id) = explode(';', base64_decode($_GET['noti']), 2);
 
             $wpdb->insert(NEWSLETTER_STATS_TABLE, array(
-                'email_id' => $email_id,
-                'user_id' => $user_id,
-                'ip' => $_SERVER['REMOTE_ADDR']
-                    )
+                'email_id' => (int)$email_id,
+                'user_id' => (int)$user_id,
+                'ip' => $_SERVER['REMOTE_ADDR'])
             );
 
             header('Content-Type: image/gif');
             echo base64_decode('_R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
             die();
-        }        
+        }
+
     }
 
     function upgrade() {
@@ -84,20 +85,20 @@ class NewsletterStatistics extends NewsletterModule {
             $this->save_options($this->options);
         }
 
-        $this->upgrade_query("ALTER TABLE `{$wpdb->prefix}newsletter_emails` ADD COLUMN `read_count` int UNSIGNED NOT NULL DEFAULT 0");
+        $this->upgrade_query("ALTER TABLE `{$wpdb->prefix}newsletter_emails` ADD COLUMN `open_count` int UNSIGNED NOT NULL DEFAULT 0");
         $this->upgrade_query("ALTER TABLE `{$wpdb->prefix}newsletter_emails` ADD COLUMN `click_count`  int UNSIGNED NOT NULL DEFAULT 0");
-        
-        // Stores the link of every email to create short links
-//        $this->upgrade_query("create table if not exists {$wpdb->prefix}newsletter_links (id int auto_increment, primary key (id)) $charset_collate");
-//        $this->upgrade_query("alter table {$wpdb->prefix}newsletter_links add column email_id int not null default 0");
-//        $this->upgrade_query("alter table {$wpdb->prefix}newsletter_links add column token varchar(10) not null default ''");
-//        $this->upgrade_query("alter table {$wpdb->prefix}newsletter_links add column text varchar(255) not null default ''");
-        //$this->upgrade_query("create table if not exists {$wpdb->prefix}newsletter_stats (id int auto_increment, primary key (id)) $charset_collate");
+        $this->upgrade_query("alter table {$wpdb->prefix}newsletter_emails change column read_count open_count int not null default 0");
+
     }
 
     function admin_menu() {
         $this->add_admin_page('index', 'Statistics');
         $this->add_admin_page('view', 'Statistics');
+        $this->add_admin_page('newsletters', 'Statistics');
+        $this->add_admin_page('settings', 'Statistics');
+        $this->add_admin_page('view_retarget', 'Statistics');
+        $this->add_admin_page('view_urls', 'Statistics');
+        $this->add_admin_page('view_users', 'Statistics');
     }
 
     function relink($text, $email_id, $user_id) {
@@ -155,19 +156,6 @@ class NewsletterStatistics extends NewsletterModule {
     function get_statistics_url($email_id) {
         $page = apply_filters('newsletter_statistics_view', 'newsletter_statistics_view');
         return 'admin.php?page=' . $page . '&amp;id=' . $email_id;
-    }
-
-    function get_read_count($email_id) {
-        global $wpdb;
-        $email_id = (int) $email_id;
-        return (int) $wpdb->get_var("select count(distinct user_id) from " . NEWSLETTER_STATS_TABLE . " where email_id=" . $email_id);
-    }
-
-    function get_clicked_count($email_id) {
-        global $wpdb;
-        $email_id = (int) $email_id;
-
-        return (int) $wpdb->get_var("select count(distinct user_id) from " . NEWSLETTER_STATS_TABLE . " where url<>'' and email_id=" . $email_id);
     }
 
 }

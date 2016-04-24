@@ -87,6 +87,9 @@ if ($controls->is_action('import')) {
             if ($mode == 'overwrite') {
                 $subscriber['name'] = $newsletter->normalize_name($data[1]);
                 $subscriber['surname'] = $newsletter->normalize_name($data[2]);
+                if (isset($data[3])) {
+                    $subscriber['sex'] = $newsletter->normalize_sex($data[3]);
+                }
                 if (isset($controls->data['override_status'])) {
                     $subscriber['status'] = $controls->data['import_as'];
                 }
@@ -102,6 +105,9 @@ if ($controls->is_action('import')) {
             if ($mode == 'update') {
                 $subscriber['name'] = $newsletter->normalize_name($data[1]);
                 $subscriber['surname'] = $newsletter->normalize_name($data[2]);
+                if (isset($data[3])) {
+                    $subscriber['sex'] = $newsletter->normalize_sex($data[3]);
+                }
                 $subscriber['status'] = $controls->data['import_as'];
                 foreach ($controls->data['preferences'] as $i)
                     $subscriber['list_' . $i] = 1;

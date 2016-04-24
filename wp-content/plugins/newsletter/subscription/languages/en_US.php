@@ -12,6 +12,8 @@
 
 $options = array();
 
+$options['noconfirmation'] = 0;
+
 // Profile page
 $options['profile_text'] = "<p>Change your subscription preferences to get what you are most interested in.</p>
     <p>If you change your email address, a confirmation email will be sent to activate it.</p>
@@ -25,7 +27,7 @@ $options['profile_error'] = "Your email is not valid or already in use by anothe
     
 $options['error_text'] = '<p>This subscription can\'t be completed, sorry. The email address is blocked or already subscribed. You should contact the owner to unlock that email address. Thank you.</p>';
 
-$options['already_confirmed_text'] = '<p>This email address is already subscribed, anyway a welcome email has been resent. Thank you.</p>';
+//$options['already_confirmed_text'] = '<p>This email address is already subscribed, anyway a welcome email has been resent. Thank you.</p>';
 
 $options['subscribe_wp_users'] = 0;
 
@@ -44,6 +46,8 @@ your spam folder.</p>";
 // Confirmation email subject (double opt-in)
 $options['confirmation_subject'] =
 "Please confirm subscription - {blog_title} newsletter";
+
+$options['confirmation_tracking'] = '';
 
 // Confirmation email body (double opt-in)
 $options['confirmation_message'] =

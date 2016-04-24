@@ -12,7 +12,7 @@ if (!$controls->is_action()) {
         if (strpos($controls->data['template'], '{message}') === false) {
             $controls->errors = 'Warning: the tag {message} is missing in your template';
         }
-        
+
         $controls->messages = 'Saved.';
     }
     if ($controls->is_action('reset')) {
@@ -35,7 +35,7 @@ if (!$controls->is_action()) {
             $message .= '<p>First name: {name}</p>';
             $message .= '<p>Last name: {surname}</p>';
             $message .= '<p>Email: {email}</p>';
-            
+
             $message = str_replace('{message}', $message, $template);
             $addresses = array();
             foreach ($users as &$user) {

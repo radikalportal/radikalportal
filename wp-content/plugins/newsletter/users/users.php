@@ -80,7 +80,7 @@ class NewsletterUsers extends NewsletterModule {
         $this->add_admin_page('massive', 'Massive Management');
         $this->add_admin_page('export', 'Export');
         $this->add_admin_page('import', 'Import');
-        $this->add_admin_page('stats', 'Statistics');
+        $this->add_admin_page('statistics', 'Statistics');
     }
 
     function export($options = null) {
@@ -121,8 +121,9 @@ class NewsletterUsers extends NewsletterModule {
         $page = 0;
         while (true) {
             $query = "select * from " . NEWSLETTER_USERS_TABLE . "";
-            if (!empty($_POST['options']['list'])) {
-                $query .= " where list_" . $_POST['options']['list'] . "=1";
+            $list = (int)$_POST['options']['list'];
+            if (!empty($list)) {
+                $query .= " where list_" . $list . "=1";
             }
             $recipients = $wpdb->get_results($query . " order by email limit " . $page * 500 . ",500");
             for ($i = 0; $i < count($recipients); $i++) {
