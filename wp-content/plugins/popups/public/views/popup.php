@@ -5,7 +5,7 @@
  * @package   Popups
  * @author    Damian Logghe <info@timersys.com
  * @license   GPL-2.0+
- * @link      http://wp.timersys.com
+ * @link      https://timersys.com
  * @copyright 2014 Timersys
  */
 
@@ -43,7 +43,7 @@ do_action( 'spu/popup/before_popup', $box, $opts, $css);
 	#spu-<?php echo $box->ID; ?> {
 		background-color: <?php echo ( !empty( $css['background_color'] ) ) ? esc_attr($css['background_color']) : 'white'; ?>;
 		<?php if ( !empty( $css['color'] ) ) { ?>color: <?php echo esc_attr($css['color']); ?>;<?php } ?>
-		<?php if ( !empty( $css['border_color'] ) && !empty( $css['border_width'] ) ) { ?>border: <?php echo esc_attr($css['border_width']) . 'px' ?> solid <?php echo esc_attr($css['border_color']); ?>;<?php } ?>
+		<?php if ( !empty( $css['border_width'] ) ) { ?>border: <?php echo esc_attr($css['border_width']) . 'px' ?> solid <?php echo esc_attr($css['border_color']); echo !empty( $opts['optin'] ) ? ' !important':'';?>;<?php } ?>
 		<?php echo ( empty( $opts['optin'] ) || $opts['optin'] == 'custom' ) ? 'width: ' . esc_attr( $width ) : ''; ?>;
 
 	}
@@ -63,7 +63,7 @@ do_action( 'spu/popup/before_popup', $box, $opts, $css);
 	<span class="spu-close spu-close-popup"><i class="spu-icon spu-icon-close"></i></span>
 	<span class="spu-timer"></span>
 	<?php if( $opts['powered_link'] == '1' ) {
-		$aff_link = !empty($this->spu_settings['aff_link']) ? $this->spu_settings['aff_link'] : 'http://wp.timersys.com/popups/';
+		$aff_link = !empty($this->spu_settings['aff_link']) ? $this->spu_settings['aff_link'] : 'https://timersys.com/popups/';
 		?>
 		<p class="spu-powered">Powered by <a href="<?php echo $aff_link;?>" target="_blank">WordPress Popup</a></p>
 	<?php } ?>
