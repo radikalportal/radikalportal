@@ -4,7 +4,7 @@
   Plugin Name: Newsletter
   Plugin URI: http://www.thenewsletterplugin.com/plugins/newsletter
   Description: Newsletter is a cool plugin to create your own subscriber list, to send newsletters, to build your business. <strong>Before update give a look to <a href="http://www.thenewsletterplugin.com/category/release">this page</a> to know what's changed.</strong>
-  Version: 4.2.0
+  Version: 4.2.2
   Author: Stefano Lissa, The Newsletter Team
   Author URI: http://www.thenewsletterplugin.com
   Disclaimer: Use at your own risk. No warranty expressed or implied is provided.
@@ -14,7 +14,7 @@
  */
 
 // Used as dummy parameter on css and js links
-define('NEWSLETTER_VERSION', '4.2.0');
+define('NEWSLETTER_VERSION', '4.2.2');
 
 global $wpdb, $newsletter;
 
@@ -132,7 +132,7 @@ class Newsletter extends NewsletterModule {
         // Here because the upgrade is called by the parent constructor and uses the scheduler
         add_filter('cron_schedules', array($this, 'hook_cron_schedules'), 1000);
 
-        parent::__construct('main', '1.2.8');
+        parent::__construct('main', '1.2.9');
 
         $max = $this->options['scheduler_max'];
         if (!is_numeric($max)) {
@@ -245,6 +245,7 @@ class Newsletter extends NewsletterModule {
             open tinyint(1) unsigned NOT NULL DEFAULT '0',
             time int(10) unsigned NOT NULL DEFAULT '0',
             error varchar(100) NOT NULL DEFAULT '',
+	    ip varchar(100) NOT NULL DEFAULT '',
             PRIMARY KEY (email_id,user_id),
             KEY user_id (user_id),
             KEY email_id (email_id)

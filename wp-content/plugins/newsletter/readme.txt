@@ -77,6 +77,14 @@ No screenshots are available at this time.
 
 == Changelog ==
 
+= 4.2.2 =
+
+* Fixed the newsletter sent table
+
+= 4.2.1 =
+
+* Fixed the progress indicator on newsletter list
+
 = 4.2.0 =
 
 * New statistics dashboard

@@ -97,8 +97,8 @@ $emails = Newsletter::instance()->get_emails('message');
                             <td><?php echo $email->id; ?></td>
                             <td><?php echo esc_html($email->subject); ?></td>
 
-                            <td><?php $module->get_email_status_label($email) ?></td>
-                            <td><?php $module->get_email_progress_label($email) ?></td>
+                            <td><?php echo $module->get_email_status_label($email) ?></td>
+                            <td><?php echo $module->get_email_progress_label($email) ?></td>
                             <td><?php if ($email->status == 'sent' || $email->status == 'sending') echo $module->format_date($email->send_on); ?></td>
                             <td><?php echo $email->track == 1 ? __('Yes', 'newsletter') : __('No', 'newsletter'); ?></td>
                             <td><a class="button" href="<?php echo $module->get_admin_page_url('edit'); ?>&amp;id=<?php echo $email->id; ?>"><i class="fa fa-pencil"></i> <?php _e('Edit', 'newsletter') ?></a></td>
