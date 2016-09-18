@@ -40,8 +40,8 @@ case 'restore' :
 	if ( ! $post = get_post( $revision->post_parent ) )
 		break;
 
-	// Revisions disabled (previously checked autosaves && ! wp_is_post_autosave( $revision ))
-	if ( ! wp_revisions_enabled( $post ) ) {
+	// Restore if revisions are enabled or this is an autosave.
+	if ( ! wp_revisions_enabled( $post ) && ! wp_is_post_autosave( $revision ) ) {
 		$redirect = 'edit.php?post_type=' . $post->post_type;
 		break;
 	}
@@ -63,7 +63,7 @@ default :
 	if ( ! $post = get_post( $revision->post_parent ) )
 		break;
 
-	if ( ! current_user_can( 'read_post', $revision->ID ) || ! current_user_can( 'read_post', $post->ID ) )
+	if ( ! current_user_can( 'read_post', $revision->ID ) || ! current_user_can( 'edit_post', $revision->post_parent ) )
 		break;
 
 	// Revisions disabled and we're not looking at an autosave
@@ -74,8 +74,8 @@ default :
 
 	$post_edit_link = get_edit_post_link();
 	$post_title     = '<a href="' . $post_edit_link . '">' . _draft_or_post_title() . '</a>';
-	$h2             = sprintf( __( 'Compare Revisions of &#8220;%1$s&#8221;' ), $post_title );
-	$return_to_post = '<a href="' . $post_edit_link . '">' . __( '&larr; Return to post editor' ) . '</a>';
+	$h1             = sprintf( __( 'Compare Revisions of &#8220;%1$s&#8221;' ), $post_title );
+	$return_to_post = '<a href="' . $post_edit_link . '">' . __( '&larr; Return to editor' ) . '</a>';
 	$title          = __( 'Revisions' );
 
 	$redirect = false;
@@ -126,7 +126,7 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 
 <div class="wrap">
-	<h2 class="long-header"><?php echo $h2; ?></h2>
+	<h1 class="long-header"><?php echo $h1; ?></h1>
 	<?php echo $return_to_post; ?>
 </div>
 <?php
