@@ -1,6 +1,3 @@
-/*
- * Script run inside a Customizer preview frame.
- */
 (function( exports, $ ){
 	var api = wp.customize,
 		debounce;
@@ -33,8 +30,8 @@
 	 */
 	api.Preview = api.Messenger.extend({
 		/**
-		 * @param {object} params  - Parameters to configure the messenger.
-		 * @param {object} options - Extend any instance parameter or method with this object.
+		 * Requires params:
+		 *  - url    - the URL of preview frame
 		 */
 		initialize: function( params, options ) {
 			var self = this;
@@ -43,27 +40,9 @@
 
 			this.body = $( document.body );
 			this.body.on( 'click.preview', 'a', function( event ) {
-				var link, isInternalJumpLink;
-				link = $( this );
-				isInternalJumpLink = ( '#' === link.attr( 'href' ).substr( 0, 1 ) );
 				event.preventDefault();
-
-				if ( isInternalJumpLink && '#' !== link.attr( 'href' ) ) {
-					$( link.attr( 'href' ) ).each( function() {
-						this.scrollIntoView();
-					} );
-				}
-
-				/*
-				 * Note the shift key is checked so shift+click on widgets or
-				 * nav menu items can just result on focusing on the corresponding
-				 * control instead of also navigating to the URL linked to.
-				 */
-				if ( event.shiftKey || isInternalJumpLink ) {
-					return;
-				}
 				self.send( 'scroll', 0 );
-				self.send( 'url', link.prop( 'href' ) );
+				self.send( 'url', $(this).prop('href') );
 			});
 
 			// You cannot submit forms.
@@ -84,58 +63,35 @@
 	});
 
 	$( function() {
-		var bg, setValue;
-
 		api.settings = window._wpCustomizeSettings;
-		if ( ! api.settings ) {
+		if ( ! api.settings )
 			return;
-		}
+
+		var bg;
 
 		api.preview = new api.Preview({
 			url: window.location.href,
 			channel: api.settings.channel
 		});
 
-		/**
-		 * Create/update a setting value.
-		 *
-		 * @param {string}  id            - Setting ID.
-		 * @param {*}       value         - Setting value.
-		 * @param {boolean} [createDirty] - Whether to create a setting as dirty. Defaults to false.
-		 */
-		setValue = function( id, value, createDirty ) {
-			var setting = api( id );
-			if ( setting ) {
-				setting.set( value );
-			} else {
-				createDirty = createDirty || false;
-				setting = api.create( id, value, {
-					id: id
-				} );
-
-				// Mark dynamically-created settings as dirty so they will get posted.
-				if ( createDirty ) {
-					setting._dirty = true;
-				}
-			}
-		};
-
 		api.preview.bind( 'settings', function( values ) {
-			$.each( values, setValue );
+			$.each( values, function( id, value ) {
+				if ( api.has( id ) )
+					api( id ).set( value );
+				else
+					api.create( id, value );
+			});
 		});
 
 		api.preview.trigger( 'settings', api.settings.values );
 
-		$.each( api.settings._dirty, function( i, id ) {
-			var setting = api( id );
-			if ( setting ) {
-				setting._dirty = true;
-			}
-		} );
-
 		api.preview.bind( 'setting', function( args ) {
-			var createDirty = true;
-			setValue.apply( null, args.concat( createDirty ) );
+			var value;
+
+			args = args.slice();
+
+			if ( value = api( args.shift() ) )
+				value.set.apply( value, args );
 		});
 
 		api.preview.bind( 'sync', function( events ) {
@@ -146,29 +102,13 @@
 		});
 
 		api.preview.bind( 'active', function() {
-			api.preview.send( 'nonce', api.settings.nonce );
+			if ( api.settings.nonce ) {
+				api.preview.send( 'nonce', api.settings.nonce );
+			}
 
 			api.preview.send( 'documentTitle', document.title );
 		});
 
-		api.preview.bind( 'saved', function( response ) {
-			api.trigger( 'saved', response );
-		} );
-
-		api.bind( 'saved', function() {
-			api.each( function( setting ) {
-				setting._dirty = false;
-			} );
-		} );
-
-		api.preview.bind( 'nonce-refresh', function( nonce ) {
-			$.extend( api.settings.nonce, nonce );
-		} );
-
-		/*
-		 * Send a message to the parent customize frame with a list of which
-		 * containers and controls are active.
-		 */
 		api.preview.send( 'ready', {
 			activePanels: api.settings.activePanels,
 			activeSections: api.settings.activeSections,
@@ -178,9 +118,11 @@
 		// Display a loading indicator when preview is reloading, and remove on failure.
 		api.preview.bind( 'loading-initiated', function () {
 			$( 'body' ).addClass( 'wp-customizer-unloading' );
+			$( 'html' ).prop( 'title', api.settings.l10n.loading );
 		});
 		api.preview.bind( 'loading-failed', function () {
 			$( 'body' ).removeClass( 'wp-customizer-unloading' );
+			$( 'html' ).prop( 'title', '' );
 		});
 
 		/* Custom Backgrounds */
@@ -222,20 +164,6 @@
 				this.bind( update );
 			});
 		});
-
-		/**
-		 * Custom Logo
-		 *
-		 * Toggle the wp-custom-logo body class when a logo is added or removed.
-		 *
-		 * @since 4.5.0
-		 */
-		api( 'custom_logo', function( setting ) {
-			$( 'body' ).toggleClass( 'wp-custom-logo', !! setting.get() );
-			setting.bind( function( attachmentId ) {
-				$( 'body' ).toggleClass( 'wp-custom-logo', !! attachmentId );
-			} );
-		} );
 
 		api.trigger( 'preview-ready' );
 	});

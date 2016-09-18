@@ -1,9 +1,8 @@
 <?php
 /**
- * Taxonomy API: Core category-specific functionality
+ * WordPress Category API
  *
  * @package WordPress
- * @subpackage Taxonomy
  */
 
 /**
@@ -15,12 +14,9 @@
  *
  * @since 2.1.0
  * @see get_terms() Type of arguments that can be changed.
+ * @link https://codex.wordpress.org/Function_Reference/get_categories
  *
- * @param string|array $args {
- *     Optional. Arguments to retrieve categories. See {@see get_terms()} for additional options.
- *
- *     @type string $taxonomy Taxonomy to retrieve terms for. In this case, default 'category'.
- * }
+ * @param string|array $args Optional. Change the defaults retrieving categories.
  * @return array List of categories.
  */
 function get_categories( $args = '' ) {
@@ -41,26 +37,14 @@ function get_categories( $args = '' ) {
 
 	// Back compat
 	if ( isset($args['type']) && 'link' == $args['type'] ) {
-		/* translators: 1: "type => link", 2: "taxonomy => link_category" alternative */
-		_deprecated_argument( __FUNCTION__, '3.0',
-			sprintf( __( '%1$s is deprecated. Use %2$s instead.' ),
-				'<code>type => link</code>',
-				'<code>taxonomy => link_category</code>'
-			)
-		);
+		_deprecated_argument( __FUNCTION__, '3.0', '' );
 		$taxonomy = $args['taxonomy'] = 'link_category';
 	}
 
-	$categories = get_terms( $taxonomy, $args );
+	$categories = (array) get_terms( $taxonomy, $args );
 
-	if ( is_wp_error( $categories ) ) {
-		$categories = array();
-	} else {
-		$categories = (array) $categories;
-		foreach ( array_keys( $categories ) as $k ) {
-			_make_cat_compat( $categories[ $k ] );
-		}
-	}
+	foreach ( array_keys( $categories ) as $k )
+		_make_cat_compat( $categories[$k] );
 
 	return $categories;
 }
@@ -84,8 +68,7 @@ function get_categories( $args = '' ) {
  * @param int|object $category Category ID or Category row object
  * @param string $output Optional. Constant OBJECT, ARRAY_A, or ARRAY_N
  * @param string $filter Optional. Default is raw or no WordPress defined filter will applied.
- * @return object|array|WP_Error|null Category data in type defined by $output parameter.
- *                                    WP_Error if $category is empty, null if it does not exist.
+ * @return object|array|WP_Error|null Category data in type defined by $output parameter. WP_Error if $category is empty, null if it does not exist.
  */
 function get_category( $category, $output = OBJECT, $filter = 'raw' ) {
 	$category = get_term( $category, 'category', $output, $filter );
@@ -115,7 +98,7 @@ function get_category( $category, $output = OBJECT, $filter = 'raw' ) {
  * @param string $category_path URL containing category slugs.
  * @param bool $full_match Optional. Whether full path should be matched.
  * @param string $output Optional. Constant OBJECT, ARRAY_A, or ARRAY_N
- * @return object|array|WP_Error|void Type is based on $output value.
+ * @return null|object|array Null on failure. Type is based on $output value.
  */
 function get_category_by_path( $category_path, $full_match = true, $output = OBJECT ) {
 	$category_path = rawurlencode( urldecode( $category_path ) );
@@ -125,23 +108,21 @@ function get_category_by_path( $category_path, $full_match = true, $output = OBJ
 	$leaf_path  = sanitize_title( basename( $category_paths ) );
 	$category_paths = explode( '/', $category_paths );
 	$full_path = '';
-	foreach ( (array) $category_paths as $pathdir ) {
+	foreach ( (array) $category_paths as $pathdir )
 		$full_path .= ( $pathdir != '' ? '/' : '' ) . sanitize_title( $pathdir );
-	}
+
 	$categories = get_terms( 'category', array('get' => 'all', 'slug' => $leaf_path) );
 
-	if ( empty( $categories ) ) {
-		return;
-	}
+	if ( empty( $categories ) )
+		return null;
 
 	foreach ( $categories as $category ) {
 		$path = '/' . $leaf_path;
 		$curcategory = $category;
 		while ( ( $curcategory->parent != 0 ) && ( $curcategory->parent != $curcategory->term_id ) ) {
 			$curcategory = get_term( $curcategory->parent, 'category' );
-			if ( is_wp_error( $curcategory ) ) {
+			if ( is_wp_error( $curcategory ) )
 				return $curcategory;
-			}
 			$path = '/' . $curcategory->slug . $path;
 		}
 
@@ -158,6 +139,8 @@ function get_category_by_path( $category_path, $full_match = true, $output = OBJ
 		_make_cat_compat( $category );
 		return $category;
 	}
+
+	return null;
 }
 
 /**
@@ -333,19 +316,18 @@ function clean_category_cache( $id ) {
  * pass to it. This is one of the features with using pass by reference in PHP.
  *
  * @since 2.3.0
- * @since 4.4.0 The `$category` parameter now also accepts a WP_Term object.
  * @access private
  *
- * @param array|object|WP_Term $category Category Row object or array
+ * @param array|object $category Category Row object or array
  */
 function _make_cat_compat( &$category ) {
-	if ( is_object( $category ) && ! is_wp_error( $category ) ) {
-		$category->cat_ID = $category->term_id;
-		$category->category_count = $category->count;
-		$category->category_description = $category->description;
-		$category->cat_name = $category->name;
-		$category->category_nicename = $category->slug;
-		$category->category_parent = $category->parent;
+	if ( is_object( $category ) ) {
+		$category->cat_ID = &$category->term_id;
+		$category->category_count = &$category->count;
+		$category->category_description = &$category->description;
+		$category->cat_name = &$category->name;
+		$category->category_nicename = &$category->slug;
+		$category->category_parent = &$category->parent;
 	} elseif ( is_array( $category ) && isset( $category['term_id'] ) ) {
 		$category['cat_ID'] = &$category['term_id'];
 		$category['category_count'] = &$category['count'];

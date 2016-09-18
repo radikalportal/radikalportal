@@ -28,7 +28,7 @@ function wp_crop_image( $src, $src_x, $src_y, $src_w, $src_h, $dst_w, $dst_h, $s
 		$src_file = get_attached_file( $src );
 
 		if ( ! file_exists( $src_file ) ) {
-			// If the file doesn't exist, attempt a URL fopen on the src link.
+			// If the file doesn't exist, attempt a url fopen on the src link.
 			// This can occur with certain file replication plugins.
 			$src = _load_image_to_edit_path( $src, 'full' );
 		} else {
@@ -66,8 +66,6 @@ function wp_crop_image( $src, $src_x, $src_y, $src_w, $src_h, $dst_w, $dst_h, $s
  * Generate post thumbnail attachment meta data.
  *
  * @since 2.1.0
- *
- * @global array $_wp_additional_image_sizes
  *
  * @param int $attachment_id Attachment Id to process.
  * @param string $file Filepath of the Attached image.
@@ -110,12 +108,10 @@ function wp_generate_attachment_metadata( $attachment_id, $file ) {
 		 * Filter the image sizes automatically generated when uploading an image.
 		 *
 		 * @since 2.9.0
-		 * @since 4.4.0 Added the `$metadata` argument.
 		 *
-		 * @param array $sizes    An associative array of image sizes.
-		 * @param array $metadata An associative array of image metadata: width, height, file.
+		 * @param array $sizes An associative array of image sizes.
 		 */
-		$sizes = apply_filters( 'intermediate_image_sizes_advanced', $sizes, $metadata );
+		$sizes = apply_filters( 'intermediate_image_sizes_advanced', $sizes );
 
 		if ( $sizes ) {
 			$editor = wp_get_image_editor( $file );
@@ -194,9 +190,8 @@ function wp_generate_attachment_metadata( $attachment_id, $file ) {
 	}
 
 	// Remove the blob of binary data from the array.
-	if ( $metadata ) {
+	if ( isset( $metadata['image']['data'] ) )
 		unset( $metadata['image']['data'] );
-	}
 
 	/**
 	 * Filter the generated attachment meta data.
@@ -279,10 +274,8 @@ function wp_read_image_metadata( $file ) {
 		'shutter_speed' => 0,
 		'title' => '',
 		'orientation' => 0,
-		'keywords' => array(),
 	);
 
-	$iptc = array();
 	/*
 	 * Read IPTC first, since it might contain data not available in exif such
 	 * as caption, description etc.
@@ -329,10 +322,6 @@ function wp_read_image_metadata( $file ) {
 
 			if ( ! empty( $iptc['2#116'][0] ) ) // copyright
 				$meta['copyright'] = trim( $iptc['2#116'][0] );
-
-			if ( ! empty( $iptc['2#025'][0] ) ) { // keywords array
-				$meta['keywords'] = array_values( $iptc['2#025'] );
-			}
 		 }
 	}
 
@@ -408,26 +397,22 @@ function wp_read_image_metadata( $file ) {
 		}
 	}
 
-	foreach ( $meta['keywords'] as $key => $keyword ) {
-		if ( ! seems_utf8( $keyword ) ) {
-			$meta['keywords'][ $key ] = utf8_encode( $keyword );
+	foreach ( $meta as &$value ) {
+		if ( is_string( $value ) ) {
+			$value = wp_kses_post( $value );
 		}
 	}
-
-	$meta = wp_kses_post_deep( $meta );
 
 	/**
 	 * Filter the array of meta data read from an image's exif data.
 	 *
 	 * @since 2.5.0
-	 * @since 4.4.0 The `$iptc` parameter was added.
 	 *
 	 * @param array  $meta            Image meta data.
 	 * @param string $file            Path to image file.
 	 * @param int    $sourceImageType Type of image.
-	 * @param array  $iptc            IPTC data.
 	 */
-	return apply_filters( 'wp_read_image_metadata', $meta, $file, $sourceImageType, $iptc );
+	return apply_filters( 'wp_read_image_metadata', $meta, $file, $sourceImageType );
 
 }
 

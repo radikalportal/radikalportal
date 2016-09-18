@@ -40,12 +40,12 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 
 <div class="wrap">
-<h1><?php echo esc_html( $title ); ?></h1>
+<h2><?php echo esc_html( $title ); ?></h2>
 
 <form action="options.php" method="post">
 <?php settings_fields('media'); ?>
 
-<h2 class="title"><?php _e('Image sizes') ?></h2>
+<h3 class="title"><?php _e('Image sizes') ?></h3>
 <p><?php _e( 'The sizes listed below determine the maximum dimensions in pixels to use when adding an image to the Media Library.' ); ?></p>
 
 <table class="form-table">
@@ -84,19 +84,15 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 <?php do_settings_fields('media', 'default'); ?>
 </table>
 
-<?php
-/**
- * @global array $wp_settings
- */
-if ( isset( $GLOBALS['wp_settings']['media']['embeds'] ) ) : ?>
-<h2 class="title"><?php _e('Embeds') ?></h2>
+<?php if ( isset( $GLOBALS['wp_settings']['media']['embeds'] ) ) : ?>
+<h3 class="title"><?php _e('Embeds') ?></h3>
 <table class="form-table">
 <?php do_settings_fields( 'media', 'embeds' ); ?>
 </table>
 <?php endif; ?>
 
 <?php if ( !is_multisite() ) : ?>
-<h2 class="title"><?php _e('Uploading Files'); ?></h2>
+<h3 class="title"><?php _e('Uploading Files'); ?></h3>
 <table class="form-table">
 <?php
 // If upload_url_path is not the default (empty), and upload_path is not the default ('wp-content/uploads' or empty)
@@ -105,10 +101,7 @@ if ( get_option('upload_url_path') || ( get_option('upload_path') != 'wp-content
 <tr>
 <th scope="row"><label for="upload_path"><?php _e('Store uploads in this folder'); ?></label></th>
 <td><input name="upload_path" type="text" id="upload_path" value="<?php echo esc_attr(get_option('upload_path')); ?>" class="regular-text code" />
-<p class="description"><?php
-	/* translators: %s: wp-content/uploads */
-	printf( __( 'Default is %s' ), '<code>wp-content/uploads</code>' );
-?></p>
+<p class="description"><?php _e('Default is <code>wp-content/uploads</code>'); ?></p>
 </td>
 </tr>
 

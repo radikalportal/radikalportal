@@ -39,7 +39,7 @@ if ( ! current_user_can( 'manage_network' ) )
 	wp_die( __( 'You do not have permission to access this page.' ), 403 );
 
 echo '<div class="wrap">';
-echo '<h1>' . __( 'Upgrade Network' ) . '</h1>';
+echo '<h2>' . __( 'Upgrade Network' ) . '</h2>';
 
 $action = isset($_GET['action']) ? $_GET['action'] : 'show';
 
@@ -48,9 +48,6 @@ switch ( $action ) {
 		$n = ( isset($_GET['n']) ) ? intval($_GET['n']) : 0;
 
 		if ( $n < 5 ) {
-			/**
-			 * @global string $wp_db_version
-			 */
 			global $wp_db_version;
 			update_site_option( 'wpmu_upgrade_site', $wp_db_version );
 		}
@@ -92,7 +89,7 @@ switch ( $action ) {
 			 *
 			 * @since MU
 			 *
-			 * @param int $blog_id The Site ID.
+			 * @param int $blog_id The id of the blog.
 			 */
 			do_action( 'wpmu_upgrade_site', $details[ 'blog_id' ] );
 		}
@@ -111,12 +108,12 @@ switch ( $action ) {
 	default:
 		if ( get_site_option( 'wpmu_upgrade_site' ) != $GLOBALS['wp_db_version'] ) :
 		?>
-		<h2><?php _e( 'Database Update Required' ); ?></h2>
+		<h3><?php _e( 'Database Upgrade Required' ); ?></h3>
 		<p><?php _e( 'WordPress has been updated! Before we send you on your way, we need to individually upgrade the sites in your network.' ); ?></p>
 		<?php endif; ?>
 
-		<p><?php _e( 'The database update process may take a little while, so please be patient.' ); ?></p>
-		<p><a class="button button-primary" href="upgrade.php?action=upgrade"><?php _e( 'Upgrade Network' ); ?></a></p>
+		<p><?php _e( 'The database upgrade process may take a little while, so please be patient.' ); ?></p>
+		<p><a class="button" href="upgrade.php?action=upgrade"><?php _e( 'Upgrade Network' ); ?></a></p>
 		<?php
 		/**
 		 * Fires before the footer on the network upgrade screen.

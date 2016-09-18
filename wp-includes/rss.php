@@ -55,10 +55,7 @@ class MagpieRSS {
 
 	var $_CONTENT_CONSTRUCTS = array('content', 'summary', 'info', 'title', 'tagline', 'copyright');
 
-	/**
-	 * PHP5 constructor.
-	 */
-	function __construct( $source ) {
+	function MagpieRSS ($source) {
 
 		# if PHP xml isn't compiled in, die
 		#
@@ -98,13 +95,6 @@ class MagpieRSS {
 		xml_parser_free( $this->parser );
 
 		$this->normalize();
-	}
-
-	/**
-	 * PHP4 constructor.
-	 */
-	public function MagpieRSS( $source ) {
-		self::__construct( $source );
 	}
 
 	function feed_start_element($p, $element, &$attrs) {
@@ -599,7 +589,7 @@ function _response_to_rss ($resp) {
 	if ( $rss && (!isset($rss->ERROR) || !$rss->ERROR) ) {
 
 		// find Etag, and Last-Modified
-		foreach ( (array) $resp->headers as $h) {
+		foreach( (array) $resp->headers as $h) {
 			// 2003-03-02 - Nicola Asuni (www.tecnick.com) - fixed bug "Undefined offset: 1"
 			if (strpos($h, ": ")) {
 				list($field, $val) = explode(": ", $h, 2);
@@ -719,10 +709,7 @@ class RSSCache {
 	var $MAX_AGE	= 43200;  		// when are files stale, default twelve hours
 	var $ERROR 		= '';			// accumulate error messages
 
-	/**
-	 * PHP5 constructor.
-	 */
-	function __construct( $base = '', $age = '' ) {
+	function RSSCache ($base='', $age='') {
 		$this->BASE_CACHE = WP_CONTENT_DIR . '/cache';
 		if ( $base ) {
 			$this->BASE_CACHE = $base;
@@ -731,13 +718,6 @@ class RSSCache {
 			$this->MAX_AGE = $age;
 		}
 
-	}
-
-	/**
-	 * PHP4 constructor.
-	 */
-	public function RSSCache( $base = '', $age = '' ) {
-		self::__construct( $base, $age );
 	}
 
 /*=======================================================================*\

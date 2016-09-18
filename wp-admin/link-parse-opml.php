@@ -9,9 +9,6 @@
 if ( ! defined('ABSPATH') )
 	die();
 
-/**
- * @global string $opml
- */
 global $opml;
 
 /**

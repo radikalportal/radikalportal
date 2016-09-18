@@ -1,8 +1,7 @@
 /* global inlineEditL10n, ajaxurl */
-window.wp = window.wp || {};
 
 var inlineEditTax;
-( function( $, wp ) {
+(function($) {
 inlineEditTax = {
 
 	init : function() {
@@ -23,10 +22,10 @@ inlineEditTax = {
 			}
 		});
 
-		$( '.cancel', row ).click( function() {
+		$( 'a.cancel', row ).click( function() {
 			return inlineEditTax.revert();
 		});
-		$( '.save', row ).click( function() {
+		$( 'a.save', row ).click( function() {
 			return inlineEditTax.save(this);
 		});
 		$( 'input, select', row ).keydown( function( e ) {
@@ -55,7 +54,7 @@ inlineEditTax = {
 		}
 
 		editRow = $('#inline-edit').clone(true), rowData = $('#inline_'+id);
-		$( 'td', editRow ).attr( 'colspan', $( 'th:visible, td:visible', '.widefat:first thead' ).length );
+		$('td', editRow).attr('colspan', $('.widefat:first thead th:visible').length);
 
 		$(t.what+id).hide().after(editRow).after('<tr class="hidden"></tr>');
 
@@ -97,9 +96,7 @@ inlineEditTax = {
 		// make ajax request
 		$.post( ajaxurl, params,
 			function(r) {
-				var row, new_id, option_value,
-					$errorSpan = $( '#edit-' + id + ' .inline-edit-save .error' );
-
+				var row, new_id, option_value;
 				$( 'table.widefat .spinner' ).removeClass( 'is-active' );
 
 				if (r) {
@@ -120,24 +117,15 @@ inlineEditTax = {
 						// Update the value in the Parent dropdown.
 						$( '#parent' ).find( 'option[value=' + option_value + ']' ).text( row.find( '.row-title' ).text() );
 
-						row.hide().fadeIn( 400, function() {
-							// Move focus back to the Quick Edit link.
-							row.find( '.editinline' ).focus();
-							wp.a11y.speak( inlineEditL10n.saved );
-						});
-
+						row.hide().fadeIn();
 					} else {
-						$errorSpan.html( r ).show();
-						// Some error strings may contain HTML entities (e.g. `&#8220`), let's use the HTML element's text.
-						wp.a11y.speak( $errorSpan.text() );
+						$('#edit-'+id+' .inline-edit-save .error').html(r).show();
 					}
 				} else {
-					$errorSpan.html( inlineEditL10n.error ).show();
-					wp.a11y.speak( inlineEditL10n.error );
+					$('#edit-'+id+' .inline-edit-save .error').html(inlineEditL10n.error).show();
 				}
 			}
 		);
-		// Prevent submitting the form when pressing Enter on a focused field.
 		return false;
 	},
 
@@ -148,9 +136,10 @@ inlineEditTax = {
 			$( 'table.widefat .spinner' ).removeClass( 'is-active' );
 			$('#'+id).siblings('tr.hidden').addBack().remove();
 			id = id.substr( id.lastIndexOf('-') + 1 );
-			// Show the taxonomy row and move focus back to the Quick Edit link.
-			$( this.what + id ).show().find( '.editinline' ).focus();
+			$(this.what+id).show();
 		}
+
+		return false;
 	},
 
 	getId : function(o) {
@@ -160,4 +149,4 @@ inlineEditTax = {
 };
 
 $(document).ready(function(){inlineEditTax.init();});
-})( jQuery, window.wp );
+})(jQuery);
