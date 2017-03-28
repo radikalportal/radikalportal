@@ -204,9 +204,16 @@ function baw_hack_wp_title_for_home($title) {
 }
 
 function jetpackme_remove_rp() {
-    $jprp = Jetpack_RelatedPosts::init();
-    $callback = array( $jprp, 'filter_add_target_to_dom' );
-    remove_filter( 'the_content', $callback, 40 );
+    $jetpack_active_modules = get_option('jetpack_active_modules');
+
+    if ( class_exists( 'Jetpack', false ) && $jetpack_active_modules && in_array( 'related-posts', $jetpack_active_modules ) && ! defined( 'JETPACK_DEV_DEBUG' ) ) {
+
+        $jprp = Jetpack_RelatedPosts::init();
+        $callback = array( $jprp, 'filter_add_target_to_dom' );
+        remove_filter( 'the_content', $callback, 40 );
+        add_filter( 'the_content', '__return_false', 50 );
+
+    }
 }
 add_filter( 'wp', 'jetpackme_remove_rp', 20 );
 
