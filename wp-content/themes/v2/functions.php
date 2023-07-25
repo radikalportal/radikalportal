@@ -118,3 +118,4 @@ function mh_featured_image() {
     }
 }
 add_action('mh_post_content_top', 'mh_featured_image');
+

@@ -2,8 +2,8 @@
 Contributors: johanee
 Tags: login, security, authentication
 Requires at least: 2.8
-Tested up to: 3.3.2
-Stable tag: 1.7.1
+Tested up to: 6.2
+Stable tag: 1.7.2
 
 Limit rate of login attempts, including by way of cookies, for each IP. Fully customizable.
 
@@ -83,6 +83,9 @@ If you have access to the database (for example through phpMyAdmin) you can clea
 3. Administration interface in WordPress 3.0.4
 
 == Changelog ==
+
+= 1.7.2 =
+Security fixes.
 
 = 1.7.1 =
 This version fixes a security bug in version 1.6.2 and 1.7.0. Please upgrade immediately.

@@ -2,8 +2,8 @@
 Contributors: westonruter, ryanhellyer, glen_scott
 Tags: users, photos, images
 Requires at least: 3.0.5
-Tested up to: 4.3.1
-Stable tag: 0.9.6
+Tested up to: 4.6
+Stable tag: 0.9.10
 
 Allows a user to associate a photo with their account and for this photo to be displayed in their posts and comments.
 
@@ -113,6 +113,19 @@ Localizations included for Spanish, German, Dutch, Polish, Russian, French, Hung
 If you value this plugin, *please donate* to ensure that it may continue to be maintained and improved.
 
 == Changelog ==
+
+= 0.9.10 =
+* Added recommendation to upgrade in wp-admin/plugins.php
+* Provided option to never see the upgrade notice again
+
+= 0.9.9 =
+* Removed deprecated mysql_ function
+
+= 0.9.8 =
+* Optimised retrieval of administrators for settings page
+
+= 0.9.7 =
+* Fixed WordPress deprecated notices
 
 = 0.9.6 =
 * Fixed PHP notice about deprecated argument

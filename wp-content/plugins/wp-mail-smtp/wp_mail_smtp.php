@@ -1,440 +1,329 @@
 <?php
-/*
-Plugin Name: WP-Mail-SMTP
-Version: 0.9.5
-Plugin URI: http://www.callum-macdonald.com/code/wp-mail-smtp/
-Description: Reconfigures the wp_mail() function to use SMTP instead of mail() and creates an options page to manage the settings.
-Author: Callum Macdonald
-Author URI: http://www.callum-macdonald.com/
-*/
+/**
+ * Plugin Name: WP Mail SMTP
+ * Version: 3.8.2
+ * Requires at least: 5.2
+ * Requires PHP: 7.2
+ * Plugin URI: https://wpmailsmtp.com/
+ * Description: Reconfigures the <code>wp_mail()</code> function to use Gmail/Mailgun/SendGrid/SMTP instead of the default <code>mail()</code> and creates an options page to manage the settings.
+ * Author: WP Mail SMTP
+ * Author URI: https://wpmailsmtp.com/
+ * Network: false
+ * Text Domain: wp-mail-smtp
+ * Domain Path: /assets/languages
+ */
 
 /**
- * @author Callum Macdonald
- * @copyright Callum Macdonald, 2007-11, All Rights Reserved
+ * @author    WPForms
+ * @copyright WPForms, 2007-23, All Rights Reserved
  * This code is released under the GPL licence version 3 or later, available here
- * http://www.gnu.org/licenses/gpl.txt
+ * https://www.gnu.org/licenses/gpl.txt
  */
 
 /**
  * Setting options in wp-config.php
- * 
- * Specifically aimed at WPMU users, you can set the options for this plugin as
- * constants in wp-config.php. This disables the plugin's admin page and may
- * improve performance very slightly. Copy the code below into wp-config.php.
+ *
+ * Specifically aimed at WP Multisite users, you can set the options for this plugin as
+ * constants in wp-config.php. Copy the code below into wp-config.php and tweak settings.
+ * Values from constants are NOT stripslash()'ed.
+ *
+ * When enabled, make sure to comment out (at the beginning of the line using //) those constants that you do not need,
+ * or remove them completely, so they won't interfere with plugin settings.
  */
+
 /*
-define('WPMS_ON', true);
-define('WPMS_MAIL_FROM', 'From Email');
-define('WPMS_MAIL_FROM_NAME', 'From Name');
-define('WPMS_MAILER', 'smtp'); // Possible values 'smtp', 'mail', or 'sendmail'
-define('WPMS_SET_RETURN_PATH', 'false'); // Sets $phpmailer->Sender if true
-define('WPMS_SMTP_HOST', 'localhost'); // The SMTP mail host
-define('WPMS_SMTP_PORT', 25); // The SMTP server port number
-define('WPMS_SSL', ''); // Possible values '', 'ssl', 'tls' - note TLS is not STARTTLS
-define('WPMS_SMTP_AUTH', true); // True turns on SMTP authentication, false turns it off
-define('WPMS_SMTP_USER', 'username'); // SMTP authentication username, only used if WPMS_SMTP_AUTH is true
-define('WPMS_SMTP_PASS', 'password'); // SMTP authentication password, only used if WPMS_SMTP_AUTH is true
+define( 'WPMS_ON', true ); // True turns on the whole constants support and usage, false turns it off.
+
+define( 'WPMS_DO_NOT_SEND', true ); // Or false, in that case constant is ignored.
+
+define( 'WPMS_MAIL_FROM', 'mail@example.com' );
+define( 'WPMS_MAIL_FROM_FORCE', true ); // True turns it on, false turns it off.
+define( 'WPMS_MAIL_FROM_NAME', 'From Name' );
+define( 'WPMS_MAIL_FROM_NAME_FORCE', true ); // True turns it on, false turns it off.
+define( 'WPMS_MAILER', 'sendinblue' ); // Possible values: 'mail', 'smtpcom', 'sendinblue', 'mailgun', 'sendgrid', 'gmail', 'smtp'.
+define( 'WPMS_SET_RETURN_PATH', true ); // Sets $phpmailer->Sender if true, relevant only for Other SMTP mailer.
+
+// Recommended mailers.
+define( 'WPMS_SMTPCOM_API_KEY', '' );
+define( 'WPMS_SMTPCOM_CHANNEL', '' );
+define( 'WPMS_SENDINBLUE_API_KEY', '' );
+define( 'WPMS_SENDINBLUE_DOMAIN', '' );
+
+define( 'WPMS_ZOHO_DOMAIN', '' );
+define( 'WPMS_ZOHO_CLIENT_ID', '' );
+define( 'WPMS_ZOHO_CLIENT_SECRET', '' );
+
+define( 'WPMS_PEPIPOST_API_KEY', '' );
+
+define( 'WPMS_SENDINBLUE_API_KEY', '' );
+
+define( 'WPMS_MAILGUN_API_KEY', '' );
+define( 'WPMS_MAILGUN_DOMAIN', '' );
+define( 'WPMS_MAILGUN_REGION', 'US' ); // or 'EU' for Europe.
+
+define( 'WPMS_SENDGRID_API_KEY', '' );
+
+define( 'WPMS_GMAIL_CLIENT_ID', '' );
+define( 'WPMS_GMAIL_CLIENT_SECRET', '' );
+
+define( 'WPMS_SMTP_HOST', 'localhost' ); // The SMTP mail host.
+define( 'WPMS_SMTP_PORT', 25 ); // The SMTP server port number.
+define( 'WPMS_SSL', '' ); // Possible values '', 'ssl', 'tls' - note TLS is not STARTTLS.
+define( 'WPMS_SMTP_AUTH', true ); // True turns it on, false turns it off.
+define( 'WPMS_SMTP_USER', 'username' ); // SMTP authentication username, only used if WPMS_SMTP_AUTH is true.
+define( 'WPMS_SMTP_PASS', 'password' ); // SMTP authentication password, only used if WPMS_SMTP_AUTH is true.
+define( 'WPMS_SMTP_AUTOTLS', true ); // True turns it on, false turns it off.
 */
 
-// Array of options and their default values
-global $wpms_options; // This is horrible, should be cleaned up at some point
-$wpms_options = array (
-	'mail_from' => '',
-	'mail_from_name' => '',
-	'mailer' => 'smtp',
-	'mail_set_return_path' => 'false',
-	'smtp_host' => 'localhost',
-	'smtp_port' => '25',
-	'smtp_ssl' => 'none',
-	'smtp_auth' => false,
-	'smtp_user' => '',
-	'smtp_pass' => ''
-);
-
-
 /**
- * Activation function. This function creates the required options and defaults.
+ * Don't allow multiple versions of 1.5.x (Lite and Pro) and above to be active.
+ *
+ * @since 1.5.0
  */
-if (!function_exists('wp_mail_smtp_activate')) :
-function wp_mail_smtp_activate() {
-	
-	global $wpms_options;
-	
-	// Create the required options...
-	foreach ($wpms_options as $name => $val) {
-		add_option($name,$val);
+if ( function_exists( 'wp_mail_smtp' ) ) {
+
+	if ( ! function_exists( 'wp_mail_smtp_deactivate' ) ) {
+		/**
+		 * Deactivate if plugin already activated.
+		 * Needed when transitioning from 1.5+ Lite to Pro.
+		 *
+		 * @since 1.5.0
+		 */
+		function wp_mail_smtp_deactivate() {
+			/*
+			 * Prevent issues of WP functions not being available for other plugins that hook into
+			 * this early deactivation. GH issue #861.
+			 */
+			require_once ABSPATH . WPINC . '/pluggable.php';
+
+			deactivate_plugins( plugin_basename( __FILE__ ) );
+		}
 	}
-	
-}
-endif;
+	add_action( 'admin_init', 'wp_mail_smtp_deactivate' );
 
-if (!function_exists('wp_mail_smtp_whitelist_options')) :
-function wp_mail_smtp_whitelist_options($whitelist_options) {
-	
-	global $wpms_options;
-	
-	// Add our options to the array
-	$whitelist_options['email'] = array_keys($wpms_options);
-	
-	return $whitelist_options;
-	
+	// Do not process the plugin code further.
+	return;
 }
-endif;
 
-// To avoid any (very unlikely) clashes, check if the function alredy exists
-if (!function_exists('phpmailer_init_smtp')) :
-// This code is copied, from wp-includes/pluggable.php as at version 2.2.2
-function phpmailer_init_smtp($phpmailer) {
-	
-	// If constants are defined, apply those options
-	if (defined('WPMS_ON') && WPMS_ON) {
-		
-		$phpmailer->Mailer = WPMS_MAILER;
-		
-		if (WPMS_SET_RETURN_PATH)
-			$phpmailer->Sender = $phpmailer->From;
-		
-		if (WPMS_MAILER == 'smtp') {
-			$phpmailer->SMTPSecure = WPMS_SSL;
-			$phpmailer->Host = WPMS_SMTP_HOST;
-			$phpmailer->Port = WPMS_SMTP_PORT;
-			if (WPMS_SMTP_AUTH) {
-				$phpmailer->SMTPAuth = true;
-				$phpmailer->Username = WPMS_SMTP_USER;
-				$phpmailer->Password = WPMS_SMTP_PASS;
+if ( ! function_exists( 'wp_mail_smtp_check_pro_loading_allowed' ) ) {
+	/**
+	 * Don't allow 1.4.x and below to break when 1.5+ Pro is activated.
+	 * This will stop the current plugin from loading and display a message in admin area.
+	 *
+	 * @since 1.5.0
+	 */
+	function wp_mail_smtp_check_pro_loading_allowed() {
+
+		// Check for pro without using wp_mail_smtp()->is_pro(), because at this point it's too early.
+		if ( ! is_readable( rtrim( plugin_dir_path( __FILE__ ), '/\\' ) . '/src/Pro/Pro.php' ) ) {
+			// Currently, not a pro version of the plugin is loaded.
+			return false;
+		}
+
+		if ( ! function_exists( 'is_plugin_active' ) ) {
+			require_once ABSPATH . '/wp-admin/includes/plugin.php';
+		}
+
+		$lite_plugin_slug = 'wp-mail-smtp/wp_mail_smtp.php';
+
+		// Search for old plugin name.
+		if ( is_plugin_active( $lite_plugin_slug ) ) {
+			/*
+			 * Prevent issues of WP functions not being available for other plugins that hook into
+			 * this early deactivation. GH issue #861.
+			 */
+			require_once ABSPATH . WPINC . '/pluggable.php';
+
+			if (
+				is_multisite() &&
+				is_plugin_active_for_network( plugin_basename( __FILE__ ) ) &&
+				! is_plugin_active_for_network( $lite_plugin_slug )
+			) {
+				// Deactivate Lite plugin if Pro activated on Network level.
+				deactivate_plugins( $lite_plugin_slug );
+			} else {
+				// As Pro is loaded and Lite too - deactivate *silently* itself not to break older SMTP plugin.
+				deactivate_plugins( plugin_basename( __FILE__ ) );
+
+				if ( is_network_admin() ) {
+					add_action( 'network_admin_notices', 'wp_mail_smtp_lite_deactivation_notice' );
+				} else {
+					add_action( 'admin_notices', 'wp_mail_smtp_lite_deactivation_notice' );
+				}
+
+				return true;
 			}
 		}
-		
-		// If you're using contstants, set any custom options here
-		$phpmailer = apply_filters('wp_mail_smtp_custom_options', $phpmailer);
-		
+
+		return false;
 	}
-	else {
-		
-		// Check that mailer is not blank, and if mailer=smtp, host is not blank
-		if ( ! get_option('mailer') || ( get_option('mailer') == 'smtp' && ! get_option('smtp_host') ) ) {
-			return;
-		}
-		
-		// Set the mailer type as per config above, this overrides the already called isMail method
-		$phpmailer->Mailer = get_option('mailer');
-		
-		// Set the Sender (return-path) if required
-		if (get_option('mail_set_return_path'))
-			$phpmailer->Sender = $phpmailer->From;
-		
-		// Set the SMTPSecure value, if set to none, leave this blank
-		$phpmailer->SMTPSecure = get_option('smtp_ssl') == 'none' ? '' : get_option('smtp_ssl');
-		
-		// If we're sending via SMTP, set the host
-		if (get_option('mailer') == "smtp") {
-			
-			// Set the SMTPSecure value, if set to none, leave this blank
-			$phpmailer->SMTPSecure = get_option('smtp_ssl') == 'none' ? '' : get_option('smtp_ssl');
-			
-			// Set the other options
-			$phpmailer->Host = get_option('smtp_host');
-			$phpmailer->Port = get_option('smtp_port');
-			
-			// If we're using smtp auth, set the username & password
-			if (get_option('smtp_auth') == "true") {
-				$phpmailer->SMTPAuth = TRUE;
-				$phpmailer->Username = get_option('smtp_user');
-				$phpmailer->Password = get_option('smtp_pass');
+
+	if ( ! function_exists( 'wp_mail_smtp_lite_deactivation_notice' ) ) {
+		/**
+		 * Display the notice after deactivation.
+		 *
+		 * @since 1.5.0
+		 */
+		function wp_mail_smtp_lite_deactivation_notice() {
+
+			echo '<div class="notice notice-warning"><p>' . esc_html__( 'Please deactivate the free version of the WP Mail SMTP plugin before activating WP Mail SMTP Pro.', 'wp-mail-smtp' ) . '</p></div>';
+
+			if ( isset( $_GET['activate'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				unset( $_GET['activate'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			}
 		}
-		
-		// You can add your own options here, see the phpmailer documentation for more info:
-		// http://phpmailer.sourceforge.net/docs/
-		$phpmailer = apply_filters('wp_mail_smtp_custom_options', $phpmailer);
-		
-		
-		// STOP adding options here.
-		
-	}
-	
-} // End of phpmailer_init_smtp() function definition
-endif;
-
-
-
-/**
- * This function outputs the plugin options page.
- */
-if (!function_exists('wp_mail_smtp_options_page')) :
-// Define the function
-function wp_mail_smtp_options_page() {
-	
-	// Load the options
-	global $wpms_options, $phpmailer;
-	
-	// Make sure the PHPMailer class has been instantiated 
-	// (copied verbatim from wp-includes/pluggable.php)
-	// (Re)create it, if it's gone missing
-	if ( !is_object( $phpmailer ) || !is_a( $phpmailer, 'PHPMailer' ) ) {
-		require_once ABSPATH . WPINC . '/class-phpmailer.php';
-		require_once ABSPATH . WPINC . '/class-smtp.php';
-		$phpmailer = new PHPMailer( true );
 	}
 
-	// Send a test mail if necessary
-	if (isset($_POST['wpms_action']) && $_POST['wpms_action'] == __('Send Test', 'wp_mail_smtp') && isset($_POST['to'])) {
-		
-		check_admin_referer('test-email');
-		
-		// Set up the mail variables
-		$to = $_POST['to'];
-		$subject = 'WP Mail SMTP: ' . __('Test mail to ', 'wp_mail_smtp') . $to;
-		$message = __('This is a test email generated by the WP Mail SMTP WordPress plugin.', 'wp_mail_smtp');
-		
-		// Set SMTPDebug to true
-		$phpmailer->SMTPDebug = true;
-		
-		// Start output buffering to grab smtp debugging output
-		ob_start();
+	// Stop the plugin loading.
+	if ( wp_mail_smtp_check_pro_loading_allowed() === true ) {
+		return;
+	}
+}
 
-		// Send the test mail
-		$result = wp_mail($to,$subject,$message);
-		
-		// Strip out the language strings which confuse users
-		//unset($phpmailer->language);
-		// This property became protected in WP 3.2
-		
-		// Grab the smtp debugging output
-		$smtp_debug = ob_get_clean();
-		
-		// Output the response
+if ( ! function_exists( 'wp_mail_smtp_insecure_php_version_notice' ) ) {
+	/**
+	 * Display admin notice, if the server is using old/insecure PHP version.
+	 *
+	 * @since 2.0.0
+	 */
+	function wp_mail_smtp_insecure_php_version_notice() {
+
 		?>
-<div id="message" class="updated fade"><p><strong><?php _e('Test Message Sent', 'wp_mail_smtp'); ?></strong></p>
-<p><?php _e('The result was:', 'wp_mail_smtp'); ?></p>
-<pre><?php var_dump($result); ?></pre>
-<p><?php _e('The full debugging output is shown below:', 'wp_mail_smtp'); ?></p>
-<pre><?php var_dump($phpmailer); ?></pre>
-<p><?php _e('The SMTP debugging output is shown below:', 'wp_mail_smtp'); ?></p>
-<pre><?php echo $smtp_debug ?></pre>
-</div>
+		<div class="notice notice-error">
+			<p>
+				<?php
+				printf(
+					wp_kses( /* translators: %1$s - WPBeginner URL for recommended WordPress hosting. */
+						__( 'Your site is running an <strong>insecure version</strong> of PHP that is no longer supported. Please contact your web hosting provider to update your PHP version or switch to a <a href="%1$s" target="_blank" rel="noopener noreferrer">recommended WordPress hosting company</a>.', 'wp-mail-smtp' ),
+						array(
+							'a'      => array(
+								'href'   => array(),
+								'target' => array(),
+								'rel'    => array(),
+							),
+							'strong' => array(),
+						)
+					),
+					'https://www.wpbeginner.com/wordpress-hosting/'
+				);
+				?>
+				<br><br>
+				<?php
+
+				$doc_link = add_query_arg(
+					[
+						'utm_source'   => 'WordPress',
+						'utm_medium'   => 'Admin Notice',
+						'utm_campaign' => is_readable( rtrim( plugin_dir_path( __FILE__ ), '/\\' ) . '/src/Pro/Pro.php' ) ? 'plugin' : 'liteplugin',
+						'utm_content'  => 'Minimal Required PHP Version',
+					],
+					'https://wpmailsmtp.com/docs/supported-php-versions-for-wp-mail-smtp/'
+				);
+
+				printf(
+					wp_kses( /* translators: %s - WPMailSMTP.com docs URL with more details. */
+						__( '<strong>WP Mail SMTP plugin is disabled</strong> on your site until you fix the issue. <a href="%s" target="_blank" rel="noopener noreferrer">Read more for additional information.</a>', 'wp-mail-smtp' ),
+						array(
+							'a'      => array(
+								'href'   => array(),
+								'target' => array(),
+								'rel'    => array(),
+							),
+							'strong' => array(),
+						)
+					),
+					esc_url( $doc_link )
+				);
+				?>
+			</p>
+		</div>
+
 		<?php
-		
-		// Destroy $phpmailer so it doesn't cause issues later
-		unset($phpmailer);
 
-	}
-	
-	?>
-<div class="wrap">
-<h2><?php _e('Advanced Email Options', 'wp_mail_smtp'); ?></h2>
-<form method="post" action="options.php">
-<?php wp_nonce_field('email-options'); ?>
-
-<table class="optiontable form-table">
-<tr valign="top">
-<th scope="row"><label for="mail_from"><?php _e('From Email', 'wp_mail_smtp'); ?></label></th>
-<td><input name="mail_from" type="text" id="mail_from" value="<?php print(get_option('mail_from')); ?>" size="40" class="regular-text" />
-<span class="description"><?php _e('You can specify the email address that emails should be sent from. If you leave this blank, the default email will be used.', 'wp_mail_smtp'); if(get_option('db_version') < 6124) { print('<br /><span style="color: red;">'); _e('<strong>Please Note:</strong> You appear to be using a version of WordPress prior to 2.3. Please ignore the From Name field and instead enter Name&lt;email@domain.com&gt; in this field.', 'wp_mail_smtp'); print('</span>'); } ?></span></td>
-</tr>
-<tr valign="top">
-<th scope="row"><label for="mail_from_name"><?php _e('From Name', 'wp_mail_smtp'); ?></label></th>
-<td><input name="mail_from_name" type="text" id="mail_from_name" value="<?php print(get_option('mail_from_name')); ?>" size="40" class="regular-text" />
-<span class="description"><?php _e('You can specify the name that emails should be sent from. If you leave this blank, the emails will be sent from WordPress.', 'wp_mail_smtp'); ?></span></td>
-</tr>
-</table>
-
-
-<table class="optiontable form-table">
-<tr valign="top">
-<th scope="row"><?php _e('Mailer', 'wp_mail_smtp'); ?> </th>
-<td><fieldset><legend class="screen-reader-text"><span><?php _e('Mailer', 'wp_mail_smtp'); ?></span></legend>
-<p><input id="mailer_smtp" type="radio" name="mailer" value="smtp" <?php checked('smtp', get_option('mailer')); ?> />
-<label for="mailer_smtp"><?php _e('Send all WordPress emails via SMTP.', 'wp_mail_smtp'); ?></label></p>
-<p><input id="mailer_mail" type="radio" name="mailer" value="mail" <?php checked('mail', get_option('mailer')); ?> />
-<label for="mailer_mail"><?php _e('Use the PHP mail() function to send emails.', 'wp_mail_smtp'); ?></label></p>
-</fieldset></td>
-</tr>
-</table>
-
-
-<table class="optiontable form-table">
-<tr valign="top">
-<th scope="row"><?php _e('Return Path', 'wp_mail_smtp'); ?> </th>
-<td><fieldset><legend class="screen-reader-text"><span><?php _e('Return Path', 'wp_mail_smtp'); ?></span></legend><label for="mail_set_return_path">
-<input name="mail_set_return_path" type="checkbox" id="mail_set_return_path" value="true" <?php checked('true', get_option('mail_set_return_path')); ?> />
-<?php _e('Set the return-path to match the From Email'); ?></label>
-</fieldset></td>
-</tr>
-</table>
-
-<h3><?php _e('SMTP Options', 'wp_mail_smtp'); ?></h3>
-<p><?php _e('These options only apply if you have chosen to send mail by SMTP above.', 'wp_mail_smtp'); ?></p>
-
-<table class="optiontable form-table">
-<tr valign="top">
-<th scope="row"><label for="smtp_host"><?php _e('SMTP Host', 'wp_mail_smtp'); ?></label></th>
-<td><input name="smtp_host" type="text" id="smtp_host" value="<?php print(get_option('smtp_host')); ?>" size="40" class="regular-text" /></td>
-</tr>
-<tr valign="top">
-<th scope="row"><label for="smtp_port"><?php _e('SMTP Port', 'wp_mail_smtp'); ?></label></th>
-<td><input name="smtp_port" type="text" id="smtp_port" value="<?php print(get_option('smtp_port')); ?>" size="6" class="regular-text" /></td>
-</tr>
-<tr valign="top">
-<th scope="row"><?php _e('Encryption', 'wp_mail_smtp'); ?> </th>
-<td><fieldset><legend class="screen-reader-text"><span><?php _e('Encryption', 'wp_mail_smtp'); ?></span></legend>
-<input id="smtp_ssl_none" type="radio" name="smtp_ssl" value="none" <?php checked('none', get_option('smtp_ssl')); ?> />
-<label for="smtp_ssl_none"><span><?php _e('No encryption.', 'wp_mail_smtp'); ?></span></label><br />
-<input id="smtp_ssl_ssl" type="radio" name="smtp_ssl" value="ssl" <?php checked('ssl', get_option('smtp_ssl')); ?> />
-<label for="smtp_ssl_ssl"><span><?php _e('Use SSL encryption.', 'wp_mail_smtp'); ?></span></label><br />
-<input id="smtp_ssl_tls" type="radio" name="smtp_ssl" value="tls" <?php checked('tls', get_option('smtp_ssl')); ?> />
-<label for="smtp_ssl_tls"><span><?php _e('Use TLS encryption. This is not the same as STARTTLS. For most servers SSL is the recommended option.', 'wp_mail_smtp'); ?></span></label>
-</td>
-</tr>
-<tr valign="top">
-<th scope="row"><?php _e('Authentication', 'wp_mail_smtp'); ?> </th>
-<td>
-<input id="smtp_auth_false" type="radio" name="smtp_auth" value="false" <?php checked('false', get_option('smtp_auth')); ?> />
-<label for="smtp_auth_false"><span><?php _e('No: Do not use SMTP authentication.', 'wp_mail_smtp'); ?></span></label><br />
-<input id="smtp_auth_true" type="radio" name="smtp_auth" value="true" <?php checked('true', get_option('smtp_auth')); ?> />
-<label for="smtp_auth_true"><span><?php _e('Yes: Use SMTP authentication.', 'wp_mail_smtp'); ?></span></label><br />
-<span class="description"><?php _e('If this is set to no, the values below are ignored.', 'wp_mail_smtp'); ?></span>
-</td>
-</tr>
-<tr valign="top">
-<th scope="row"><label for="smtp_user"><?php _e('Username', 'wp_mail_smtp'); ?></label></th>
-<td><input name="smtp_user" type="text" id="smtp_user" value="<?php print(get_option('smtp_user')); ?>" size="40" class="code" /></td>
-</tr>
-<tr valign="top">
-<th scope="row"><label for="smtp_pass"><?php _e('Password', 'wp_mail_smtp'); ?></label></th>
-<td><input name="smtp_pass" type="text" id="smtp_pass" value="<?php print(get_option('smtp_pass')); ?>" size="40" class="code" /></td>
-</tr>
-</table>
-
-<p class="submit"><input type="submit" name="submit" id="submit" class="button-primary" value="<?php _e('Save Changes'); ?>" /></p>
-<input type="hidden" name="action" value="update" />
-</p>
-<input type="hidden" name="option_page" value="email">
-</form>
-
-<h3><?php _e('Send a Test Email', 'wp_mail_smtp'); ?></h3>
-
-<form method="POST" action="options-general.php?page=<?php echo plugin_basename(__FILE__); ?>">
-<?php wp_nonce_field('test-email'); ?>
-<table class="optiontable form-table">
-<tr valign="top">
-<th scope="row"><label for="to"><?php _e('To:', 'wp_mail_smtp'); ?></label></th>
-<td><input name="to" type="text" id="to" value="" size="40" class="code" />
-<span class="description"><?php _e('Type an email address here and then click Send Test to generate a test email.', 'wp_mail_smtp'); ?></span></td>
-</tr>
-</table>
-<p class="submit"><input type="submit" name="wpms_action" id="wpms_action" class="button-primary" value="<?php _e('Send Test', 'wp_mail_smtp'); ?>" /></p>
-</form>
-
-</div>
-	<?php
-	
-} // End of wp_mail_smtp_options_page() function definition
-endif;
-
-
-/**
- * This function adds the required page (only 1 at the moment).
- */
-if (!function_exists('wp_mail_smtp_menus')) :
-function wp_mail_smtp_menus() {
-	
-	if (function_exists('add_submenu_page')) {
-		add_options_page(__('Advanced Email Options', 'wp_mail_smtp'),__('Email', 'wp_mail_smtp'),'manage_options',__FILE__,'wp_mail_smtp_options_page');
-	}
-	
-} // End of wp_mail_smtp_menus() function definition
-endif;
-
-
-/**
- * This function sets the from email value
- */
-if (!function_exists('wp_mail_smtp_mail_from')) :
-function wp_mail_smtp_mail_from ($orig) {
-	
-	// This is copied from pluggable.php lines 348-354 as at revision 10150
-	// http://trac.wordpress.org/browser/branches/2.7/wp-includes/pluggable.php#L348
-	
-	// Get the site domain and get rid of www.
-	$sitename = strtolower( $_SERVER['SERVER_NAME'] );
-	if ( substr( $sitename, 0, 4 ) == 'www.' ) {
-		$sitename = substr( $sitename, 4 );
-	}
-
-	$default_from = 'wordpress@' . $sitename;
-	// End of copied code
-	
-	// If the from email is not the default, return it unchanged
-	if ( $orig != $default_from ) {
-		return $orig;
-	}
-	
-	if (defined('WPMS_ON') && WPMS_ON) {
-		if (defined('WPMS_MAIL_FROM') && WPMS_MAIL_FROM != false)
-			return WPMS_MAIL_FROM;
-	}
-	elseif (is_email(get_option('mail_from'), false))
-		return get_option('mail_from');
-	
-	// If in doubt, return the original value
-	return $orig;
-	
-} // End of wp_mail_smtp_mail_from() function definition
-endif;
-
-
-/**
- * This function sets the from name value
- */
-if (!function_exists('wp_mail_smtp_mail_from_name')) :
-function wp_mail_smtp_mail_from_name ($orig) {
-	
-	// Only filter if the from name is the default
-	if ($orig == 'WordPress') {
-		if (defined('WPMS_ON') && WPMS_ON) {
-			if (defined('WPMS_MAIL_FROM_NAME') && WPMS_MAIL_FROM_NAME != false)
-				return WPMS_MAIL_FROM_NAME;
+		// In case this is on plugin activation.
+		if ( isset( $_GET['activate'] ) ) { //phpcs:ignore
+			unset( $_GET['activate'] ); //phpcs:ignore
 		}
-		elseif ( get_option('mail_from_name') != "" && is_string(get_option('mail_from_name')) )
-			return get_option('mail_from_name');
 	}
-	
-	// If in doubt, return the original value
-	return $orig;
-	
-} // End of wp_mail_smtp_mail_from_name() function definition
-endif;
-
-function wp_mail_plugin_action_links( $links, $file ) {
-	if ( $file != plugin_basename( __FILE__ ))
-		return $links;
-
-	$settings_link = '<a href="options-general.php?page=' . plugin_basename(__FILE__) . '">' . __( 'Settings', 'wp_mail_smtp' ) . '</a>';
-
-	array_unshift( $links, $settings_link );
-
-	return $links;
 }
 
-// Add an action on phpmailer_init
-add_action('phpmailer_init','phpmailer_init_smtp');
-
-if (!defined('WPMS_ON') || !WPMS_ON) {
-	// Whitelist our options
-	add_filter('whitelist_options', 'wp_mail_smtp_whitelist_options');
-	// Add the create pages options
-	add_action('admin_menu','wp_mail_smtp_menus');
-	// Add an activation hook for this plugin
-	register_activation_hook(__FILE__,'wp_mail_smtp_activate');
-	// Adds "Settings" link to the plugin action page
-	add_filter( 'plugin_action_links', 'wp_mail_plugin_action_links',10,2);
+if ( ! defined( 'WPMS_PLUGIN_VER' ) ) {
+	define( 'WPMS_PLUGIN_VER', '3.8.2' );
+}
+if ( ! defined( 'WPMS_PHP_VER' ) ) {
+	define( 'WPMS_PHP_VER', '7.2' );
+}
+if ( ! defined( 'WPMS_WP_VER' ) ) {
+	define( 'WPMS_WP_VER', '5.2' );
+}
+if ( ! defined( 'WPMS_PLUGIN_FILE' ) ) {
+	define( 'WPMS_PLUGIN_FILE', __FILE__ );
 }
 
-// Add filters to replace the mail from name and emailaddress
-add_filter('wp_mail_from','wp_mail_smtp_mail_from');
-add_filter('wp_mail_from_name','wp_mail_smtp_mail_from_name');
+if ( ! function_exists( 'wp_mail_smtp_unsupported_wp_version_notice' ) ) {
+	/**
+	 * Display admin notice, if the site is using unsupported WP version.
+	 *
+	 * @since 3.3.0
+	 */
+	function wp_mail_smtp_unsupported_wp_version_notice() {
 
-load_plugin_textdomain('wp_mail_smtp', false, dirname(plugin_basename(__FILE__)) . '/langs');
+		?>
+		<div class="notice notice-error">
+			<p>
+				<?php
+				printf(
+					wp_kses( /* translators: %s The minimal WP version supported by WP Mail SMTP. */
+						__( 'Your site is running an <strong>old version</strong> of WordPress that is no longer supported by WP Mail SMTP. Please update your WordPress site to at least version <strong>%s</strong>.', 'wp-mail-smtp' ),
+						[
+							'strong' => [],
+						]
+					),
+					esc_html( WPMS_WP_VER )
+				);
+				?>
+				<br><br>
+				<?php
+				echo wp_kses(
+					__( '<strong>WP Mail SMTP plugin is disabled</strong> on your site until WordPress is updated to the required version.', 'wp-mail-smtp' ),
+					[
+						'strong' => [],
+					]
+				);
+				?>
+			</p>
+		</div>
 
-?>
+		<?php
+
+		// In case this is on plugin activation.
+		if ( isset( $_GET['activate'] ) ) { //phpcs:ignore
+			unset( $_GET['activate'] ); //phpcs:ignore
+		}
+	}
+}
+
+/**
+ * Display admin notice and prevent plugin code execution, if the server is
+ * using old/insecure PHP version.
+ *
+ * @since 2.0.0
+ */
+if ( version_compare( phpversion(), WPMS_PHP_VER, '<' ) ) {
+	add_action( 'admin_notices', 'wp_mail_smtp_insecure_php_version_notice' );
+
+	return;
+}
+
+/**
+ * Display admin notice and prevent plugin code execution, if the WP version is lower than WPMS_WP_VER.
+ *
+ * @since 3.3.0
+ */
+if ( version_compare( get_bloginfo( 'version' ), WPMS_WP_VER, '<' ) ) {
+	add_action( 'admin_notices', 'wp_mail_smtp_unsupported_wp_version_notice' );
+
+	return;
+}
+
+require_once dirname( __FILE__ ) . '/wp-mail-smtp.php';

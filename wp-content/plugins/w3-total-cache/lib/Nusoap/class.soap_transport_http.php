@@ -58,7 +58,7 @@ class soap_transport_http extends nusoap_base {
 	* @param boolean $use_curl Whether to try to force cURL use
 	* @access public
 	*/
-	function soap_transport_http($url, $curl_options = NULL, $use_curl = false){
+	function __construct($url, $curl_options = NULL, $use_curl = false){
 		parent::nusoap_base();
 		$this->debug("ctor url=$url use_curl=$use_curl curl_options:");
 		$this->appendDebug($this->varDump($curl_options));
@@ -281,10 +281,8 @@ class soap_transport_http extends nusoap_base {
 		$hostURL .= $this->path;
 		$this->setCurlOption(CURLOPT_URL, $hostURL);
 		// follow location headers (re-directs)
-		if (ini_get('safe_mode') || ini_get('open_basedir')) {
-			$this->debug('safe_mode or open_basedir set, so do not set CURLOPT_FOLLOWLOCATION');
-			$this->debug('safe_mode = ');
-			$this->appendDebug($this->varDump(ini_get('safe_mode')));
+		if (ini_get('open_basedir')) {
+			$this->debug('open_basedir set, so do not set CURLOPT_FOLLOWLOCATION');
 			$this->debug('open_basedir = ');
 			$this->appendDebug($this->varDump(ini_get('open_basedir')));
 		} else {
@@ -447,12 +445,12 @@ class soap_transport_http extends nusoap_base {
 	* @param    string $data message data
 	* @param    integer $timeout set connection timeout in seconds
 	* @param	integer $response_timeout set response timeout in seconds
-	* @param	array $cookies cookies to send
+	* @param	array $cookies cookies to send (6/12/2023 Made not required to prevent PHP error/warning for required following optional)
 	* @return	string data
 	* @access   public
 	* @deprecated
 	*/
-	function sendHTTPS($data, $timeout=0, $response_timeout=30, $cookies) {
+	function sendHTTPS($data, $timeout=0, $response_timeout=30, $cookies=array()) {
 		return $this->send($data, $timeout, $response_timeout, $cookies);
 	}
 
@@ -1303,6 +1301,3 @@ class soap_transport_http extends nusoap_base {
 		return $cookie_str;
   }
 }
-
-
-?>

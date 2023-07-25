@@ -22,15 +22,17 @@
  * @property int    $post_count
  * @property string $home
  */
+#[AllowDynamicProperties]
 final class WP_Site {
 
 	/**
 	 * Site ID.
 	 *
+	 * Named "blog" vs. "site" for legacy reasons.
+	 *
 	 * A numeric string, for compatibility reasons.
 	 *
 	 * @since 4.5.0
-	 * @access public
 	 * @var string
 	 */
 	public $blog_id;
@@ -39,7 +41,6 @@ final class WP_Site {
 	 * Domain of the site.
 	 *
 	 * @since 4.5.0
-	 * @access public
 	 * @var string
 	 */
 	public $domain = '';
@@ -48,7 +49,6 @@ final class WP_Site {
 	 * Path of the site.
 	 *
 	 * @since 4.5.0
-	 * @access public
 	 * @var string
 	 */
 	public $path = '';
@@ -62,16 +62,14 @@ final class WP_Site {
 	 * A numeric string, for compatibility reasons.
 	 *
 	 * @since 4.5.0
-	 * @access public
 	 * @var string
 	 */
 	public $site_id = '0';
 
 	/**
-	 * The date on which the site was created or registered.
+	 * The date and time on which the site was created or registered.
 	 *
 	 * @since 4.5.0
-	 * @access public
 	 * @var string Date in MySQL's datetime format.
 	 */
 	public $registered = '0000-00-00 00:00:00';
@@ -80,7 +78,6 @@ final class WP_Site {
 	 * The date and time on which site settings were last updated.
 	 *
 	 * @since 4.5.0
-	 * @access public
 	 * @var string Date in MySQL's datetime format.
 	 */
 	public $last_updated = '0000-00-00 00:00:00';
@@ -91,7 +88,6 @@ final class WP_Site {
 	 * A numeric string, for compatibility reasons.
 	 *
 	 * @since 4.5.0
-	 * @access public
 	 * @var string
 	 */
 	public $public = '1';
@@ -102,7 +98,6 @@ final class WP_Site {
 	 * A numeric string, for compatibility reasons.
 	 *
 	 * @since 4.5.0
-	 * @access public
 	 * @var string
 	 */
 	public $archived = '0';
@@ -116,7 +111,6 @@ final class WP_Site {
 	 * A numeric string, for compatibility reasons.
 	 *
 	 * @since 4.5.0
-	 * @access public
 	 * @var string
 	 */
 	public $mature = '0';
@@ -127,7 +121,6 @@ final class WP_Site {
 	 * A numeric string, for compatibility reasons.
 	 *
 	 * @since 4.5.0
-	 * @access public
 	 * @var string
 	 */
 	public $spam = '0';
@@ -138,7 +131,6 @@ final class WP_Site {
 	 * A numeric string, for compatibility reasons.
 	 *
 	 * @since 4.5.0
-	 * @access public
 	 * @var string
 	 */
 	public $deleted = '0';
@@ -149,7 +141,6 @@ final class WP_Site {
 	 * A numeric string, for compatibility reasons.
 	 *
 	 * @since 4.5.0
-	 * @access public
 	 * @var string
 	 */
 	public $lang_id = '0';
@@ -157,9 +148,7 @@ final class WP_Site {
 	/**
 	 * Retrieves a site from the database by its ID.
 	 *
-	 * @static
 	 * @since 4.5.0
-	 * @access public
 	 *
 	 * @global wpdb $wpdb WordPress database abstraction object.
 	 *
@@ -176,14 +165,18 @@ final class WP_Site {
 
 		$_site = wp_cache_get( $site_id, 'sites' );
 
-		if ( ! $_site ) {
+		if ( false === $_site ) {
 			$_site = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->blogs} WHERE blog_id = %d LIMIT 1", $site_id ) );
 
 			if ( empty( $_site ) || is_wp_error( $_site ) ) {
-				return false;
+				$_site = -1;
 			}
 
 			wp_cache_add( $site_id, $_site, 'sites' );
+		}
+
+		if ( is_numeric( $_site ) ) {
+			return false;
 		}
 
 		return new WP_Site( $_site );
@@ -196,12 +189,11 @@ final class WP_Site {
 	 * default properties based on that information.
 	 *
 	 * @since 4.5.0
-	 * @access public
 	 *
 	 * @param WP_Site|object $site A site object.
 	 */
 	public function __construct( $site ) {
-		foreach( get_object_vars( $site ) as $key => $value ) {
+		foreach ( get_object_vars( $site ) as $key => $value ) {
 			$this->$key = $value;
 		}
 	}
@@ -210,7 +202,6 @@ final class WP_Site {
 	 * Converts an object to array.
 	 *
 	 * @since 4.6.0
-	 * @access public
 	 *
 	 * @return array Object as array.
 	 */
@@ -225,7 +216,6 @@ final class WP_Site {
 	 * Allows access to extended site properties.
 	 *
 	 * @since 4.6.0
-	 * @access public
 	 *
 	 * @param string $key Property to get.
 	 * @return mixed Value of the property. Null if not available.
@@ -240,11 +230,15 @@ final class WP_Site {
 			case 'siteurl':
 			case 'post_count':
 			case 'home':
+			default: // Custom properties added by 'site_details' filter.
 				if ( ! did_action( 'ms_loaded' ) ) {
 					return null;
 				}
+
 				$details = $this->get_details();
-				return $details->$key;
+				if ( isset( $details->$key ) ) {
+					return $details->$key;
+				}
 		}
 
 		return null;
@@ -257,7 +251,6 @@ final class WP_Site {
 	 * Checks for extended site properties.
 	 *
 	 * @since 4.6.0
-	 * @access public
 	 *
 	 * @param string $key Property to check if set.
 	 * @return bool Whether the property is set.
@@ -275,6 +268,15 @@ final class WP_Site {
 					return false;
 				}
 				return true;
+			default: // Custom properties added by 'site_details' filter.
+				if ( ! did_action( 'ms_loaded' ) ) {
+					return false;
+				}
+
+				$details = $this->get_details();
+				if ( isset( $details->$key ) ) {
+					return true;
+				}
 		}
 
 		return false;
@@ -286,7 +288,6 @@ final class WP_Site {
 	 * Allows current multisite naming conventions while setting properties.
 	 *
 	 * @since 4.6.0
-	 * @access public
 	 *
 	 * @param string $key   Property to set.
 	 * @param mixed  $value Value to assign to the property.
@@ -310,7 +311,6 @@ final class WP_Site {
 	 * This method is used internally to lazy-load the extended properties of a site.
 	 *
 	 * @since 4.6.0
-	 * @access private
 	 *
 	 * @see WP_Site::__get()
 	 *
@@ -322,7 +322,7 @@ final class WP_Site {
 		if ( false === $details ) {
 
 			switch_to_blog( $this->blog_id );
-			// Create a raw copy of the object for backwards compatibility with the filter below.
+			// Create a raw copy of the object for backward compatibility with the filter below.
 			$details = new stdClass();
 			foreach ( get_object_vars( $this ) as $key => $value ) {
 				$details->$key = $value;
@@ -333,17 +333,7 @@ final class WP_Site {
 			$details->home       = get_option( 'home' );
 			restore_current_blog();
 
-			$cache_details = true;
-			foreach ( array( 'blogname', 'siteurl', 'post_count', 'home' ) as $field ) {
-				if ( false === $details->$field ) {
-					$cache_details = false;
-					break;
-				}
-			}
-
-			if ( $cache_details ) {
-				wp_cache_set( $this->blog_id, $details, 'site-details' );
-			}
+			wp_cache_set( $this->blog_id, $details, 'site-details' );
 		}
 
 		/** This filter is documented in wp-includes/ms-blogs.php */

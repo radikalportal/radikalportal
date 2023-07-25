@@ -11,7 +11,7 @@ if (!function_exists('mh_post_meta')) {
 		if ($post_date || $post_author || $post_cat || $post_comments) {
 			echo '<p class="meta post-meta">';
 				if ($post_date || $post_author || $post_cat) {
-					$post_date ? $date = sprintf(_x('on %s', 'post date', 'mh'), '<span itemprop="dateModified" class="updated">' . get_the_date() . '</span> ') : $date = '';
+					$post_date ? $date = sprintf(_x('on %s', 'post date', 'mh'), '<span itemprop="dateModified" class="updated">' . get_the_date('j F Y') . '</span> ') : $date = '';
 					$post_author ? $byline = sprintf(_x('by %s', 'post author', 'mh'), '<span class="vcard author" itemprop="author" itemscope itemtype="http://schema.org/Person"><a class="fn" href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '" itemprop="name">' . esc_html(get_the_author()) . '</a></span> ') : $byline = '';
 					$post_cat ? $category = sprintf(_x('in %s', 'post category', 'mh'), get_the_category_list(', ', '')) : $category = '';
 					printf(_x('Posted %1$s %2$s %3$s', 'post meta', 'mh'), $date, $byline, $category);

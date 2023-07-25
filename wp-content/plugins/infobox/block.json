@@ -1,0 +1,13 @@
+{
+	"name": "infobox/infobox",
+	"title": "Infobox",
+	"apiVersion": 2,
+	"category": "widgets",
+	"description": "Deliver your content beautifully to grab attention with an animated Infobox block.",
+	"supports": {
+		"html": false,
+		"align": ["wide", "full"]
+	},
+	"textdomain": "infobox",
+	"editorScript": "file:./dist/index.js"
+}
