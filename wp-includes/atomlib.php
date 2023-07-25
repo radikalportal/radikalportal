@@ -94,8 +94,8 @@ class AtomParser {
 
         $this->feed = new AtomFeed();
         $this->current = null;
-        $this->map_attrs_func = create_function('$k,$v', 'return "$k=\"$v\"";');
-        $this->map_xmlns_func = create_function('$p,$n', '$xd = "xmlns"; if(strlen($n[0])>0) $xd .= ":{$n[0]}"; return "{$xd}=\"{$n[1]}\"";');
+        $this->map_attrs_func = array( __CLASS__, 'map_attrs' );
+        $this->map_xmlns_func = array( __CLASS__, 'map_xmlns' );
     }
 
 	/**
@@ -103,6 +103,32 @@ class AtomParser {
 	 */
 	public function AtomParser() {
 		self::__construct();
+	}
+
+	/**
+	 * Map attributes to key="val"
+	 *
+	 * @param string $k Key
+	 * @param string $v Value
+	 * @return string
+	 */
+	public static function map_attrs($k, $v) {
+		return "$k=\"$v\"";
+	}
+
+	/**
+	 * Map XML namespace to string.
+	 *
+	 * @param indexish $p XML Namespace element index
+	 * @param array $n Two-element array pair. [ 0 => {namespace}, 1 => {url} ]
+	 * @return string 'xmlns="{url}"' or 'xmlns:{namespace}="{url}"'
+	 */
+	public static function map_xmlns($p, $n) {
+		$xd = "xmlns";
+		if( 0 < strlen($n[0]) ) {
+			$xd .= ":{$n[0]}";
+		}
+		return "{$xd}=\"{$n[1]}\"";
 	}
 
     function _p($msg) {
@@ -145,7 +171,7 @@ class AtomParser {
             if($this->debug) $this->content .= $data;
 
             if(!xml_parse($parser, $data, feof($fp))) {
-                /* translators: 1: error message, 2: line number */
+                /* translators: 1: Error message, 2: Line number. */
                 trigger_error(sprintf(__('XML Error: %1$s at line %2$s')."\n",
                     xml_error_string(xml_get_error_code($parser)),
                     xml_get_current_line_number($parser)));
@@ -156,6 +182,7 @@ class AtomParser {
         fclose($fp);
 
         xml_parser_free($parser);
+        unset($parser);
 
         restore_error_handler();
 
@@ -164,7 +191,8 @@ class AtomParser {
 
     function start_element($parser, $name, $attrs) {
 
-        $tag = array_pop(explode(":", $name));
+        $name_parts = explode(":", $name);
+        $tag        = array_pop($name_parts);
 
         switch($name) {
             case $this->NS . ':feed':
@@ -243,7 +271,8 @@ class AtomParser {
 
     function end_element($parser, $name) {
 
-        $tag = array_pop(explode(":", $name));
+        $name_parts = explode(":", $name);
+        $tag        = array_pop($name_parts);
 
         $ccount = count($this->in_content);
 
@@ -359,10 +388,10 @@ class AtomParser {
         return false;
     }
 
-    function xml_escape($string)
+    function xml_escape($content)
     {
              return str_replace(array('&','"',"'",'<','>'),
                 array('&amp;','&quot;','&apos;','&lt;','&gt;'),
-                $string );
+                $content );
     }
 }

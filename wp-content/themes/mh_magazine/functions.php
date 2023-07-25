@@ -160,6 +160,15 @@ if (!function_exists('mh_widgets_init')) {
 		register_sidebar(array('name' => sprintf(_x('Home %d', 'widget area name', 'mh'), 9), 'id' => 'home-9', 'description' => __('Widget area on homepage', 'mh'), 'before_widget' => '<div class="sb-widget home-9">', 'after_widget' => '</div>', 'before_title' => '<h4 class="widget-title">', 'after_title' => '</h4>'));
 		register_sidebar(array('name' => sprintf(_x('Home %d', 'widget area name', 'mh'), 10), 'id' => 'home-10', 'description' => __('Widget area on homepage', 'mh'), 'before_widget' => '<div class="sb-widget home-10">', 'after_widget' => '</div>', 'before_title' => '<h4 class="widget-title">', 'after_title' => '</h4>'));
 		register_sidebar(array('name' => sprintf(_x('Home %d', 'widget area name', 'mh'), 11), 'id' => 'home-11', 'description' => __('Widget area on homepage', 'mh'), 'before_widget' => '<div class="sb-widget home-11 home-wide">', 'after_widget' => '</div>', 'before_title' => '<h4 class="widget-title">', 'after_title' => '</h4>'));
+		
+		#test
+		register_sidebar(array('name' => sprintf(_x('Home %d', 'widget area name', 'mh'), 13), 'id' => 'home-13', 'description' => __('Widget area on homepage', 'mh'), 'before_widget' => '<div class="sb-widget home-13 home-wide">', 'after_widget' => '</div>', 'before_title' => '<h4 class="widget-title">', 'after_title' => '</h4>'));
+		register_sidebar(array('name' => sprintf(_x('Home %d', 'widget area name', 'mh'), 14), 'id' => 'home-14', 'description' => __('Widget area on homepage', 'mh'), 'before_widget' => '<div class="sb-widget home-14">', 'after_widget' => '</div>', 'before_title' => '<h4 class="widget-title">', 'after_title' => '</h4>'));
+		register_sidebar(array('name' => sprintf(_x('Home %d', 'widget area name', 'mh'), 15), 'id' => 'home-15', 'description' => __('Widget area on homepage', 'mh'), 'before_widget' => '<div class="sb-widget home-15">', 'after_widget' => '</div>', 'before_title' => '<h4 class="widget-title">', 'after_title' => '</h4>'));
+		register_sidebar(array('name' => sprintf(_x('Home %d', 'widget area name', 'mh'), 16), 'id' => 'home-16', 'description' => __('Widget area on homepage', 'mh'), 'before_widget' => '<div class="sb-widget home-16">', 'after_widget' => '</div>', 'before_title' => '<h4 class="widget-title">', 'after_title' => '</h4>'));
+
+		
+		#/test
 		if ($options['sidebars'] == 'two') {
 			register_sidebar(array('name' => sprintf(_x('Home %d', 'widget area name', 'mh'), 12), 'id' => 'home-12', 'description' => __('Sidebar on homepage', 'mh'), 'before_widget' => '<div id="%1$s" class="sb-widget home-12">', 'after_widget' => '</div>', 'before_title' => '<h4 class="widget-title">', 'after_title' => '</h4>'));
 		}

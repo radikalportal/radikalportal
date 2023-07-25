@@ -50,6 +50,28 @@
 					</div>
 				<?php } ?>
 			</div>
+		<!-- test -->
+		<?php endif; ?>
+		<?php dynamic_sidebar('home-13'); ?>
+		<?php if (is_active_sidebar('home-14') || is_active_sidebar('home-15') || is_active_sidebar('home-16')) :  ?>
+			<div class="hp-columns clearfix">
+	    		<?php if (is_active_sidebar('home-14')) { ?>
+					<div class="hp-sidebar hp-home-14">
+						<?php dynamic_sidebar('home-14'); ?>
+					</div>
+				<?php } ?>
+				<?php if (is_active_sidebar('home-15')) { ?>
+					<div class="hp-sidebar sb-right hp-home-15">
+						<?php dynamic_sidebar('home-15'); ?>
+					</div>
+				<?php } ?>
+				<?php if (is_active_sidebar('home-16')) { ?>
+					<div class="hp-sidebar sb-right hp-home-16">
+						<?php dynamic_sidebar('home-16'); ?>
+					</div>
+				<?php } ?>
+			</div>
+		<!-- /test -->
 		<?php endif; ?>
 		<?php dynamic_sidebar('home-11'); ?>
 	</div>

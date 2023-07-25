@@ -1,0 +1,259 @@
+# Translation of Plugins - Limit Login Attempts - Stable (latest release) in Norwegian (Bokmål)
+# This file is distributed under the same license as the Plugins - Limit Login Attempts - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-12-10 21:44:31+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.0-alpha.4\n"
+"Language: nb_NO\n"
+"Project-Id-Version: Plugins - Limit Login Attempts - Stable (latest release)\n"
+
+#. Author URI of the plugin
+msgid "http://devel.kostdoktorn.se"
+msgstr "http://devel.kostdoktorn.se"
+
+#. Author of the plugin
+msgid "Johan Eenfeldt"
+msgstr "Johan Eenfeldt"
+
+#. Description of the plugin
+msgid "Limit rate of login attempts, including by way of cookies, for each IP."
+msgstr "Begrenser antall påloggingsforsøk, inkludert forsøk med cookies, for alle IPer"
+
+#. Plugin URI of the plugin
+msgid "http://devel.kostdoktorn.se/limit-login-attempts"
+msgstr "http://devel.kostdoktorn.se/limit-login-attempts"
+
+#. Plugin Name of the plugin
+msgid "Limit Login Attempts"
+msgstr "Begrense påloggingsforsøk"
+
+#: limit-login-attempts.php:1095
+msgid "Clear Log"
+msgstr "Nullstill loggen"
+
+#: limit-login-attempts.php:1090
+msgid "Lockout log"
+msgstr "Blokkerings logg"
+
+#: limit-login-attempts.php:1082
+msgid "Change Options"
+msgstr "Endre innstillinger"
+
+#: limit-login-attempts.php:1077
+msgid "lockouts"
+msgstr "blokkeringer"
+
+#: limit-login-attempts.php:1077
+msgid "Email to admin after"
+msgstr "Send epost til admin etter"
+
+#: limit-login-attempts.php:1076
+msgid "Log IP"
+msgstr "Logg IP"
+
+#: limit-login-attempts.php:1074
+msgid "Notify on lockout"
+msgstr "Gi melding om blokkering"
+
+#: limit-login-attempts.php:1070
+msgid "No"
+msgstr "Nei"
+
+#: limit-login-attempts.php:1070
+msgid "Yes"
+msgstr "Ja"
+
+#: limit-login-attempts.php:1068
+msgid "Handle cookie login"
+msgstr "Behandle pålogginger med cookies"
+
+#: limit-login-attempts.php:1062
+msgid "From behind a reversy proxy"
+msgstr "Bak en omvendt proxy"
+
+#: limit-login-attempts.php:1057
+msgid "Direct connection"
+msgstr "Direkte forbindelse"
+
+#: limit-login-attempts.php:1051
+msgid "Site connection"
+msgstr "Blogg forbindelse"
+
+#: limit-login-attempts.php:1047
+msgid "hours until retries are reset"
+msgstr "timer til nullstilling"
+
+#: limit-login-attempts.php:1046
+msgid "hours"
+msgstr "timer"
+
+#: limit-login-attempts.php:1046
+msgid "lockouts increase lockout time to"
+msgstr "Blokkeringer øker blokkeringstiden til"
+
+#: limit-login-attempts.php:1045
+msgid "minutes lockout"
+msgstr "minutters blokkering"
+
+#: limit-login-attempts.php:1044
+msgid "allowed retries"
+msgstr "Antall påloggingsforsøk"
+
+#: limit-login-attempts.php:1042
+msgid "Lockout"
+msgstr "Blokkering"
+
+#: limit-login-attempts.php:1037
+msgid "Options"
+msgstr "Innstillinger"
+
+#: limit-login-attempts.php:1031
+msgid "%d IP is currently blocked from trying to log in"
+msgstr "%d IP står på blokkeringslisten"
+
+#: limit-login-attempts.php:1030
+msgid "Restore Lockouts"
+msgstr "Fjern blokkeringer"
+
+#: limit-login-attempts.php:1028
+msgid "Active lockouts"
+msgstr "Aktive blokkeringer"
+
+#: limit-login-attempts.php:1023
+msgid "No lockouts yet"
+msgstr "Ingen blokkeringer enda"
+
+#: limit-login-attempts.php:1022
+msgid "%d lockout since last reset"
+msgid_plural "%d lockouts since last reset"
+msgstr[0] "%d blokkering siden siste nullstilling"
+msgstr[1] "%d blokkeringer siden siste nullstilling"
+
+#: limit-login-attempts.php:1021
+msgid "Reset Counter"
+msgstr "Nullstill teller"
+
+#: limit-login-attempts.php:1018
+msgid "Total lockouts"
+msgstr "Totalt antall blokkeringer"
+
+#: limit-login-attempts.php:1013
+msgid "Statistics"
+msgstr "Statistikk"
+
+#: limit-login-attempts.php:1012
+msgid "Limit Login Attempts Settings"
+msgstr "Limit Login Attempts Innstillinger"
+
+#: limit-login-attempts.php:1004
+msgid "<strong>Current setting appears to be invalid</strong>. Please make sure it is correct. Further information can be found <a href=\"%s\" title=\"FAQ\">here</a>"
+msgstr "<strong>Dine innstillinger kan være feil</strong>. Sjekk at de er korrekte. Mer informasjon <a href=\"%s\" title=\"FAQ\">her</a>"
+
+#: limit-login-attempts.php:996
+msgid "It appears the site is reached through a proxy server (proxy IP: %s, your IP: %s)"
+msgstr "Det ser ut som om bloggen din er bak en proxy server (proxy IP: %s, din IP: %s)"
+
+#: limit-login-attempts.php:994
+msgid "It appears the site is reached directly (from your IP: %s)"
+msgstr "Det ser ut som om du kan nå bloggen direkte (fra din IP: %s)"
+
+#: limit-login-attempts.php:976
+msgid "Options changed"
+msgstr "Innstillinger endret"
+
+#: limit-login-attempts.php:947
+msgid "Cleared current lockouts"
+msgstr "Fjernet gjeldende blokkeringer"
+
+#: limit-login-attempts.php:939
+msgid "Reset lockout count"
+msgstr "Nullstill antall blokkeringer"
+
+#: limit-login-attempts.php:931
+msgid "Cleared IP log"
+msgstr "Nullstill IP loggen"
+
+#: limit-login-attempts.php:902
+msgid "%d lockout"
+msgid_plural "%d lockouts"
+msgstr[0] "%d blokkering"
+msgstr[1] "%d blokkeringer"
+
+#: limit-login-attempts.php:897
+msgid "Tried to log in as"
+msgstr "Prøvde å logge inn som"
+
+#: limit-login-attempts.php:897
+msgctxt "Internet address"
+msgid "IP"
+msgstr "IP"
+
+#: limit-login-attempts.php:729
+msgid "<strong>ERROR</strong>: Incorrect username or password."
+msgstr "<strong>Feil</strong>: Feil brukernavn eller passord."
+
+#: limit-login-attempts.php:658
+msgid "<strong>%d</strong> attempt remaining."
+msgid_plural "<strong>%d</strong> attempts remaining."
+msgstr[0] "<strong>%d</strong> forsøk gjenstår."
+msgstr[1] "<strong>%d</strong> forsøk gjenstår."
+
+#: limit-login-attempts.php:629
+msgid "Please try again in %d minute."
+msgid_plural "Please try again in %d minutes."
+msgstr[0] "Prøv igjen om %d minutt."
+msgstr[1] "Prøv igjen om %d minutter."
+
+#: limit-login-attempts.php:627
+msgid "Please try again in %d hour."
+msgid_plural "Please try again in %d hours."
+msgstr[0] "Prøv igjen om %d time."
+msgstr[1] "Prøv igjen om %d timer."
+
+#: limit-login-attempts.php:620
+msgid "Please try again later."
+msgstr "Prøv igjen senere"
+
+#: limit-login-attempts.php:616
+msgid "<strong>ERROR</strong>: Too many failed login attempts."
+msgstr "<strong>Feil</strong>: For mange påloggingsforsøk."
+
+#: limit-login-attempts.php:554
+msgid "IP was blocked for %s"
+msgstr "IP blokkert i %s"
+
+#: limit-login-attempts.php:552
+msgid "IP was NOT blocked because of external whitelist."
+msgstr "IP ble IKKE blokkert på grunn av ekstern hvitliste."
+
+#: limit-login-attempts.php:548
+msgid "Last user attempted: %s"
+msgstr "Siste brukernavn som feilet : %s"
+
+#: limit-login-attempts.php:544
+msgid "%d failed login attempts (%d lockout(s)) from IP: %s"
+msgstr "%d påloggingsforsøk (stoppet %d gang(er)) fra IP: %s"
+
+#: limit-login-attempts.php:539
+msgid "[%s] Too many failed login attempts"
+msgstr "[%s] For mange påloggingsforsøk"
+
+#: limit-login-attempts.php:535
+msgid "[%s] Failed login attempts from whitelisted IP"
+msgstr "[%s] Mislykkede innloggingsforsøk fra hvitlistet IP"
+
+#: limit-login-attempts.php:529
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d minutt"
+msgstr[1] "%d minutter"
+
+#: limit-login-attempts.php:523
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d time"
+msgstr[1] "%d timer"

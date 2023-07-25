@@ -1,17 +1,26 @@
+/**
+ * @output wp-includes/js/wp-api.js
+ */
+
 (function( window, undefined ) {
 
 	'use strict';
 
 	/**
-	 * Initialise the WP_API.
+	 * Initialize the WP_API.
 	 */
 	function WP_API() {
+		/** @namespace wp.api.models */
 		this.models = {};
+		/** @namespace wp.api.collections */
 		this.collections = {};
+		/** @namespace wp.api.views */
 		this.views = {};
 	}
 
+	/** @namespace wp */
 	window.wp            = window.wp || {};
+	/** @namespace wp.api */
 	wp.api               = wp.api || new WP_API();
 	wp.api.versionString = wp.api.versionString || 'wp/v2/';
 
@@ -28,9 +37,39 @@
 
 	var pad, r;
 
+	/** @namespace wp */
 	window.wp = window.wp || {};
+	/** @namespace wp.api */
 	wp.api = wp.api || {};
+	/** @namespace wp.api.utils */
 	wp.api.utils = wp.api.utils || {};
+
+	/**
+	 * Determine model based on API route.
+	 *
+	 * @param {string} route    The API route.
+	 *
+	 * @return {Backbone Model} The model found at given route. Undefined if not found.
+	 */
+	wp.api.getModelByRoute = function( route ) {
+		return _.find( wp.api.models, function( model ) {
+			return model.prototype.route && route === model.prototype.route.index;
+		} );
+	};
+
+	/**
+	 * Determine collection based on API route.
+	 *
+	 * @param {string} route    The API route.
+	 *
+	 * @return {Backbone Model} The collection found at given route. Undefined if not found.
+	 */
+	wp.api.getCollectionByRoute = function( route ) {
+		return _.find( wp.api.collections, function( collection ) {
+			return collection.prototype.route && route === collection.prototype.route.index;
+		} );
+	};
+
 
 	/**
 	 * ECMAScript 5 shim, adapted from MDN.
@@ -68,9 +107,11 @@
 			minutesOffset = 0,
 			numericKeys = [ 1, 4, 5, 6, 7, 10, 11 ];
 
-		// ES5 §15.9.4.2 states that the string should attempt to be parsed as a Date Time String Format string
-		// before falling back to any implementation-specific date parsing, so that’s what we do, even if native
-		// implementations could be faster.
+		/*
+		 * ES5 §15.9.4.2 states that the string should attempt to be parsed as a Date Time String Format string
+		 * before falling back to any implementation-specific date parsing, so that’s what we do, even if native
+		 * implementations could be faster.
+		 */
 		//              1 YYYY                2 MM       3 DD           4 HH    5 mm       6 ss        7 msec        8 Z 9 ±    10 tzHH    11 tzmm
 		if ( ( struct = /^(\d{4}|[+\-]\d{6})(?:-(\d{2})(?:-(\d{2}))?)?(?:T(\d{2}):(\d{2})(?::(\d{2})(?:\.(\d{3}))?)?(?:(Z)|([+\-])(\d{2})(?::(\d{2}))?)?)?$/.exec( date ) ) ) {
 
@@ -106,7 +147,7 @@
 	wp.api.utils.getRootUrl = function() {
 		return window.location.origin ?
 			window.location.origin + '/' :
-			window.location.protocol + '/' + window.location.host + '/';
+			window.location.protocol + '//' + window.location.host + '/';
 	};
 
 	/**
@@ -120,20 +161,51 @@
 	};
 
 	/**
+	 * Helper function that capitalizes the first word and camel cases any words starting
+	 * after dashes, removing the dashes.
+	 */
+	wp.api.utils.capitalizeAndCamelCaseDashes = function( str ) {
+		if ( _.isUndefined( str ) ) {
+			return str;
+		}
+		str = wp.api.utils.capitalize( str );
+
+		return wp.api.utils.camelCaseDashes( str );
+	};
+
+	/**
+	 * Helper function to camel case the letter after dashes, removing the dashes.
+	 */
+	wp.api.utils.camelCaseDashes = function( str ) {
+		return str.replace( /-([a-z])/g, function( g ) {
+			return g[ 1 ].toUpperCase();
+		} );
+	};
+
+	/**
 	 * Extract a route part based on negative index.
 	 *
-	 * @param {string} route The endpoint route.
-	 * @param {int}    part  The number of parts from the end of the route to retrieve. Default 1.
-	 *                       Example route `/a/b/c`: part 1 is `c`, part 2 is `b`, part 3 is `a`.
+	 * @param {string}   route          The endpoint route.
+	 * @param {number}   part           The number of parts from the end of the route to retrieve. Default 1.
+	 *                                  Example route `/a/b/c`: part 1 is `c`, part 2 is `b`, part 3 is `a`.
+	 * @param {string}  [versionString] Version string, defaults to `wp.api.versionString`.
+	 * @param {boolean} [reverse]       Whether to reverse the order when extracting the route part. Optional, default false.
 	 */
-	wp.api.utils.extractRoutePart = function( route, part ) {
+	wp.api.utils.extractRoutePart = function( route, part, versionString, reverse ) {
 		var routeParts;
 
-		part  = part || 1;
+		part = part || 1;
+		versionString = versionString || wp.api.versionString;
 
 		// Remove versions string from route to avoid returning it.
-		route = route.replace( wp.api.versionString, '' );
-		routeParts = route.split( '/' ).reverse();
+		if ( 0 === route.indexOf( '/' + versionString ) ) {
+			route = route.substr( versionString.length + 1 );
+		}
+
+		routeParts = route.split( '/' );
+		if ( reverse ) {
+			routeParts = routeParts.reverse();
+		}
 		if ( _.isUndefined( routeParts[ --part ] ) ) {
 			return '';
 		}
@@ -162,7 +234,7 @@
 	/**
 	 * Add args and options to a model prototype from a route's endpoints.
 	 *
-	 * @param {array}  routeEndpoints Array of route endpoints.
+	 * @param {Array}  routeEndpoints Array of route endpoints.
 	 * @param {Object} modelInstance  An instance of the model (or collection)
 	 *                                to add the args to.
 	 */
@@ -176,7 +248,7 @@
 			// Add post and edit endpoints as model args.
 			if ( _.includes( routeEndpoint.methods, 'POST' ) || _.includes( routeEndpoint.methods, 'PUT' ) ) {
 
-				// Add any non empty args, merging them into the args object.
+				// Add any non-empty args, merging them into the args object.
 				if ( ! _.isEmpty( routeEndpoint.args ) ) {
 
 					// Set as default if no args yet.
@@ -185,7 +257,7 @@
 					} else {
 
 						// We already have args, merge these new args in.
-						modelInstance.prototype.args = _.union( routeEndpoint.args, modelInstance.prototype.defaults );
+						modelInstance.prototype.args = _.extend( modelInstance.prototype.args, routeEndpoint.args );
 					}
 				}
 			} else {
@@ -193,7 +265,7 @@
 				// Add GET method as model options.
 				if ( _.includes( routeEndpoint.methods, 'GET' ) ) {
 
-					// Add any non empty args, merging them into the defaults object.
+					// Add any non-empty args, merging them into the defaults object.
 					if ( ! _.isEmpty( routeEndpoint.args ) ) {
 
 						// Set as default if no defaults yet.
@@ -202,7 +274,7 @@
 						} else {
 
 							// We already have options, merge these new args in.
-							modelInstance.prototype.options = _.union( routeEndpoint.args, modelInstance.prototype.options );
+							modelInstance.prototype.options = _.extend( modelInstance.prototype.options, routeEndpoint.args );
 						}
 					}
 
@@ -255,7 +327,7 @@
 				setDate: function( date, field ) {
 					var theField = field || 'date';
 
-					// Don't alter non parsable date fields.
+					// Don't alter non-parsable date fields.
 					if ( _.indexOf( parseableDates, theField ) < 0 ) {
 						return false;
 					}
@@ -276,7 +348,7 @@
 					var theField   = field || 'date',
 						theISODate = this.get( theField );
 
-					// Only get date fields and non null values.
+					// Only get date fields and non-null values.
 					if ( _.indexOf( parseableDates, theField ) < 0 || _.isNull( theISODate ) ) {
 						return false;
 					}
@@ -288,19 +360,19 @@
 			/**
 			 * Build a helper function to retrieve related model.
 			 *
-			 * @param  {string} parentModel      The parent model.
-			 * @param  {int}    modelId          The model ID if the object to request
-			 * @param  {string} modelName        The model name to use when constructing the model.
-			 * @param  {string} embedSourcePoint Where to check the embedds object for _embed data.
-			 * @param  {string} embedCheckField  Which model field to check to see if the model has data.
+			 * @param {string} parentModel      The parent model.
+			 * @param {number} modelId          The model ID if the object to request
+			 * @param {string} modelName        The model name to use when constructing the model.
+			 * @param {string} embedSourcePoint Where to check the embedded object for _embed data.
+			 * @param {string} embedCheckField  Which model field to check to see if the model has data.
 			 *
 			 * @return {Deferred.promise}        A promise which resolves to the constructed model.
 			 */
 			buildModelGetter = function( parentModel, modelId, modelName, embedSourcePoint, embedCheckField ) {
-				var getModel, embeddeds, attributes, deferred;
+				var getModel, embeddedObjects, attributes, deferred;
 
-				deferred  = jQuery.Deferred();
-				embeddeds = parentModel.get( '_embedded' ) || {};
+				deferred        = jQuery.Deferred();
+				embeddedObjects = parentModel.get( '_embedded' ) || {};
 
 				// Verify that we have a valid object id.
 				if ( ! _.isNumber( modelId ) || 0 === modelId ) {
@@ -309,8 +381,8 @@
 				}
 
 				// If we have embedded object data, use that when constructing the getModel.
-				if ( embeddeds[ embedSourcePoint ] ) {
-					attributes = _.findWhere( embeddeds[ embedSourcePoint ], { id: modelId } );
+				if ( embeddedObjects[ embedSourcePoint ] ) {
+					attributes = _.findWhere( embeddedObjects[ embedSourcePoint ], { id: modelId } );
 				}
 
 				// Otherwise use the modelId.
@@ -342,49 +414,49 @@
 			/**
 			 * Build a helper to retrieve a collection.
 			 *
-			 * @param  {string} parentModel      The parent model.
-			 * @param  {string} collectionName   The name to use when constructing the collection.
-			 * @param  {string} embedSourcePoint Where to check the embedds object for _embed data.
-			 * @param  {string} embedIndex       An addiitonal optional index for the _embed data.
+			 * @param {string} parentModel      The parent model.
+			 * @param {string} collectionName   The name to use when constructing the collection.
+			 * @param {string} embedSourcePoint Where to check the embedded object for _embed data.
+			 * @param {string} embedIndex       An additional optional index for the _embed data.
 			 *
-			 * @return {Deferred.promise}        A promise which resolves to the constructed collection.
+			 * @return {Deferred.promise} A promise which resolves to the constructed collection.
 			 */
 			buildCollectionGetter = function( parentModel, collectionName, embedSourcePoint, embedIndex ) {
 				/**
 				 * Returns a promise that resolves to the requested collection
 				 *
-				 * Uses the embedded data if available, otherwises fetches the
+				 * Uses the embedded data if available, otherwise fetches the
 				 * data from the server.
 				 *
 				 * @return {Deferred.promise} promise Resolves to a wp.api.collections[ collectionName ]
 				 * collection.
 				 */
-				var postId, embeddeds, getObjects,
+				var postId, embeddedObjects, getObjects,
 					classProperties = '',
 					properties      = '',
 					deferred        = jQuery.Deferred();
 
-				postId    = parentModel.get( 'id' );
-				embeddeds = parentModel.get( '_embedded' ) || {};
+				postId          = parentModel.get( 'id' );
+				embeddedObjects = parentModel.get( '_embedded' ) || {};
 
-				// Verify that we have a valid post id.
+				// Verify that we have a valid post ID.
 				if ( ! _.isNumber( postId ) || 0 === postId ) {
 					deferred.reject();
 					return deferred;
 				}
 
 				// If we have embedded getObjects data, use that when constructing the getObjects.
-				if ( ! _.isUndefined( embedSourcePoint ) && ! _.isUndefined( embeddeds[ embedSourcePoint ] ) ) {
+				if ( ! _.isUndefined( embedSourcePoint ) && ! _.isUndefined( embeddedObjects[ embedSourcePoint ] ) ) {
 
 					// Some embeds also include an index offset, check for that.
 					if ( _.isUndefined( embedIndex ) ) {
 
 						// Use the embed source point directly.
-						properties = embeddeds[ embedSourcePoint ];
+						properties = embeddedObjects[ embedSourcePoint ];
 					} else {
 
 						// Add the index to the embed source point.
-						properties = embeddeds[ embedSourcePoint ][ embedIndex ];
+						properties = embeddedObjects[ embedSourcePoint ][ embedIndex ];
 					}
 				} else {
 
@@ -435,8 +507,49 @@
 			 * Add a helper function to handle post Meta.
 			 */
 			MetaMixin = {
-				getMeta: function() {
-					return buildCollectionGetter( this, 'PostMeta', 'https://api.w.org/meta' );
+
+				/**
+				 * Get meta by key for a post.
+				 *
+				 * @param {string} key The meta key.
+				 *
+				 * @return {Object} The post meta value.
+				 */
+				getMeta: function( key ) {
+					var metas = this.get( 'meta' );
+					return metas[ key ];
+				},
+
+				/**
+				 * Get all meta key/values for a post.
+				 *
+				 * @return {Object} The post metas, as a key value pair object.
+				 */
+				getMetas: function() {
+					return this.get( 'meta' );
+				},
+
+				/**
+				 * Set a group of meta key/values for a post.
+				 *
+				 * @param {Object} meta The post meta to set, as key/value pairs.
+				 */
+				setMetas: function( meta ) {
+					var metas = this.get( 'meta' );
+					_.extend( metas, meta );
+					this.set( 'meta', metas );
+				},
+
+				/**
+				 * Set a single meta value for a post, by key.
+				 *
+				 * @param {string} key   The meta key.
+				 * @param {Object} value The meta value.
+				 */
+				setMeta: function( key, value ) {
+					var metas = this.get( 'meta' );
+					metas[ key ] = value;
+					this.set( 'meta', metas );
 				}
 			},
 
@@ -476,7 +589,7 @@
 				 *
 				 * Accepts an array of tag slugs, or a Tags collection.
 				 *
-				 * @param {array|Backbone.Collection} tags The tags to set on the post.
+				 * @param {Array|Backbone.Collection} tags The tags to set on the post.
 				 *
 				 */
 				setTags: function( tags ) {
@@ -522,12 +635,12 @@
 				 *
 				 * Accepts a Tags collection.
 				 *
-				 * @param {array|Backbone.Collection} tags The tags to set on the post.
+				 * @param {Array|Backbone.Collection} tags The tags to set on the post.
 				 *
 				 */
 				setTagsWithCollection: function( tags ) {
 
-					// Pluck out the category ids.
+					// Pluck out the category IDs.
 					this.set( 'tags', tags.pluck( 'id' ) );
 					return this.save();
 				}
@@ -560,7 +673,7 @@
 				 *
 				 * Accepts an array of category slugs, or a Categories collection.
 				 *
-				 * @param {array|Backbone.Collection} categories The categories to set on the post.
+				 * @param {Array|Backbone.Collection} categories The categories to set on the post.
 				 *
 				 */
 				setCategories: function( categories ) {
@@ -607,12 +720,12 @@
 				 *
 				 * Accepts Categories collection.
 				 *
-				 * @param {array|Backbone.Collection} categories The categories to set on the post.
+				 * @param {Array|Backbone.Collection} categories The categories to set on the post.
 				 *
 				 */
 				setCategoriesWithCollection: function( categories ) {
 
-					// Pluck out the category ids.
+					// Pluck out the category IDs.
 					this.set( 'categories', categories.pluck( 'id' ) );
 					return this.save();
 				}
@@ -668,8 +781,8 @@
 			model = model.extend( CategoriesMixin );
 		}
 
-		// Add the MetaMixin for models that support meta collections.
-		if ( ! _.isUndefined( loadingObjects.collections[ modelClassName + 'Meta' ] ) ) {
+		// Add the MetaMixin for models that support meta.
+		if ( ! _.isUndefined( model.prototype.args.meta ) ) {
 			model = model.extend( MetaMixin );
 		}
 
@@ -696,7 +809,8 @@
 
 	'use strict';
 
-	var wpApiSettings = window.wpApiSettings || {};
+	var wpApiSettings = window.wpApiSettings || {},
+	trashableTypes    = [ 'Comment', 'Media', 'Comment', 'Post', 'Page', 'Status', 'Taxonomy', 'Type' ];
 
 	/**
 	 * Backbone base model for all models.
@@ -704,13 +818,26 @@
 	wp.api.WPApiBaseModel = Backbone.Model.extend(
 		/** @lends WPApiBaseModel.prototype  */
 		{
+
+			// Initialize the model.
+			initialize: function() {
+
+				/**
+				* Types that don't support trashing require passing ?force=true to delete.
+				*
+				*/
+				if ( -1 === _.indexOf( trashableTypes, this.name ) ) {
+					this.requireForceForDelete = true;
+				}
+			},
+
 			/**
 			 * Set nonce header before every Backbone sync.
 			 *
 			 * @param {string} method.
 			 * @param {Backbone.Model} model.
 			 * @param {{beforeSend}, *} options.
-			 * @returns {*}.
+			 * @return {*}.
 			 */
 			sync: function( method, model, options ) {
 				var beforeSend;
@@ -727,17 +854,27 @@
 					model.unset( 'slug' );
 				}
 
-				if ( ! _.isUndefined( wpApiSettings.nonce ) && ! _.isNull( wpApiSettings.nonce ) ) {
+				if ( _.isFunction( model.nonce ) && ! _.isEmpty( model.nonce() ) ) {
 					beforeSend = options.beforeSend;
 
-					// @todo enable option for jsonp endpoints
+					// @todo Enable option for jsonp endpoints.
 					// options.dataType = 'jsonp';
 
+					// Include the nonce with requests.
 					options.beforeSend = function( xhr ) {
-						xhr.setRequestHeader( 'X-WP-Nonce', wpApiSettings.nonce );
+						xhr.setRequestHeader( 'X-WP-Nonce', model.nonce() );
 
 						if ( beforeSend ) {
 							return beforeSend.apply( this, arguments );
+						}
+					};
+
+					// Update the nonce when a new nonce is returned with the response.
+					options.complete = function( xhr ) {
+						var returnedNonce = xhr.getResponseHeader( 'X-WP-Nonce' );
+
+						if ( returnedNonce && _.isFunction( model.nonce ) && model.nonce() !== returnedNonce ) {
+							model.endpointModel.set( 'nonce', returnedNonce );
 						}
 					};
 				}
@@ -853,22 +990,32 @@
 			 * @param {string} method.
 			 * @param {Backbone.Model} model.
 			 * @param {{success}, *} options.
-			 * @returns {*}.
+			 * @return {*}.
 			 */
 			sync: function( method, model, options ) {
 				var beforeSend, success,
 					self = this;
 
-				options    = options || {};
-				beforeSend = options.beforeSend;
+				options = options || {};
 
-				// If we have a localized nonce, pass that along with each sync.
-				if ( 'undefined' !== typeof wpApiSettings.nonce ) {
+				if ( _.isFunction( model.nonce ) && ! _.isEmpty( model.nonce() ) ) {
+					beforeSend = options.beforeSend;
+
+					// Include the nonce with requests.
 					options.beforeSend = function( xhr ) {
-						xhr.setRequestHeader( 'X-WP-Nonce', wpApiSettings.nonce );
+						xhr.setRequestHeader( 'X-WP-Nonce', model.nonce() );
 
 						if ( beforeSend ) {
 							return beforeSend.apply( self, arguments );
+						}
+					};
+
+					// Update the nonce when a new nonce is returned with the response.
+					options.complete = function( xhr ) {
+						var returnedNonce = xhr.getResponseHeader( 'X-WP-Nonce' );
+
+						if ( returnedNonce && _.isFunction( model.nonce ) && model.nonce() !== returnedNonce ) {
+							model.endpointModel.set( 'nonce', returnedNonce );
 						}
 					};
 				}
@@ -910,7 +1057,7 @@
 					};
 				}
 
-				// Continue by calling Bacckbone's sync.
+				// Continue by calling Backbone's sync.
 				return Backbone.sync( method, model, options );
 			},
 
@@ -918,7 +1065,7 @@
 			 * Fetches the next page of objects if a new page exists.
 			 *
 			 * @param {data: {page}} options.
-			 * @returns {*}.
+			 * @return {*}.
 			 */
 			more: function( options ) {
 				options = options || {};
@@ -944,7 +1091,7 @@
 			/**
 			 * Returns true if there are more pages of objects available.
 			 *
-			 * @returns null|boolean.
+			 * @return {null|boolean}
 			 */
 			hasMore: function() {
 				if ( null === this.state.totalPages ||
@@ -966,7 +1113,11 @@
 
 	var Endpoint, initializedDeferreds = {},
 		wpApiSettings = window.wpApiSettings || {};
+
+	/** @namespace wp */
 	window.wp = window.wp || {};
+
+	/** @namespace wp.api */
 	wp.api    = wp.api || {};
 
 	// If wpApiSettings is unavailable, try the default.
@@ -974,10 +1125,11 @@
 		wpApiSettings.root = window.location.origin + '/wp-json/';
 	}
 
-	Endpoint = Backbone.Model.extend( {
+	Endpoint = Backbone.Model.extend(/** @lends Endpoint.prototype */{
 		defaults: {
 			apiRoot: wpApiSettings.root,
 			versionString: wp.api.versionString,
+			nonce: null,
 			schema: null,
 			models: {},
 			collections: {}
@@ -995,8 +1147,9 @@
 			model.schemaConstructed = deferred.promise();
 
 			model.schemaModel = new wp.api.models.Schema( null, {
-				apiRoot: model.get( 'apiRoot' ),
-				versionString: model.get( 'versionString' )
+				apiRoot:       model.get( 'apiRoot' ),
+				versionString: model.get( 'versionString' ),
+				nonce:         model.get( 'nonce' )
 			} );
 
 			// When the model loads, resolve the promise.
@@ -1023,6 +1176,8 @@
 					 * When the server returns the schema model data, store the data in a sessionCache so we don't
 					 * have to retrieve it again for this session. Then, construct the models and collections based
 					 * on the schema model data.
+					 *
+					 * @ignore
 					 */
 					success: function( newSchemaModel ) {
 
@@ -1081,7 +1236,10 @@
 					'PostsRevisions':  'PostRevisions',
 					'PostsTags':       'PostTags'
 				}
-			};
+			},
+
+			modelEndpoints = routeModel.get( 'modelEndpoints' ),
+			modelRegex     = new RegExp( '(?:.*[+)]|\/(' + modelEndpoints.join( '|' ) + '))$' );
 
 			/**
 			 * Iterate thru the routes, picking up models and collections to build. Builds two arrays,
@@ -1095,8 +1253,8 @@
 			/**
 			 * Tracking objects for models and collections.
 			 */
-			loadingObjects.models      = routeModel.get( 'models' );
-			loadingObjects.collections = routeModel.get( 'collections' );
+			loadingObjects.models      = {};
+			loadingObjects.collections = {};
 
 			_.each( routeModel.schemaModel.get( 'routes' ), function( route, index ) {
 
@@ -1106,8 +1264,8 @@
 						index !== ( '/' + routeModel.get( 'versionString' ).slice( 0, -1 ) )
 				) {
 
-					// Single items end with a regex (or the special case 'me').
-					if ( /(?:.*[+)]|\/me)$/.test( index ) ) {
+					// Single items end with a regex, or a special case word.
+					if ( modelRegex.test( index ) ) {
 						modelRoutes.push( { index: index, route: route } );
 					} else {
 
@@ -1126,9 +1284,14 @@
 
 				// Extract the name and any parent from the route.
 				var modelClassName,
-						routeName  = wp.api.utils.extractRoutePart( modelRoute.index, 2 ),
-						parentName = wp.api.utils.extractRoutePart( modelRoute.index, 4 ),
-						routeEnd   = wp.api.utils.extractRoutePart( modelRoute.index, 1 );
+					routeName  = wp.api.utils.extractRoutePart( modelRoute.index, 2, routeModel.get( 'versionString' ), true ),
+					parentName = wp.api.utils.extractRoutePart( modelRoute.index, 1, routeModel.get( 'versionString' ), false ),
+					routeEnd   = wp.api.utils.extractRoutePart( modelRoute.index, 1, routeModel.get( 'versionString' ), true );
+
+				// Clear the parent part of the rouite if its actually the version string.
+				if ( parentName === routeModel.get( 'versionString' ) ) {
+					parentName = '';
+				}
 
 				// Handle the special case of the 'me' route.
 				if ( 'me' === routeEnd ) {
@@ -1137,23 +1300,33 @@
 
 				// If the model has a parent in its route, add that to its class name.
 				if ( '' !== parentName && parentName !== routeName ) {
-					modelClassName = wp.api.utils.capitalize( parentName ) + wp.api.utils.capitalize( routeName );
+					modelClassName = wp.api.utils.capitalizeAndCamelCaseDashes( parentName ) + wp.api.utils.capitalizeAndCamelCaseDashes( routeName );
 					modelClassName = mapping.models[ modelClassName ] || modelClassName;
 					loadingObjects.models[ modelClassName ] = wp.api.WPApiBaseModel.extend( {
 
 						// Return a constructed url based on the parent and id.
 						url: function() {
-							var url = routeModel.get( 'apiRoot' ) + routeModel.get( 'versionString' ) +
-									parentName +  '/' +
+							var url =
+								routeModel.get( 'apiRoot' ) +
+								routeModel.get( 'versionString' ) +
+								parentName +  '/' +
 									( ( _.isUndefined( this.get( 'parent' ) ) || 0 === this.get( 'parent' ) ) ?
-										this.get( 'parent_post' ) :
-										this.get( 'parent' ) ) + '/' +
-									routeName;
+										( _.isUndefined( this.get( 'parent_post' ) ) ? '' : this.get( 'parent_post' ) + '/' ) :
+										this.get( 'parent' ) + '/' ) +
+								routeName;
+
 							if ( ! _.isUndefined( this.get( 'id' ) ) ) {
 								url +=  '/' + this.get( 'id' );
 							}
 							return url;
 						},
+
+						// Track nonces on the Endpoint 'routeModel'.
+						nonce: function() {
+							return routeModel.get( 'nonce' );
+						},
+
+						endpointModel: routeModel,
 
 						// Include a reference to the original route object.
 						route: modelRoute,
@@ -1164,31 +1337,17 @@
 						// Include the array of route methods for easy reference.
 						methods: modelRoute.route.methods,
 
-						initialize: function() {
-
-							/**
-							 * Posts and pages support trashing, other types don't support a trash
-							 * and require that you pass ?force=true to actually delete them.
-							 *
-							 * @todo we should be getting trashability from the Schema, not hard coding types here.
-							 */
-							if (
-								'Posts' !== this.name &&
-								'Pages' !== this.name &&
-								_.includes( this.methods, 'DELETE' )
-							) {
-								this.requireForceForDelete = true;
-							}
-						}
+						// Include the array of route endpoints for easy reference.
+						endpoints: modelRoute.route.endpoints
 					} );
 				} else {
 
-					// This is a model without a parent in its route
-					modelClassName = wp.api.utils.capitalize( routeName );
+					// This is a model without a parent in its route.
+					modelClassName = wp.api.utils.capitalizeAndCamelCaseDashes( routeName );
 					modelClassName = mapping.models[ modelClassName ] || modelClassName;
 					loadingObjects.models[ modelClassName ] = wp.api.WPApiBaseModel.extend( {
 
-						// Function that returns a constructed url based on the id.
+						// Function that returns a constructed url based on the ID.
 						url: function() {
 							var url = routeModel.get( 'apiRoot' ) +
 								routeModel.get( 'versionString' ) +
@@ -1200,6 +1359,13 @@
 							return url;
 						},
 
+						// Track nonces at the Endpoint level.
+						nonce: function() {
+							return routeModel.get( 'nonce' );
+						},
+
+						endpointModel: routeModel,
+
 						// Include a reference to the original route object.
 						route: modelRoute,
 
@@ -1207,12 +1373,19 @@
 						name: modelClassName,
 
 						// Include the array of route methods for easy reference.
-						methods: modelRoute.route.methods
+						methods: modelRoute.route.methods,
+
+						// Include the array of route endpoints for easy reference.
+						endpoints: modelRoute.route.endpoints
 					} );
 				}
 
 				// Add defaults to the new model, pulled form the endpoint.
-				wp.api.utils.decorateFromRoute( modelRoute.route.endpoints, loadingObjects.models[ modelClassName ] );
+				wp.api.utils.decorateFromRoute(
+					modelRoute.route.endpoints,
+					loadingObjects.models[ modelClassName ],
+					routeModel.get( 'versionString' )
+				);
 
 			} );
 
@@ -1226,12 +1399,12 @@
 				// Extract the name and any parent from the route.
 				var collectionClassName, modelClassName,
 						routeName  = collectionRoute.index.slice( collectionRoute.index.lastIndexOf( '/' ) + 1 ),
-						parentName = wp.api.utils.extractRoutePart( collectionRoute.index, 3 );
+						parentName = wp.api.utils.extractRoutePart( collectionRoute.index, 1, routeModel.get( 'versionString' ), false );
 
 				// If the collection has a parent in its route, add that to its class name.
-				if ( '' !== parentName && parentName !== routeName ) {
+				if ( '' !== parentName && parentName !== routeName && routeModel.get( 'versionString' ) !== parentName ) {
 
-					collectionClassName = wp.api.utils.capitalize( parentName ) + wp.api.utils.capitalize( routeName );
+					collectionClassName = wp.api.utils.capitalizeAndCamelCaseDashes( parentName ) + wp.api.utils.capitalizeAndCamelCaseDashes( routeName );
 					modelClassName      = mapping.models[ collectionClassName ] || collectionClassName;
 					collectionClassName = mapping.collections[ collectionClassName ] || collectionClassName;
 					loadingObjects.collections[ collectionClassName ] = wp.api.WPApiBaseCollection.extend( {
@@ -1239,14 +1412,24 @@
 						// Function that returns a constructed url passed on the parent.
 						url: function() {
 							return routeModel.get( 'apiRoot' ) + routeModel.get( 'versionString' ) +
-									parentName + '/' + this.parent + '/' +
-									routeName;
+								parentName + '/' +
+								( ( _.isUndefined( this.parent ) || '' === this.parent ) ?
+									( _.isUndefined( this.get( 'parent_post' ) ) ? '' : this.get( 'parent_post' ) + '/' ) :
+									this.parent + '/' ) +
+								routeName;
 						},
 
 						// Specify the model that this collection contains.
 						model: function( attrs, options ) {
 							return new loadingObjects.models[ modelClassName ]( attrs, options );
 						},
+
+						// Track nonces at the Endpoint level.
+						nonce: function() {
+							return routeModel.get( 'nonce' );
+						},
+
+						endpointModel: routeModel,
 
 						// Include a reference to the original class name.
 						name: collectionClassName,
@@ -1260,18 +1443,27 @@
 				} else {
 
 					// This is a collection without a parent in its route.
-					collectionClassName = wp.api.utils.capitalize( routeName );
+					collectionClassName = wp.api.utils.capitalizeAndCamelCaseDashes( routeName );
 					modelClassName      = mapping.models[ collectionClassName ] || collectionClassName;
 					collectionClassName = mapping.collections[ collectionClassName ] || collectionClassName;
 					loadingObjects.collections[ collectionClassName ] = wp.api.WPApiBaseCollection.extend( {
 
 						// For the url of a root level collection, use a string.
-						url: routeModel.get( 'apiRoot' ) + routeModel.get( 'versionString' ) + routeName,
+						url: function() {
+							return routeModel.get( 'apiRoot' ) + routeModel.get( 'versionString' ) + routeName;
+						},
 
 						// Specify the model that this collection contains.
 						model: function( attrs, options ) {
 							return new loadingObjects.models[ modelClassName ]( attrs, options );
 						},
+
+						// Track nonces at the Endpoint level.
+						nonce: function() {
+							return routeModel.get( 'nonce' );
+						},
+
+						endpointModel: routeModel,
 
 						// Include a reference to the original class name.
 						name: collectionClassName,
@@ -1293,48 +1485,55 @@
 				loadingObjects.models[ index ] = wp.api.utils.addMixinsAndHelpers( model, index, loadingObjects );
 			} );
 
+			// Set the routeModel models and collections.
+			routeModel.set( 'models', loadingObjects.models );
+			routeModel.set( 'collections', loadingObjects.collections );
+
 		}
 
 	} );
 
-	wp.api.endpoints = new Backbone.Collection( {
-		model: Endpoint
-	} );
+	wp.api.endpoints = new Backbone.Collection();
 
 	/**
 	 * Initialize the wp-api, optionally passing the API root.
 	 *
-	 * @param {object} [args]
+	 * @param {Object} [args]
+	 * @param {string} [args.nonce] The nonce. Optional, defaults to wpApiSettings.nonce.
 	 * @param {string} [args.apiRoot] The api root. Optional, defaults to wpApiSettings.root.
 	 * @param {string} [args.versionString] The version string. Optional, defaults to wpApiSettings.root.
-	 * @param {object} [args.schema] The schema. Optional, will be fetched from API if not provided.
+	 * @param {Object} [args.schema] The schema. Optional, will be fetched from API if not provided.
 	 */
 	wp.api.init = function( args ) {
 		var endpoint, attributes = {}, deferred, promise;
 
-		args                     = args || {};
-		attributes.apiRoot       = args.apiRoot || wpApiSettings.root;
-		attributes.versionString = args.versionString || wpApiSettings.versionString;
-		attributes.schema        = args.schema || null;
+		args                      = args || {};
+		attributes.nonce          = _.isString( args.nonce ) ? args.nonce : ( wpApiSettings.nonce || '' );
+		attributes.apiRoot        = args.apiRoot || wpApiSettings.root || '/wp-json';
+		attributes.versionString  = args.versionString || wpApiSettings.versionString || 'wp/v2/';
+		attributes.schema         = args.schema || null;
+		attributes.modelEndpoints = args.modelEndpoints || [ 'me', 'settings' ];
 		if ( ! attributes.schema && attributes.apiRoot === wpApiSettings.root && attributes.versionString === wpApiSettings.versionString ) {
 			attributes.schema = wpApiSettings.schema;
 		}
 
 		if ( ! initializedDeferreds[ attributes.apiRoot + attributes.versionString ] ) {
-			endpoint = wp.api.endpoints.findWhere( { apiRoot: attributes.apiRoot, versionString: attributes.versionString } );
+
+			// Look for an existing copy of this endpoint.
+			endpoint = wp.api.endpoints.findWhere( { 'apiRoot': attributes.apiRoot, 'versionString': attributes.versionString } );
 			if ( ! endpoint ) {
 				endpoint = new Endpoint( attributes );
-				wp.api.endpoints.add( endpoint );
 			}
 			deferred = jQuery.Deferred();
 			promise = deferred.promise();
 
-			endpoint.schemaConstructed.done( function( endpoint ) {
+			endpoint.schemaConstructed.done( function( resolvedEndpoint ) {
+				wp.api.endpoints.add( resolvedEndpoint );
 
 				// Map the default endpoints, extending any already present items (including Schema model).
-				wp.api.models      = _.extend( endpoint.get( 'models' ), wp.api.models );
-				wp.api.collections = _.extend( endpoint.get( 'collections' ), wp.api.collections );
-				deferred.resolveWith( wp.api, [ endpoint ] );
+				wp.api.models      = _.extend( wp.api.models, resolvedEndpoint.get( 'models' ) );
+				wp.api.collections = _.extend( wp.api.collections, resolvedEndpoint.get( 'collections' ) );
+				deferred.resolve( resolvedEndpoint );
 			} );
 			initializedDeferreds[ attributes.apiRoot + attributes.versionString ] = promise;
 		}

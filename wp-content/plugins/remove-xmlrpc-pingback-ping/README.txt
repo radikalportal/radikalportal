@@ -1,23 +1,27 @@
-﻿=== Remove XMLRPC Pingback Ping ===
-Contributors: bradvin
-Tags: xmlrpc
-Requires at least: 3.5.1
-Tested up to: 3.9
-Stable tag: trunk
+﻿=== Remove & Disable XML-RPC Pingback ===
+Contributors: cleverplugins, lkoudal
+Tags: xmlrpc, xml-rpc, ping, pingback, disable ping, disable xmlrpc, disable pingback, disable xml-rpc
+Requires at least: 5.2
+Requires PHP: 5.6
+Tested up to: 6.3
+Stable tag: 1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Prevent your WordPress install from participating in pingback denial of service attacks. 
+Prevent pingback, XML-RPC and denial of service DDOS attacks by disabling the XML-RPC pingback functionality.
 
 == Description ==
 
-Prevent your WordPress install from participating in pingback denial of service attacks.
+Prevent your WordPress site from participating and being a victim of pingback denial of service attacks. **After activation the plugin automatically disables XML-RPC. There's no need to configure anything.**
+
+By disabling the XML-RPC pingback you'll:
+* lower your server CPU usage
+* prevent malicious scripts from using your site to run pingback denial of service attacks
+* prevent malicious scripts to run denial of service attacks on your site via pingback
 
 From sucuri.net:
 
 > Any WordPress site with Pingback enabled (which is on by default) can be used in DDOS attacks against other sites.
-
-Read the FooPlugin's post [Beware : Your Site Is Part of a WordPress Pingback DDoS Botnet](http://fooplugins.com/prevent-wordpress-pingback-ddos/)
 
 = Learn More =
 
@@ -31,15 +35,7 @@ Use [Sucuri's WordPress DDOS Scanner](http://labs.sucuri.net/?is-my-wordpress-dd
 
 = Why Not Just Disable XMLRPC Altogether? =
 
-Yes, you can choose to do that using the plugin [Disable XML-RPC](http://wordpress.org/plugins/disable-xml-rpc/), but if you use popular plugins like JetPack (that use XMLRPC) then those plugins will stop working 100%. That is why this small plugin exists.
-
-= How To Test Your Site? =
-
-Follow the steps in the [GitHub repo](https://github.com/fooplugins/remove-xmlrpc-pingback-ping#how-to-test-your-site)
-
-= Disclaimer =
-
-I did not write this code. I just put it together in a plugin so more people can easily install and use it. Original code from wptavern.com and sucuri.net in the links above.
+Yes, you can choose to do that, but if you use popular plugins like JetPack (that use XMLRPC) then those plugins will stop working. That is why this small plugin exists.
 
 == Installation ==
 
@@ -67,16 +63,48 @@ I did not write this code. I just put it together in a plugin so more people can
 
 == Screenshots ==
 
-1. POSTMAN: Without the plugin installed
-2. POSTMAN: With the plugin installed
+1. Postman: Without the plugin installed
+2. Postman: With the plugin installed
 
 == Frequently Asked Questions ==
 
 = Is My Site Attacking Others? =
 
-It could be! Use [Sucuri's WordPress DDOS Scanner](http://labs.sucuri.net/?is-my-wordpress-ddosing) to check if your site is DDOS’ing other websites
+It could be! Use [Sucuri's WordPress DDOS Scanner](https://labs.sucuri.net/?is-my-wordpress-ddosing) to check if your site is DDOS’ing other websites
 
 == Changelog ==
 
+= 1.6 =
+* 2023/07/24
+* Added filter to check for and remove 'X-Pingback' header if necessary.
+* Added settings page
+* Tested up to WP 6.2
+
+= 1.5 =
+* Code hardening.
+* Verified compatibility with WP 5.9.3
+
+= 1.4 =
+* New: Added a count under "Settings -> General" to see number of blocked attempts.
+* Tested up to WP 5.8
+* Added newsletter admin notice.
+* Code hardening.
+
+= 1.3 =
+* 2020/09/21
+* Cleaned up code
+* Added counter for number of times the pingback method was blocked.
+* Tested with WP 5.5.1
+* 28,595 downloads
+
+= 1.1 =
+* 2019/04/09
+* version bump
+
 = 1.0.0 =
 * First release
+
+== Upgrade Notice ==
+
+= 1.5 =
+Worth the update...

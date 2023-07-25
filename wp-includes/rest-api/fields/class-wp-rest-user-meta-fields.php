@@ -17,10 +17,9 @@
 class WP_REST_User_Meta_Fields extends WP_REST_Meta_Fields {
 
 	/**
-	 * Retrieves the object meta type.
+	 * Retrieves the user meta type.
 	 *
 	 * @since 4.7.0
-	 * @access protected
 	 *
 	 * @return string The user meta type.
 	 */
@@ -29,10 +28,20 @@ class WP_REST_User_Meta_Fields extends WP_REST_Meta_Fields {
 	}
 
 	/**
+	 * Retrieves the user meta subtype.
+	 *
+	 * @since 4.9.8
+	 *
+	 * @return string 'user' There are no subtypes.
+	 */
+	protected function get_meta_subtype() {
+		return 'user';
+	}
+
+	/**
 	 * Retrieves the type for register_rest_field().
 	 *
 	 * @since 4.7.0
-	 * @access public
 	 *
 	 * @return string The user REST field type.
 	 */

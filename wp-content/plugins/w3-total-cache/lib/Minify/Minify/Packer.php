@@ -1,4 +1,5 @@
 <?php
+namespace W3TCL\Minify;
 /**
  * Class Minify_Packer
  *
@@ -13,11 +14,8 @@
  *
  * @package Minify
  */
-if (!defined('W3TC')) {
-    die();
-}
 
-if (false === (@include W3TC_LIB_MINIFY_DIR . '/class.JavaScriptPacker.php')) {
+if (false === (@include 'class.JavaScriptPacker.php')) {
     trigger_error(
         'The script "class.JavaScriptPacker.php" is required. Please see: http:'
         .'//code.google.com/p/minify/source/browse/trunk/min/lib/Minify/Packer.php'

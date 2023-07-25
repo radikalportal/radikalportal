@@ -1,13 +1,9 @@
 <?php
+namespace W3TCL\Minify;
 /**
  * Class Minify_Controller_Files
  * @package Minify
  */
-if (!defined('W3TC')) {
-    die();
-}
-
-w3_require_once(W3TC_LIB_MINIFY_DIR . '/Minify/Controller/Base.php');
 
 /**
  * Controller class for minifying a set of files
@@ -42,6 +38,9 @@ class Minify_Controller_Files extends Minify_Controller_Base {
      * 'files': (required) array of complete file paths, or a single path
      */
     public function setupSources($options) {
+        // W3TC FIX: Override $_SERVER['DOCUMENT_ROOT'] if enabled in settings.
+        $docroot = \W3TC\Util_Environment::document_root();
+
         // strip controller options
 
         $files = $options['files'];
@@ -60,7 +59,11 @@ class Minify_Controller_Files extends Minify_Controller_Base {
                 continue;
             }
             if (0 === strpos($file, '//')) {
-                $file = $_SERVER['DOCUMENT_ROOT'] . substr($file, 1);
+            	if ( is_file( ABSPATH . substr($file, 1) ) ) {
+		            $file = ABSPATH . substr( $file, 1 );
+	            } else {
+		            $file = $docroot . substr( $file, 1 );
+	            }
             }
             $realPath = realpath($file);
             if (is_file($realPath)) {
@@ -68,7 +71,7 @@ class Minify_Controller_Files extends Minify_Controller_Base {
                     'filepath' => $realPath
                 ));
             } else {
-                $this->log("The path \"{$realPath}\" could not be found (or was not a file)");
+                $this->log("The path \"{$file}\" could not be found (or was not a file)");
                 return $options;
             }
         }
@@ -78,4 +81,3 @@ class Minify_Controller_Files extends Minify_Controller_Base {
         return $options;
     }
 }
-

@@ -2,7 +2,7 @@
 function v2_stott_oss() {
 ?>
 <div class="stott_oss">
-	<table><tr><td><span>Liker du det du leser?</span><br/><br/>VIPPS noen kroner til <b>46924315</b> <br/>eller betal direkte til konto <b>1254.05.88617</b></div>
+	<table><tr><td><span>Liker du det du leser?</span><br/><br/>VIPPS noen kroner til <b>137267</b> <br/>eller betal direkte til konto <b>1254.05.88617</b></div>
 	</td>
 	<td>
 		<span>Støtt oss med fast bidrag hver måned</span>

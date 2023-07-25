@@ -1,0 +1,939 @@
+# Translation of Themes - Twenty Twenty-Two in Norwegian (Bokmål)
+# This file is distributed under the same license as the Themes - Twenty Twenty-Two package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2023-04-29 00:41:31+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.0-alpha.4\n"
+"Language: nb_NO\n"
+"Project-Id-Version: Themes - Twenty Twenty-Two\n"
+
+#. Description of the theme
+#, gp-priority: high
+msgid "Built on a solidly designed foundation, Twenty Twenty-Two embraces the idea that everyone deserves a truly unique website. The theme’s subtle styles are inspired by the diversity and versatility of birds: its typography is lightweight yet strong, its color palette is drawn from nature, and its layout elements sit gently on the page. The true richness of Twenty Twenty-Two lies in its opportunity for customization. The theme is built to take advantage of the Site Editor features introduced in WordPress 5.9, which means that colors, typography, and the layout of every single page on your site can be customized to suit your vision. It also includes dozens of block patterns, opening the door to a wide range of professionally designed layouts in just a few clicks. Whether you’re building a single-page website, a blog, a business website, or a portfolio, Twenty Twenty-Two will help you create a site that is uniquely yours."
+msgstr "Bygget på et solid utformet grunnlag, omfavner Twenty Twenty-Two ideen om at alle fortjener et virkelig unikt nettsted. Temaets subtile stiler er inspirert av mangfoldet og allsidigheten til fugler: Typografien er lett, men likevel sterk, fargepaletten er hentet fra naturen, og oppsettselementene sitter forsiktig på sidene. Den sanne rikdommen til Twenty Twenty-Two ligger i muligheten for tilpasning. Temaet er bygget for å dra nytte av funksjonene for redigering av nettstedsredigering introdusert i WordPress 5.9, noe som betyr at farger, typografi og oppsettet til hver enkelt side på nettstedet ditt kan tilpasses for å passe din visjon. Den inkluderer også dusinvis av blokkmønstre, som åpner døren til et bredt spekter av profesjonelt utformede oppsett med bare noen få klikk. Enten du bygger et enkeltsidenettsted, en blogg, et forretningsnettsted eller en portefølje, vil Twenty Twenty-Two hjelpe deg med å lage et nettsted som er unikt for deg. "
+
+#. Theme Name of the theme
+#, gp-priority: high
+msgid "Twenty Twenty-Two"
+msgstr "Twenty Twenty-Two"
+
+#: styles/swiss.json
+msgctxt "Duotone name"
+msgid "Default filter"
+msgstr "Standard filter"
+
+#: styles/swiss.json
+msgctxt "Font family name"
+msgid "Inter"
+msgstr "Inter"
+
+#: styles/swiss.json
+msgctxt "Style variation name"
+msgid "Swiss"
+msgstr "Swiss"
+
+#: styles/pink.json
+msgctxt "Font family name"
+msgid "IBM Plex Mono"
+msgstr "IBM Plex Mono"
+
+#: styles/pink.json
+msgctxt "Font family name"
+msgid "IBM Plex Sans"
+msgstr "IBM Plex Sans"
+
+#: styles/pink.json
+msgctxt "Style variation name"
+msgid "Pink"
+msgstr "Rosa"
+
+#: styles/blue.json
+msgctxt "Font family name"
+msgid "DM Sans"
+msgstr "DM Sans"
+
+#: styles/blue.json
+msgctxt "Style variation name"
+msgid "Blue"
+msgstr "Blå"
+
+#: inc/patterns/hidden-404.php:14
+msgid "Search"
+msgstr "Søk"
+
+#: inc/patterns/hidden-404.php:14
+msgctxt "label"
+msgid "Search"
+msgstr "Søk"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr "Sidebunn"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header (Dark, small)"
+msgstr "Sidetopp (mørk, liten)"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header (Dark, large)"
+msgstr "Sidetopp (mørk, stor)"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr "Sidetopp"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page (No Separators)"
+msgstr "Side (ingen skillelinjer)"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Post (No Separators)"
+msgstr "Enkeltinnlegg (ingen skillelinjer)"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page (Large Header)"
+msgstr "Side (stor sidetopp)"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Blank"
+msgstr "Blank"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Primary and tertiary"
+msgstr "Primær og tertiær"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Primary and secondary"
+msgstr "Primær og sekundær"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Primary and background"
+msgstr "Primær og bakgrunn"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Foreground and tertiary"
+msgstr "Forgrunn og tertiær"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Foreground and secondary"
+msgstr "Forgrunn og sekundær"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Foreground and background"
+msgstr "Foregrunn og bakgrunn"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Diagonal background to tertiary"
+msgstr "Diagonal bakgrunn til tertiær"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Diagonal tertiary to background"
+msgstr "Diagonal tertiær til bakgrunn"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Diagonal background to secondary"
+msgstr "Diagonal bakgrunn til sekundær"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Diagonal secondary to background"
+msgstr "Diagonal sekundær til bakgrunn"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Diagonal primary to foreground"
+msgstr "Diagonal primær til forgrunn"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical tertiary to background"
+msgstr "Vertikal tertiær til bakgrunn"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical secondary to background"
+msgstr "Vertikal sekundær til bakgrunn"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical secondary to tertiary"
+msgstr "Vertikal sekundær til tertiær"
+
+#: theme.json styles/blue.json styles/pink.json styles/swiss.json
+msgctxt "Color name"
+msgid "Tertiary"
+msgstr "Tertiær"
+
+#: theme.json styles/blue.json styles/pink.json styles/swiss.json
+msgctxt "Color name"
+msgid "Secondary"
+msgstr "Sekundær"
+
+#: theme.json styles/blue.json styles/pink.json styles/swiss.json
+msgctxt "Color name"
+msgid "Primary"
+msgstr "Primær"
+
+#: theme.json styles/blue.json styles/pink.json styles/swiss.json
+msgctxt "Color name"
+msgid "Background"
+msgstr "Bakgrunn"
+
+#: theme.json styles/blue.json styles/pink.json styles/swiss.json
+msgctxt "Color name"
+msgid "Foreground"
+msgstr "Forgrunn"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Source Serif Pro"
+msgstr "Kilde Serif Pro"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "System Font"
+msgstr "Systemskrift"
+
+#: inc/patterns/query-text-grid.php:6
+msgid "Text-based grid of posts"
+msgstr "Tekstbasert rutenett med innlegg"
+
+#: inc/patterns/query-simple-blog.php:6
+msgid "Simple blog posts"
+msgstr "Enkle blogginnlegg"
+
+#: inc/patterns/query-large-titles.php:6
+msgid "Large post titles"
+msgstr "Store innleggsoverskrifter"
+
+#: inc/patterns/query-irregular-grid.php:6
+msgid "Irregular grid of posts"
+msgstr "Uregelmessig rutenett ed innlegg"
+
+#: inc/patterns/query-image-grid.php:6
+msgid "Grid of image posts"
+msgstr "Rutenett ed bildeinnlegg"
+
+#: inc/patterns/query-grid.php:6
+msgid "Grid of posts"
+msgstr "Rutenett med innlegg"
+
+#: inc/patterns/query-default.php:6
+msgid "Default posts"
+msgstr "Standard innlegg"
+
+#: inc/patterns/page-sidebar-poster.php:56
+msgid "The Grand Theater<br>154 Eastern Avenue<br>Maryland NY, 12345"
+msgstr "Det Norske Teatret<br>Kristian IVs gate 8<br>0164 Oslo"
+
+#: inc/patterns/page-sidebar-poster.php:52
+msgid "Location"
+msgstr "Sted"
+
+#: inc/patterns/page-sidebar-poster.php:44
+msgid "February, 12 2021"
+msgstr "12. februar 2021"
+
+#: inc/patterns/page-sidebar-poster.php:40
+msgid "Date"
+msgstr "Dato"
+
+#: inc/patterns/page-sidebar-poster.php:14
+msgid "<em>Flutter</em>, a collection of bird-related ephemera"
+msgstr "<em>Flutter</em>, en samling av fuglerelaterte spesialutgivelser"
+
+#: inc/patterns/page-sidebar-poster.php:6
+msgid "Poster with right sidebar"
+msgstr "Plakat med høyre sidestolpe"
+
+#: inc/patterns/page-sidebar-grid-posts.php:6
+msgid "Grid of posts with left sidebar"
+msgstr "Rutenett av innlegg med venstre sidestolpe"
+
+#: inc/patterns/page-sidebar-blog-posts.php:6
+msgid "Blog posts with left sidebar"
+msgstr "Blogginnlegg med venstre sidestolpe"
+
+#: inc/patterns/page-sidebar-blog-posts-right.php:80
+msgid "Tags"
+msgstr "Stikkord"
+
+#: inc/patterns/page-sidebar-blog-posts-right.php:6
+msgid "Blog posts with right sidebar"
+msgstr "Blogginnlegg med høyre sidestolpe"
+
+#: inc/patterns/page-layout-two-columns.php:58
+msgid "POSTS"
+msgstr "INNLEGG"
+
+#: inc/patterns/page-layout-two-columns.php:21
+msgid "WELCOME"
+msgstr "VELKOMMEN"
+
+#: inc/patterns/page-layout-two-columns.php:10
+msgid "<em>Goldfinch </em><br><em>&amp; Sparrow</em>"
+msgstr "<em>Gullfink </em><br><em>og spurv</em>"
+
+#: inc/patterns/page-layout-two-columns.php:6
+msgid "Page layout with two columns"
+msgstr "Sideoppsett med to kolonner"
+
+#: inc/patterns/page-layout-image-text-and-video.php:53
+msgid "Oh hello. My name’s Angelo, and you’ve found your way to my blog. I write about a range of topics, but lately I’ve been sharing my hopes for next year."
+msgstr "Heisann. Mitt navn er Andreas og du har funnet min blogg. Jeg skriver om en rekke emner, men i det siste har jeg delt mine ønsker for neste år."
+
+#: inc/patterns/page-layout-image-text-and-video.php:42
+msgid "An illustration of a bird in flight"
+msgstr "En illustrasjon ev en fugl som flyr"
+
+#: inc/patterns/page-layout-image-text-and-video.php:21
+msgid "Screening"
+msgstr "Screening"
+
+#: inc/patterns/page-layout-image-text-and-video.php:6
+msgid "Page layout with image, text and video"
+msgstr "Sideoppsett med bilde, tekst og video"
+
+#: inc/patterns/page-layout-image-and-text.php:27
+#: inc/patterns/page-layout-two-columns.php:36
+msgid "Oh hello. My name’s Angelo, and I operate this blog. I was born in Portland, but I currently live in upstate New York. You may recognize me from publications with names like <a href=\"#\">Eagle Beagle</a> and <a href=\"#\">Mourning Dive</a>. I write for a living.<br><br>I usually use this blog to catalog extensive lists of birds and other things that I find interesting. If you find an error with one of my lists, please keep it to yourself.<br><br>If that’s not your cup of tea, <a href=\"#\">I definitely recommend this tea</a>. It’s my favorite."
+msgstr "Heisann. Mitt navn er Andreas, og jeg driver denne bloggen. Jeg ble født i Porsgrunn, men bor for tiden i Innlandet. Du kjenner meg kanskje igjen fra utgivelser med navn som <a href=\"#\">Våre ørner</a> og <a href=\"#\">Sørgedue</a>. Jeg skriver som levebrød.<br><br>Jeg rbuker so regel denne bloggen til å katalogisere omfattende lister over fugler og andre ting jeg synes er interessant. Finner du en feil i ine lsiter, vennligst hold det for deg selv.<br><br>Om det ikke akkurat er din kopp te, <a href=\"#\">anbefaler jeg definitivt denne teen</a>. Det er min favoritt."
+
+#: inc/patterns/page-layout-image-and-text.php:15
+msgctxt "Short for to be determined"
+msgid "TBD"
+msgstr "TBD"
+
+#: inc/patterns/page-layout-image-and-text.php:10
+msgid "<em>Watching Birds </em><br><em>in the Garden</em>"
+msgstr "<em>Fugletitting </em><br><em>i hagen</em>"
+
+#: inc/patterns/page-layout-image-and-text.php:6
+msgid "Page layout with image and text"
+msgstr "Sideoppsett med bilde og tekst"
+
+#: inc/patterns/page-about-solid-color.php:22
+msgid "Oh hello. My name’s Edvard, and you’ve found your way to my website. I’m an avid bird watcher, and I also broadcast my own radio show every Tuesday evening at 11PM EDT. Listen in sometime!"
+msgstr "Heisann. Mitt navn er Edvin, og du har funnet mitt nettsted. Jeg er en ivrig fugletitter, og jeg har mitt eget radioprogram hver tirsdag kveld kl 23. Hør på det ved anledning!"
+
+#: inc/patterns/page-about-solid-color.php:14
+msgid "Edvard<br>Smith"
+msgstr "Edvin<br>Sørensen"
+
+#: inc/patterns/page-about-solid-color.php:6
+msgid "About page on solid color background"
+msgstr "Om-side med heldekkende fargebakgrunn"
+
+#: inc/patterns/page-about-simple-dark.php:22
+msgid "Oh hello. My name’s Jesús, and you’ve found your way to my website. I’m an avid bird watcher, and I also broadcast my own radio show on Tuesday evenings at 11PM EDT."
+msgstr "Heisann. Mitt navn er Jens, og du har funnet veien til mitt nettsted. Jeg er en ivrig fugletitter, og har også mitt eget radioprogram tirdagskvelder kl 23."
+
+#: inc/patterns/page-about-simple-dark.php:18
+msgid "Jesús<br>Rodriguez"
+msgstr "Jens<br>Robertsen"
+
+#: inc/patterns/page-about-simple-dark.php:6
+msgid "Simple dark about page"
+msgstr "Enkel mørk om-side"
+
+#: inc/patterns/page-about-media-right.php:20
+msgid "Oh hello. My name’s Emery, and you’ve found your way to my website. I’m an avid bird watcher, and I also broadcast my own radio show on Tuesday evenings at 11PM EDT."
+msgstr "Heisann. Mitt navn er Elin, og du har funnet veien til mitt nettsted. Jeg er en ivrig fugletitter, og har også mitt eget radioprogram tirdagskvelder kl 23."
+
+#: inc/patterns/page-about-media-right.php:16
+msgid "Emery<br>Driscoll"
+msgstr "Elin<br>Drangstad"
+
+#: inc/patterns/page-about-media-right.php:9
+msgid "An image of a bird flying"
+msgstr "Et bilde av en fugl som flyr"
+
+#: inc/patterns/page-about-media-right.php:6
+msgid "About page with media on the right"
+msgstr "Om-side med media til høyre"
+
+#: inc/patterns/page-about-media-left.php:21
+msgid "Oh hello. My name’s Doug, and you’ve found your way to my website. I’m an avid bird watcher, and I also broadcast my own radio show on Tuesday evenings at 11PM EDT."
+msgstr "Heisann. Mitt navn er Dagfinn, og du har funnet veien til mitt nettsted. Jeg er en ivrig fugletitter, og har også mitt eget radioprogram tirdagskvelder kl 23."
+
+#: inc/patterns/page-about-media-left.php:17
+msgid "Stilton"
+msgstr "Stillfjord"
+
+#: inc/patterns/page-about-media-left.php:17
+msgid "Doug"
+msgstr "Dagfinn"
+
+#: inc/patterns/page-about-media-left.php:9
+#: inc/patterns/page-sidebar-poster.php:26
+msgid "Image of a bird on a branch"
+msgstr "Bilde med en fugl på en gren"
+
+#: inc/patterns/page-about-media-left.php:6
+msgid "About page with media on the left"
+msgstr "Om-side med media til venstre"
+
+#: inc/patterns/page-about-links.php:21
+msgid "A podcast about birds"
+msgstr "En podkast om fugler"
+
+#: inc/patterns/page-about-links.php:17
+msgid "Swoop"
+msgstr "Slag"
+
+#: inc/patterns/page-about-links.php:6
+msgid "About page links"
+msgstr "Om-sidelenker"
+
+#: inc/patterns/page-about-links-dark.php:42
+#: inc/patterns/page-about-links.php:46
+msgid "About the hosts"
+msgstr "Om vertene"
+
+#: inc/patterns/page-about-links-dark.php:38
+#: inc/patterns/page-about-links.php:42
+msgid "Support the show"
+msgstr "Støtt programmet"
+
+#: inc/patterns/page-about-links-dark.php:34
+#: inc/patterns/page-about-links.php:38
+msgid "Listen on Spotify"
+msgstr "Lytt til Spotify"
+
+#: inc/patterns/page-about-links-dark.php:30
+#: inc/patterns/page-about-links.php:34
+msgid "Listen on iTunes Podcasts"
+msgstr "Lytt til podkaster på iTunes"
+
+#: inc/patterns/page-about-links-dark.php:26
+#: inc/patterns/page-about-links.php:30
+msgid "Watch our videos"
+msgstr "Se våre videoer"
+
+#: inc/patterns/page-about-links-dark.php:17
+msgid "A trouble of hummingbirds"
+msgstr "Kolibrienes problemer"
+
+#: inc/patterns/page-about-links-dark.php:13
+#: inc/patterns/page-about-links.php:10
+msgid "Logo featuring a flying bird"
+msgstr "Logo som forestiller en flyvende fugl"
+
+#: inc/patterns/page-about-links-dark.php:6
+msgid "About page links (dark)"
+msgstr "Om-sidelenker (mørk)"
+
+#: inc/patterns/page-about-large-image-and-buttons.php:6
+msgid "About page with large image and buttons"
+msgstr "Om-side med store bilder og knapper"
+
+#: inc/patterns/page-about-large-image-and-buttons.php:59
+msgid "Join my mailing list"
+msgstr "Bli med på min e-postliste"
+
+#: inc/patterns/page-about-large-image-and-buttons.php:51
+msgid "Learn about my process"
+msgstr "Lær om min prosess"
+
+#: inc/patterns/page-about-large-image-and-buttons.php:43
+msgid "Read about me"
+msgstr "Les om meg"
+
+#: inc/patterns/page-about-large-image-and-buttons.php:33
+msgid "Take a class"
+msgstr "Ta et kurs"
+
+#: inc/patterns/page-about-large-image-and-buttons.php:25
+msgid "Support my studio"
+msgstr "Støtt mitt studio"
+
+#: inc/patterns/page-about-large-image-and-buttons.php:17
+msgid "Purchase my work"
+msgstr "Kjøp mine arbeider"
+
+#: inc/patterns/hidden-bird.php:9 inc/patterns/hidden-heading-and-bird.php:10
+msgid "Heading and bird image"
+msgstr "Overskrift og fuglebilde"
+
+#: inc/patterns/hidden-404.php:12
+msgid "This page could not be found. Maybe try a search?"
+msgstr "Denne siden ble ikke funnet. Prøve et søk?"
+
+#: inc/patterns/hidden-404.php:9
+msgctxt "Error code for a webpage that is not found."
+msgid "404"
+msgstr "404"
+
+#: inc/patterns/hidden-404.php:6
+msgid "404 content"
+msgstr "404-innhold"
+
+#: inc/patterns/header-with-tagline.php:6
+msgid "Header with tagline"
+msgstr "Overskrift med slagord"
+
+#: inc/patterns/header-title-navigation-social.php:6
+msgid "Title, navigation, and social links header"
+msgstr "Tittel, navigasjon og sidetopp med sosiale lenker"
+
+#: inc/patterns/header-title-and-button.php:6
+msgid "Title and button header"
+msgstr "Sidetopp med tittel og knapp"
+
+#: inc/patterns/header-text-only-with-tagline-black-background.php:6
+msgid "Text-only header with tagline and background"
+msgstr "Sidetopp med ren tekst, slagord og bakgrunn"
+
+#: inc/patterns/header-text-only-green-background.php:6
+#: inc/patterns/header-text-only-salmon-background.php:6
+msgid "Text-only header with background"
+msgstr "Sidetopp med ren tekst og bakgrunn"
+
+#: inc/patterns/header-stacked.php:6
+msgid "Logo and navigation header"
+msgstr "Sidetopp med logo og navigasjon"
+
+#: inc/patterns/header-small-dark.php:6
+msgid "Small header with dark background"
+msgstr "Liten sidetopp med mørk bakgrunn"
+
+#: inc/patterns/header-logo-navigation-social-black-background.php:6
+msgid "Logo, navigation, and social links header with background"
+msgstr "Sidetopp med logo, navigasjon, sosiale lenker og med bakgrunn"
+
+#: inc/patterns/header-logo-navigation-offset-tagline.php:6
+msgid "Logo, navigation, and offset tagline Header"
+msgstr "Sidetopp med logo, navigasjon og forskjøvet slagord"
+
+#: inc/patterns/header-logo-navigation-gray-background.php:6
+msgid "Logo and navigation header with background"
+msgstr "Sidetopp med logo, navigasjon og med bakgrunn"
+
+#: inc/patterns/header-large-dark.php:24
+#: inc/patterns/hidden-heading-and-bird.php:14
+msgid "<em>The Hatchery</em>: a blog about my adventures in bird watching"
+msgstr "<em>Klekkeriet</em>: En blogg om mine eventyr som fugletitter"
+
+#: inc/patterns/header-large-dark.php:6
+msgid "Large header with dark background"
+msgstr "Stor sidetopp med mørk bakgrunn"
+
+#: inc/patterns/header-image-background.php:11
+msgid "Illustration of a flying bird"
+msgstr "Illustrasjon av en flyvende fugl"
+
+#: inc/patterns/header-image-background.php:6
+msgid "Header with image background"
+msgstr "Sidetopp med bildebakgrunn"
+
+#: inc/patterns/header-image-background-overlay.php:6
+msgid "Header with image background and overlay"
+msgstr "Sidetopp med bildebakgrunn og overlegg"
+
+#: inc/patterns/header-default.php:6
+msgid "Default header"
+msgstr "Standard sidetopp"
+
+#: inc/patterns/header-centered-title-navigation-social.php:6
+msgid "Centered header with navigation, social links, and background"
+msgstr "Midtstilt sidetopp med navigasjon, sosiale lenker og bagrunn"
+
+#: inc/patterns/header-centered-logo.php:6
+msgid "Header with centered logo"
+msgstr "Sidetopp med midtstilt logo"
+
+#: inc/patterns/header-centered-logo-black-background.php:6
+msgid "Header with centered logo and background"
+msgstr "Sidetopp med midtstilt logo og bakgrunn"
+
+#: inc/patterns/general-wide-image-intro-buttons.php:31
+msgid "Learn More"
+msgstr "Lær mer"
+
+#: inc/patterns/general-wide-image-intro-buttons.php:16
+msgid "Welcome to<br>the Aviary"
+msgstr "Velkommen til<br>Volieren"
+
+#: inc/patterns/general-wide-image-intro-buttons.php:6
+msgid "Wide image with introduction and buttons"
+msgstr "Bredt bilde med introduksjon og knapper"
+
+#: inc/patterns/general-video-trailer.php:16
+#: inc/patterns/general-wide-image-intro-buttons.php:22
+msgid "A film about hobbyist bird watchers, a catalog of different birds, paired with the noises they make. Each bird is listed by their scientific name so things seem more official."
+msgstr "En film amatørfuglekikkere, en katalog over forskjellige fugler, med lydene de lager. Hver fugl er oppført med sitt vitenskapelige navn slikk at det ser mer profesjonelt ut."
+
+#: inc/patterns/general-video-trailer.php:12
+#: inc/patterns/page-layout-image-text-and-video.php:49
+msgid "Extended Trailer"
+msgstr "Utvidet filmtrailer"
+
+#: inc/patterns/general-video-trailer.php:6
+msgid "Video trailer"
+msgstr "Video-trailer"
+
+#: inc/patterns/general-video-header-details.php:41
+msgid "Angelo Tso<br>Edward Stilton<br>Amy Jensen<br>Boston Bell<br>Shay Ford"
+msgstr "Angelo Tso<br>Edvin Stilton<br>Anne Jensen<br>Boston Bell<br>Shay Ford"
+
+#: inc/patterns/general-video-header-details.php:35
+msgid "Jesús Rodriguez<br>Doug Stilton<br>Emery Driscoll<br>Megan Perry<br>Rowan Price"
+msgstr "Jesús Rodriguez<br>Doug Stilton<br>Emery Driscoll<br>Megan Perry<br>Rowan Price"
+
+#: inc/patterns/general-video-header-details.php:29
+msgid "Featuring"
+msgstr "Med"
+
+#: inc/patterns/general-video-header-details.php:11
+#: inc/patterns/page-layout-image-text-and-video.php:11
+msgid "<em>Warble</em>, a film about <br>hobbyist bird watchers."
+msgstr "<em>Sangfugl</em>, en film om <br>amatørfuglekikkere."
+
+#: inc/patterns/general-video-header-details.php:6
+msgid "Video with header and details"
+msgstr "Video med topptekst og detaljer"
+
+#: inc/patterns/general-two-images-text.php:42
+#: inc/patterns/general-wide-image-intro-buttons.php:35
+#: inc/patterns/page-layout-image-text-and-video.php:30
+msgid "Buy Tickets"
+msgstr "Kjøp billetter"
+
+#: inc/patterns/general-two-images-text.php:29
+#: inc/patterns/page-layout-image-text-and-video.php:25
+msgid "May 14th, 2022 @ 7:00PM<br>The Vintagé Theater,<br>245 Arden Rd.<br>Gardenville, NH"
+msgstr "14. mai 2022 kl 19:00<br>Det Norske Teatret,<br>Kristian IVs gate 8<br>0164 Oslo"
+
+#: inc/patterns/general-two-images-text.php:25
+msgid "SCREENING"
+msgstr "SCREENING"
+
+#: inc/patterns/general-two-images-text.php:17
+#: inc/patterns/general-wide-image-intro-buttons.php:10
+#: inc/patterns/header-large-dark.php:29 inc/patterns/header-small-dark.php:25
+#: inc/patterns/hidden-bird.php:12 inc/patterns/hidden-heading-and-bird.php:19
+msgid "Illustration of a bird flying."
+msgstr "Illustrasjon av en fugl som flyr."
+
+#: inc/patterns/general-two-images-text.php:11
+msgid "Illustration of a bird sitting on a branch."
+msgstr "Illustrasjon av en fugl som sitter på en gren."
+
+#: inc/patterns/general-two-images-text.php:6
+msgid "Two images with text"
+msgstr "To bilder med tekst"
+
+#: inc/patterns/general-subscribe.php:16
+msgid "Join our mailing list"
+msgstr "Bli med på vår e-postliste"
+
+#: inc/patterns/general-subscribe.php:11
+msgid "Watch birds<br>from your inbox"
+msgstr "Se fugler<br>fra din innboks"
+
+#: inc/patterns/general-subscribe.php:6
+msgid "Subscribe callout"
+msgstr "Handlingsdriver for abonnement"
+
+#: inc/patterns/general-pricing-table.php:84
+msgid "$150"
+msgstr "kr 1500"
+
+#: inc/patterns/general-pricing-table.php:79
+msgid "Play a leading role for our community by joining at the Falcon level. This level earns you a seat on our board, where you can help plan future birdwatching expeditions."
+msgstr "Spill en ledene rolle i vårt fellesskap ved å bli med på nivået falk. Dette nivået gir deg plass i vårt styre, hvor du kan hjelpe med planleggingen av fremtidige fuglekikking-ekspedisjoner."
+
+#: inc/patterns/general-pricing-table.php:75
+msgid "Falcon"
+msgstr "Falk"
+
+#: inc/patterns/general-pricing-table.php:71
+msgctxt "Third item in a numbered list."
+msgid "3"
+msgstr "3"
+
+#: inc/patterns/general-pricing-table.php:56
+msgid "$75"
+msgstr "kr 750"
+
+#: inc/patterns/general-pricing-table.php:51
+msgid "Join at the Sparrow level and become a member of our flock! You’ll receive our newsletter, plus a bird pin that you can wear with pride when you’re out in nature."
+msgstr "Bli med på nivået spurv og bli medlem av flokken! Du vil motta vårt nyhetsbrev, samt en fuglenål du kan bære med stolthet når du er ute i naturen.-"
+
+#: inc/patterns/general-pricing-table.php:47
+msgid "Sparrow"
+msgstr "Spurv"
+
+#: inc/patterns/general-pricing-table.php:43
+msgctxt "Second item in a numbered list."
+msgid "2"
+msgstr "2"
+
+#: inc/patterns/general-pricing-table.php:28
+msgid "$25"
+msgstr "kr 250"
+
+#: inc/patterns/general-pricing-table.php:23
+msgid "Help support our growing community by joining at the Pigeon level. Your support will help pay our writers, and you’ll get access to our exclusive newsletter."
+msgstr "Hjelp til å støtte vårt voksende fellesskap ved å bli med på nivået due. Din støtte vil hjelpe oss betale våre skribenter, og du vil få tilgang til vårt eksklusive nyhetsbrev."
+
+#: inc/patterns/general-pricing-table.php:19
+msgid "Pigeon"
+msgstr "Due"
+
+#: inc/patterns/general-pricing-table.php:15
+msgctxt "First item in a numbered list."
+msgid "1"
+msgstr "1"
+
+#: inc/patterns/general-pricing-table.php:6
+msgid "Pricing table"
+msgstr "Pristabell"
+
+#: inc/patterns/general-list-events.php:103
+msgid "Emery Driscoll"
+msgstr "Elin Drangstad"
+
+#: inc/patterns/general-list-events.php:97
+msgid "May 20th, 2022, 6 PM"
+msgstr "20. mai 2022 kl 18"
+
+#: inc/patterns/general-list-events.php:79
+msgid "Amy Jensen"
+msgstr "Anne Jensen"
+
+#: inc/patterns/general-list-events.php:73
+msgid "May 18th, 2022, 7 PM"
+msgstr "18. mai 2022 kl 19"
+
+#: inc/patterns/general-list-events.php:61
+#: inc/patterns/general-list-events.php:109
+msgid "The Swell Theater<br>120 River Rd.<br>Rainfall, NH"
+msgstr "Trøndelag Teater<br>Prinsens gt. 20<br>7012 Trondheim"
+
+#: inc/patterns/general-list-events.php:55
+msgid "Doug Stilton"
+msgstr "Dag Stilton"
+
+#: inc/patterns/general-list-events.php:49
+msgid "May 16th, 2022, 6 PM"
+msgstr "16. mai 2022 kl 18"
+
+#: inc/patterns/general-list-events.php:37
+#: inc/patterns/general-list-events.php:85
+msgid "The Vintagé Theater<br>245 Arden Rd.<br>Gardenville, NH"
+msgstr "Oslo Nye Teater<br>Rosenkrantz' gate 10<br>0159 Oslo"
+
+#: inc/patterns/general-list-events.php:31
+msgid "Jesús Rodriguez"
+msgstr "Jens Robertsen"
+
+#: inc/patterns/general-list-events.php:25
+msgid "May 14th, 2022, 6 PM"
+msgstr "14. mai 2022 kl 18"
+
+#: inc/patterns/general-list-events.php:11
+msgid "Speaker Series"
+msgstr "Fordragsholder-serie"
+
+#: inc/patterns/general-list-events.php:6
+msgid "List of events"
+msgstr "Oversikt over arrangementer"
+
+#: inc/patterns/general-layered-images-with-duotone.php:10
+#: inc/patterns/page-sidebar-blog-posts-right.php:58
+msgid "Illustration of a flying bird."
+msgstr "Illustrasjon av en flygende fugl."
+
+#: inc/patterns/general-layered-images-with-duotone.php:9
+#: inc/patterns/header-image-background-overlay.php:11
+msgid "Painting of ducks in the water."
+msgstr "Maleri av endre i vannet."
+
+#: inc/patterns/general-layered-images-with-duotone.php:6
+msgid "Layered images with duotone"
+msgstr "Lagdelt bilde med duotone"
+
+#: inc/patterns/general-large-list-names.php:30
+msgid "Read more"
+msgstr "Les mer"
+
+#: inc/patterns/general-large-list-names.php:21
+msgid "Jesús Rodriguez, Doug Stilton, Emery Driscoll, Megan Perry, Rowan Price, Angelo Tso, Edward Stilton, Amy Jensen, Boston Bell, Shay Ford, Lee Cunningham, Evelynn Ray, Landen Reese, Ewan Hart, Jenna Chan, Phoenix Murray, Mel Saunders, Aldo Davidson, Zain Hall."
+msgstr "Jens Rodriguez, Dag Stilton, Emery Driscoll, Megan Perry, Rowan Price, Angelo Tso, Edward Stilton, Anne Jensen, Boston Bell, Shay Ford, Lee Cunningham, Evelynn Ray, Landen Reese, Ewan Hart, Jenna Chan, Phoenix Murray, Mel Saunders, Aldo Davidson, Zain Hall."
+
+#: inc/patterns/general-large-list-names.php:11
+#: inc/patterns/page-sidebar-poster.php:32
+msgid "An icon representing binoculars."
+msgstr "Et ikon som forestiller en kikkert."
+
+#: inc/patterns/general-large-list-names.php:6
+msgid "Large list of names"
+msgstr "Stor liste over navn"
+
+#: inc/patterns/general-image-with-caption.php:15
+msgid "A beautiful bird featuring a surprising set of color feathers."
+msgstr "En nydelig fugl med overraskende fargerike fjær."
+
+#: inc/patterns/general-image-with-caption.php:11
+msgid "Hummingbird"
+msgstr "Kolibri"
+
+#: inc/patterns/general-image-with-caption.php:10
+msgid "Hummingbird illustration"
+msgstr "Illustrasjon av kolibri"
+
+#: inc/patterns/general-image-with-caption.php:6
+msgid "Image with caption"
+msgstr "Bilde med undertekst"
+
+#: inc/patterns/general-featured-posts.php:6
+msgid "Featured posts"
+msgstr "Fremhevede innlegg"
+
+#: inc/patterns/general-divider-light.php:6
+msgid "Divider with image and color (light)"
+msgstr "Skillelinje med bilde og farge (lys)"
+
+#: inc/patterns/general-divider-dark.php:6
+msgid "Divider with image and color (dark)"
+msgstr "Skillelinje med bilde og farge (mørk)"
+
+#: inc/patterns/footer-title-tagline-social.php:6
+msgid "Footer with title, tagline, and social links on a dark background"
+msgstr "Sidebunn med tittel, slagord, sosiale lenker og mørk bakgrunn"
+
+#: inc/patterns/footer-social-copyright.php:6
+msgid "Footer with social links and copyright"
+msgstr "Sidebunn med sosiale lenker og opphavsrett"
+
+#: inc/patterns/footer-query-title-citation.php:6
+msgid "Footer with query, title, and citation"
+msgstr "Sidebunn med spørring, tittel og sitering"
+
+#: inc/patterns/footer-query-images-title-citation.php:6
+msgid "Footer with query, featured images, title, and citation"
+msgstr "Sidebunn med spørring, fremhevede bilder, tittel og sitering"
+
+#: inc/patterns/footer-navigation.php:6
+msgid "Footer with navigation and citation"
+msgstr "Sidebunn med navigasjon og sitering"
+
+#: inc/patterns/footer-navigation-copyright.php:20
+#: inc/patterns/footer-social-copyright.php:24
+msgid "© Site Title"
+msgstr "© Nettstedstittel"
+
+#: inc/patterns/footer-navigation-copyright.php:6
+msgid "Footer with navigation and copyright"
+msgstr "Sidebunn med navigasjon og opphavsrett"
+
+#: inc/patterns/footer-logo.php:6
+msgid "Footer with logo and citation"
+msgstr "Sidebunn med logo og sitering"
+
+#: inc/patterns/footer-default.php:6
+msgid "Default footer"
+msgstr "Standard sidebunn"
+
+#: inc/patterns/footer-dark.php:6
+msgid "Dark footer with title and citation"
+msgstr "Mørk sidebunn med tittel og sitering"
+
+#: inc/patterns/footer-blog.php:50 inc/patterns/footer-dark.php:18
+#: inc/patterns/footer-default.php:18 inc/patterns/footer-logo.php:18
+#: inc/patterns/footer-navigation.php:20
+#: inc/patterns/footer-query-images-title-citation.php:35
+#: inc/patterns/footer-query-title-citation.php:33
+msgid "https://wordpress.org"
+msgstr "https://nb.wordpress.org"
+
+#. Translators: WordPress link.
+#: inc/patterns/footer-blog.php:49 inc/patterns/footer-dark.php:17
+#: inc/patterns/footer-default.php:17 inc/patterns/footer-logo.php:17
+#: inc/patterns/footer-navigation.php:19
+#: inc/patterns/footer-query-images-title-citation.php:34
+#: inc/patterns/footer-query-title-citation.php:32
+msgid "Proudly powered by %s"
+msgstr "Stolt drevet av %s"
+
+#: inc/patterns/footer-blog.php:31
+#: inc/patterns/page-sidebar-blog-posts-right.php:74
+msgid "Categories"
+msgstr "Kategorier"
+
+#: inc/patterns/footer-blog.php:23 inc/patterns/general-featured-posts.php:10
+msgid "Latest posts"
+msgstr "Siste innlegg"
+
+#: inc/patterns/footer-blog.php:6
+msgid "Blog footer"
+msgstr "Sidebunn for blogg"
+
+#: inc/patterns/footer-about-title-logo.php:17 inc/patterns/footer-blog.php:17
+msgid "We are a rogue collective of bird watchers. We’ve been known to sneak through fences, climb perimeter walls, and generally trespass in order to observe the rarest of birds."
+msgstr "Vi er et løst felleskap av fuglekikkere. Vi har vært kjent for å snike oss gjennom gjerder, klatre på gjerder og overtre eiendomsgrenser for å observere de sjeldneste fuglene."
+
+#: inc/patterns/footer-about-title-logo.php:13 inc/patterns/footer-blog.php:13
+msgid "About us"
+msgstr "Om oss"
+
+#: inc/patterns/footer-about-title-logo.php:6
+msgid "Footer with text, title, and logo"
+msgstr "Sidebunn med tekst, tittel og logo"
+
+#: inc/block-patterns.php:21
+msgid "Pages"
+msgstr "Sider"
+
+#: inc/block-patterns.php:20
+msgid "Query"
+msgstr "Spørring"
+
+#: inc/block-patterns.php:19
+msgid "Headers"
+msgstr "Sidetopper"
+
+#: inc/block-patterns.php:18
+msgid "Footers"
+msgstr "Sidebunner"
+
+#: inc/block-patterns.php:17
+msgid "Featured"
+msgstr "Fremhevede"
+
+#. Theme URI of the theme
+#, gp-priority: low
+msgid "https://wordpress.org/themes/twentytwentytwo/"
+msgstr "https://nb.wordpress.org/themes/twentytwentytwo/"
+
+#. Author URI of the theme
+#, gp-priority: low
+msgid "https://wordpress.org/"
+msgstr "https://nb.wordpress.org/"
+
+#. Author of the theme
+#, gp-priority: low
+msgid "the WordPress team"
+msgstr "WordPress-gruppen"

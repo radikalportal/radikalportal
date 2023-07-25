@@ -1,16 +1,17 @@
 <?php
 /**
+ * File: Version1.php
+ *
+ * NOTE: Fixes have been included in this file; look for "W3TC FIX".
+ */
+namespace W3TCL\Minify;
+/**
  * Class Minify_Controller_Version1
  * @package Minify
  */
-if (!defined('W3TC')) {
-    die();
-}
-
-w3_require_once(W3TC_LIB_MINIFY_DIR . '/Minify/Controller/Base.php');
 
 /**
- * Controller class for emulating version 1 of minify.php
+ * Controller class for emulating version 1 of minify.php (mostly a proof-of-concept)
  *
  * <code>
  * Minify::serve('Version1');
@@ -29,6 +30,11 @@ class Minify_Controller_Version1 extends Minify_Controller_Base {
      *
      */
     public function setupSources($options) {
+        // PHP insecure by default: realpath() and other FS functions can't handle null bytes.
+        if (isset($_GET['files'])) {
+            $_GET['files'] = str_replace("\x00", '', (string) sanitize_text_field( wp_unslash( $_GET['files'] ) ) );
+        }
+
         self::_setupDefines();
         if (MINIFY_USE_CACHE) {
             $cacheDir = defined('MINIFY_CACHE_DIR')
@@ -41,32 +47,34 @@ class Minify_Controller_Version1 extends Minify_Controller_Base {
 
         // The following restrictions are to limit the URLs that minify will
         // respond to. Ideally there should be only one way to reference a file.
-        if (! isset($_GET['files'])
+		$files = isset( $_GET['files'] ) ? sanitize_text_field( wp_unslash( $_GET['files'] ) ) : '';
+        if (! isset($files)
             // verify at least one file, files are single comma separated,
             // and are all same extension
-            || ! preg_match('/^[^,]+\\.(css|js)(,[^,]+\\.\\1)*$/', $_GET['files'], $m)
+            || ! preg_match('/^[^,]+\\.(css|js)(,[^,]+\\.\\1)*$/', $files, $m)
             // no "//" (makes URL rewriting easier)
-            || strpos($_GET['files'], '//') !== false
+            || strpos($files, '//') !== false
             // no "\"
-            || strpos($_GET['files'], '\\') !== false
+            || strpos($files, '\\') !== false
             // no "./"
-            || preg_match('/(?:^|[^\\.])\\.\\//', $_GET['files'])
+            || preg_match('/(?:^|[^\\.])\\.\\//', $files)
         ) {
             return $options;
         }
-        $extension = $m[1];
 
-        $files = explode(',', $_GET['files']);
+        $files = explode(',', $files);
         if (count($files) > MINIFY_MAX_FILES) {
             return $options;
         }
 
-        // strings for prepending to relative/absolute paths
-        $prependRelPaths = dirname($_SERVER['SCRIPT_FILENAME'])
-            . DIRECTORY_SEPARATOR;
-        $prependAbsPaths = $_SERVER['DOCUMENT_ROOT'];
+        // W3TC FIX: Override $_SERVER['DOCUMENT_ROOT'] if enabled in settings.
+        $docroot = \W3TC\Util_Environment::document_root();
 
-        $sources = array();
+        // strings for prepending to relative/absolute paths
+        $prependRelPaths = dirname( isset( $_SERVER['SCRIPT_FILENAME'] ) ? sanitize_text_field( wp_unslash( $_SERVER['SCRIPT_FILENAME'] ) ) : '' )
+            . DIRECTORY_SEPARATOR;
+        $prependAbsPaths = $docroot;
+
         $goodFiles = array();
         $hasBadSource = false;
 
@@ -104,8 +112,11 @@ class Minify_Controller_Version1 extends Minify_Controller_Base {
 
     private static function _setupDefines()
     {
+        // W3TC FIX: Override $_SERVER['DOCUMENT_ROOT'] if enabled in settings.
+        $docroot = \W3TC\Util_Environment::document_root();
+
         $defaults = array(
-            'MINIFY_BASE_DIR' => realpath($_SERVER['DOCUMENT_ROOT'])
+            'MINIFY_BASE_DIR' => realpath($docroot)
             ,'MINIFY_ENCODING' => 'utf-8'
             ,'MINIFY_MAX_FILES' => 16
             ,'MINIFY_REWRITE_CSS_URLS' => true
@@ -118,4 +129,3 @@ class Minify_Controller_Version1 extends Minify_Controller_Base {
         }
     }
 }
-

@@ -6,7 +6,7 @@
   Author: Johan Eenfeldt
   Author URI: http://devel.kostdoktorn.se
   Text Domain: limit-login-attempts
-  Version: 1.7.1
+  Version: 1.7.2
 
   Copyright 2008 - 2012 Johan Eenfeldt
 
@@ -148,7 +148,7 @@ function limit_login_get_address($type_name = '') {
 		$type = limit_login_option('client_type');
 	}
 
-	if (isset($_SERVER[$type])) {
+	if (isset($_SERVER[$type]) && filter_var($_SERVER[$type], FILTER_VALIDATE_IP)) {
 		return $_SERVER[$type];
 	}
 
@@ -157,7 +157,8 @@ function limit_login_get_address($type_name = '') {
 	 * If so, try to fall back to direct address.
 	 */
 	if ( empty($type_name) && $type == LIMIT_LOGIN_PROXY_ADDR
-		 && isset($_SERVER[LIMIT_LOGIN_DIRECT_ADDR])) {
+		 && isset($_SERVER[LIMIT_LOGIN_DIRECT_ADDR])
+		 && filter_var($_SERVER[LIMIT_LOGIN_DIRECT_ADDR], FILTER_VALIDATE_IP)) {
 
 		/*
 		 * NOTE: Even though we fall back to direct address -- meaning you
@@ -895,14 +896,14 @@ function limit_login_show_log($log) {
 
 	echo('<tr><th scope="col">' . _x("IP", "Internet address", 'limit-login-attempts') . '</th><th scope="col">' . __('Tried to log in as', 'limit-login-attempts') . '</th></tr>');
 	foreach ($log as $ip => $arr) {
-		echo('<tr><td class="limit-login-ip">' . $ip . '</td><td class="limit-login-max">');
+		echo('<tr><td class="limit-login-ip">' . esc_html($ip) . '</td><td class="limit-login-max">');
 		$first = true;
 		foreach($arr as $user => $count) {
 			$count_desc = sprintf(_n('%d lockout', '%d lockouts', $count, 'limit-login-attempts'), $count);
 			if (!$first) {
-				echo(', ' . $user . ' (' .  $count_desc . ')');
+				echo(', ' . esc_html($user) . ' (' .  esc_html($count_desc) . ')');
 			} else {
-				echo($user . ' (' .  $count_desc . ')');
+				echo(esc_html($user) . ' (' .  esc_html($count_desc) . ')');
 			}
 			$first = false;
 		}
